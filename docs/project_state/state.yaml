@@ -1,8 +1,34 @@
-last_updated: 2026-10-03
+last_updated: 2026-10-04
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
   branch: main
+
+publication:
+  status: success
+  repository: https://github.com/Quan2004-uet/SGS_slam.git
+  branch: main
+  initial_publication_commit: edcb98a8772653fa567a09fd2cfa39b834efa18b
+  tag: migration-2026-10-03
+  tag_target: edcb98a8772653fa567a09fd2cfa39b834efa18b
+  upstream: https://github.com/ShuhongLL/SGS-SLAM.git
+  verified_date: 2026-10-03
+
+assets:
+  repository_id: QuanDinh/SGS-SLAM-assets
+  url: https://huggingface.co/datasets/QuanDinh/SGS-SLAM-assets
+  repo_type: dataset
+  visibility: private
+  upload_status: success
+  verified_date: 2026-10-04
+  local_files: 96111
+  remote_local_files_present: 96111
+  remote_extra_files: [.gitattributes]
+  data_remote_path: data/
+  migration_remote_path: migration/
+  replica_zip: data/Replica_data.zip
+  migration_archive: migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst
+  migration_archive_checksum: migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst.sha256
 
 workflow:
   phase: 3

@@ -5,6 +5,22 @@ This manifest describes the migration snapshot at
 `migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst`. The Replica ZIP is a
 **separate transfer asset** and is not inside the archive.
 
+## Hub transport verification — 2026-10-04
+
+`hf upload` completed to the private dataset repository
+`QuanDinh/SGS-SLAM-assets` at
+<https://huggingface.co/datasets/QuanDinh/SGS-SLAM-assets>. Remote `data/`
+and `migration/` are present. A complete filename comparison found all
+96,111 local files remotely; Hub-generated `.gitattributes` is the sole extra
+remote file. Remote sizes match the local `data/Replica_data.zip`
+(13,221,213,627 bytes) and migration `.tar.zst` (80,630,663 bytes); the
+adjacent archive checksum file is also present. No new experiment or
+source/config change occurred during upload.
+
+This archive is a 2026-10-03 snapshot. The GitHub `main` documentation can be
+newer than its `overlay/`; restore missing evidence from the archive without
+overwriting newer files from the GitHub checkout. See `SERVER_MIGRATION.md`.
+
 ## Research state and provenance
 
 | Item | Snapshot |

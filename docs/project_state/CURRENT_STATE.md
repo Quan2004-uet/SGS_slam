@@ -1,15 +1,29 @@
-# Current State — 2026-10-03
+# Current State — 2026-10-04
 
 Rolling handoff for the next work period. Detailed evidence is in the linked runtime records.
 
 ## Baseline
 
 - Released SGS-SLAM baseline commit: `e4183986204242a8bb422624618af07780a49d26`; branch: `main`. The research repository may have later documentation commits; do not substitute their HEAD for this baseline revision.
-- Tracked SGS-SLAM source and experiment configs remain unchanged. Research documentation and project state are included in the Git publication commit; raw runtime artifacts and migration assets remain local.
+- Tracked SGS-SLAM source and experiment configs remain unchanged. Research documentation and project state are in Git; raw runtime artifacts and migration assets remain Git-ignored locally and have private Hugging Face transport copies.
+
+## Initial GitHub publication
+
+- **SUCCESS** — research repository `https://github.com/Quan2004-uet/SGS_slam.git` on `main`.
+- Initial research publication commit and `origin/main` at verification on 2026-10-03: `edcb98a8772653fa567a09fd2cfa39b834efa18b`. The final migration checkpoint is a later documentation commit on `main`.
+- Annotated tag `migration-2026-10-03` is published and resolves to the same commit. `upstream` remains `https://github.com/ShuhongLL/SGS-SLAM.git`.
+- GitHub publication is infrastructure work; it does not complete or start a research gate. The released baseline commit above remains the source reference.
+
+## Private artifact transport — 2026-10-04
+
+- **SUCCESS** — `QuanDinh/SGS-SLAM-assets`, Hugging Face repo type `dataset`, visibility `private`: <https://huggingface.co/datasets/QuanDinh/SGS-SLAM-assets>.
+- Uploaded local `data/` to remote `data/` and local `migration/` to remote `migration/` using `hf upload`. Remote filenames were compared with local filenames: **96,111/96,111 local files present**; the only extra remote file is Hub-generated `.gitattributes`.
+- `data/Replica_data.zip` (13,221,213,627 B), `migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst` (80,630,663 B), and its adjacent `.sha256` file are present remotely. The ZIP and archive remote byte sizes match local files. See [migration manifest](MIGRATION_MANIFEST.md) and [GPU server restore guide](SERVER_MIGRATION.md).
+- Upload and verification were transport work only: no new SGS-SLAM experiment, source/config change, or algorithm change. The local PDF is research documentation already included in the migration archive; it remains untracked in Git.
 
 ## Current workflow
 
-- Current session: `SESSION_002` — `PAUSED`; started 2026-10-02, last active 2026-10-03. Its Phase 3 baseline-reproduction objective remains open.
+- Current session: `SESSION_002` — `PAUSED`; started 2026-10-02, last active for research work 2026-10-03. Its Phase 3 baseline-reproduction objective remains open.
 - Latest completed gate: **Phase 3C-3 — Bounded Online Reproduction, continuous frames 0–49 — PASS** (`RUNTIME VERIFIED`).
 - Next gate: **Phase 3C-4 — Bounded Online Reproduction, continuous frames 0–99**; not started.
 - Earlier gates: Phase 1, Phase 2, Phase 3A, Phase 3B, Phase 3C-1 (0–4), and Phase 3C-2 (0–19) PASS per their existing records.
@@ -45,7 +59,7 @@ Continuous frame 0–49 run: final frame 49; 1,118,590 Gaussians; 11 resident ke
 
 ## Next Exact Action
 
-Prepare **Phase 3C-4 — one continuous run over frames 0–99**, with a strict guard before dataset index 100. Fast instrumentation may reduce logging overhead while preserving algorithmic settings. No evaluation, post-opt, or algorithm changes. Do not start this gate as part of project-state recovery.
+On the GPU server, clone the GitHub repository, download and verify the private Hugging Face assets, restore the migration evidence without overwriting newer GitHub state, and validate the destination GPU/runtime as specified in [SERVER_MIGRATION.md](SERVER_MIGRATION.md). Then resume `SESSION_002` and prepare **Phase 3C-4 — one continuous run over frames 0–99**, with a strict guard before dataset index 100. Fast instrumentation may reduce logging overhead while preserving algorithmic settings. No evaluation, post-opt, or algorithm changes. Do not start this gate as part of migration recovery.
 
 ## Do Not Re-do
 
