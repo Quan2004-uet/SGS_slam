@@ -1,0 +1,65 @@
+last_updated: 2026-10-03
+
+baseline:
+  commit: e4183986204242a8bb422624618af07780a49d26
+  branch: main
+
+workflow:
+  phase: 3
+  current_gate: phase3c3
+  current_gate_status: pass
+  next_gate: phase3c4
+
+session:
+  id: SESSION_002
+  status: paused
+  started: 2026-10-02
+  last_active: 2026-10-03
+
+next_run:
+  dataset: Replica
+  scene: room0
+  frame_start: 0
+  frame_end: 99
+  guard_frame: 100
+  instrumentation: fast
+
+environment:
+  conda: /home/quan/miniconda3/envs/sgs_slam_baseline
+  python: 3.9.25
+  pytorch: 2.0.1
+  torchvision: 0.15.2
+  cuda: "11.8"
+  numpy: 1.26.4
+  opencv: 4.9.0.80
+  renderer_revision: cb65e4b86bc3bd8ed42174b72a62e8d3a3a71110
+
+gpu:
+  model: NVIDIA GeForce GTX 1650 Ti
+  vram_mib: 4096
+
+dataset:
+  root: data/Replica
+  scene: room0
+  frames: 2000
+  width: 1200
+  height: 680
+
+latest_runtime:
+  last_frame: 49
+  gaussians: 1118590
+  keyframes: 11
+  keyframe_ids: [0, 4, 9, 14, 19, 24, 29, 34, 39, 44, 49]
+  keyframe_payload_bytes: 287232704
+  tracking_adam_bytes: 107224316
+  mapping_adam_bytes: 134230824
+  max_allocated_peak_bytes: 2340127232
+  max_reserved_bytes: 3040870400
+  vram_sufficient_through_last_frame: true
+  evidence_json: results/runtime_artifacts/phase3c3/phase3c3_results.json
+  evidence_log: results/runtime_artifacts/phase3c3/phase3c3_bounded_online.log
+
+integrity:
+  source_changed: false
+  config_changed: false
+  algorithm_changed: false

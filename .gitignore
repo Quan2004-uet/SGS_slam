@@ -4,6 +4,12 @@ configs/local
 /experiments/
 /results/
 /wandb/
+/migration/
+/envs/
+/.conda/
+SGS_SLAM_MIGRATION_*.tar.zst
+*.ckpt
+*.pth
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
