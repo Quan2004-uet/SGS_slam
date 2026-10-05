@@ -1,5 +1,11 @@
 # SESSION_002 — Baseline Recovery and Bounded Runtime Reproduction
 
+> **SESSION HISTORY.** This file is the permanent record of `SESSION_002` and
+> preserves what was known at each dated work period. It is not the authority
+> for the current immediate task. Use `../PROJECT_STATUS.md` for current project
+> state and `../SESSION_HANDOFF.md` for the exact resume point. Historical task
+> statements below are retained as provenance.
+
 ## Metadata
 
 Session ID: SESSION_002\
@@ -102,9 +108,13 @@ Baseline recovery and online runtime verification are paused between bounded gat
 
 Frames 0–49 completed continuously under the released online path. The guard intercepted dataset index 50. Persistent result JSON/log are present under the Git-ignored `results/runtime_artifacts/phase3c3/`. No frame 50+, evaluation, post-opt, or Phase 4 task has started.
 
-## NEXT TASK
+## Historical Next Research Task at the 2026-10-03 Pause
 
 Resume this Session, then run Phase 3C-4 through frame 99 continuously from frame 0, with the same baseline config and a dataset guard that intercepts index 100 before the actual loader. Follow the command and artifact details in `project_management/SESSION_HANDOFF.md`; save separate JSON/log evidence and stop after reviewing finite state and VRAM trends.
+
+Operational migration/restore prerequisites were documented later. They do not
+change this historical research-gate record; consult the canonical handoff
+before resuming.
 
 ## DO NOT
 

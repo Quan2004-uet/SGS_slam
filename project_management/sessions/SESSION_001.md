@@ -1,5 +1,9 @@
 # SESSION_001 — Static Repository Understanding
 
+> **CLOSED SESSION HISTORY.** This file preserves the state and next-task view
+> at the 2026-10-02 close. It is not a current-state authority. Use
+> `../PROJECT_STATUS.md` and `../SESSION_HANDOFF.md` for current work.
+
 ## Metadata
 
 Session ID: SESSION_001\
@@ -81,7 +85,7 @@ The static audit and reproduction plan were complete, satisfying the documented 
 
 Static repository understanding and the baseline reproduction contract were complete at the audited commit. Runtime environment and dataset recovery had not started in this Session.
 
-## NEXT TASK
+## Historical Next Task at Session Close
 
 Begin Phase 3 — Baseline Recovery & Reproduction in a new coherent Session when that objective starts.
 

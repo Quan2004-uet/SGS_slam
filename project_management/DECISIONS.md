@@ -1,7 +1,9 @@
 # Research Decision Log
 
-> Historical decision record. Current durable decisions are maintained in
-> `docs/project_state/DECISIONS.md`; do not maintain two active decision logs.
+> **DURABLE DECISION LOG.** Record accepted research/project-management
+> decisions here. This file does not define the current Phase, Session,
+> `STOPPED HERE`, or `NEXT TASK`; those belong to `PROJECT_STATUS.md` and
+> `SESSION_HANDOFF.md`.
 
 ## DEC-001 — Preserve the released baseline through reproduction
 
@@ -40,3 +42,66 @@ Bounded reproduction keeps the active source/config fixed. Paper/source differen
 ### Supersedes
 
 None.
+
+## DEC-002 — Canonicalize project-state authority
+
+Date: 2026-10-05\
+Session: SESSION_002 (remains PAUSED)\
+Status: ACCEPTED
+
+### Context
+
+Both `project_management/` and `docs/project_state/` described themselves as
+the current authority. Their research phase values were compatible, but their
+authority declarations and immediate next-task wording conflicted.
+
+### Decision
+
+Use this precedence:
+
+1. Repository/source/config/runtime evidence.
+2. `project_management/PROJECT_STATUS.md`.
+3. `project_management/SESSION_HANDOFF.md`.
+4. `project_management/sessions/SESSION_NNN.md`.
+5. `project_management/DECISIONS.md` and `CHANGELOG.md`.
+6. `docs/project_state/` historical, migration, roadmap, or derived records.
+
+`docs/project_state/state.yaml` may remain as a derived machine-readable
+snapshot but cannot override the canonical human-readable state. The roadmap
+does not decide the current Session or immediate task.
+
+### Consequences
+
+Startup reads the canonical project-management files after Git inspection.
+Shutdown updates the current Session, then project status, and writes the
+operational handoff last. Historical reports and legacy snapshots remain
+unchanged except for explicit authority notes.
+
+### Evidence
+
+- Phase 3C-3 JSON/log under `results/runtime_artifacts/phase3c3/`.
+- `docs/baseline_reproduction/runtime/13_bounded_online_50_frames.md`.
+- Git state at documentation HEAD `63943487478cd876339e8ec1660e91bab1215fab`.
+
+## Migrated durable decision index
+
+The following accepted decisions were first summarized in the 2026-10-04
+legacy migration snapshot `docs/project_state/DECISIONS.md`. They are indexed
+here so that future work does not need to treat that legacy file as an active
+decision authority:
+
+- **DEC-003:** Use the runtime-verified environment at
+  `/home/quan/miniconda3/envs/sgs_slam_baseline`; revalidate it on a destination
+  host before runtime work.
+- **DEC-004:** Retain NumPy 1.26.4 with `opencv-python` 4.9.0.80 unless explicit
+  compatibility evidence requires a change.
+- **DEC-005:** Use the recovered maintainer-distributed Replica package.
+- **DEC-006:** Use continuous bounded prefixes before full `room0`; choose each
+  later horizon from measured evidence.
+- **DEC-007:** Preserve runtime JSON/logs outside `/tmp`.
+- **DEC-008:** Fast instrumentation may reduce logging overhead but must preserve
+  algorithmic settings.
+- **DEC-009:** Do not optimize memory, optimizer behavior, or keyframes during
+  baseline reproduction.
+
+These decisions constrain work but do not themselves define the current task.

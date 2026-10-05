@@ -1,5 +1,10 @@
 # Durable Decisions
 
+> **Legacy decision summary from the migration checkpoint.** New durable
+> decisions belong in `project_management/DECISIONS.md`. This file is not a
+> current-state authority and does not define Phase, Session, `STOPPED HERE`,
+> or `NEXT TASK`. The entries below are preserved as historical provenance.
+
 - **D-001:** Preserve the released baseline during Phase 3; separate compatibility recovery from algorithm changes.
 - **D-002:** Use the runtime-verified environment at `/home/quan/miniconda3/envs/sgs_slam_baseline`.
 - **D-003:** Retain NumPy 1.26.4 with `opencv-python` 4.9.0.80 unless explicit evidence requires a change. See [compatibility recovery](../baseline_reproduction/runtime/09_opencv_numpy_recovery.md).

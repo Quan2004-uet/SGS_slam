@@ -1,8 +1,12 @@
 # Current Session Handoff
 
-> Historical handoff (2026-10-03), with a 2026-10-04 migration transport
-> addendum below. For the current session and next action, use
-> `docs/project_state/CURRENT_STATE.md` and `docs/project_state/state.yaml`.
+> **CURRENT OPERATIONAL HANDOFF AUTHORITY.** Use this file for the exact
+> `STOPPED HERE`, immediate operational `NEXT TASK`, follow-on work, blockers,
+> and resume files. Use `PROJECT_STATUS.md` for project-wide Phase and gate
+> status. Repository/runtime evidence overrides either document if they conflict.
+
+Last reconciled: 2026-10-05. The reconciliation changed documentation
+authority only; it did not resume `SESSION_002` or start a research gate.
 
 ## Session
 
@@ -21,6 +25,11 @@ Recover a provenance-valid baseline environment and dataset, then establish rele
 ## Current State
 
 Shutdown verified on 2026-10-03 at HEAD `e4183986204242a8bb422624618af07780a49d26`, branch `main`, with no tracked changes. Phase 3A, 3B-R, 3B-C, 3B, and bounded Phase 3C-1/2/3 are recorded PASS. The most recent controlled run processed indices 0–49; frame 50 was blocked before the real dataset loader. The GPU peak reserved allocation was 2,900 MiB on a 4,096 MiB GTX 1650 Ti. Full-scene execution and metrics remain unverified.
+
+Current documentation HEAD at the 2026-10-05 reconciliation is
+`63943487478cd876339e8ec1660e91bab1215fab` on `main`. The later commits are
+documentation/migration work; released source/config remain tied to baseline
+`e4183986204242a8bb422624618af07780a49d26`.
 
 ## Completed in This Session
 
@@ -44,7 +53,7 @@ contain all 96,111 local files by filename comparison, including
 also has its generated `.gitattributes`. No source/config/algorithm change or
 experiment occurred during upload. `SESSION_002` remains `PAUSED`.
 
-## NEXT TASK
+## IMMEDIATE OPERATIONAL NEXT TASK
 
 On the GPU server, clone the GitHub source and download the private assets:
 
@@ -65,13 +74,20 @@ the pinned renderer, then run the recorded dataset[0], first-frame, and 0–4
 migration regressions. These checks have not yet run on the new host.
 
 After restore checks pass, resume `SESSION_002` (`PAUSED` → `ACTIVE`) and
-prepare Phase 3C-4: one continuous online run over frames 0–99 from frame 0,
-with a guard before dataset index 100. The old
+prepare the next research gate. Do not resume the Session merely because files
+were restored; resume it only when Phase 3C-4 work actually begins. The old
 `/tmp/sgs_phase3c1_bounded_online.py` harness is absent; reconstruct a bounded
 harness from released SGS-SLAM functions and prior runtime documentation.
-Keep algorithmic config values unchanged, store separate JSON/log evidence
-under `results/runtime_artifacts/phase3c4/`, and stop after reviewing finite
-state and VRAM trends. Do not start Phase 3C-4 as part of migration restore.
+Do not start Phase 3C-4 as part of migration restore.
+
+## NEXT RESEARCH GATE
+
+After the operational restore/runtime regressions pass, resume `SESSION_002`
+and run Phase 3C-4: one continuous online run over frames 0–99 from frame 0,
+with a guard before real dataset index 100. Keep algorithmic config values
+unchanged, store separate JSON/log evidence under
+`results/runtime_artifacts/phase3c4/`, and stop after reviewing finite state and
+VRAM trends.
 
 ## AFTER THAT
 
@@ -81,7 +97,10 @@ state and VRAM trends. Do not start Phase 3C-4 as part of migration restore.
 
 ## BLOCKERS
 
-None known for the next bounded prefix. Full-scene memory/runtime and paper-metric reproduction are unknown, not established blockers.
+No algorithm or dataset blocker is known from the completed bounded prefix.
+Destination GPU/runtime restore and validation are prerequisites that have not
+yet been completed according to the migration handoff. Full-scene memory/runtime
+and paper-metric reproduction remain unknown, not established blockers.
 
 ## DO NOT
 
@@ -97,6 +116,8 @@ None known for the next bounded prefix. Full-scene memory/runtime and paper-metr
 - `project_management/DECISIONS.md`
 - `project_management/sessions/SESSION_001.md`
 - `project_management/sessions/SESSION_002.md`
+- `docs/project_state/SERVER_MIGRATION.md`
+- `docs/project_state/MIGRATION_MANIFEST.md`
 - `docs/repository_understanding/README.md`
 - `docs/baseline_reproduction/README.md`
 - `docs/baseline_reproduction/runtime/README.md`

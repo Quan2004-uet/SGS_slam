@@ -1,4 +1,9 @@
-last_updated: 2026-10-04
+authority: derived
+canonical_project_status: project_management/PROJECT_STATUS.md
+canonical_handoff: project_management/SESSION_HANDOFF.md
+role: derived_machine_readable_snapshot
+last_updated: 2026-10-05
+authority_reconciled: 2026-10-05
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
@@ -32,6 +37,7 @@ assets:
 
 workflow:
   phase: 3
+  phase_status: in_progress
   current_gate: phase3c3
   current_gate_status: pass
   next_gate: phase3c4
@@ -43,6 +49,7 @@ session:
   last_active: 2026-10-03
 
 next_run:
+  role: next_research_gate_not_immediate_operational_task
   dataset: Replica
   scene: room0
   frame_start: 0
@@ -50,7 +57,14 @@ next_run:
   guard_frame: 100
   instrumentation: fast
 
+next_actions:
+  immediate_operational: restore_and_validate_destination_gpu_runtime
+  next_research_gate: phase3c4_frames_0_99_guard_before_100
+  resume_session_only_when_research_gate_begins: true
+
 environment:
+  role: runtime_verified_old_host_snapshot
+  destination_revalidation_required: true
   conda: /home/quan/miniconda3/envs/sgs_slam_baseline
   python: 3.9.25
   pytorch: 2.0.1
@@ -61,6 +75,7 @@ environment:
   renderer_revision: cb65e4b86bc3bd8ed42174b72a62e8d3a3a71110
 
 gpu:
+  role: runtime_verified_old_host_snapshot
   model: NVIDIA GeForce GTX 1650 Ti
   vram_mib: 4096
 

@@ -1,12 +1,17 @@
 # SGS-SLAM GPU server migration — 2026-10-04
 
+> **Migration procedure, not current-state authority.** Before using this
+> procedure, read `project_management/PROJECT_STATUS.md` and
+> `project_management/SESSION_HANDOFF.md`. Repository/runtime evidence remains
+> the highest-priority source.
+
 Use `MIGRATION_MANIFEST.md` for the asset identities and checksums. The
 archive-root `RESTORE_ON_SERVER.md` records the earlier bundle-based restore
 protocol; the GitHub and Hugging Face sequence below applies to this final
-checkpoint. The
-canonical work state after restore remains `CURRENT_STATE.md` and
-`state.yaml` from GitHub `main`; the older `project_management/` files are
-archival. `SESSION_002` remains `PAUSED`, and Phase 3C-4 has not started.
+checkpoint. After restore, use the canonical project-management files named
+above; `CURRENT_STATE.md` is the historical migration snapshot and `state.yaml`
+is derived machine-readable state. At this checkpoint `SESSION_002` remained
+`PAUSED`, and Phase 3C-4 had not started.
 
 ## Fetch and verify on the GPU server
 

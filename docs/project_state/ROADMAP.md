@@ -1,5 +1,11 @@
 # Research Roadmap
 
+> **Planning document.** This file records the phase/gate sequence and a dated
+> planning snapshot. It does not determine the current Phase, active Session,
+> `STOPPED HERE`, or immediate `NEXT TASK`. Use
+> `project_management/PROJECT_STATUS.md` and
+> `project_management/SESSION_HANDOFF.md` for those values.
+
 | Gate | Status |
 |---|---|
 | Phase 1 — Research Documentation | PASS |
@@ -9,7 +15,7 @@
 | Phase 3C-1 — Continuous frames 0–4 | PASS |
 | Phase 3C-2 — Continuous frames 0–19 | PASS |
 | Phase 3C-3 — Continuous frames 0–49 | PASS |
-| Phase 3C-4 — Continuous frames 0–99 | NEXT; not started |
+| Phase 3C-4 — Continuous frames 0–99 | Planned; not started |
 | Later bounded horizon | TBD from runtime evidence |
 | Full Replica `room0` | Pending |
 | Online evaluation | Pending |

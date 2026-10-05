@@ -1,5 +1,23 @@
 # Research Changelog
 
+> Historical change record. This file does not define current Phase, Session,
+> `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
+> `SESSION_HANDOFF.md` for current state.
+
+## 2026-10-05 — Documentation-only state reconciliation
+
+### Documentation
+
+- Promoted `project_management/PROJECT_STATUS.md` and
+  `project_management/SESSION_HANDOFF.md` as the canonical current-state and
+  operational-handoff authorities.
+- Reclassified `docs/project_state/CURRENT_STATE.md` as a legacy migration
+  snapshot, `state.yaml` as derived machine-readable state, and `ROADMAP.md` as
+  planning context.
+- Separated the destination runtime restore/validation task from the next
+  research gate, Phase 3C-4. No Session status, research phase, runtime result,
+  source, config, environment, or dataset changed.
+
 ## 2026-10-02 — SESSION_001
 
 ### Added

@@ -1,5 +1,10 @@
 # GPU server migration manifest — 2026-10-03
 
+> **Historical migration manifest.** It records artifact identity and transport
+> provenance, not current Phase/Session/task state. Use
+> `project_management/PROJECT_STATUS.md` and
+> `project_management/SESSION_HANDOFF.md` for current state.
+
 This manifest describes the migration snapshot at
 `migration/SGS_SLAM_MIGRATION_2026-10-03/`. The compressed archive is
 `migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst`. The Replica ZIP is a
@@ -36,13 +41,16 @@ overwriting newer files from the GitHub checkout. See `SERVER_MIGRATION.md`.
 
 The bundle includes `AGENTS.md`, the complete `docs/project_state/` directory,
 `docs/repository_understanding/`, `docs/baseline_reproduction/`, archival
-`project_management/`, the local paper PDF, repository dependency files, the
+`project_management/` snapshots as classified at packaging time, the local paper
+PDF, repository dependency files, the
 Git history bundle, environment snapshots, and the Phase 3C-3 JSON/log. The
 manifest `ARTIFACT_PATHS.tsv` maps each archive file to its original path.
 `CHECKSUMS.sha256` covers every included regular file except itself. Use the
 adjacent `SGS_SLAM_MIGRATION_2026-10-03.tar.zst.sha256` for the compressed
 archive. Historical untracked documentation is copied because it is absent
-from the Git bundle.
+from the Git bundle. The 2026-10-05 authority reconciliation later promoted
+the live `project_management/` files; it does not alter this manifest's archive
+contents or checksums.
 
 ## Runtime evidence
 

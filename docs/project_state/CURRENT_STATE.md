@@ -1,6 +1,13 @@
-# Current State — 2026-10-04
+# Legacy Migration State Snapshot — 2026-10-04
 
-Rolling handoff for the next work period. Detailed evidence is in the linked runtime records.
+> **Status authority note:** This document is a historical migration/transport
+> snapshot. It is not an independent current-state authority and is not updated
+> merely to mirror dynamic status. For current project state use
+> `project_management/PROJECT_STATUS.md`. For the current resume point use
+> `project_management/SESSION_HANDOFF.md`.
+
+This snapshot records the state used for the 2026-10-04 migration checkpoint.
+Detailed evidence is in the linked runtime records.
 
 ## Baseline
 
@@ -21,7 +28,7 @@ Rolling handoff for the next work period. Detailed evidence is in the linked run
 - `data/Replica_data.zip` (13,221,213,627 B), `migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst` (80,630,663 B), and its adjacent `.sha256` file are present remotely. The ZIP and archive remote byte sizes match local files. See [migration manifest](MIGRATION_MANIFEST.md) and [GPU server restore guide](SERVER_MIGRATION.md).
 - Upload and verification were transport work only: no new SGS-SLAM experiment, source/config change, or algorithm change. The local PDF is research documentation already included in the migration archive; it remains untracked in Git.
 
-## Current workflow
+## Workflow snapshot at migration checkpoint
 
 - Current session: `SESSION_002` — `PAUSED`; started 2026-10-02, last active for research work 2026-10-03. Its Phase 3 baseline-reproduction objective remains open.
 - Latest completed gate: **Phase 3C-3 — Bounded Online Reproduction, continuous frames 0–49 — PASS** (`RUNTIME VERIFIED`).
@@ -45,7 +52,7 @@ Continuous frame 0–49 run: final frame 49; 1,118,590 Gaussians; 11 resident ke
 
 `RUNTIME VERIFIED`: tracking ran 40 iterations on frames 1–49; mapping ran 60 iterations on frames 0–49. Pruning was active; gradient clone/split and opacity reset were inactive. Trainable `semantic_colors` and non-trainable `semantic_ids` remained finite. Zero-LR tracking Gaussian groups acquired Adam state when gradients were present. The paper-described semantic-mIoU keyframe filter remained inactive in the released online path; see [Phase 3C-3 record](../baseline_reproduction/runtime/13_bounded_online_50_frames.md) and `AGENTS.md`.
 
-## Current unknowns
+## Unknowns recorded at migration checkpoint
 
 - Whether 4 GiB VRAM suffices through frame 99 or a long/full `room0` run.
 - Online evaluation metrics and paper comparison; online versus post-opt paper-stage attribution.
@@ -57,7 +64,7 @@ Continuous frame 0–49 run: final frame 49; 1,118,590 Gaussians; 11 resident ke
 - `results/runtime_artifacts/phase3c3/phase3c3_results.json` and `results/runtime_artifacts/phase3c3/phase3c3_bounded_online.log` (present, Git-ignored).
 - The prior `/tmp/sgs_phase3c1_bounded_online.py` harness is absent; no persistent harness copy was found. Recover or recreate a bounded harness from released source and prior runtime documentation during Phase 3C-4 preparation. It must orchestrate released SGS-SLAM functions only, without reimplementing tracking or mapping or changing algorithmic settings.
 
-## Next Exact Action
+## Historical Next Exact Action recorded at migration checkpoint
 
 On the GPU server, clone the GitHub repository, download and verify the private Hugging Face assets, restore the migration evidence without overwriting newer GitHub state, and validate the destination GPU/runtime as specified in [SERVER_MIGRATION.md](SERVER_MIGRATION.md). Then resume `SESSION_002` and prepare **Phase 3C-4 — one continuous run over frames 0–99**, with a strict guard before dataset index 100. Fast instrumentation may reduce logging overhead while preserving algorithmic settings. No evaluation, post-opt, or algorithm changes. Do not start this gate as part of migration recovery.
 

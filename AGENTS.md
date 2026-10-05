@@ -340,47 +340,58 @@ Do not run a full dataset experiment, long post-opt, benchmark suite, destructiv
 
 Read-only inspection and bounded diagnostics are preferred. Do not download datasets or replace system packages implicitly.
 
-## Project & Session Continuity Protocol
+## Project State Source of Truth
 
-`docs/project_state/` is the sole authority for rolling project and session
-state. `CURRENT_STATE.md` is the human handoff; `state.yaml` is its
-machine-readable counterpart. `ROADMAP.md` and `DECISIONS.md` live beside them.
-The monthly journal records meaningful work but is not a startup prerequisite.
+Use this precedence for current research state:
 
-`project_management/` preserves historical session records and snapshots.
-Its `PROJECT_STATUS.md`, `SESSION_HANDOFF.md`, and decision log are archival;
-do not update them as parallel current-state authorities. Consult them only
-when historical context is needed. Keep stable Session IDs for coherent work
-objectives; a new date or conversation does not create a new Session.
+1. Repository/source/config/runtime evidence.
+2. `project_management/PROJECT_STATUS.md` for current project state.
+3. `project_management/SESSION_HANDOFF.md` for the exact operational resume point.
+4. `project_management/sessions/SESSION_NNN.md` for permanent session history.
+5. `project_management/DECISIONS.md` and `project_management/CHANGELOG.md` for decisions and changes, not current state.
+6. `docs/project_state/` documents, which are roadmap, migration, historical, or derived records unless explicitly promoted.
+
+Repository/runtime evidence decides any conflict. Reconcile both canonical
+project-management files during a handoff; never choose between conflicting
+values arbitrarily. Keep stable Session IDs for coherent work objectives; a
+new date or conversation does not create a new Session.
+
+`docs/project_state/CURRENT_STATE.md` is a legacy migration snapshot,
+`docs/project_state/state.yaml` is derived machine-readable state, and
+`docs/project_state/ROADMAP.md` is planning context. Do not infer the current
+Phase, Session, `STOPPED HERE`, or immediate `NEXT TASK` from them when the
+canonical project-management files contain current evidence.
 
 ### Session Startup
 
 At the beginning of a work period:
 
 1. Read `AGENTS.md`.
-2. Read `docs/project_state/CURRENT_STATE.md`.
-3. Read `docs/project_state/state.yaml`.
-4. Verify HEAD and the relevant environment; inspect Git status.
-5. Use `docs/project_state/ROADMAP.md` and `DECISIONS.md` as needed.
-6. Do not read the monthly journal by default.
-7. Continue from `Next Exact Action`; do not re-audit completed gates without regression evidence.
+2. Verify Git HEAD and inspect `git status --short`.
+3. Read `project_management/PROJECT_STATUS.md`.
+4. Read `project_management/SESSION_HANDOFF.md`.
+5. Read the active or paused `project_management/sessions/SESSION_NNN.md`.
+6. Read relevant entries in `project_management/DECISIONS.md`.
+7. Read relevant technical documentation and runtime evidence required by the canonical next task.
 
-If the current Session is paused and its objective continues, reuse its ID.
-Update session status and last-active date in the canonical state when work
-resumes. Source, config, and runtime evidence take precedence over stale state.
+Read `docs/project_state/CURRENT_STATE.md` only for migration/history or when
+the canonical handoff explicitly references it. If the current Session is
+paused and its objective continues, reuse its ID and update status only when
+work actually resumes.
 
 ### Session Shutdown
 
 When the researcher explicitly ends the current work period:
 
-1. Update `docs/project_state/CURRENT_STATE.md`.
-2. Update `docs/project_state/state.yaml`.
-3. Update `docs/project_state/ROADMAP.md` if a gate changed.
-4. Append to the current `docs/project_state/JOURNAL_YYYY-MM.md`.
-5. Update `docs/project_state/DECISIONS.md` only for durable new decisions.
-6. Preserve important runtime evidence outside `/tmp`.
-7. Run Git integrity checks and verify the single next action, blockers, and session status.
-8. Stop before starting the next gate.
+1. Inspect Git and runtime evidence.
+2. Update the current `project_management/sessions/SESSION_NNN.md`.
+3. Update `project_management/CHANGELOG.md` if needed.
+4. Update `project_management/DECISIONS.md` only for durable new decisions.
+5. Update `project_management/PROJECT_STATUS.md`.
+6. Update `project_management/SESSION_HANDOFF.md` last.
+7. Update derived `docs/project_state/state.yaml` only when the workflow explicitly requires it.
+8. Do not update historical `docs/project_state/CURRENT_STATE.md` merely to mirror dynamic status.
+9. Preserve important runtime evidence outside `/tmp`, verify the next action and blockers, then stop before the next gate.
 
 For unfinished work, keep the Session ID and original start date; mark it
 `PAUSED` at shutdown. Mark it `CLOSED` only when the objective is complete.
