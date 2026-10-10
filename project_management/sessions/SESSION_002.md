@@ -10,7 +10,7 @@
 
 Session ID: SESSION_002\
 Title: Baseline Recovery and Bounded Runtime Reproduction\
-Status: READY-FOR-REVIEW\
+Status: READY-FOR-CLOSURE-REVIEW\
 Started: 2026-10-02\
 Last active: 2026-10-10\
 Closed: —\
@@ -103,13 +103,9 @@ Recover and verify the environment, CUDA renderer, author-distributed semantic R
 ## Session Outcome
 
 Baseline recovery, bounded online runtime verification, and full-scene failure
-characterization are recorded for review. Phase 3 bounded reproduction passed
-through frames 0–499. The released full-scene baseline OOMed during mapping
-around frame 1294; the allocator-opt runtime-only attempt OOMed during mapping
-at frame 1333. `SESSION_002` remains open and is **READY-FOR-REVIEW**, not
-completed. The researcher must choose whether to close Phase 3 with the
-documented memory limitation or authorize a separate memory-management
-research variant.
+characterization are complete. Phase 3 baseline runtime reproduction is closed
+with a documented memory limitation. `SESSION_002` remains open only for
+closure review and is **READY-FOR-CLOSURE-REVIEW**, not formally completed.
 
 ## STOPPED HERE
 
@@ -145,16 +141,39 @@ before resuming.
   reduce reserved-memory pressure enough to complete 2,000 frames.
 - No paper metrics were reproduced; evaluation, ATE, rendering metrics, and
   post-SLAM optimization were not run.
-- Phase 3 is ready for researcher review. The next decision is either baseline
-  closure with the documented memory limitation or a separately identified
-  memory-management research variant.
+- This conclusion was prepared for researcher review; the subsequent closure
+  decision is recorded in the section below.
 
 Evidence: `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md` and
 `docs/experiments/FULL_SCENE_MEMORY_OPTIMIZATION_LOG.md`.
+
+## Phase 3 Runtime Closure — 2026-10-10
+
+- Destination-host validation on the RTX 5080: PASS.
+- Phase 3C-4 bounded online frames 0–99: PASS.
+- Phase 3C-6 bounded online frames 0–499: PASS; this is the latest completed
+  bounded gate.
+- Released full-scene baseline frames 0–1999: `CUDA_OOM`; frames 0–1293
+  completed, with OOM during mapping around frame 1294.
+- Runtime-only allocator/low-overhead retry: `CUDA_OOM_ALLOCATOR_OPT`; frames
+  0–1332 completed, with OOM during mapping around frame 1333.
+- Allocator-only settings extended the completed horizon by about 39 frames but
+  did not produce a full-scene PASS.
+- Conclusion: Phase 3 baseline runtime reproduction is closed with a documented
+  RTX 5080 16 GB memory limitation.
+- No evaluation, ATE, rendering metrics, post-SLAM optimization, paper
+  comparison, or paper-metric reproduction was performed.
+- Recommended next phase, if authorized: Phase 4 memory-management analysis
+  and explicitly non-baseline variant design; alternatively, obtain
+  larger-VRAM infrastructure for an unchanged full-scene baseline run.
+
+Closure record:
+`docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`.
 
 ## DO NOT
 
 - Do not call the 0–49 run a full-scene reproduction.
 - Do not run a full scene or metrics until explicitly selected as the next gate.
 - Do not change the released source/config or enable paper-described components absent from the active path during baseline reproduction.
-- Do not start Phase 4 or later research work before the baseline gate is established.
+- Do not start Phase 4 or later research work without explicit authorization
+  and a separately tracked Session/variant.

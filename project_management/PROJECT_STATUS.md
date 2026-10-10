@@ -6,9 +6,9 @@
 > next task. Verify it against repository/runtime evidence, then use
 > `SESSION_HANDOFF.md` for the exact operational resume point.
 
-Last reconciled: 2026-10-10. Phase 3 runtime bounded reproduction and
-full-scene failure characterization are recorded; the close-versus-variant
-decision remains for researcher review.
+Last reconciled: 2026-10-10. Phase 3 baseline runtime reproduction is closed
+with a documented RTX 5080 16 GB memory limitation. `SESSION_002` remains open
+only for closure review.
 
 ## State Authority
 
@@ -25,7 +25,7 @@ decides and both canonical files must be reconciled together.
 ## Project Identity
 
 Repository: SGS-SLAM — Semantic Gaussian Splatting for Neural Dense SLAM\
-Current documentation HEAD: `dd8caa772bd9511c018d298e38c081a679de2c72` (`main`)\
+Current documentation HEAD: `108d73e7367059a85010e2c19f48419cb3a2741f` (`main`)\
 Released source/config baseline and audited commit: `e4183986204242a8bb422624618af07780a49d26` (`main`)\
 Research objective: establish and characterize the released SGS-SLAM baseline before proposing changes.\
 Dataset: author-distributed semantic Replica package at `data/Replica`\
@@ -38,15 +38,15 @@ no change from the released baseline in `scripts/`, `utils/`, `datasets/`, or
 ## Current Phase
 
 Phase: Phase 3 — Baseline Recovery & Reproduction\
-Status: READY FOR REVIEW\
-Objective: bounded runtime reproduction and full-scene memory/failure characterization are documented; researcher decision is pending.\
+Status: CLOSED / COMPLETE WITH MEMORY LIMITATION\
+Objective: preserve the completed bounded reproduction and full-scene memory-limit characterization without representing it as paper-metric reproduction.\
 Entry condition: Phase 1 documentation and Phase 2 static reproduction audit are complete.\
 Exit / stop condition: finish the authorized baseline recovery/reproduction gates; stop before algorithmic research modifications unless separately authorized.
 
 ## Latest Session
 
 Session ID: SESSION_002\
-Status: READY-FOR-REVIEW\
+Status: READY-FOR-CLOSURE-REVIEW\
 Started: 2026-10-02\
 Last active: 2026-10-10\
 Closed: —
@@ -66,18 +66,23 @@ Closed: —
 - Phase 3C-4 — bounded online frames 0–99: PASS; guard intercepted index 100; see `results/runtime_artifacts/phase3c4/`.
 - Phase 3C-6 — bounded online frames 0–499: PASS; guard intercepted index 500; see `results/runtime_artifacts/phase3c6/`.
 - Full-scene runtime characterization: baseline OOM during mapping around frame 1294; allocator-opt runtime-only attempt OOM during mapping at frame 1333; see `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md`.
+- Phase 3 baseline runtime reproduction: CLOSED / COMPLETE WITH MEMORY LIMITATION; see `docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`.
 
 Historical snapshot note: `07_phase3b_status.md` records the original dataset-blocked attempt, and the Phase 2 contract records the then-unverified runtime state. Later recovery and runtime reports supersede those earlier statuses; the historical documents are retained as provenance.
 
-## READY FOR REVIEW
+## PHASE 3 CLOSURE
 
-- Phase 3 bounded reproduction is verified through frames 0–499 on the RTX 5080.
-- Full Replica `room0` frames 0–1999 did not complete: the released baseline OOMed around frame 1294 and the allocator-opt runtime-only attempt OOMed at frame 1333.
-- Researcher must choose whether to close Phase 3 with the documented memory limitation or authorize a separately tracked memory-management research variant.
+- Latest completed bounded gate: Phase 3C-6, frames 0–499, PASS.
+- Full Replica `room0` frames 0–1999 did not complete: the released baseline
+  OOMed around frame 1294 and the allocator-only retry OOMed around frame 1333.
+- Phase 3 baseline runtime reproduction is closed with this documented memory
+  limitation. Full-scene PASS and paper-metric reproduction were not achieved.
+- No evaluation, ATE, rendering metrics, post-SLAM optimization, or paper
+  comparison was run.
 
 ## NOT STARTED
 
-- Phase 3 full-scene execution and paper-protocol evaluation.
+- Paper-protocol evaluation and paper-metric reproduction.
 - Phase 4 — Mathematical / Algorithmic Verification as runtime work.
 - Later research phases, including limitation characterization and method changes.
 
@@ -99,37 +104,47 @@ Historical snapshot note: `07_phase3b_status.md` records the original dataset-bl
 
 ## Current Baseline
 
-Released source/config baseline: commit `e4183986204242a8bb422624618af07780a49d26`, branch `main`; source and experiment config have not been modified. The runtime-verified old-host environment was `/home/quan/miniconda3/envs/sgs_slam_baseline`, Python 3.9.25, PyTorch 2.0.1, torchvision 0.15.2, CUDA 11.8, NumPy 1.26.4, OpenCV 4.9.0.80; GTX 1650 Ti with 4096 MiB. Dataset is author-distributed `data/Replica`, scene `room0`, 680×1200, 2,000 frames. The renderer is `diff-gaussian-rasterization-w-depth` at revision `cb65e4b86bc3bd8ed42174b72a62e8d3a3a71110`. Destination-host compatibility remains an operational prerequisite and must not be inferred from the old-host record.
+Released source/config baseline: commit
+`e4183986204242a8bb422624618af07780a49d26`, branch `main`; source and
+experiment config have not been modified. The destination runtime evidence was
+recorded at HEAD `dd8caa772bd9511c018d298e38c081a679de2c72` using
+`/home/robot/miniconda3/envs/sgs_slam_5080`, Python 3.10.22, PyTorch
+2.7.1+cu128, CUDA runtime 12.8, NumPy 1.26.4, OpenCV 4.9.0.80, and an NVIDIA
+GeForce RTX 5080 16 GB class GPU. Dataset is author-distributed `data/Replica`,
+scene `room0`, 680×1200, 2,000 frames. The renderer is
+`diff-gaussian-rasterization-w-depth` at revision
+`cb65e4b86bc3bd8ed42174b72a62e8d3a3a71110`.
 
 The released online pipeline is runtime-verified through bounded frame 499 on
 the RTX 5080. Full-scene `room0` did not complete: baseline OOM occurred around
-frame 1294, and allocator-opt runtime-only OOM occurred at frame 1333. This
-does not establish full-scene metrics or paper reproduction.
+frame 1294, and allocator-opt runtime-only OOM occurred at frame 1333. Phase 3
+is closed with this memory limitation. This does not establish full-scene
+metrics or reproduce SGS-SLAM paper results.
 
 ## Current Research Question
 
-Whether to close the released baseline runtime reproduction with its documented
-16 GB memory limitation, or authorize a separate memory-management research
-variant.
+Whether the next authorized work should use larger-VRAM infrastructure for the
+unchanged baseline or begin a separately identified Phase 4 memory-management
+research variant.
 
 ## NEXT MILESTONE
 
-Researcher review of the Phase 3 runtime conclusion and selection of one of:
-(A) close Phase 3 with the documented memory limitation; or (B) start an
-explicit non-baseline memory-management variant.
+Review and approve the Phase 3 closure record. The next milestone is either to
+start Phase 4 memory-management analysis as an explicit non-baseline research
+variant or obtain larger-VRAM infrastructure for pure-baseline full-scene
+execution and later, separately authorized evaluation.
 
 ## IMMEDIATE OPERATIONAL NEXT TASK
 
 No runtime task is authorized. Review
-`docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md` and decide whether to
-close Phase 3 with the documented OOM limitation or authorize a separate
-memory-management research variant. Keep `SESSION_002` `READY-FOR-REVIEW`.
+`docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`, then either formally
+close `SESSION_002` or open a new Phase 4 memory-management variant Session.
 
 ## NEXT RESEARCH GATE
 
-No next runtime gate is selected. After researcher review, either close Phase 3
-baseline runtime reproduction with its documented memory limitation, or create
-a separately identified non-baseline memory-management research variant.
+No next runtime gate is selected. Phase 3 baseline runtime reproduction is
+closed with memory limitation. Any Phase 4 memory-management work must be
+authorized and tracked as a separate non-baseline variant.
 
 ## Historical Consistency Reconciliation — 2026-10-05
 
@@ -152,16 +167,16 @@ conclusion reconciliation at the end of this file supersedes its field values.
 | Field | Evidence across prior state files | Classification | Canonical value |
 |---|---|---|---|
 | Current Phase | All state sources name Phase 3 | CONSISTENT | Phase 3 — Baseline Recovery & Reproduction |
-| Phase status | Historical records said objective remained open | SUPERSEDED | READY FOR REVIEW |
+| Phase status | Historical records said objective remained open | SUPERSEDED | CLOSED / COMPLETE WITH MEMORY LIMITATION |
 | Latest Session | All rolling/session records name `SESSION_002` | CONSISTENT | `SESSION_002` |
-| Session status | Historical records said PAUSED | SUPERSEDED | READY-FOR-REVIEW |
+| Session status | Historical records said PAUSED | SUPERSEDED | READY-FOR-CLOSURE-REVIEW |
 | Started / last active / closed | Historical records agreed on 2026-10-02 / 2026-10-03 / — | SUPERSEDED | Started 2026-10-02; last active 2026-10-10; not completed |
 | Latest completed gate | New runtime evidence adds destination validation, Phase 3C-4, and Phase 3C-6 | SUPERSEDED | Bounded PASS through frames 0–499; full-scene failure characterized |
 | `STOPPED HERE` | New conclusion records both full-scene OOM boundaries | SUPERSEDED | Baseline OOM around frame 1294; allocator-opt OOM at frame 1333 |
-| Immediate `NEXT TASK` | Runtime gates are complete for review | SUPERSEDED | Researcher decision: close Phase 3 with memory limitation or authorize variant |
+| Immediate `NEXT TASK` | Runtime gates are complete for review | SUPERSEDED | Review closure documentation; formally close `SESSION_002` or open a new Phase 4 variant Session |
 | Next research gate | No gate selected until the decision is made | SUPERSEDED | Conditional; no runtime gate currently authorized |
 | Blockers | Destination validation passed; full-scene memory remains limiting | SUPERSEDED | Memory capacity/residency limitation; paper metrics remain unverified |
-| Current HEAD / baseline | Current Git state is newer than historical reconciliation | SUPERSEDED | HEAD `dd8caa...`; released source/config baseline remains `e418398...` |
+| Current HEAD / baseline | Current Git state is newer than historical reconciliation | SUPERSEDED | HEAD `108d73e...`; released source/config baseline remains `e418398...` |
 | Environment prerequisites | Destination validation and bounded migration regression passed | SUPERSEDED | RTX 5080 environment operationally validated |
 
 ## Runtime Conclusion Reconciliation — 2026-10-10
@@ -173,8 +188,9 @@ attempt OOMed during mapping at frame 1333. Neither full-scene attempt reached
 frame 1999. No evaluation, paper metric reproduction, post-opt, source/config
 change, commit, or push occurred.
 
-Canonical current values are: Phase 3 `READY FOR REVIEW`; latest Session
-`SESSION_002` `READY-FOR-REVIEW`; bounded runtime PASS through frames 0–499;
-full-scene baseline and allocator-opt failure characterization recorded; next
-decision is either close Phase 3 with the documented memory limitation or start
-a separately tracked memory-management research variant.
+Canonical current values are: Phase 3 `CLOSED / COMPLETE WITH MEMORY
+LIMITATION`; latest Session `SESSION_002` `READY-FOR-CLOSURE-REVIEW`; bounded
+runtime PASS through frames 0–499; full-scene baseline and allocator-opt OOM
+characterization recorded; no paper metrics or evaluation were run. The next
+authorized phase, if any, must use larger VRAM for the pure baseline or be a
+separately tracked Phase 4 memory-management research variant.

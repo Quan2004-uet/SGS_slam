@@ -37,19 +37,23 @@ assets:
 
 workflow:
   phase: 3
-  phase_status: ready_for_review
-  current_gate: phase3_runtime_conclusion
-  current_gate_status: ready_for_review
-  next_gate: researcher_decision_close_or_memory_variant
+  phase_name: Phase 3 — Baseline Recovery & Reproduction
+  phase_status: closed_with_memory_limitation
+  current_gate: phase3_baseline_closure
+  current_gate_status: closed_with_memory_limitation
+  latest_completed_gate: phase3c6_bounded_0_499_pass
+  full_scene_status: cuda_oom_memory_limit
+  next_recommended_phase: Phase 4 — Memory-management / algorithmic verification
+  next_gate: phase4_memory_management_analysis_if_authorized
 
 session:
   id: SESSION_002
-  status: ready_for_review
+  status: ready_for_closure_review
   started: 2026-10-02
   last_active: 2026-10-10
 
 next_run:
-  role: decision_pending_no_runtime_authorized
+  role: none_phase3_closed_no_runtime_authorized
   dataset: Replica
   scene: room0
   frame_start: 0
@@ -58,9 +62,9 @@ next_run:
   instrumentation: null
 
 next_actions:
-  immediate_operational: researcher_review_phase3_runtime_conclusion
-  next_research_gate: conditional_close_baseline_or_memory_management_variant
-  resume_session_only_when_research_gate_begins: true
+  immediate_operational: review_and_approve_phase3_closure_documents
+  next_research_gate: close_session_002_or_open_new_phase4_variant_session
+  resume_session_only_when_research_gate_begins: false
 
 environment:
   role: runtime_verified_destination_host_snapshot
@@ -120,7 +124,9 @@ runtime_conclusion:
   evaluation_run: false
   post_opt_run: false
   conclusion_file: docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md
-  next_decision: close_phase3_with_memory_limitation_or_authorize_memory_variant
+  closure_file: docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md
+  closure_decision: close_phase3_with_memory_limitation
+  next_decision: formally_close_session_002_or_open_new_phase4_variant_session
 
 integrity:
   source_changed: false
