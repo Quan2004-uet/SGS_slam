@@ -36,35 +36,40 @@ assets:
   migration_archive_checksum: migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst.sha256
 
 workflow:
-  phase: 3
-  phase_name: Phase 3 — Baseline Recovery & Reproduction
-  phase_status: closed_with_memory_limitation
-  current_gate: phase3_baseline_closure
-  current_gate_status: closed_with_memory_limitation
-  latest_completed_gate: phase3c6_bounded_0_499_pass
-  full_scene_status: cuda_oom_memory_limit
-  next_recommended_phase: Phase 4 — Memory-management / algorithmic verification
-  next_gate: phase4_memory_management_analysis_if_authorized
+  phase: 4
+  phase_name: Phase 4 — Memory-management research variant
+  phase_status: in_progress
+  active_variant: PHASE4-VB-001
+  current_gate: gate4_bounded_0_499
+  current_gate_status: PASS_FRAME_LIMIT
+  latest_completed_gate: Gate 4 0-499
+  latest_gate_status: PASS_FRAME_LIMIT
+  full_scene_status: not_tested
+  full_scene_variant_status: not_tested
+  next_recommended_phase: Phase 4 — continue bounded Variant B validation
+  next_gate: Gate 5 0-999
+  evaluation_status: not_started
+  paper_metrics_reproduced: false
 
 session:
-  id: SESSION_002
-  status: ready_for_closure_review
-  started: 2026-10-02
+  id: SESSION_003
+  status: planned_ready
+  started: null
   last_active: 2026-10-10
 
 next_run:
-  role: none_phase3_closed_no_runtime_authorized
+  role: gate5_bounded_variant_validation
   dataset: Replica
   scene: room0
   frame_start: 0
-  frame_end: null
-  guard_frame: null
-  instrumentation: null
+  frame_end: 999
+  guard_frame: 1000
+  instrumentation: Variant B residency, CPU RAM, memory, finite-state, and boundary guard
 
 next_actions:
-  immediate_operational: review_and_approve_phase3_closure_documents
-  next_research_gate: close_session_002_or_open_new_phase4_variant_session
-  resume_session_only_when_research_gate_begins: false
+  immediate_operational: Gate 5 bounded 0-999 with index-1000 pre-loader guard
+  next_research_gate: review Gate 5 before any full-scene planning
+  resume_session_only_when_research_gate_begins: true
 
 environment:
   role: runtime_verified_destination_host_snapshot
@@ -109,6 +114,23 @@ latest_runtime:
   evidence_json: results/runtime_artifacts/full_scene_room0_allocator_opt_fast/full_scene_room0_allocator_opt_fast_results.json
   evidence_log: results/runtime_artifacts/full_scene_room0_allocator_opt_fast/full_scene_room0_allocator_opt_fast.log
 
+latest_variant_runtime:
+  variant: PHASE4-VB-001
+  status: PASS_FRAME_LIMIT
+  completed_frames: 0-499
+  guard_frame: 500
+  logical_keyframes: 101
+  final_gaussians: 2255038
+  cpu_keyframe_archive_bytes: 2637312000
+  gpu_archived_payload_bytes: 0
+  gpu_est_w2c_bytes: 6464
+  max_allocated_bytes: 3468590592
+  max_reserved_bytes: 4525654016
+  frame499_allocated_reduction_bytes: 2786778112
+  frame499_allocated_reduction_percent: 75.8
+  runtime_seconds: 2564.53
+  evidence_directory: results/runtime_artifacts/phase4_vb001_gate4_0_499/
+
 runtime_conclusion:
   bounded_pass_through_frame: 499
   phase3c4_status: PASS_FRAME_LIMIT
@@ -129,6 +151,7 @@ runtime_conclusion:
   next_decision: formally_close_session_002_or_open_new_phase4_variant_session
 
 integrity:
-  source_changed: false
+  baseline_source_changed: false
+  active_variant_source_changed: true
   config_changed: false
-  algorithm_changed: false
+  algorithm_policy_changed: false

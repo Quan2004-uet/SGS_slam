@@ -6,18 +6,21 @@
 > status. Repository/runtime evidence overrides either document if they conflict.
 
 Last reconciled: 2026-10-10. Phase 3 baseline runtime reproduction is closed
-with a documented RTX 5080 16 GB memory limitation; no new runtime gate is
-authorized.
+with a documented RTX 5080 16 GB memory limitation. Phase 4 Variant B passed
+bounded validation through frames 0–499; the next authorized gate is Gate 5
+frames 0–999.
 
 ## Session
 
-Session ID: SESSION_002\
-Title: Baseline Recovery and Bounded Runtime Reproduction\
-Status: READY-FOR-CLOSURE-REVIEW\
-Started: 2026-10-02\
-Last active: 2026-10-10\
+Previous session: `SESSION_002` (Phase 3 closure plus Phase 4 Variant B checkpoint)\
+Session ID: SESSION_003\
+Title: Phase 4 Variant B Bounded Validation\
+Status: PLANNED / READY\
+Started: —\
+Last active: 2026-10-10 (planned)\
 Closed: —\
-Phase: Phase 3 — Baseline Recovery & Reproduction
+Phase: Phase 4 — Memory-management research variant
+Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads
 
 ## Session Objective
 
@@ -25,13 +28,14 @@ Recover a provenance-valid baseline environment and dataset, then establish rele
 
 ## Current State
 
-Phase 3 baseline runtime reproduction is closed with memory limitation. The
-destination host passed operational validation on the RTX 5080, and the
-unchanged released online path passed bounded reproduction through frames
-0–499. The released full-scene `room0` attempt OOMed during mapping around
-frame 1294; the allocator-opt runtime-only attempt OOMed during mapping around
-frame 1333. Full frames 0–1999 did not complete. No evaluation, ATE, rendering
-metrics, post-opt, paper comparison, or paper-metric reproduction was run.
+Phase 3 baseline runtime reproduction remains CLOSED WITH MEMORY LIMITATION.
+Phase 4 Variant B is a separate research variant. Gates 1 and 2 passed; Gates
+3 and 4 passed their bounded frame limits through 0–99 and 0–499. Gate 4
+intercepted index 500 before the real loader, ended with 101 logical
+keyframes, 2,637,312,000 CPU archive bytes, zero GPU archived-payload bytes,
+2,255,038 Gaussians, and approximately 75.8% frame-499 long-lived allocated
+memory reduction versus Phase 3. No full-scene run, evaluation, ATE, rendering
+metrics, semantic metrics, post-opt, or paper-metric reproduction was run.
 
 Current documentation HEAD is
 `108d73e7367059a85010e2c19f48419cb3a2741f` on `main`. The runtime evidence
@@ -58,16 +62,18 @@ The Phase 3 closure evidence is consolidated for researcher approval.
 
 ## STOPPED HERE
 
-Phase 3 baseline runtime reproduction is closed with memory limitation. Full
-Replica `room0` 0–1999 was attempted twice: the released baseline OOMed during
-mapping around frame 1294 after frame 1293 completed; the runtime
-allocator/low-overhead attempt OOMed during mapping around frame 1333 after
-frame 1332 completed. Neither attempt reached frame 1999. Exact evidence is in:
+Phase 4 Variant B passed bounded validation through frames 0–499. Gate 4
+completed frame 499 and intercepted dataset index 500 before the real loader.
+Exact evidence is in:
 
-- `results/runtime_artifacts/full_scene_room0/`
-- `results/runtime_artifacts/full_scene_room0_allocator_opt_fast/`
-- `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md`
+- `results/runtime_artifacts/phase4_vb001_gate1/`
+- `results/runtime_artifacts/phase4_vb001_gate2/`
+- `results/runtime_artifacts/phase4_vb001_gate3_0_99/`
+- `results/runtime_artifacts/phase4_vb001_gate4_0_499/`
 - `docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`
+
+Phase 3 full-scene OOM provenance remains in `SESSION_002` and the Phase 3
+closure documents. It is not reopened by this Phase 4 checkpoint.
 
 Migration transport addendum (2026-10-04): `hf upload` completed to private
 dataset repo `QuanDinh/SGS-SLAM-assets`. Remote `data/` and `migration/`
@@ -78,29 +84,26 @@ experiment occurred during upload.
 
 ## IMMEDIATE OPERATIONAL NEXT TASK
 
-No runtime task is authorized. Review and approve the Phase 3 closure
-documents. Then choose one of:
-
-1. Formally close `SESSION_002`; or
-2. Open a new Phase 4 Session for an explicitly non-baseline
-   memory-management research variant.
-
-Keep `SESSION_002` `READY-FOR-CLOSURE-REVIEW` until that review is complete.
+Gate 5: bounded Replica `room0` frames 0–999 with dataset index 1000
+intercepted before the real loader. Preserve the Variant B implementation and
+all released online behavior. Review Gate 5 memory, CPU RAM, runtime, Gaussian
+divergence, residency invariants, and finite state before considering any
+full-scene run.
 
 ## NEXT RESEARCH GATE
 
-No next runtime gate is selected. Phase 3 is closed with memory limitation. A
-future memory-management variant must be identified in a new Phase 4 Session
-and must not be presented as released-baseline reproduction. Larger-VRAM
-infrastructure remains the alternative for a pure-baseline full-scene run.
+Gate 5, bounded frames 0–999, index-1000 guard. Full Replica `room0` frames
+0–1999 are conditional on Gate 5 PASS and researcher review. Evaluation,
+ATE, rendering/semantic metrics, post-SLAM optimization, and paper metrics
+remain prohibited until full-scene online PASS and required outputs are saved.
 
 ## AFTER THAT
 
-1. Researcher reviews `PHASE3_RUNTIME_CONCLUSION_2026-10-10.md` and
-   `PHASE3_BASELINE_CLOSURE_2026-10-10.md`.
-2. Researcher formally closes `SESSION_002` or authorizes a new Phase 4
-   memory-policy variant Session.
-3. If paper comparison is later required, define the evaluation protocol and
+1. Execute Gate 5 only after researcher authorization under `SESSION_003`.
+2. Review Gate 5 evidence before any full-scene planning.
+3. If Gate 5 passes, request separate authorization for full Replica `room0`
+   0–1999; do not infer authorization from this handoff.
+4. If paper comparison is later required, define the evaluation protocol and
    infrastructure separately; no paper metrics are currently reproduced.
 
 ## BLOCKERS
@@ -125,6 +128,7 @@ Paper-metric reproduction remains unverified.
 - `project_management/DECISIONS.md`
 - `project_management/sessions/SESSION_001.md`
 - `project_management/sessions/SESSION_002.md`
+- `project_management/sessions/SESSION_003.md`
 - `docs/project_state/SERVER_MIGRATION.md`
 - `docs/project_state/MIGRATION_MANIFEST.md`
 - `docs/repository_understanding/README.md`

@@ -177,3 +177,91 @@ Closure record:
 - Do not change the released source/config or enable paper-described components absent from the active path during baseline reproduction.
 - Do not start Phase 4 or later research work without explicit authorization
   and a separately tracked Session/variant.
+
+## Phase 4 Variant B Checkpoint — 2026-10-10
+
+Variant:
+`PHASE4-VB-001` — CPU offload of resident keyframe payloads
+
+Implementation state:
+
+- Branch: `phase4-vb-001-cpu-keyframe-offload`.
+- `scripts/slam.py` is modified for Variant B only.
+- Archived `color`, `depth`, `semantic_id`, and `semantic_color` are
+  CPU-authoritative.
+- `est_w2c` remains GPU-resident.
+- CPU-to-GPU staging is synchronous.
+- No pinned memory, non-blocking transfer, persistent GPU cache, or eviction.
+- No precision change and no algorithm-policy change.
+
+Validation status:
+
+- Gate 1: `PASS`.
+  Dataset index 0, CPU archive equality, CPU-to-GPU stage equality, unchanged
+  RNG state, 26,112,000-byte staged allocation, and return of allocated memory
+  to the pre-stage level after staged references were released were verified.
+- Gate 2: `PASS`.
+  First-frame Gaussian count was 815,998; initialization state was finite;
+  RGB/depth/semantic renderer integration passed; the first keyframe payload
+  was CPU-authoritative; `est_w2c` was GPU-resident; no persistent GPU payload
+  copy remained.
+- Gate 3: `PASS_FRAME_LIMIT` for frames 0–99.
+  Index 100 was intercepted before the real loader; 21 logical keyframes were
+  observed; GPU archived payload was 0 bytes; final Gaussians were 1,405,708;
+  maximum allocated/reserved memory was 2,308,579,328 / 3,776,970,752 bytes;
+  frame-99 long-lived allocated memory was reduced by 613,895,680 bytes versus
+  Phase 3; online behavior was preserved at the observed level.
+- Gate 4: `PASS_FRAME_LIMIT` for frames 0–499.
+  Index 500 was intercepted before the real loader; 101 logical keyframes
+  were observed; CPU archive was 2,637,312,000 bytes; GPU archived payload
+  was 0 bytes; GPU `est_w2c` was 6,464 bytes; final Gaussians were 2,255,038
+  versus 2,257,421 in Phase 3 (delta -2,383, about -0.106%); sampled Gaussian
+  deltas remained below 1%; tracking/mapping iterations were 19,960/30,000;
+  pruning removals were 102,139; densification calls were 0; losses, state,
+  and optimizer state were finite. Maximum allocated/reserved memory was
+  3,468,590,592 / 4,525,654,016 bytes, versus Phase 3 peaks of
+  6,254,666,752 / 8,025,800,704 bytes. Frame-499 long-lived allocated
+  reduction was 2,786,778,112 bytes (about 75.8%). Runtime was 2,247.42 s
+  for Phase 3 and 2,564.53 s for Variant B (about +14.1%). Logical keyframe
+  IDs and iteration contract matched; no evidence indicated changed logical
+  keyframe behavior. Historical ordered selection-trace equivalence remains
+  `UNKNOWN` because Phase 3 did not preserve an equivalent ordered trace.
+
+Classification:
+
+- Phase 4 Variant B is a research variant.
+- It is not pure released-baseline reproduction.
+- Phase 3 baseline closure remains immutable; see
+  `docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md` and
+  `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md`.
+
+Evidence:
+
+- `results/runtime_artifacts/phase4_vb001_gate1/`
+- `results/runtime_artifacts/phase4_vb001_gate2/`
+- `results/runtime_artifacts/phase4_vb001_gate3_0_99/`
+- `results/runtime_artifacts/phase4_vb001_gate4_0_499/`
+
+## Phase 4 Variant B Unresolved Items — UNTESTED / UNKNOWN
+
+- Frames 500+ and bounded 0–999.
+- Full online Replica `room0` frames 0–1999.
+- Checkpoint/resume runtime equivalence.
+- Full-scene host-RAM growth and transfer overhead.
+- Evaluation, ATE, rendering metrics, semantic metrics, and post-SLAM
+  optimization.
+- Paper metric equivalence.
+- Ordered selection-trace equivalence to historical Phase 3.
+
+## Phase 4 Variant B Next-Session Plan
+
+1. Gate 5: bounded Replica `room0` frames 0–999, with index 1000
+   intercepted before the real loader.
+2. Only if Gate 5 passes, review memory, CPU RAM, runtime, Gaussian
+   divergence, residency invariants, and finite state.
+3. Only after researcher approval, attempt full Replica `room0` frames
+   0–1999.
+4. Evaluation remains prohibited until a full-scene online PASS and required
+   outputs are successfully saved.
+
+Full scene is not authorized by this checkpoint alone.

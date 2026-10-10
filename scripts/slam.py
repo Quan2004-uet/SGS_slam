@@ -510,6 +510,37 @@ def convert_params_to_store(params):
     return params_to_store
 
 
+KEYFRAME_PAYLOAD_FIELDS = ('color', 'depth', 'semantic_id', 'semantic_color')
+
+
+def archive_keyframe_payload_on_cpu(keyframe):
+    """Return a keyframe whose image/depth/semantic payload is CPU-authoritative."""
+    archived_keyframe = keyframe.copy()
+    for field in KEYFRAME_PAYLOAD_FIELDS:
+        if field not in archived_keyframe:
+            continue
+        payload = archived_keyframe[field]
+        if not isinstance(payload, torch.Tensor):
+            raise TypeError(f"Keyframe payload '{field}' must be a torch.Tensor")
+        archived_keyframe[field] = payload.detach().to(device='cpu', copy=True)
+    return archived_keyframe
+
+
+def stage_keyframe_payload(keyframe, device):
+    """Synchronously stage one archived keyframe payload without casting it."""
+    staged_payload = {}
+    for field in KEYFRAME_PAYLOAD_FIELDS:
+        if field not in keyframe:
+            continue
+        payload = keyframe[field]
+        if not isinstance(payload, torch.Tensor):
+            raise TypeError(f"Keyframe payload '{field}' must be a torch.Tensor")
+        if payload.device.type != 'cpu':
+            raise RuntimeError(f"Archived keyframe payload '{field}' must be CPU-resident")
+        staged_payload[field] = payload.to(device=device, non_blocking=False)
+    return staged_payload
+
+
 def rgbd_slam(config: dict):
     # Print Config
     print("Loaded Config:")
@@ -718,6 +749,7 @@ def rgbd_slam(config: dict):
                     semantic_color = semantic_color.permute(2, 0, 1) / 255
                     curr_keyframe['semantic_id'] = semantic_id
                     curr_keyframe['semantic_color'] = semantic_color
+                curr_keyframe = archive_keyframe_payload_on_cpu(curr_keyframe)
                 # Add to keyframe list
                 keyframe_list.append(curr_keyframe)
     else:
@@ -932,6 +964,7 @@ def rgbd_slam(config: dict):
                 # Randomly select a frame until current time step amongst keyframes
                 rand_idx = np.random.randint(0, len(selected_keyframes))
                 selected_rand_keyframe_idx = selected_keyframes[rand_idx]
+                staged_keyframe_payload = None
                 if selected_rand_keyframe_idx == -1:
                     # Use Current Frame Data
                     iter_time_idx = time_idx
@@ -939,9 +972,11 @@ def rgbd_slam(config: dict):
                     iter_depth = depth
                 else:
                     # Use Keyframe Data
-                    iter_time_idx = keyframe_list[selected_rand_keyframe_idx]['id']
-                    iter_color = keyframe_list[selected_rand_keyframe_idx]['color']
-                    iter_depth = keyframe_list[selected_rand_keyframe_idx]['depth']
+                    selected_keyframe = keyframe_list[selected_rand_keyframe_idx]
+                    iter_time_idx = selected_keyframe['id']
+                    staged_keyframe_payload = stage_keyframe_payload(selected_keyframe, device)
+                    iter_color = staged_keyframe_payload['color']
+                    iter_depth = staged_keyframe_payload['depth']
                 iter_gt_w2c = gt_w2c_all_frames[:iter_time_idx+1]
                 iter_data = {'cam': cam, 'im': iter_color, 'depth': iter_depth, 'id': iter_time_idx, 
                              'intrinsics': intrinsics, 'w2c': first_frame_w2c, 'iter_gt_w2c_list': iter_gt_w2c}
@@ -951,8 +986,8 @@ def rgbd_slam(config: dict):
                         iter_data['semantic_id'] = semantic_id
                         iter_data['semantic_color'] = semantic_color
                     else:
-                        iter_data['semantic_id'] = keyframe_list[selected_rand_keyframe_idx]['semantic_id']
-                        iter_data['semantic_color'] = keyframe_list[selected_rand_keyframe_idx]['semantic_color']
+                        iter_data['semantic_id'] = staged_keyframe_payload['semantic_id']
+                        iter_data['semantic_color'] = staged_keyframe_payload['semantic_color']
                 # Loss for current frame
                 loss, variables, losses = get_loss(params, iter_data, variables, iter_time_idx, config['mapping']['loss_weights'],
                                                 config['mapping']['use_sil_for_loss'], config['mapping']['sil_thres'],
@@ -990,6 +1025,8 @@ def rgbd_slam(config: dict):
                                             mapping=True, device=device, load_semantics=load_semantics, online_time_idx=time_idx)
                     else:
                         progress_bar.update(1)
+                if staged_keyframe_payload is not None:
+                    del loss, losses, iter_data, iter_color, iter_depth, staged_keyframe_payload
                 # Update the runtime numbers
                 iter_end_time = time.time()
                 mapping_iter_time_sum += iter_end_time - iter_start_time
@@ -1034,6 +1071,7 @@ def rgbd_slam(config: dict):
                 if load_semantics:
                     curr_keyframe['semantic_id'] = semantic_id
                     curr_keyframe['semantic_color'] = semantic_color
+                curr_keyframe = archive_keyframe_payload_on_cpu(curr_keyframe)
                 # Add to keyframe list
                 keyframe_list.append(curr_keyframe)
                 keyframe_time_indices.append(time_idx)

@@ -6,9 +6,10 @@
 > next task. Verify it against repository/runtime evidence, then use
 > `SESSION_HANDOFF.md` for the exact operational resume point.
 
-Last reconciled: 2026-10-10. Phase 3 baseline runtime reproduction is closed
-with a documented RTX 5080 16 GB memory limitation. `SESSION_002` remains open
-only for closure review.
+Last reconciled: 2026-10-10. Phase 3 baseline runtime reproduction remains
+closed with a documented RTX 5080 16 GB memory limitation. Phase 4 Variant B
+has passed bounded validation through frames 0–499; `SESSION_003` is planned
+for Gate 5.
 
 ## State Authority
 
@@ -37,18 +38,18 @@ no change from the released baseline in `scripts/`, `utils/`, `datasets/`, or
 
 ## Current Phase
 
-Phase: Phase 3 — Baseline Recovery & Reproduction\
-Status: CLOSED / COMPLETE WITH MEMORY LIMITATION\
-Objective: preserve the completed bounded reproduction and full-scene memory-limit characterization without representing it as paper-metric reproduction.\
-Entry condition: Phase 1 documentation and Phase 2 static reproduction audit are complete.\
-Exit / stop condition: finish the authorized baseline recovery/reproduction gates; stop before algorithmic research modifications unless separately authorized.
+Phase: Phase 4 — Memory-management research variant\
+Status: IN PROGRESS\
+Objective: validate `PHASE4-VB-001` CPU offload of resident keyframe payloads while preserving released online behavior and documenting memory/runtime tradeoffs.\
+Entry condition: Phase 3 baseline closure with memory limitation; Phase 4 design and implementation note recorded.\
+Exit / stop condition: stop at each bounded gate; full scene and evaluation require separate authorization.
 
 ## Latest Session
 
-Session ID: SESSION_002\
-Status: READY-FOR-CLOSURE-REVIEW\
-Started: 2026-10-02\
-Last active: 2026-10-10\
+Session ID: SESSION_003\
+Status: PLANNED / READY\
+Started: —\
+Last active: 2026-10-10 (planned)\
 Closed: —
 
 ## COMPLETE
@@ -68,6 +69,24 @@ Closed: —
 - Full-scene runtime characterization: baseline OOM during mapping around frame 1294; allocator-opt runtime-only attempt OOM during mapping at frame 1333; see `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md`.
 - Phase 3 baseline runtime reproduction: CLOSED / COMPLETE WITH MEMORY LIMITATION; see `docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`.
 
+## PHASE 4 — VARIANT B CHECKPOINT
+
+- Active research variant: `PHASE4-VB-001` — CPU offload of resident keyframe
+  payloads.
+- Branch: `phase4-vb-001-cpu-keyframe-offload`; implementation change is
+  limited to `scripts/slam.py` for Variant B, with no config change.
+- Gate 1: `PASS`; Gate 2: `PASS`; Gate 3 frames 0–99:
+  `PASS_FRAME_LIMIT`; Gate 4 frames 0–499: `PASS_FRAME_LIMIT`.
+- Latest completed gate: Gate 4 0–499 `PASS_FRAME_LIMIT`.
+- Latest measured memory benefit: frame-499 long-lived allocated reduction of
+  2,786,778,112 bytes (about 75.8%) versus Phase 3C-6.
+- Next gate: Gate 5 bounded frames 0–999, with index 1000 intercepted before
+  the real loader.
+- Full-scene Variant B: `NOT YET TESTED`.
+- Evaluation and paper metrics: `NOT STARTED` / `NOT REPRODUCED`.
+- Variant B is a research variant, not pure released-baseline reproduction;
+  Phase 3 baseline closure remains immutable.
+
 Historical snapshot note: `07_phase3b_status.md` records the original dataset-blocked attempt, and the Phase 2 contract records the then-unverified runtime state. Later recovery and runtime reports supersede those earlier statuses; the historical documents are retained as provenance.
 
 ## PHASE 3 CLOSURE
@@ -83,7 +102,6 @@ Historical snapshot note: `07_phase3b_status.md` records the original dataset-bl
 ## NOT STARTED
 
 - Paper-protocol evaluation and paper-metric reproduction.
-- Phase 4 — Mathematical / Algorithmic Verification as runtime work.
 - Later research phases, including limitation characterization and method changes.
 
 ## BLOCKED
@@ -129,22 +147,21 @@ research variant.
 
 ## NEXT MILESTONE
 
-Review and approve the Phase 3 closure record. The next milestone is either to
-start Phase 4 memory-management analysis as an explicit non-baseline research
-variant or obtain larger-VRAM infrastructure for pure-baseline full-scene
-execution and later, separately authorized evaluation.
+Run and review Gate 5 (bounded frames 0–999) for Variant B. Only after Gate 5
+PASS and researcher approval may full-scene planning begin. Larger-VRAM
+infrastructure remains the alternative for pure-baseline full-scene execution.
 
 ## IMMEDIATE OPERATIONAL NEXT TASK
 
-No runtime task is authorized. Review
-`docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`, then either formally
-close `SESSION_002` or open a new Phase 4 memory-management variant Session.
+Gate 5: bounded Replica `room0` frames 0–999 with index 1000 intercepted
+before the real loader. Use `SESSION_003`; preserve implementation/config and
+stop for review at the gate boundary.
 
 ## NEXT RESEARCH GATE
 
-No next runtime gate is selected. Phase 3 baseline runtime reproduction is
-closed with memory limitation. Any Phase 4 memory-management work must be
-authorized and tracked as a separate non-baseline variant.
+Gate 5, bounded frames 0–999. Full-scene Variant B is conditional on Gate 5
+review and is not currently authorized. Evaluation remains prohibited until
+full-scene online PASS and required outputs are saved.
 
 ## Historical Consistency Reconciliation — 2026-10-05
 
