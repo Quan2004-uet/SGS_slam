@@ -40,35 +40,35 @@ workflow:
   phase_name: Phase 4 — Memory-management research variant
   phase_status: in_progress
   active_variant: PHASE4-VB-001
-  current_gate: gate4_bounded_0_499
+  current_gate: gate5_bounded_0_999
   current_gate_status: PASS_FRAME_LIMIT
-  latest_completed_gate: Gate 4 0-499
+  latest_completed_gate: Gate 5 0-999
   latest_gate_status: PASS_FRAME_LIMIT
   full_scene_status: not_tested
-  full_scene_variant_status: not_tested
-  next_recommended_phase: Phase 4 — continue bounded Variant B validation
-  next_gate: Gate 5 0-999
+  full_scene_variant_status: not_started
+  next_recommended_phase: Phase 4 — full-scene Variant B validation
+  next_gate: full_scene_0_1999
   evaluation_status: not_started
   paper_metrics_reproduced: false
 
 session:
   id: SESSION_003
-  status: planned_ready
-  started: null
+  status: closed
+  started: 2026-10-10
   last_active: 2026-10-10
 
 next_run:
-  role: gate5_bounded_variant_validation
+  role: full_scene_variant_validation
   dataset: Replica
   scene: room0
   frame_start: 0
-  frame_end: 999
-  guard_frame: 1000
-  instrumentation: Variant B residency, CPU RAM, memory, finite-state, and boundary guard
+  frame_end: 1999
+  guard_frame: null
+  instrumentation: Variant B residency, CPU RAM, memory, finite-state, and full-scene stop conditions
 
 next_actions:
-  immediate_operational: Gate 5 bounded 0-999 with index-1000 pre-loader guard
-  next_research_gate: review Gate 5 before any full-scene planning
+  immediate_operational: Prepare SESSION_004 for full-scene online Variant B 0-1999
+  next_research_gate: full-scene online 0-1999 after separate authorization
   resume_session_only_when_research_gate_begins: true
 
 environment:
@@ -117,19 +117,25 @@ latest_runtime:
 latest_variant_runtime:
   variant: PHASE4-VB-001
   status: PASS_FRAME_LIMIT
-  completed_frames: 0-499
-  guard_frame: 500
-  logical_keyframes: 101
-  final_gaussians: 2255038
-  cpu_keyframe_archive_bytes: 2637312000
+  completed_frames: 0-999
+  guard_frame: 1000
+  logical_keyframes: 201
+  final_gaussians: 4411916
+  cpu_keyframe_archive_bytes: 5248512000
   gpu_archived_payload_bytes: 0
-  gpu_est_w2c_bytes: 6464
-  max_allocated_bytes: 3468590592
-  max_reserved_bytes: 4525654016
-  frame499_allocated_reduction_bytes: 2786778112
-  frame499_allocated_reduction_percent: 75.8
-  runtime_seconds: 2564.53
-  evidence_directory: results/runtime_artifacts/phase4_vb001_gate4_0_499/
+  gpu_est_w2c_bytes: 12864
+  max_allocated_bytes: 5958148096
+  max_reserved_bytes: 6949961728
+  max_rss_bytes: 7905923072
+  runtime_seconds: 7183.993467400001
+  latest_runtime_seconds: 7183.993467400001
+  latest_max_gpu_allocated_bytes: 5958148096
+  latest_max_gpu_reserved_bytes: 6949961728
+  latest_max_rss_bytes: 7905923072
+  latest_cpu_archive_bytes: 5248512000
+  frame499_allocated_reduction_bytes: 2787247616
+  frame499_allocated_reduction_percent: 75.83
+  evidence_directory: results/runtime_artifacts/phase4_vb001_gate5_0_999/
 
 runtime_conclusion:
   bounded_pass_through_frame: 499

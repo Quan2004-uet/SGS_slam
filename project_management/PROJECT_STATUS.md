@@ -8,8 +8,8 @@
 
 Last reconciled: 2026-10-10. Phase 3 baseline runtime reproduction remains
 closed with a documented RTX 5080 16 GB memory limitation. Phase 4 Variant B
-has passed bounded validation through frames 0–499; `SESSION_003` is planned
-for Gate 5.
+Gate 5 passed bounded validation through frames 0–999; `SESSION_003` is
+closed and `SESSION_004` is planned for the full-scene gate.
 
 ## State Authority
 
@@ -47,10 +47,10 @@ Exit / stop condition: stop at each bounded gate; full scene and evaluation requ
 ## Latest Session
 
 Session ID: SESSION_003\
-Status: PLANNED / READY\
-Started: —\
-Last active: 2026-10-10 (planned)\
-Closed: —
+Status: CLOSED\
+Started: 2026-10-10\
+Last active: 2026-10-10\
+Closed: 2026-10-10
 
 ## COMPLETE
 
@@ -76,13 +76,18 @@ Closed: —
 - Branch: `phase4-vb-001-cpu-keyframe-offload`; implementation change is
   limited to `scripts/slam.py` for Variant B, with no config change.
 - Gate 1: `PASS`; Gate 2: `PASS`; Gate 3 frames 0–99:
-  `PASS_FRAME_LIMIT`; Gate 4 frames 0–499: `PASS_FRAME_LIMIT`.
-- Latest completed gate: Gate 4 0–499 `PASS_FRAME_LIMIT`.
-- Latest measured memory benefit: frame-499 long-lived allocated reduction of
-  2,786,778,112 bytes (about 75.8%) versus Phase 3C-6.
-- Next gate: Gate 5 bounded frames 0–999, with index 1000 intercepted before
-  the real loader.
-- Full-scene Variant B: `NOT YET TESTED`.
+  `PASS_FRAME_LIMIT`; Gate 4 frames 0–499: `PASS_FRAME_LIMIT`; Gate 5 frames
+  0–999: `PASS_FRAME_LIMIT`.
+- Latest completed gate: Gate 5 0–999 `PASS_FRAME_LIMIT`.
+- Gate 5 runtime: `7183.993467400001 s`; final Gaussians `4,411,916`;
+  resident keyframes `201`; CPU archive `5,248,512,000 B`; GPU archived
+  payload `0 B`.
+- Gate 5 max allocated/reserved: `5,958,148,096 / 6,949,961,728 B`;
+  max RSS/high-water: `7,905,923,072 / 7,957,504,000 B`.
+- Latest measured frame-499 long-lived allocated reduction: `2,787,247,616 B`
+  (about `75.83%`) versus Phase 3C-6.
+- Next gate: full-scene online Variant B frames 0–1999 in `SESSION_004`.
+- Full-scene Variant B: `NOT YET RUN`.
 - Evaluation and paper metrics: `NOT STARTED` / `NOT REPRODUCED`.
 - Variant B is a research variant, not pure released-baseline reproduction;
   Phase 3 baseline closure remains immutable.
@@ -147,21 +152,35 @@ research variant.
 
 ## NEXT MILESTONE
 
-Run and review Gate 5 (bounded frames 0–999) for Variant B. Only after Gate 5
-PASS and researcher approval may full-scene planning begin. Larger-VRAM
+Review Gate 5 and run the separately authorized full-scene Variant B online
+gate frames 0–1999 in `SESSION_004`. Evaluation remains prohibited until
+full-scene online PASS and required outputs are saved. Larger-VRAM
 infrastructure remains the alternative for pure-baseline full-scene execution.
 
 ## IMMEDIATE OPERATIONAL NEXT TASK
 
-Gate 5: bounded Replica `room0` frames 0–999 with index 1000 intercepted
-before the real loader. Use `SESSION_003`; preserve implementation/config and
-stop for review at the gate boundary.
+Prepare `SESSION_004` for full-scene Variant B online Replica `room0` frames
+0–1999. Preserve implementation/config and stop for review at the full-scene
+boundary or any required failure condition.
 
 ## NEXT RESEARCH GATE
 
-Gate 5, bounded frames 0–999. Full-scene Variant B is conditional on Gate 5
-review and is not currently authorized. Evaluation remains prohibited until
-full-scene online PASS and required outputs are saved.
+Full-scene Variant B online frames 0–1999. Evaluation status remains
+`NOT STARTED`; paper metrics reproduced remains `false`. Evaluation remains
+prohibited until full-scene online PASS and required outputs are saved.
+
+## Phase 4 Gate 5 Reconciliation — 2026-10-10
+
+The current runtime evidence supersedes the earlier Phase 4 checkpoint above:
+Gate 5 completed Replica `room0` frames 0–999 with `PASS_FRAME_LIMIT`,
+intercepting dataset index 1000 before the real loader. The run recorded
+4,411,916 final Gaussians, 201 logical keyframes, 5,248,512,000 B CPU archive,
+0 B GPU archived payload, maximum allocated/reserved
+5,958,148,096 / 6,949,961,728 B, maximum RSS/high-water
+7,905,923,072 / 7,957,504,000 B, and runtime 7,183.993467400001 s.
+`SESSION_003` is closed; `SESSION_004` is planned for the full-scene Variant B
+online gate. Evaluation, paper metrics, ATE, rendering/semantic metrics, and
+post-SLAM optimization remain unstarted and prohibited.
 
 ## Historical Consistency Reconciliation — 2026-10-05
 

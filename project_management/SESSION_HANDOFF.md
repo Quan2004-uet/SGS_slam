@@ -6,41 +6,44 @@
 > status. Repository/runtime evidence overrides either document if they conflict.
 
 Last reconciled: 2026-10-10. Phase 3 baseline runtime reproduction is closed
-with a documented RTX 5080 16 GB memory limitation. Phase 4 Variant B passed
-bounded validation through frames 0–499; the next authorized gate is Gate 5
-frames 0–999.
+with a documented RTX 5080 16 GB memory limitation. Phase 4 Variant B Gate 5
+passed bounded validation through frames 0–999; the next gate is the separately
+authorized full-scene online run.
 
 ## Session
 
 Previous session: `SESSION_002` (Phase 3 closure plus Phase 4 Variant B checkpoint)\
 Session ID: SESSION_003\
 Title: Phase 4 Variant B Bounded Validation\
-Status: PLANNED / READY\
-Started: —\
-Last active: 2026-10-10 (planned)\
-Closed: —\
+Status: CLOSED\
+Started: 2026-10-10\
+Last active: 2026-10-10\
+Closed: 2026-10-10\
 Phase: Phase 4 — Memory-management research variant
 Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads
 
 ## Session Objective
 
-Recover a provenance-valid baseline environment and dataset, then establish released online runtime behavior through bounded Replica `room0` prefixes without changing algorithm or experiment config.
+Complete the bounded Gate 5 validation of `PHASE4-VB-001` on Replica `room0`
+frames 0–999 while preserving released online behavior and measuring CPU/GPU
+residency.
 
 ## Current State
 
 Phase 3 baseline runtime reproduction remains CLOSED WITH MEMORY LIMITATION.
 Phase 4 Variant B is a separate research variant. Gates 1 and 2 passed; Gates
-3 and 4 passed their bounded frame limits through 0–99 and 0–499. Gate 4
-intercepted index 500 before the real loader, ended with 101 logical
-keyframes, 2,637,312,000 CPU archive bytes, zero GPU archived-payload bytes,
-2,255,038 Gaussians, and approximately 75.8% frame-499 long-lived allocated
-memory reduction versus Phase 3. No full-scene run, evaluation, ATE, rendering
-metrics, semantic metrics, post-opt, or paper-metric reproduction was run.
+3, 4, and 5 passed their bounded frame limits through 0–99, 0–499, and
+0–999. Gate 5 intercepted index 1000 before the real loader, ended with 201
+logical keyframes, 5,248,512,000 CPU archive bytes, zero GPU archived-payload
+bytes, 4,411,916 Gaussians, and approximately 75.83% frame-499 long-lived
+allocated memory reduction versus Phase 3. No full-scene run, evaluation, ATE,
+rendering metrics, semantic metrics, post-opt, or paper-metric reproduction
+was run.
 
-Current documentation HEAD is
-`108d73e7367059a85010e2c19f48419cb3a2741f` on `main`. The runtime evidence
-was recorded at `dd8caa772bd9511c018d298e38c081a679de2c72`; the released
-source/config baseline remains `e4183986204242a8bb422624618af07780a49d26`.
+Current repository HEAD is
+`8061093b79be1cc643f3d8180ece8574fa51b5c5` on
+`phase4-vb-001-cpu-keyframe-offload`. The released source/config baseline
+remains `e4183986204242a8bb422624618af07780a49d26`.
 
 ## Completed in This Session
 
@@ -54,6 +57,11 @@ source/config baseline remains `e4183986204242a8bb422624618af07780a49d26`.
 - Created `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md`.
 - Closed Phase 3 baseline runtime reproduction with the documented memory
   limitation in `docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`.
+- Completed PHASE4-VB-001 Gate 5 frames 0–999 with the index-1000 pre-loader
+  guard and saved the runtime evidence under
+  `results/runtime_artifacts/phase4_vb001_gate5_0_999/`.
+- Reconciled project/session state and prepared `SESSION_004` for the next
+  separately authorized full-scene gate.
 
 ## Ready for Closure Review
 
@@ -62,14 +70,16 @@ The Phase 3 closure evidence is consolidated for researcher approval.
 
 ## STOPPED HERE
 
-Phase 4 Variant B passed bounded validation through frames 0–499. Gate 4
-completed frame 499 and intercepted dataset index 500 before the real loader.
+PHASE4-VB-001 Gate 5 completed bounded Replica `room0` frames 0–999 with
+`PASS_FRAME_LIMIT`. Dataset index 1000 was intercepted before the real loader.
+Full scene 0–1999 has not been run in this session.
 Exact evidence is in:
 
 - `results/runtime_artifacts/phase4_vb001_gate1/`
 - `results/runtime_artifacts/phase4_vb001_gate2/`
 - `results/runtime_artifacts/phase4_vb001_gate3_0_99/`
 - `results/runtime_artifacts/phase4_vb001_gate4_0_499/`
+- `results/runtime_artifacts/phase4_vb001_gate5_0_999/`
 - `docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`
 
 Phase 3 full-scene OOM provenance remains in `SESSION_002` and the Phase 3
@@ -84,25 +94,23 @@ experiment occurred during upload.
 
 ## IMMEDIATE OPERATIONAL NEXT TASK
 
-Gate 5: bounded Replica `room0` frames 0–999 with dataset index 1000
-intercepted before the real loader. Preserve the Variant B implementation and
-all released online behavior. Review Gate 5 memory, CPU RAM, runtime, Gaussian
-divergence, residency invariants, and finite state before considering any
-full-scene run.
+Start a new session (`SESSION_004`) for full-scene Variant B planning and
+execution: Replica `room0` online frames 0–1999. Preserve Variant B
+invariants and do not run evaluation.
 
 ## NEXT RESEARCH GATE
 
-Gate 5, bounded frames 0–999, index-1000 guard. Full Replica `room0` frames
-0–1999 are conditional on Gate 5 PASS and researcher review. Evaluation,
-ATE, rendering/semantic metrics, post-SLAM optimization, and paper metrics
-remain prohibited until full-scene online PASS and required outputs are saved.
+PHASE4-VB-001 full Replica `room0` online frames 0–1999 in `SESSION_004`.
+The run must preserve Variant B invariants and must not run evaluation. Full
+scene is the next gate; evaluation, ATE, rendering/semantic metrics,
+post-SLAM optimization, and paper metrics remain prohibited until full-scene
+online PASS and required outputs are saved.
 
 ## AFTER THAT
 
-1. Execute Gate 5 only after researcher authorization under `SESSION_003`.
-2. Review Gate 5 evidence before any full-scene planning.
-3. If Gate 5 passes, request separate authorization for full Replica `room0`
-   0–1999; do not infer authorization from this handoff.
+1. Review Gate 5 evidence before full-scene execution.
+2. Execute full-scene Variant B only under `SESSION_004` and separate
+   researcher authorization; do not infer authorization from this handoff.
 4. If paper comparison is later required, define the evaluation protocol and
    infrastructure separately; no paper metrics are currently reproduced.
 
