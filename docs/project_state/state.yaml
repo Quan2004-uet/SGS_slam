@@ -2,8 +2,8 @@ authority: derived
 canonical_project_status: project_management/PROJECT_STATUS.md
 canonical_handoff: project_management/SESSION_HANDOFF.md
 role: derived_machine_readable_snapshot
-last_updated: 2026-10-05
-authority_reconciled: 2026-10-05
+last_updated: 2026-10-10
+authority_reconciled: 2026-10-10
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
@@ -37,47 +37,49 @@ assets:
 
 workflow:
   phase: 3
-  phase_status: in_progress
-  current_gate: phase3c3
-  current_gate_status: pass
-  next_gate: phase3c4
+  phase_status: ready_for_review
+  current_gate: phase3_runtime_conclusion
+  current_gate_status: ready_for_review
+  next_gate: researcher_decision_close_or_memory_variant
 
 session:
   id: SESSION_002
-  status: paused
+  status: ready_for_review
   started: 2026-10-02
-  last_active: 2026-10-03
+  last_active: 2026-10-10
 
 next_run:
-  role: next_research_gate_not_immediate_operational_task
+  role: decision_pending_no_runtime_authorized
   dataset: Replica
   scene: room0
   frame_start: 0
-  frame_end: 99
-  guard_frame: 100
-  instrumentation: fast
+  frame_end: null
+  guard_frame: null
+  instrumentation: null
 
 next_actions:
-  immediate_operational: restore_and_validate_destination_gpu_runtime
-  next_research_gate: phase3c4_frames_0_99_guard_before_100
+  immediate_operational: researcher_review_phase3_runtime_conclusion
+  next_research_gate: conditional_close_baseline_or_memory_management_variant
   resume_session_only_when_research_gate_begins: true
 
 environment:
-  role: runtime_verified_old_host_snapshot
-  destination_revalidation_required: true
-  conda: /home/quan/miniconda3/envs/sgs_slam_baseline
-  python: 3.9.25
-  pytorch: 2.0.1
-  torchvision: 0.15.2
-  cuda: "11.8"
+  role: runtime_verified_destination_host_snapshot
+  destination_revalidation_required: false
+  conda: /home/robot/miniconda3/envs/sgs_slam_5080
+  python: 3.10.22
+  pytorch: 2.7.1+cu128
+  torchvision: 0.22.1+cu128
+  cuda: "12.8"
+  system_cuda_toolkit: "12.8.93"
   numpy: 1.26.4
   opencv: 4.9.0.80
   renderer_revision: cb65e4b86bc3bd8ed42174b72a62e8d3a3a71110
 
 gpu:
-  role: runtime_verified_old_host_snapshot
-  model: NVIDIA GeForce GTX 1650 Ti
-  vram_mib: 4096
+  role: runtime_verified_destination_host_snapshot
+  model: NVIDIA GeForce RTX 5080
+  vram_bytes: 16609378304
+  vram_gib_class: 16
 
 dataset:
   root: data/Replica
@@ -87,18 +89,38 @@ dataset:
   height: 680
 
 latest_runtime:
-  last_frame: 49
-  gaussians: 1118590
-  keyframes: 11
-  keyframe_ids: [0, 4, 9, 14, 19, 24, 29, 34, 39, 44, 49]
-  keyframe_payload_bytes: 287232704
-  tracking_adam_bytes: 107224316
-  mapping_adam_bytes: 134230824
-  max_allocated_peak_bytes: 2340127232
-  max_reserved_bytes: 3040870400
-  vram_sufficient_through_last_frame: true
-  evidence_json: results/runtime_artifacts/phase3c3/phase3c3_results.json
-  evidence_log: results/runtime_artifacts/phase3c3/phase3c3_bounded_online.log
+  status: CUDA_OOM_ALLOCATOR_OPT
+  last_frame: 1332
+  failing_frame: 1333
+  stage: mapping
+  gaussians: null
+  keyframes: null
+  keyframe_ids: null
+  keyframe_payload_bytes: null
+  tracking_adam_bytes: null
+  mapping_adam_bytes: null
+  max_allocated_peak_bytes: 12547390464
+  max_reserved_bytes: 15839789056
+  vram_sufficient_through_last_frame: false
+  evidence_json: results/runtime_artifacts/full_scene_room0_allocator_opt_fast/full_scene_room0_allocator_opt_fast_results.json
+  evidence_log: results/runtime_artifacts/full_scene_room0_allocator_opt_fast/full_scene_room0_allocator_opt_fast.log
+
+runtime_conclusion:
+  bounded_pass_through_frame: 499
+  phase3c4_status: PASS_FRAME_LIMIT
+  phase3c6_status: PASS_FRAME_LIMIT
+  full_scene_baseline_status: CUDA_OOM
+  full_scene_baseline_last_completed_frame: 1293
+  full_scene_baseline_failing_frame: 1294
+  allocator_opt_status: CUDA_OOM_ALLOCATOR_OPT
+  allocator_opt_last_completed_frame: 1332
+  allocator_opt_failing_frame: 1333
+  full_scene_pass: false
+  paper_metrics_reproduced: false
+  evaluation_run: false
+  post_opt_run: false
+  conclusion_file: docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md
+  next_decision: close_phase3_with_memory_limitation_or_authorize_memory_variant
 
 integrity:
   source_changed: false

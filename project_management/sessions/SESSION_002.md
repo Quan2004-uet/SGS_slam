@@ -10,9 +10,9 @@
 
 Session ID: SESSION_002\
 Title: Baseline Recovery and Bounded Runtime Reproduction\
-Status: PAUSED\
+Status: READY-FOR-REVIEW\
 Started: 2026-10-02\
-Last active: 2026-10-03\
+Last active: 2026-10-10\
 Closed: —\
 Phase: Phase 3 — Baseline Recovery & Reproduction\
 Objective: recover the provenance-valid released runtime inputs and verify the online SGS-SLAM path on bounded Replica `room0` prefixes without changing its algorithm or experiment config.
@@ -102,11 +102,26 @@ Recover and verify the environment, CUDA renderer, author-distributed semantic R
 
 ## Session Outcome
 
-Baseline recovery and online runtime verification are paused between bounded gates. Phase 3C-3 passed its 0–49 stop boundary; the overall Phase 3 objective has not been closed.
+Baseline recovery, bounded online runtime verification, and full-scene failure
+characterization are recorded for review. Phase 3 bounded reproduction passed
+through frames 0–499. The released full-scene baseline OOMed during mapping
+around frame 1294; the allocator-opt runtime-only attempt OOMed during mapping
+at frame 1333. `SESSION_002` remains open and is **READY-FOR-REVIEW**, not
+completed. The researcher must choose whether to close Phase 3 with the
+documented memory limitation or authorize a separate memory-management
+research variant.
 
 ## STOPPED HERE
 
-Frames 0–49 completed continuously under the released online path. The guard intercepted dataset index 50. Persistent result JSON/log are present under the Git-ignored `results/runtime_artifacts/phase3c3/`. No frame 50+, evaluation, post-opt, or Phase 4 task has started.
+The destination RTX 5080 validation passed. Phase 3C-4 frames 0–99 and Phase
+3C-6 frames 0–499 completed with finite observed state under the unchanged
+released online path. The baseline full-scene attempt completed frames 0–1293
+and OOMed in mapping at frame 1294. The allocator-opt runtime-only attempt
+completed frames 0–1332 and OOMed in mapping at frame 1333. Neither reached
+frame 1999. No evaluation, post-opt, paper comparison, source/config change,
+commit, or push occurred.
+
+Current conclusion: `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md`.
 
 ## Historical Next Research Task at the 2026-10-03 Pause
 
@@ -115,6 +130,27 @@ Resume this Session, then run Phase 3C-4 through frame 99 continuously from fram
 Operational migration/restore prerequisites were documented later. They do not
 change this historical research-gate record; consult the canonical handoff
 before resuming.
+
+## 2026-10-10 — Phase 3 runtime conclusion update
+
+- Destination-host validation passed on the RTX 5080, including the pinned
+  renderer, dataset index 0, first-frame initialization, and migration
+  regression frames 0–4.
+- Phase 3C-4 passed frames 0–99; Phase 3C-6 passed frames 0–499.
+- Full-scene released baseline did not complete: OOM during mapping at frame
+  1294 after frame 1293 completed.
+- Runtime-only allocator attempt did not complete: OOM during mapping at frame
+  1333 after frame 1332 completed.
+- The allocator attempt improved the completed horizon by 39 frames but did not
+  reduce reserved-memory pressure enough to complete 2,000 frames.
+- No paper metrics were reproduced; evaluation, ATE, rendering metrics, and
+  post-SLAM optimization were not run.
+- Phase 3 is ready for researcher review. The next decision is either baseline
+  closure with the documented memory limitation or a separately identified
+  memory-management research variant.
+
+Evidence: `docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md` and
+`docs/experiments/FULL_SCENE_MEMORY_OPTIMIZATION_LOG.md`.
 
 ## DO NOT
 
