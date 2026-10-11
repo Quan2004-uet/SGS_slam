@@ -609,9 +609,30 @@ runtime was 74.4107 s; peak GPU allocated/reserved was 1,846,789,120 /
 `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`; runtime evidence is under
 `results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`.
 
-## 20. Updated next task
+## 20. Subsequent camera-view qualitative export
 
-The saved-state Evaluation / Export Gate is complete through E4. The next task
-is a **Paper / Baseline Comparison Audit**, not another evaluation or SLAM run.
-It must establish paper-table comparability before any reproduction or
-superiority claim. PHASE4-VB002 remains future work.
+`RUNTIME VERIFIED`: a separately authorized qualitative gate completed with
+`PASS_QUALITATIVE_EXPORT` after E4. It reused the validated saved-state camera
+and renderer path for exactly frames `[0,499,999,1499,1999]` and produced RGB,
+metric-depth, and semantic-color comparisons with GT references under
+`results/qualitative/phase4_vb001_room0_representative/`.
+
+All five frames passed image/raw-depth/composite validation. Existing E4
+per-frame values were copied into annotations; no metric was recomputed. Export
+runtime was 9.213427657989087 s and peak GPU allocated/reserved was
+1,774,468,608 / 1,935,671,296 bytes. Online SLAM was not rerun. The canonical
+record is
+`docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`.
+
+This is camera-view qualitative evidence, not the paper-style reconstructed
+RGB 3D map or semantic-colored 3D map.
+
+## 21. Updated next task
+
+The saved-state released evaluation and representative camera-view export are
+complete. The immediate next task is a **Scene Reconstruction / 3D
+Segmentation Visualization Audit**, not another evaluation, SLAM run, or
+camera-view export. It must audit the saved `params.ply` and `seg_params.ply`
+visualization path before any new rendering. Paper / Baseline Comparison Audit
+remains subsequent and must establish paper-table comparability before any
+reproduction or superiority claim. PHASE4-VB002 remains future work.

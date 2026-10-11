@@ -169,6 +169,47 @@ Comparison Audit. Keep PHASE4-VB002 as a later optimization track.
 - `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
 - `results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`.
 
+## DEC-012 — Separate camera-view qualitative evidence from 3D map visualization
+
+- Date: 2026-10-12.
+- Session: SESSION_004.
+- Status: ACCEPTED.
+
+### Context
+
+The representative qualitative gate passed for five training-camera frames and
+produced rendered/GT RGB, metric depth, and semantic-color comparisons. The
+saved output package also contains `params.ply` and `seg_params.ply`, but no
+paper-style free-view or map-view `Scene Reconstruction | 3D Segmentation`
+visualization has been produced.
+
+### Decision
+
+Classify the five-frame result as `PASS_QUALITATIVE_EXPORT` for camera-view
+evidence only. Treat RGB reconstructed-map and semantic-colored 3D map
+visualization as a distinct gate. Audit the repository-native PLY/viewer path,
+camera, color, background, crop, output, and provenance conventions before
+authorizing new rendering.
+
+Make that visualization audit the immediate next task. Preserve Paper /
+Baseline Comparison Audit as the subsequent research task. Do not rerun online
+SLAM or E1--E4 for either task.
+
+### Consequences
+
+- Camera-view qualitative export is complete and should not be repeated.
+- 3D reconstruction/segmentation map visualization remains `NOT RUN`.
+- Existing E4 values may annotate selected frames but are not recomputed by
+  qualitative export.
+- Neither qualitative evidence nor E4 alone constitutes full paper
+  reproduction or cross-scene validation.
+
+### Evidence
+
+- `docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`.
+- `results/qualitative/phase4_vb001_room0_representative/`.
+- `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
+
 ## Migrated durable decision index
 
 The following accepted decisions were first summarized in the 2026-10-04

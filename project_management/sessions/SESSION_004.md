@@ -1,17 +1,18 @@
-# SESSION_004 — Phase 4 Variant B Full-Scene Validation, State Preservation, and Evaluation
+# SESSION_004 — Phase 4 Variant B Full-Scene Validation, Evaluation, and Qualitative Export
 
 ## Metadata
 
 - Session ID: SESSION_004.
 - Status: CLOSED.
 - Started: 2026-10-10.
-- Last active/closed: 2026-10-11.
+- Last active/closed: 2026-10-12.
 - Branch: `phase4-vb-001-cpu-keyframe-offload`.
 - Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads.
 
 Objective: validate full-scene Variant-B memory behavior, preserve a reloadable
 final state, audit the released evaluator, and complete staged saved-state
-evaluation without changing the algorithm or rerunning online SLAM.
+evaluation and representative camera-view export without changing the
+algorithm or rerunning online SLAM.
 
 ## Work Completed
 
@@ -28,9 +29,12 @@ evaluation without changing the algorithm or rerunning online SLAM.
    `PASS_EVAL_E2_SINGLE_FRAME_RENDER`.
 7. E3 five-frame bounded metrics: `PASS_EVAL_E3_BOUNDED_SUBSET`.
 8. E4 complete released evaluation: `PASS_EVAL_E4_FULL_RELEASED`.
+9. Representative frames `[0,499,999,1499,1999]` camera-view export:
+   `PASS_QUALITATIVE_EXPORT`.
 
 No source algorithm/config change, online SLAM rerun, post-SLAM optimization,
-or full rendered-image export occurred during evaluation.
+or E4 full rendered-image export occurred. The later qualitative gate exported
+only five selected views and did not recompute metrics.
 
 ## Full-Scene Output-Save Result
 
@@ -77,6 +81,25 @@ Saved state:
 - Image export: none.
 - Skipped sampled frames, OOM, or non-finite metrics: none.
 
+## Camera-View Qualitative Export
+
+- Status: `PASS_QUALITATIVE_EXPORT`.
+- Frames: `[0,499,999,1499,1999]`.
+- Output:
+  `results/qualitative/phase4_vb001_room0_representative/`.
+- Each frame contains rendered and GT RGB, raw and visualized metric depth,
+  raw/recolored rendered semantic color, GT semantic color, side-by-side
+  comparisons, and a six-panel qualitative grid.
+- Root outputs include `contact_sheet_all_frames.png`, metric annotations,
+  metadata, a 69-artifact manifest, and SHA256 checksums.
+- Runtime: 9.213427657989087 s.
+- Peak GPU allocated/reserved: 1,774,468,608 / 1,935,671,296 B.
+- Renderer invoked: yes. New metrics computed and SLAM rerun: no.
+- Existing E4 annotations were preserved for all five frames.
+
+The export is camera-view qualitative evidence, not a paper-style free-view or
+map-view `Scene Reconstruction | 3D Segmentation` figure.
+
 ## Evidence and Provenance
 
 - Evaluation run HEAD: `63adf3aed8ae2201a46d11cec473672f9e91fd0e`.
@@ -86,6 +109,8 @@ Saved state:
   `dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2`.
 - E1--E4 evidence lives under `results/runtime_artifacts/phase4_vb001_eval_*`.
 - Canonical result: `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
+- Qualitative result:
+  `docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`.
 
 ## Scientific Conclusion and Limits
 
@@ -98,10 +123,16 @@ or generalization to other scenes.
 
 ## Next Task and Closure
 
-SESSION_004 closes at `PASS_EVAL_E4_FULL_RELEASED`. The next task is a
-**Paper / Baseline Comparison Audit**. It should verify protocol comparability,
-prepare a baseline-versus-PHASE4-VB-001 table, and identify justified claims
-and missing scenes/experiments. PHASE4-VB002 remains future work.
+SESSION_004 closes at `PASS_QUALITATIVE_EXPORT`. Quantitative evaluation and
+camera-view qualitative export are complete. The immediate next task is a
+read-only **Scene Reconstruction / 3D Segmentation Visualization Audit** for
+the saved `params.ply` and `seg_params.ply`; it must stop before rendering.
 
-Future sessions must not resume from output saving or E1--E4, and must not
-rerun online SLAM merely to repeat the saved-state evaluation.
+The Paper / Baseline Comparison Audit remains subsequent work and must still
+verify protocol comparability, prepare a baseline-versus-PHASE4-VB-001 table,
+and identify justified claims and missing scenes/experiments. PHASE4-VB002
+remains future work.
+
+Future sessions must not resume from output saving, E1--E4, or the completed
+camera-view export, and must not rerun online SLAM merely to repeat saved-state
+evaluation or visualization inputs.

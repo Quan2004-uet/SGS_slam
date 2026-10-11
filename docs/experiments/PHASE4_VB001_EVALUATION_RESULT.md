@@ -169,12 +169,16 @@ evaluation from that state.
 The metrics above are reproduced for one scene under the audited released-code
 protocol. They do not establish full paper reproduction, superiority over the
 paper or baseline, generalization to other Replica scenes, or a benchmark-wide
-contribution. No post-SLAM optimization or full qualitative image export was
-performed. Paper-table comparability remains to be established separately.
+contribution. E4 itself exported no images and no post-SLAM optimization was
+performed. A later separately authorized gate exported five representative
+camera views without recomputing metrics; see
+`docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`. Paper-table
+comparability remains to be established separately.
 
 ## Next step
 
-Perform a **Paper / Baseline Comparison Audit**: establish exact protocol and
-stage comparability, prepare a baseline-versus-PHASE4-VB-001 table, identify
-defensible claims, and list remaining scenes/experiments. Do not start VB002 or
-new evaluation during this checkpoint.
+Perform a **Scene Reconstruction / 3D Segmentation Visualization Audit** for
+the saved `params.ply` and `seg_params.ply`. Establish a reproducible
+paper-style RGB-map/semantic-map visualization protocol and stop before new
+rendering. Paper / Baseline Comparison Audit remains the subsequent task. Do
+not start VB002 or new evaluation during this checkpoint.

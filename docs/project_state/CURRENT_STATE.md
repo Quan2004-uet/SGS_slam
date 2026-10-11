@@ -9,7 +9,7 @@
 This snapshot records the state used for the 2026-10-04 migration checkpoint.
 Detailed evidence is in the linked runtime records.
 
-## Current checkpoint pointer — 2026-10-11
+## Current checkpoint pointer — 2026-10-12
 
 This section is a convenience pointer requested for the session checkpoint; it
 does not promote this legacy file to current-state authority. Canonical values
@@ -31,14 +31,23 @@ remain in `project_management/PROJECT_STATUS.md` and the exact resume point in
   `PASS_RUNTIME_VALIDATOR_BUG` and supplies detailed residency-invariant
   evidence. The minimal output-save harness intentionally did not duplicate
   that heavy residency telemetry.
-- Latest gate: `PASS_EVAL_E4_FULL_RELEASED`. The released protocol evaluated
+- Latest quantitative gate: `PASS_EVAL_E4_FULL_RELEASED`. The released protocol evaluated
   401 RGB/depth/semantic frames and all 2,000 finite trajectory poses without
   rerunning SLAM. PSNR/MS-SSIM/LPIPS/Depth L1/semantic mIoU are recorded in
   `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
+- Latest completed gate is now `PASS_QUALITATIVE_EXPORT`: representative
+  camera-view RGB/depth/semantic comparisons and GT references for frames
+  `[0,499,999,1499,1999]` are under
+  `results/qualitative/phase4_vb001_room0_representative/`. Existing E4
+  per-frame values were attached as annotations without metric recomputation.
+  This does not mean the paper-style reconstructed/semantic 3D map view has
+  been produced.
 - Paper reproduction, cross-scene generalization, and post-SLAM optimization
   are not claimed or complete.
-- The next workflow is a Paper / Baseline Comparison Audit. Do not resume from
-  output saving or evaluation Gates E1--E4.
+- The next workflow is a Scene Reconstruction / 3D Segmentation Visualization
+  Audit for the saved RGB and semantic PLY maps. Paper / Baseline Comparison
+  Audit remains subsequent. Do not resume from output saving, evaluation Gates
+  E1--E4, or the completed camera-view export.
 
 ## Baseline
 

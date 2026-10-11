@@ -4,13 +4,14 @@
 > evidence has highest priority. This file defines the current phase and gate;
 > use `SESSION_HANDOFF.md` for the exact operational resume point.
 
-Last reconciled: 2026-10-11.
+Last reconciled: 2026-10-12.
 
 ## Project Identity
 
 - Repository: SGS-SLAM — Semantic Gaussian Splatting for Neural Dense SLAM.
 - Current branch: `phase4-vb-001-cpu-keyframe-offload`.
 - Evaluation run HEAD: `63adf3aed8ae2201a46d11cec473672f9e91fd0e`.
+- Qualitative export run HEAD: `7122eb56222031dc6bdb96033f2f15a22293b9da`.
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
 
@@ -19,15 +20,20 @@ Last reconciled: 2026-10-11.
 - Phase: Phase 4 — Memory-management research variant.
 - Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads.
 - Runtime/output checkpoint: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
-- Latest completed gate: `PASS_EVAL_E4_FULL_RELEASED`.
+- Latest completed gate: `PASS_QUALITATIVE_EXPORT`.
 - Evaluation status: complete for the Replica `room0` released training-view
   protocol.
+- Camera-view qualitative export: complete for representative frames
+  `[0,499,999,1499,1999]`.
+- 3D map reconstruction/segmentation visualization: not run.
 - Paper reproduction status: not claimed and not complete.
-- Immediate next task: **Paper / Baseline Comparison Audit**.
+- Immediate next task: **Scene Reconstruction / 3D Segmentation Visualization
+  Audit**.
 
-SESSION_004 is closed. Future work must not resume from output saving or Gates
-E1--E4. The saved full-scene state remains the authoritative input for later
-analysis; no online SLAM rerun is required.
+SESSION_004 is closed. Future work must not resume from output saving, Gates
+E1--E4, or camera-view qualitative export. The saved full-scene state and PLY
+exports remain the authoritative inputs for later visualization/analysis; no
+online SLAM or evaluation rerun is required.
 
 ## Validated PHASE4-VB-001 Chain
 
@@ -44,6 +50,8 @@ analysis; no online SLAM rerun is required.
 - E2 single-frame render: `PASS_EVAL_E2_SINGLE_FRAME_RENDER`.
 - E3 bounded five-frame metrics: `PASS_EVAL_E3_BOUNDED_SUBSET`.
 - E4 full released evaluation: `PASS_EVAL_E4_FULL_RELEASED`.
+- Representative camera-view qualitative export:
+  `PASS_QUALITATIVE_EXPORT`.
 
 ## Full-Scene Runtime and Saved State
 
@@ -86,7 +94,9 @@ also exist. Artifact sizes and SHA256 values are recorded in
   trajectory 0.0101 s.
 - Evaluation peak GPU allocated/reserved: 1,846,789,120 /
   2,057,306,112 B (11.12% / 12.39% of physical VRAM).
-- Renderer invoked and metrics computed: yes. SLAM rerun and image export: no.
+- Renderer invoked and metrics computed: yes. SLAM rerun and E4 image export:
+  no. A later separately authorized qualitative gate exported five selected
+  camera views without recomputing metrics.
 - CUDA OOM, non-finite metrics, and hidden skipped frames: none.
 
 Canonical evaluation record:
@@ -94,6 +104,26 @@ Canonical evaluation record:
 
 Runtime evidence:
 `results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`.
+
+## Camera-View Qualitative Export
+
+- Status: `PASS_QUALITATIVE_EXPORT`.
+- Frames: `[0,499,999,1499,1999]`.
+- RGB, metric-depth, semantic-color, GT reference, side-by-side, and composite
+  artifacts passed validation for all five frames.
+- RGB PNG visualization clamps to `[0,1]`; raw depth NPY files remain meters;
+  depth PNGs use a common 0--6 m Turbo scale; semantic comparisons use released
+  nearest-current-GT-palette recoloring.
+- Runtime: 9.213427657989087 s.
+- Peak GPU allocated/reserved: 1,774,468,608 / 1,935,671,296 B.
+- Renderer invoked: yes. New metrics computed and SLAM rerun: no.
+- Output root:
+  `results/qualitative/phase4_vb001_room0_representative/`.
+- Canonical record:
+  `docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`.
+
+This is a selected training-camera comparison package. Paper-style 3D
+reconstruction and semantic-map visualization have not run.
 
 ## Protocol Boundaries
 
@@ -119,17 +149,23 @@ or generalization to other scenes/datasets. Post-SLAM optimization was not run.
 
 ## Immediate Operational Next Task
 
-Perform a **Paper / Baseline Comparison Audit**. It must determine whether the
-released-code sampling and definitions are directly comparable with the paper
-and prior baseline evidence, prepare a baseline-versus-PHASE4-VB-001 table,
-separate released-code reproduction from paper-table reproduction, and list
-the remaining scenes/experiments needed before any contribution claim.
+Perform a read-only **Scene Reconstruction / 3D Segmentation Visualization
+Audit**. It must inspect the repository-native visualization path for
+`params.ply` and `seg_params.ply`, establish camera/viewer, color, background,
+crop, output, and provenance conventions, and propose a bounded visualization
+gate without rendering it during the audit.
+
+The Paper / Baseline Comparison Audit remains the subsequent research task; it
+must still establish protocol/stage comparability before any reproduction or
+superiority claim.
 
 Do not start PHASE4-VB002 in this checkpoint. It remains a future runtime
 optimization track.
 
 ## STOPPED HERE
 
-PHASE4-VB-001 full-scene runtime, state preservation, and released Replica
-`room0` evaluation are complete through `PASS_EVAL_E4_FULL_RELEASED`. Resume
-with the Paper / Baseline Comparison Audit—not another SLAM or evaluation run.
+PHASE4-VB-001 full-scene runtime, state preservation, released Replica `room0`
+evaluation, and camera-view qualitative export are complete through
+`PASS_QUALITATIVE_EXPORT`. Resume with the Scene Reconstruction / 3D
+Segmentation Visualization Audit—not another SLAM, evaluation, or camera-view
+export run.

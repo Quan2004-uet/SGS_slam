@@ -4,6 +4,35 @@
 > `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
 > `SESSION_HANDOFF.md` for current state.
 
+## 2026-10-12 — PHASE4-VB-001 qualitative export checkpoint
+
+### Qualitative evidence
+
+- Recorded `PASS_QUALITATIVE_EXPORT` for representative Replica `room0`
+  training-camera frames `[0,499,999,1499,1999]`.
+- Recorded validated rendered/GT RGB, raw and visualized metric depth,
+  raw/recolored rendered semantic color, GT semantic color, side-by-side
+  comparisons, per-frame grids, and the five-frame contact sheet.
+- Preserved existing E4 per-frame values as annotations without recomputing
+  metrics.
+- Recorded 9.213427657989087 s export runtime and peak GPU
+  allocated/reserved of 1,774,468,608 / 1,935,671,296 B.
+- Runtime images, NPY files, manifest, and checksums remain Git-ignored in
+  `results/qualitative/phase4_vb001_room0_representative/`.
+
+### Documentation and handoff
+
+- Added the dedicated qualitative result and reconciled SESSION_004,
+  project status, derived state, roadmap, evaluation docs, and handoff.
+- Distinguished completed camera-view qualitative evidence from the not-yet-run
+  paper-style RGB/semantic 3D map visualization.
+- Set the immediate next task to Scene Reconstruction / 3D Segmentation
+  Visualization Audit; retained Paper / Baseline Comparison Audit as the
+  subsequent task.
+- No SLAM/evaluation rerun, metric recomputation, additional rendering,
+  source/config change, artifact upload, or Git LFS change was part of this
+  documentation checkpoint.
+
 ## 2026-10-11 — PHASE4-VB-001 full released evaluation checkpoint
 
 ### Evaluation

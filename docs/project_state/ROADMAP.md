@@ -27,18 +27,29 @@
 | E2 single-frame render | `PASS_EVAL_E2_SINGLE_FRAME_RENDER` |
 | E3 bounded released metrics | `PASS_EVAL_E3_BOUNDED_SUBSET` |
 | E4 full released `room0` evaluation | `PASS_EVAL_E4_FULL_RELEASED` |
-| Paper / Baseline Comparison Audit | NEXT |
+| Representative camera-view qualitative export | `PASS_QUALITATIVE_EXPORT` |
+| Scene Reconstruction / 3D Segmentation Visualization Audit | NEXT |
+| 3D map visualization execution | Pending separate authorization |
+| Paper / Baseline Comparison Audit | Subsequent |
 | Post-opt | Pending |
 | Paper comparison | Pending |
 | PHASE4-VB002 runtime optimization | Future track; not started |
 | Phase 5+ — Research improvements | Pending evaluation baseline |
 
-Immediate planning gate: compare the audited released-code `room0` results
-with paper/released baseline values, verify protocol and stage comparability,
-prepare a baseline-versus-PHASE4-VB-001 table, and identify remaining
-scenes/experiments. Do not rerun online SLAM or E1--E4 for this audit.
+Immediate planning gate: inspect repository-native visualization of
+`params.ply` as the reconstructed RGB map and `seg_params.ply` as the
+semantic-colored 3D map. Establish viewer/camera, color, background, crop,
+output, and provenance rules, then stop before rendering. Camera-view
+qualitative export is already complete and must not be repeated.
+
+After the visualization track, compare the audited released-code `room0`
+results with paper/released baseline values, verify protocol and stage
+comparability, prepare a baseline-versus-PHASE4-VB-001 table, and identify
+remaining scenes/experiments. Do not rerun online SLAM or E1--E4 for either
+audit.
 
 Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md),
 [full-scene output-save result](../experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md),
 [evaluation result](../experiments/PHASE4_VB001_EVALUATION_RESULT.md),
+[qualitative export result](../experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md),
 and Git-ignored runtime evidence under `results/runtime_artifacts/`.
