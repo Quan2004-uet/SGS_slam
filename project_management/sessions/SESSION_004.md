@@ -1,138 +1,107 @@
-# SESSION_004 — Phase 4 Variant B Full-Scene Validation and State Preservation
+# SESSION_004 — Phase 4 Variant B Full-Scene Validation, State Preservation, and Evaluation
 
 ## Metadata
 
 - Session ID: SESSION_004.
 - Status: CLOSED.
 - Started: 2026-10-10.
-- Last active: 2026-10-11.
-- Closed: 2026-10-11.
-- Phase: Phase 4 — Memory-management research variant.
+- Last active/closed: 2026-10-11.
+- Branch: `phase4-vb-001-cpu-keyframe-offload`.
 - Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads.
 
-Objective: validate full-scene Variant-B memory behavior, resolve the original
-full-scene validator contradiction, and preserve a reloadable full-scene final
-state with lightweight telemetry, without evaluation or algorithm change.
-
-## Starting State
-
-Phase 3 was closed with the unchanged baseline OOM at frame 1294 and an
-allocator-only OOM at frame 1333 on the RTX 5080. PHASE4-VB-001 had passed
-bounded gates through frames 0–999. No paper-protocol evaluation had run.
+Objective: validate full-scene Variant-B memory behavior, preserve a reloadable
+final state, audit the released evaluator, and complete staged saved-state
+evaluation without changing the algorithm or rerunning online SLAM.
 
 ## Work Completed
 
-1. Ran the detailed PHASE4-VB-001 online full scene 0–1999. It completed all
-   frames without OOM. The original harness reported `FAIL_RUNTIME` only
-   because its expected keyframes omitted the released `num_frames-2` terminal
-   condition. The corrected classification is `PASS_RUNTIME_VALIDATOR_BUG`.
-2. Audited the validator and preserved the original evidence unchanged.
-3. Audited the final save boundary and evaluator ordering.
-4. Validated the minimal final-save path with a 0–49 smoke test:
-   `PASS_MINIMAL_OUTPUT_SAVE_SMOKE`.
-5. Validated lightweight timing/GPU/RSS telemetry with a separate 0–49 smoke:
-   `PASS_TELEMETRY_OUTPUT_SAVE_SMOKE`.
-6. Ran one authorized minimal full-scene output-save workload over frames
-   0–1999 and verified final artifacts and telemetry:
+1. Reconciled the historical full-scene validator false failure as
+   `PASS_RUNTIME_VALIDATOR_BUG`; the released terminal `num_frames-2` keyframe
+   makes expected and observed keyframe counts both 402.
+2. Passed minimal and telemetry output-save smokes over frames 0–49.
+3. Completed and saved frames 0–1999 with
    `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
-7. No evaluation, ATE, image-quality/depth/semantic metrics, post-SLAM
-   optimization, or paper-metric reproduction was run.
+4. Audited saved-state loading, rendering, RGB/depth/semantic metrics,
+   trajectory alignment, sampling, and exports.
+5. E1 load-only: `PASS_EVAL_E1_LOAD_ONLY`.
+6. E2 single-frame RGB/depth/semantic render:
+   `PASS_EVAL_E2_SINGLE_FRAME_RENDER`.
+7. E3 five-frame bounded metrics: `PASS_EVAL_E3_BOUNDED_SUBSET`.
+8. E4 complete released evaluation: `PASS_EVAL_E4_FULL_RELEASED`.
 
-## Historical Detailed Full-Scene Runtime
+No source algorithm/config change, online SLAM rerun, post-SLAM optimization,
+or full rendered-image export occurred during evaluation.
 
-- Corrected status: `PASS_RUNTIME_VALIDATOR_BUG`.
-- Runtime: 22,299.70758857 s (about 6 h 11 m 40 s).
-- Final Gaussians: 4,983,660.
-- Logical keyframes: 402.
-- CPU archive / GPU archived payload: 10,497,024,000 / 0 B.
-- Peak GPU allocated/reserved: 6,774,482,432 / 8,009,023,488 B.
-- Detailed residency invariants: PASS.
-- Final state from that historical run: not saved because its harness stopped
-  before `save_params(...)`.
+## Full-Scene Output-Save Result
 
-## Final Output-Saving Result
-
-- Status: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
-- Frame range: 0–1999; 2,000 frames completed; final frame 1999.
-- Runtime: 14,173.47515856901 s (approximately 3 h 56 m 13 s).
-- Final Gaussians: 4,956,467.
-- Keyframes: 402; tail `[1989, 1994, 1998, 1999]`.
+- Frames: 0–1999, 2,000 completed.
+- Runtime: 14,173.47515856901 s.
+- Gaussians: 4,956,467.
+- Keyframes: 402; tail `[1989,1994,1998,1999]`.
 - Tracking/mapping/overall FPS: 0.3354664059815056 /
   0.25086898791330586 / 0.14110865384985266.
 - Peak GPU allocated/reserved: 5,817,509,888 / 7,189,037,056 B.
-- Process RSS/HWM: 17,960,493,056 B host RAM.
-- Final serialization: 9.3924627660017 s.
-- Save success / artifact completeness / telemetry completeness: true/true/true.
+- Process HWM: 17,960,493,056 B host RAM.
 
-The minimal harness intentionally omitted heavy per-iteration residency
-instrumentation. Its detailed archive/staging residency fields are `UNKNOWN`,
-not failed. The historical detailed run remains the evidence for those
-invariants.
+Saved state:
+`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz`
 
-## Saved State and Provenance
+## Released Evaluation Protocol
 
-Stable output:
-`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`
+- Image/depth/semantic sampling: 401 frames,
+  `{0} union {5k-1 | k=1..400}`.
+- RGB: GT divided by 255; render and GT masked by GT depth > 0; released
+  `calc_psnr`; MS-SSIM; LPIPS AlexNet with `[0,1]` clamping.
+- Depth: Replica scale 6553.5; masked MAE in meters.
+- Semantic: rendered `semantic_colors`; nearest current-frame GT palette;
+  black GT ignored; no direct `semantic_ids` comparison.
+- Trajectory: all 2,000 finite relative-w2c poses, normalized real-first
+  quaternions, Horn rigid alignment without scale.
 
-Evidence:
-`results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/`
+## Final E4 Metrics
 
-Result record:
-`docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`
+| Metric | Value | Classification |
+|---|---:|---|
+| PSNR | 33.313067 dB | Released-code metric |
+| MS-SSIM | 0.979470 | Released “SSIM” implementation |
+| LPIPS-Alex | 0.067555 | Released-code metric |
+| Depth L1 | 0.00495158 m / 0.495158 cm | Released masked MAE |
+| Semantic-color mIoU | 0.916585 | Released color-palette protocol |
+| Horn-aligned mean w2c translation error | 0.00274075 m | Released ATE-like mean; not true RMSE |
+| Supplementary true RMSE | 0.00339827 m | Supplementary metric from same aligned errors |
 
-Verified artifacts:
+- Evaluation wall time: 74.4107 s.
+- Renderer/metric/trajectory times: 10.0479 / 50.8178 / 0.0101 s.
+- Peak evaluation GPU allocated/reserved: 1,846,789,120 /
+  2,057,306,112 B.
+- Image export: none.
+- Skipped sampled frames, OOM, or non-finite metrics: none.
 
-- readable `params.npz`, 322,361,795 B;
-- `params.ply`, 337,040,173 B;
-- `seg_params.ply`, 337,040,173 B;
-- readable `keyframe_time_indices.npy`, 3,344 B;
-- timing, memory, run metadata, artifact manifest/checksums, system-state logs,
-  runtime log, result JSON, and summary in the evidence directory.
+## Evidence and Provenance
 
-`params.npz` contains Gaussian/map state, estimated camera trajectory, GT
-trajectory, intrinsics, `w2c`, timestep, semantic state, keyframe indices, and
-original image dimensions. Checksums are recorded in the result document and
-runtime manifest.
+- Evaluation run HEAD: `63adf3aed8ae2201a46d11cec473672f9e91fd0e`.
+- E4 harness SHA256:
+  `8c31b131e1b294fb0a089589c4f934e1c9912a4969573169f2abe333c847d5e6`.
+- Saved-state SHA256:
+  `dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2`.
+- E1--E4 evidence lives under `results/runtime_artifacts/phase4_vb001_eval_*`.
+- Canonical result: `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
 
-## Scientific Conclusion
+## Scientific Conclusion and Limits
 
-For Replica `room0` on the tested RTX 5080, PHASE4-VB-001 removes the
-GPU-memory scalability failure observed in the unchanged Phase 3 baseline,
-reaches frame 1999 without GPU OOM, and now preserves a reloadable final state.
-The final minimal run peaked at approximately 5.82 GB allocated and 7.19 GB
-reserved GPU memory, below the 16.61 GB physical capacity.
+For Replica `room0` on the tested RTX 5080, PHASE4-VB-001 resolves the measured
+GPU-resident keyframe scalability failure, completes online processing, saves
+a reloadable state, and completes the audited released-code evaluation from
+that state. These are one-scene released-code results. They do not establish
+full paper reproduction, accuracy superiority, benchmark-wide contribution,
+or generalization to other scenes.
 
-This does not establish reconstruction accuracy, paper metrics, or
-generalization to other scenes/datasets.
+## Next Task and Closure
 
-## Evaluation Status
+SESSION_004 closes at `PASS_EVAL_E4_FULL_RELEASED`. The next task is a
+**Paper / Baseline Comparison Audit**. It should verify protocol comparability,
+prepare a baseline-versus-PHASE4-VB-001 table, and identify justified claims
+and missing scenes/experiments. PHASE4-VB002 remains future work.
 
-`NOT RUN`. PSNR, SSIM, LPIPS, DepthL1, ATE Mean/RMSE, mIoU, rendering metrics,
-semantic metrics, post-SLAM optimization, and paper metrics remain uncomputed.
-
-## STOPPED HERE
-
-Phase 4 Variant B validation and full-scene state preservation are complete.
-The next gate is **Evaluation / Export Audit** from the saved `params.npz`.
-Do not rerun online SLAM if saved-state loading succeeds.
-
-## Next Gate
-
-Audit, without executing evaluation:
-
-- saved-state loading and required reconstruction;
-- RGB/depth/semantic renderer invocation;
-- PSNR/SSIM/LPIPS, DepthL1, ATE, and mIoU implementations/protocols;
-- frame sampling and GT alignment;
-- evaluation/export output directories and provenance.
-
-Stop after the audit for separate evaluation authorization. PHASE4-VB002
-runtime optimization remains future work and was not started.
-
-## Constraints Preserved
-
-- No PHASE4-VB-001 source, algorithm, or experiment-config change.
-- No pinned memory, non-blocking transfer, persistent GPU cache, or keyframe
-  eviction.
-- No evaluation, metrics, post-opt, or paper-result claim.
-- No large runtime artifact added to regular Git.
+Future sessions must not resume from output saving or E1--E4, and must not
+rerun online SLAM merely to repeat the saved-state evaluation.

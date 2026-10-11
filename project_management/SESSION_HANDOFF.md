@@ -7,109 +7,94 @@ Last reconciled: 2026-10-11.
 
 ## Session
 
-- Previous session: `SESSION_003` — Phase 4 Variant B Bounded Validation.
 - Session ID: `SESSION_004`.
-- Title: Phase 4 Variant B Full-Scene Validation and State Preservation.
+- Title: Phase 4 Variant B Full-Scene Validation, State Preservation, and
+  Released Evaluation.
 - Status: `CLOSED`.
 - Started: 2026-10-10.
-- Last active/closed: 2026-10-11.
-- Phase: Phase 4 — Memory-management research variant.
-- Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads.
+- Closed: 2026-10-11.
+- Branch: `phase4-vb-001-cpu-keyframe-offload`.
+- Evaluation run HEAD: `63adf3aed8ae2201a46d11cec473672f9e91fd0e`.
 
-## Current Checkpoint
+## Authoritative Completed Checkpoint
 
-PHASE4-VB-001 full-scene output saving is complete.
+- Latest gate: `PASS_EVAL_E4_FULL_RELEASED`.
+- Evaluation: complete for Replica `room0` released training-view protocol.
+- Online SLAM rerun: not required.
+- Image export: not performed.
+- Paper reproduction: not claimed and not complete.
 
-- Status: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
-- Frames: 0–1999, 2,000 completed.
-- Final Gaussians: 4,956,467.
-- Logical keyframes: 402; tail `[1989, 1994, 1998, 1999]`.
-- Runtime: 14,173.47515856901 s (approximately 3 h 56 m 13 s).
+Validation chain: E1 load-only PASS; E2 frame-0 RGB/depth/semantic render PASS;
+E3 frames `[0,4,9,14,19]` metric subset PASS; E4 full released evaluation
+PASS. Future sessions must not resume from output saving or E1--E4.
 
-The final state is saved and reloadable. `params.npz` is readable and contains
-Gaussian/map state, estimated camera parameters, GT trajectory, intrinsics,
-`w2c`, timestep, keyframe indices, semantic state, and original dimensions.
-Standalone keyframe indices and RGB/semantic PLY exports also exist.
+## Saved State and Full-Scene Runtime
 
-Stable output:
-`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`
+Saved state:
+`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz`
 
-Evidence:
-`results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/`
+- Frames 0–1999 completed; 4,956,467 Gaussians; 402 logical keyframes ending
+  `[1989,1994,1998,1999]`.
+- Runtime: 14,173.47515856901 s.
+- Tracking/mapping/overall FPS: 0.3354664059815056 /
+  0.25086898791330586 / 0.14110865384985266.
+- Peak SLAM GPU allocated/reserved: 5,817,509,888 / 7,189,037,056 B.
+- Process HWM: 17,960,493,056 B host RAM.
 
-Canonical result:
-`docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`
+## E4 Result
 
-## Runtime Telemetry Available
+- Image/depth/semantic metric frames: 401, exact released sample
+  `0,4,9,...,1989,1994,1999`; no skipped frames.
+- Trajectory frames: 2,000.
+- PSNR: 33.313067 dB.
+- MS-SSIM: 0.979470.
+- LPIPS: 0.067555.
+- Depth L1: 0.00495158 m / 0.495158 cm.
+- Semantic-color mIoU: 0.916585.
+- Released Horn-aligned mean w2c translation error: 0.00274075 m. It is not
+  true RMSE despite the released source label.
+- Supplementary true RMSE: 0.00339827 m.
+- Evaluation runtime: 74.4107 s.
+- Evaluation peak GPU allocated/reserved: 1,846,789,120 /
+  2,057,306,112 B.
+- Renderer/metrics: yes. SLAM rerun/image export/OOM/non-finite metric: no.
 
-- Tracking FPS: 0.3354664059815056.
-- Mapping FPS: 0.25086898791330586.
-- Overall SLAM FPS: 0.14110865384985266.
-- Peak GPU allocated/reserved: 5,817,509,888 / 7,189,037,056 B.
-- Process RSS/HWM: 17,960,493,056 B host RAM.
+Audit:
+`docs/experiments/PHASE4_VB001_EVALUATION_EXPORT_AUDIT.md`
 
-Detailed residency fields were intentionally not collected by the minimal
-harness and remain `UNKNOWN` for this run. Use the earlier full-scene
-Variant-B evidence for residency invariants; do not infer those values from
-the minimal harness.
+Result:
+`docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`
 
-## Evaluation Status
-
-Evaluation is `NOT RUN`. No ATE, PSNR, SSIM, LPIPS, DepthL1, mIoU, rendering
-metrics, semantic metrics, post-SLAM optimization, full rendered-image export,
-or paper metrics were run or reproduced.
-
-The saved state appears sufficient for future evaluation without rerunning
-online SLAM, but its loading/evaluation path must first be audited.
-
-## STOPPED HERE
-
-Full-scene online processing, final state saving, artifact verification, and
-lightweight telemetry are complete. Stop before evaluation execution.
+E4 evidence:
+`results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`
 
 ## Immediate Operational Next Task
 
-Perform an **Evaluation / Export Audit** from:
-`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz`.
+Perform a read-only **Paper / Baseline Comparison Audit**:
 
-Read source/config only and establish:
+1. locate the paper/released `room0` comparison values and their stage;
+2. verify protocol and sampling comparability;
+3. distinguish released-code reproduction from paper-table reproduction;
+4. prepare a baseline-versus-PHASE4-VB-001 result table;
+5. identify defensible claims and remaining scenes/experiments.
 
-- exact saved-state loader and required parameter reconstruction;
-- renderer entry point for RGB/depth/semantic output;
-- RGB PSNR/SSIM/LPIPS protocol;
-- depth/DepthL1 protocol;
-- trajectory/ATE Mean and RMSE alignment protocol;
-- semantic/mIoU protocol and label mapping;
-- frame sampling, GT alignment, and output directories;
-- whether any field is missing before evaluation is authorized.
+Do not automatically run another scene, evaluator, post-opt, or VB002. The
+comparison audit requires separate scope and should stop before new execution.
 
-Stop after the audit and request explicit authorization for evaluation/export.
-Do not rerun online SLAM if saved-state loading succeeds.
+## Relevant Evidence
 
-## Evaluation Targets for the Later Gate
-
-- RGB rendered/GT comparisons and PSNR, SSIM, LPIPS.
-- Depth rendered/GT comparisons and DepthL1.
-- Semantic rendered/GT comparisons and mIoU.
-- Estimated/GT trajectory and ATE Mean/RMSE.
-- Existing runtime metrics: tracking, mapping, and overall FPS; peak GPU
-  allocated/reserved; process RSS/HWM.
-
-## Relevant Files
-
-- `AGENTS.md`
 - `project_management/PROJECT_STATUS.md`
 - `project_management/sessions/SESSION_004.md`
 - `docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`
-- `docs/experiments/PHASE4_VB001_FULL_SCENE_AUDIT.md`
-- `docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_DRY_RUN_PLAN.md`
-- `docs/experiments/PHASE4_VB002_RUNTIME_OPTIMIZATION_PLAN.md`
-- `results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/`
+- `docs/experiments/PHASE4_VB001_EVALUATION_EXPORT_AUDIT.md`
+- `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`
+- `results/runtime_artifacts/phase4_vb001_eval_e1_load_only/`
+- `results/runtime_artifacts/phase4_vb001_eval_e2_single_frame_render/`
+- `results/runtime_artifacts/phase4_vb001_eval_e3_bounded_subset/`
+- `results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`
 
-## Do Not
+## STOPPED HERE
 
-- Do not rerun 0–49 or 0–1999 online SLAM.
-- Do not execute evaluation before its audit and separate approval.
-- Do not start post-SLAM optimization or PHASE4-VB002.
-- Do not change algorithm/config/precision/resolution/iterations/keyframes.
-- Do not commit or upload the large ignored artifacts through regular Git.
+SESSION_004 ends at `PASS_EVAL_E4_FULL_RELEASED`. Resume with Paper / Baseline
+Comparison Audit. No SLAM/evaluation rerun is needed or authorized by this
+handoff.

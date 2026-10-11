@@ -4,6 +4,32 @@
 > `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
 > `SESSION_HANDOFF.md` for current state.
 
+## 2026-10-11 — PHASE4-VB-001 full released evaluation checkpoint
+
+### Evaluation
+
+- Recorded E1/E2/E3/E4 PASS chain ending in
+  `PASS_EVAL_E4_FULL_RELEASED` without rerunning online SLAM.
+- Evaluated exactly 401 released image/depth/semantic frames and all 2,000
+  finite trajectory frames; no sampled frame was skipped.
+- Recorded PSNR 33.313067, MS-SSIM 0.979470, LPIPS 0.067555, Depth L1
+  0.00495158 m, semantic-color mIoU 0.916585, released Horn-aligned mean w2c
+  translation error 0.00274075 m, and supplementary true RMSE 0.00339827 m.
+- Recorded 74.4107 s evaluation runtime and peak GPU allocated/reserved of
+  1,846,789,120 / 2,057,306,112 B. No image export, OOM, or non-finite metric
+  occurred.
+
+### Documentation and handoff
+
+- Added the dedicated evaluation result and updated the audit with staged gate
+  outcomes.
+- Closed SESSION_004 at the E4 checkpoint and set the next task to Paper /
+  Baseline Comparison Audit.
+- Preserved the distinction between released-code results, the supplementary
+  true trajectory RMSE, and unverified paper-table comparability.
+- No source/config/algorithm change, new metric computation, or artifact
+  upload was part of this documentation checkpoint.
+
 ## 2026-10-11 — PHASE4-VB-001 full-scene output-save checkpoint
 
 ### Experiments and artifacts

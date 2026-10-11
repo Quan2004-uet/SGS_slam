@@ -132,6 +132,43 @@ prevents accidental use of the wrong online/post-opt or paper protocol.
 - `results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/`.
 - `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`.
 
+## DEC-011 — Treat E4 as released-code room0 evaluation, not paper reproduction
+
+- Date: 2026-10-11.
+- Session: SESSION_004.
+- Status: ACCEPTED.
+
+### Context
+
+The saved PHASE4-VB-001 state passed load, render, bounded-metric, and full
+released evaluation gates. E4 produced 401-frame RGB/depth/semantic metrics and
+2,000-frame trajectory results. The audit also established that released
+labels and formulas do not always match conventional or paper terminology.
+
+### Decision
+
+Record E4 as `PASS_EVAL_E4_FULL_RELEASED` for Replica `room0`. Preserve the
+released PSNR, MS-SSIM, LPIPS, Depth L1, semantic-color mIoU, and Horn-aligned
+mean translation error exactly as audited. Keep the separately calculated true
+trajectory RMSE labeled supplementary.
+
+Do not claim full paper reproduction, superiority, cross-scene generalization,
+or benchmark-wide contribution. Make the next task a Paper / Baseline
+Comparison Audit. Keep PHASE4-VB002 as a later optimization track.
+
+### Consequences
+
+- No further output-save or E1--E4 rerun is required for this checkpoint.
+- Future comparisons must disclose the 401-frame released sampling and metric
+  definitions, especially MS-SSIM and the non-RMSE released trajectory mean.
+- Additional scenes or paper-table claims require separately scoped evidence.
+
+### Evidence
+
+- `docs/experiments/PHASE4_VB001_EVALUATION_EXPORT_AUDIT.md`.
+- `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
+- `results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`.
+
 ## Migrated durable decision index
 
 The following accepted decisions were first summarized in the 2026-10-04

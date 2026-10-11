@@ -38,22 +38,22 @@ assets:
 workflow:
   phase: 4
   phase_name: Phase 4 — Memory-management research variant
-  phase_status: vb001_validation_and_state_preservation_complete
+  phase_status: vb001_full_released_room0_evaluation_complete
   active_variant: PHASE4-VB-001
-  current_gate: evaluation_export_audit
+  current_gate: paper_baseline_comparison_audit
   current_gate_status: not_started
-  latest_completed_gate: PHASE4-VB-001 full-scene output save 0-1999
-  latest_gate_status: PASS_FULL_OUTPUT_SAVE_TELEMETRY
+  latest_completed_gate: PHASE4-VB-001 E4 full released room0 evaluation
+  latest_gate_status: PASS_EVAL_E4_FULL_RELEASED
   full_scene_status: online_completed_final_state_saved
   full_scene_variant_status: PASS_FULL_OUTPUT_SAVE_TELEMETRY
   original_harness_status: FAIL_RUNTIME
   validator_bug: expected keyframes omitted released num_frames-2 terminal keyframe
   expected_final_keyframes: 402
   observed_final_keyframes: 402
-  variant_completion_status: validation_and_full_scene_state_preservation_complete
-  next_recommended_phase: Phase 4 — Evaluation / Export Audit
-  next_gate: evaluation_export_audit_from_saved_state
-  evaluation_status: not_run_pending_audit_and_separate_authorization
+  variant_completion_status: validation_state_preservation_and_released_room0_evaluation_complete
+  next_recommended_phase: Phase 4 — Paper / Baseline Comparison Audit
+  next_gate: paper_baseline_comparison_audit
+  evaluation_status: complete_for_replica_room0_released_training_view_protocol
   paper_metrics_reproduced: false
 
 session:
@@ -64,25 +64,26 @@ session:
   closed: 2026-10-11
 
 next_run:
-  role: read_only_evaluation_export_audit
+  role: read_only_paper_baseline_comparison_audit
   dataset: Replica
   scene: room0
   saved_state: experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz
   execute_slam: false
   execute_evaluation: false
-  prerequisite: inspect_saved_state_loading_and_metric_protocols
-  stop_after: document_audit_and_request_evaluation_authorization
-  audit_targets: [saved_state_loader, renderer, rgb_metrics, depth_metrics, trajectory_alignment, semantic_metrics, frame_sampling, gt_alignment, output_paths]
+  prerequisite: use_saved_e4_results_and_audited_protocol
+  stop_after: document_comparability_and_remaining_experiments
+  audit_targets: [paper_room0_values, released_baseline_values, protocol_comparability, stage_comparability, baseline_variant_table, justified_claims, remaining_scenes]
 
 next_actions:
-  stopped_here: PHASE4-VB-001 full-scene output saving and telemetry passed; final state is saved and reloadable. Evaluation has not run.
-  immediate_operational: Audit evaluation and export from the saved full-scene params.npz
-  next_research_gate: Evaluation / Export Audit from saved state
-  after_audit: Request explicit authorization before executing evaluation or export
+  stopped_here: PHASE4-VB-001 E4 full released room0 evaluation passed from the saved state; SESSION_004 is closed.
+  immediate_operational: Audit paper and released baseline comparability against the saved E4 results
+  next_research_gate: Paper / Baseline Comparison Audit
+  after_audit: Request explicit authorization before any additional scene or experiment
   direct_full_scene_authorized: false
   online_slam_rerun_required: false
-  evaluation_gate: Not run; audit loading and protocols before separate authorization
-  start_next_session_with_evaluation_export_audit: true
+  evaluation_gate: PASS_EVAL_E4_FULL_RELEASED
+  start_next_session_with_evaluation_export_audit: false
+  start_next_session_with_paper_baseline_comparison_audit: true
 
 environment:
   role: runtime_verified_destination_host_snapshot
@@ -150,7 +151,7 @@ latest_variant_runtime:
   process_hwm_bytes: 17960493056
   detailed_residency_telemetry: unknown_minimal_harness_intentionally_omitted_heavy_instrumentation
   memory_objective_succeeded: true
-  evaluation_run: false
+  evaluation_run: true
   paper_metrics_reproduced: false
   save_success: true
   artifact_completeness: true
@@ -164,13 +165,53 @@ latest_variant_runtime:
   semantic_state_saved: true
   keyframe_time_indices_npy_saved: true
   ply_saved: true
-  evaluation_outputs_saved: false
+  evaluation_outputs_saved: true
   checkpoint_saved: false
   rerun_required_for_runtime_memory_classification: false
   rerun_required_for_future_evaluation: false
   output_directory: experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/
   evidence_directory: results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/
   result_file: docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md
+
+latest_evaluation:
+  status: PASS_EVAL_E4_FULL_RELEASED
+  e1_status: PASS_EVAL_E1_LOAD_ONLY
+  e2_status: PASS_EVAL_E2_SINGLE_FRAME_RENDER
+  e3_status: PASS_EVAL_E3_BOUNDED_SUBSET
+  e4_status: PASS_EVAL_E4_FULL_RELEASED
+  dataset: Replica
+  scene: room0
+  image_metric_frame_count: 401
+  image_metric_sampling: "{0} union {5k-1 | k=1..400}"
+  first_frame_ids: [0, 4, 9]
+  final_frame_ids: [1989, 1994, 1999]
+  skipped_frames: []
+  trajectory_frame_count: 2000
+  mean_psnr_db: 33.313067
+  mean_ms_ssim: 0.979470
+  mean_lpips_alex: 0.067555
+  mean_depth_l1_m: 0.00495158
+  mean_depth_l1_cm: 0.495158
+  mean_semantic_color_miou: 0.916585
+  released_horn_aligned_mean_w2c_translation_error_m: 0.00274075
+  released_horn_aligned_mean_w2c_translation_error_cm: 0.274075
+  supplementary_true_rmse_m: 0.00339827
+  supplementary_true_rmse_cm: 0.339827
+  runtime_seconds: 74.4107
+  renderer_seconds: 10.0479
+  metric_seconds: 50.8178
+  trajectory_seconds: 0.0101
+  max_allocated_bytes: 1846789120
+  max_reserved_bytes: 2057306112
+  renderer_invoked: true
+  metrics_computed: true
+  slam_rerun: false
+  image_export_performed: false
+  cuda_oom: false
+  non_finite_metrics: false
+  paper_reproduction_claimed: false
+  evidence_directory: results/runtime_artifacts/phase4_vb001_eval_e4_full_released/
+  result_file: docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md
 
 final_artifacts:
   output_directory: experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/
@@ -212,12 +253,12 @@ runtime_conclusion:
   phase4_variant_memory_objective_succeeded: true
   phase4_variant_final_outputs_saved: true
   paper_metrics_reproduced: false
-  evaluation_run: false
+  evaluation_run: true
   post_opt_run: false
   conclusion_file: docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md
   closure_file: docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md
   closure_decision: close_phase3_with_memory_limitation
-  next_decision: audit_evaluation_export_from_saved_phase4_vb001_state
+  next_decision: audit_paper_and_baseline_comparability_from_e4_results
 
 integrity:
   baseline_source_changed: false

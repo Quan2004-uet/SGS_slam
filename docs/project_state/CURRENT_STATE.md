@@ -16,8 +16,9 @@ does not promote this legacy file to current-state authority. Canonical values
 remain in `project_management/PROJECT_STATUS.md` and the exact resume point in
 `project_management/SESSION_HANDOFF.md`.
 
-- PHASE4-VB-001 validation and full-scene state preservation are complete.
-- Final status: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`; Replica `room0` frames
+- PHASE4-VB-001 validation, full-scene state preservation, and released
+  `room0` evaluation are complete.
+- Runtime/output status: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`; Replica `room0` frames
   0–1999 completed with 4,956,467 Gaussians and 402 keyframes ending
   `[1989, 1994, 1998, 1999]`.
 - Runtime was 14,173.47515856901 s. Peak GPU allocated/reserved was
@@ -30,11 +31,14 @@ remain in `project_management/PROJECT_STATUS.md` and the exact resume point in
   `PASS_RUNTIME_VALIDATOR_BUG` and supplies detailed residency-invariant
   evidence. The minimal output-save harness intentionally did not duplicate
   that heavy residency telemetry.
-- No evaluation, ATE, rendering/depth/semantic metrics, post-SLAM
-  optimization, or paper metrics have run.
-- The next workflow is an Evaluation / Export Audit from saved state. If
-  loading succeeds, do not rerun online SLAM. Stop after the audit for separate
-  authorization before metric execution.
+- Latest gate: `PASS_EVAL_E4_FULL_RELEASED`. The released protocol evaluated
+  401 RGB/depth/semantic frames and all 2,000 finite trajectory poses without
+  rerunning SLAM. PSNR/MS-SSIM/LPIPS/Depth L1/semantic mIoU are recorded in
+  `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
+- Paper reproduction, cross-scene generalization, and post-SLAM optimization
+  are not claimed or complete.
+- The next workflow is a Paper / Baseline Comparison Audit. Do not resume from
+  output saving or evaluation Gates E1--E4.
 
 ## Baseline
 
