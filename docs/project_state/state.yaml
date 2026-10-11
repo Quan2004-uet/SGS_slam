@@ -2,8 +2,8 @@ authority: derived
 canonical_project_status: project_management/PROJECT_STATUS.md
 canonical_handoff: project_management/SESSION_HANDOFF.md
 role: derived_machine_readable_snapshot
-last_updated: 2026-10-10
-authority_reconciled: 2026-10-10
+last_updated: 2026-10-11
+authority_reconciled: 2026-10-11
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
@@ -40,36 +40,49 @@ workflow:
   phase_name: Phase 4 — Memory-management research variant
   phase_status: in_progress
   active_variant: PHASE4-VB-001
-  current_gate: gate5_bounded_0_999
-  current_gate_status: PASS_FRAME_LIMIT
-  latest_completed_gate: Gate 5 0-999
-  latest_gate_status: PASS_FRAME_LIMIT
-  full_scene_status: not_tested
-  full_scene_variant_status: not_started
-  next_recommended_phase: Phase 4 — full-scene Variant B validation
-  next_gate: full_scene_0_1999
-  evaluation_status: not_started
+  current_gate: full_scene_online_0_1999
+  current_gate_status: PASS_RUNTIME_VALIDATOR_BUG
+  latest_completed_gate: PHASE4-VB-001 online full scene 0-1999
+  latest_gate_status: PASS_RUNTIME_VALIDATOR_BUG
+  full_scene_status: online_completed_outputs_missing
+  full_scene_variant_status: PASS_RUNTIME_VALIDATOR_BUG
+  original_harness_status: FAIL_RUNTIME
+  validator_bug: expected keyframes omitted released num_frames-2 terminal keyframe
+  expected_final_keyframes: 402
+  observed_final_keyframes: 402
+  variant_completion_status: incomplete_pending_output_validation_and_later_evaluation_gate
+  next_recommended_phase: Phase 4 — Variant B output-save boundary validation
+  next_gate: output_save_smoke_0_49
+  evaluation_status: prohibited_missing_final_artifacts
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_003
+  id: SESSION_004
   status: closed
   started: 2026-10-10
-  last_active: 2026-10-10
+  last_active: 2026-10-11
+  closed: 2026-10-11
 
 next_run:
-  role: full_scene_variant_validation
+  role: bounded_variant_output_save_smoke
   dataset: Replica
   scene: room0
   frame_start: 0
-  frame_end: 1999
-  guard_frame: null
-  instrumentation: Variant B residency, CPU RAM, memory, finite-state, and full-scene stop conditions
+  frame_end: 49
+  guard_frame: 50
+  prerequisite: read_only_output_save_dry_run_inspection
+  stop_after: review_saved_smoke_artifacts_and_request_approval
+  required_outputs: [params.npz, keyframe_time_indices, camera_trajectory, gaussian_state, semantic_state, provenance]
+  instrumentation: Preserve Variant B behavior, block evaluation, allow final save path, and verify reloadable outputs
 
 next_actions:
-  immediate_operational: Prepare SESSION_004 for full-scene online Variant B 0-1999
-  next_research_gate: full-scene online 0-1999 after separate authorization
-  resume_session_only_when_research_gate_begins: true
+  stopped_here: PHASE4-VB-001 online full-scene 0-1999 completed, but final evaluation artifacts were not saved. Next workflow is dry-run inspection, output-save smoke test 0-49, and review; not direct full scene and not evaluation.
+  immediate_operational: Read-only inspect PHASE4-VB-001 output-save harness and final save boundary
+  next_research_gate: PHASE4-VB-001 output-saving smoke test 0-49 after dry-run inspection
+  after_smoke_review: Full-scene output-saving 0-1999 only after explicit approval
+  direct_full_scene_authorized: false
+  evaluation_gate: Prohibited until final map and trajectory outputs are saved and reviewed
+  start_next_session_with_dry_run_inspection: true
 
 environment:
   role: runtime_verified_destination_host_snapshot
@@ -116,26 +129,41 @@ latest_runtime:
 
 latest_variant_runtime:
   variant: PHASE4-VB-001
-  status: PASS_FRAME_LIMIT
-  completed_frames: 0-999
-  guard_frame: 1000
-  logical_keyframes: 201
-  final_gaussians: 4411916
-  cpu_keyframe_archive_bytes: 5248512000
+  status: PASS_RUNTIME_VALIDATOR_BUG
+  original_harness_status: FAIL_RUNTIME
+  validator_error: logical keyframe IDs/order mismatch
+  validator_root_cause: expected keyframes omitted released num_frames-2 terminal keyframe
+  online_runtime_completed: true
+  completed_frames: 0-1999
+  final_completed_frame: 1999
+  natural_online_loop_completion: true
+  index_2000_loaded: false
+  cuda_oom: false
+  logical_keyframes: 402
+  expected_logical_keyframes: 402
+  final_gaussians: 4983660
+  cpu_keyframe_archive_bytes: 10497024000
   gpu_archived_payload_bytes: 0
-  gpu_est_w2c_bytes: 12864
-  max_allocated_bytes: 5958148096
-  max_reserved_bytes: 6949961728
-  max_rss_bytes: 7905923072
-  runtime_seconds: 7183.993467400001
-  latest_runtime_seconds: 7183.993467400001
-  latest_max_gpu_allocated_bytes: 5958148096
-  latest_max_gpu_reserved_bytes: 6949961728
-  latest_max_rss_bytes: 7905923072
-  latest_cpu_archive_bytes: 5248512000
-  frame499_allocated_reduction_bytes: 2787247616
-  frame499_allocated_reduction_percent: 75.83
-  evidence_directory: results/runtime_artifacts/phase4_vb001_gate5_0_999/
+  gpu_est_w2c_bytes: 25728
+  max_allocated_bytes: 6774482432
+  max_reserved_bytes: 8009023488
+  max_rss_bytes: 13529231360
+  runtime_seconds: 22299.70758857
+  memory_objective_succeeded: true
+  evaluation_run: false
+  paper_metrics_reproduced: false
+  final_evaluation_artifacts_available: false
+  params_npz_saved: false
+  final_map_saved: false
+  trajectory_saved: false
+  keyframe_time_indices_npy_saved: false
+  ply_saved: false
+  evaluation_outputs_saved: false
+  checkpoint_saved: false
+  rerun_required_for_runtime_memory_classification: false
+  rerun_required_for_future_evaluation: true
+  evidence_directory: results/runtime_artifacts/phase4_vb001_full_scene_0_1999/
+  audit_file: docs/experiments/PHASE4_VB001_FULL_SCENE_AUDIT.md
 
 runtime_conclusion:
   bounded_pass_through_frame: 499
@@ -148,6 +176,11 @@ runtime_conclusion:
   allocator_opt_last_completed_frame: 1332
   allocator_opt_failing_frame: 1333
   full_scene_pass: false
+  phase4_variant_full_scene_online_completed: true
+  phase4_variant_corrected_status: PASS_RUNTIME_VALIDATOR_BUG
+  phase4_variant_original_harness_status: FAIL_RUNTIME
+  phase4_variant_memory_objective_succeeded: true
+  phase4_variant_final_outputs_saved: false
   paper_metrics_reproduced: false
   evaluation_run: false
   post_opt_run: false

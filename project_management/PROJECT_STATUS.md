@@ -6,10 +6,14 @@
 > next task. Verify it against repository/runtime evidence, then use
 > `SESSION_HANDOFF.md` for the exact operational resume point.
 
-Last reconciled: 2026-10-10. Phase 3 baseline runtime reproduction remains
+Last reconciled: 2026-10-11. Phase 3 baseline runtime reproduction remains
 closed with a documented RTX 5080 16 GB memory limitation. Phase 4 Variant B
-Gate 5 passed bounded validation through frames 0–999; `SESSION_003` is
-closed and `SESSION_004` is planned for the full-scene gate.
+completed online frames 0–1999 with corrected classification
+`PASS_RUNTIME_VALIDATOR_BUG`; `SESSION_004` is closed. Final map and trajectory
+outputs were not saved. The next workflow is read-only save-boundary
+inspection, then a bounded output-save smoke test 0–49 and review. Full-scene
+output-saving 0–1999 remains separately authorized; evaluation remains
+prohibited.
 
 ## State Authority
 
@@ -26,15 +30,16 @@ decides and both canonical files must be reconciled together.
 ## Project Identity
 
 Repository: SGS-SLAM — Semantic Gaussian Splatting for Neural Dense SLAM\
-Current documentation HEAD: `108d73e7367059a85010e2c19f48419cb3a2741f` (`main`)\
+Current committed HEAD at the run/audit boundary: `ecb2ae67b073fe7002df6cda76999a18e603a901` (`phase4-vb-001-cpu-keyframe-offload`)\
 Released source/config baseline and audited commit: `e4183986204242a8bb422624618af07780a49d26` (`main`)\
 Research objective: establish and characterize the released SGS-SLAM baseline before proposing changes.\
 Dataset: author-distributed semantic Replica package at `data/Replica`\
 Canonical scene/config: Replica `room0`, `configs/replica/slam.py`, seed 0
 
-The later HEAD contains documentation/migration commits; a scoped diff verifies
-no change from the released baseline in `scripts/`, `utils/`, `datasets/`, or
-`configs/`. Runtime evidence remains under Git-ignored `results/` paths.
+The active branch contains the scoped PHASE4-VB-001 CPU keyframe-payload
+offload in `scripts/slam.py`; experiment config is unchanged. This is a
+research variant, not pure released-baseline reproduction. Runtime evidence
+remains under Git-ignored `results/` paths.
 
 ## Current Phase
 
@@ -42,15 +47,15 @@ Phase: Phase 4 — Memory-management research variant\
 Status: IN PROGRESS\
 Objective: validate `PHASE4-VB-001` CPU offload of resident keyframe payloads while preserving released online behavior and documenting memory/runtime tradeoffs.\
 Entry condition: Phase 3 baseline closure with memory limitation; Phase 4 design and implementation note recorded.\
-Exit / stop condition: stop at each bounded gate; full scene and evaluation require separate authorization.
+Exit / stop condition: stop at each gate; validate output saving on frames 0–49 before separately authorizing output-saving full scene or evaluation.
 
 ## Latest Session
 
-Session ID: SESSION_003\
+Session ID: SESSION_004\
 Status: CLOSED\
 Started: 2026-10-10\
-Last active: 2026-10-10\
-Closed: 2026-10-10
+Last active: 2026-10-11\
+Closed: 2026-10-11
 
 ## COMPLETE
 
@@ -78,7 +83,8 @@ Closed: 2026-10-10
 - Gate 1: `PASS`; Gate 2: `PASS`; Gate 3 frames 0–99:
   `PASS_FRAME_LIMIT`; Gate 4 frames 0–499: `PASS_FRAME_LIMIT`; Gate 5 frames
   0–999: `PASS_FRAME_LIMIT`.
-- Latest completed gate: Gate 5 0–999 `PASS_FRAME_LIMIT`.
+- Latest completed gate: full-scene online 0–1999, corrected classification
+  `PASS_RUNTIME_VALIDATOR_BUG`.
 - Gate 5 runtime: `7183.993467400001 s`; final Gaussians `4,411,916`;
   resident keyframes `201`; CPU archive `5,248,512,000 B`; GPU archived
   payload `0 B`.
@@ -86,9 +92,26 @@ Closed: 2026-10-10
   max RSS/high-water: `7,905,923,072 / 7,957,504,000 B`.
 - Latest measured frame-499 long-lived allocated reduction: `2,787,247,616 B`
   (about `75.83%`) versus Phase 3C-6.
-- Next gate: full-scene online Variant B frames 0–1999 in `SESSION_004`.
-- Full-scene Variant B: `NOT YET RUN`.
+- Full-scene online runtime: completed frames 0–1999 with no OOM. The original
+  harness summary remains `FAIL_RUNTIME` because its expected keyframes
+  omitted the released `num_frames-2` terminal keyframe. Expected and observed
+  final keyframe counts are both 402.
+- Full-scene final CPU archive / GPU archived payload:
+  `10,497,024,000 / 0 B`.
+- Full-scene peak GPU allocated/reserved:
+  `6,774,482,432 / 8,009,023,488 B`.
+- PHASE4-VB-001 memory objective: succeeded at the measured runtime level.
+- Final evaluation artifacts: `NOT AVAILABLE`; no `params.npz`, final map,
+  reloadable trajectory/camera parameters, `keyframe_time_indices` `.npy`, PLY,
+  evaluation output, or checkpoint was saved.
+- Rerun is not required for runtime/memory classification, but is required if
+  future evaluation needs the final map and trajectory.
+- Next gate: read-only output-save dry-run inspection, then PHASE4-VB-001
+  output-saving smoke test 0–49.
 - Evaluation and paper metrics: `NOT STARTED` / `NOT REPRODUCED`.
+- PHASE4-VB-001 is not complete as an evaluable research result until final
+  output-saving artifacts are validated and a later evaluation gate is
+  separately authorized.
 - Variant B is a research variant, not pure released-baseline reproduction;
   Phase 3 baseline closure remains immutable.
 
@@ -107,7 +130,7 @@ Historical snapshot note: `07_phase3b_status.md` records the original dataset-bl
 ## NOT STARTED
 
 - Paper-protocol evaluation and paper-metric reproduction.
-- Later research phases, including limitation characterization and method changes.
+- Later research phases after the current Phase 4 memory-management variant.
 
 ## BLOCKED
 
@@ -117,11 +140,15 @@ Historical snapshot note: `07_phase3b_status.md` records the original dataset-bl
 - No dataset, renderer, or numerical-stability blocker is known from the
   recorded bounded runs.
 - Paper metrics remain unverified because evaluation and post-opt were not run.
+- PHASE4-VB-001 final evaluation artifacts are missing. Dry-run inspection and
+  a 0–49 output-save smoke test must pass before a full-scene output-saving
+  gate can be authorized; evaluation remains later and separate.
 
 ## UNKNOWN / REQUIRES VERIFICATION
 
 - Whether a larger-VRAM released-baseline run completes full `room0`.
-- Whether a source-level memory-policy variant can complete 2,000 frames while preserving acceptable metrics.
+- Whether PHASE4-VB-001 preserves acceptable metrics; the online runtime and
+  memory objective passed, but no evaluation output exists.
 - Full `room0` baseline completion and paper-protocol metric reproduction.
 - Whether reported paper targets can be compared directly to this repository's evaluator and online/post-optimization outputs.
 
@@ -146,33 +173,76 @@ metrics or reproduce SGS-SLAM paper results.
 
 ## Current Research Question
 
-Whether the next authorized work should use larger-VRAM infrastructure for the
-unchanged baseline or begin a separately identified Phase 4 memory-management
-research variant.
+How to preserve the final PHASE4-VB-001 map, camera trajectory, semantic
+state, and keyframe indices at the full-scene boundary without changing the
+online algorithm or starting evaluation.
 
 ## NEXT MILESTONE
 
-Review Gate 5 and run the separately authorized full-scene Variant B online
-gate frames 0–1999 in `SESSION_004`. Evaluation remains prohibited until
-full-scene online PASS and required outputs are saved. Larger-VRAM
-infrastructure remains the alternative for pure-baseline full-scene execution.
+Complete read-only output-save dry-run inspection and one bounded
+PHASE4-VB-001 output-save smoke test for frames 0–49. Review the smoke outputs
+before considering explicit authorization for full-scene output-saving
+0–1999. Evaluation remains prohibited until final full-scene map and trajectory
+outputs are saved and reviewed.
 
 ## IMMEDIATE OPERATIONAL NEXT TASK
 
-Prepare `SESSION_004` for full-scene Variant B online Replica `room0` frames
-0–1999. Preserve implementation/config and stop for review at the full-scene
-boundary or any required failure condition.
+Read-only inspect the save boundary, evaluator suppression, expected artifacts,
+and disk/RAM requirements. If inspection passes, prepare exactly one
+PHASE4-VB-001 Replica `room0` output-save smoke test for frames 0–49. Preserve
+source/config/algorithm, verify outputs, and stop for approval.
 
 ## NEXT RESEARCH GATE
 
-Full-scene Variant B online frames 0–1999. Evaluation status remains
-`NOT STARTED`; paper metrics reproduced remains `false`. Evaluation remains
-prohibited until full-scene online PASS and required outputs are saved.
+PHASE4-VB-001 output-saving smoke test 0–49 after dry-run inspection. Stop and
+review `params.npz`, reloadable
+`keyframe_time_indices` saving, camera trajectory, Gaussian/semantic
+state, and provenance. Full-scene output-saving 0–1999 requires explicit
+approval after smoke review. Evaluation status remains `NOT STARTED`; paper
+metrics reproduced remains `false`.
 
-## Phase 4 Gate 5 Reconciliation — 2026-10-10
+## STOPPED HERE
 
-The current runtime evidence supersedes the earlier Phase 4 checkpoint above:
-Gate 5 completed Replica `room0` frames 0–999 with `PASS_FRAME_LIMIT`,
+PHASE4-VB-001 online full-scene 0–1999 completed, but final evaluation
+artifacts were not saved. Next workflow is dry-run inspection, output-save
+smoke test 0–49, and smoke-output review. Do not run full-scene output-saving
+0–1999 without explicit approval, and do not run evaluation.
+
+## Next Session Start Prompt
+
+Dry-run inspect the PHASE4-VB-001 output-saving workflow. Confirm that the real
+evaluator remains disabled while released final parameter assembly and
+`save_params(...)` are allowed to complete. If the inspection passes, run one
+bounded output-save smoke test for Replica `room0` frames 0–49, verify
+`params.npz`, reloadable `keyframe_time_indices` saving, camera trajectory, Gaussian and
+semantic state, provenance, and no metric execution, then stop for approval.
+
+## Phase 4 Full-Scene Audit Reconciliation — 2026-10-11
+
+The PHASE4-VB-001 online loop completed all 2,000 Replica `room0` frames,
+0–1999, with no OOM. The original harness summary remains `FAIL_RUNTIME`
+because its cadence-only expectation omitted the released terminal
+`time_idx == num_frames-2` keyframe. The released condition expects frame 1998
+in addition to cadence frame 1999; expected and observed final keyframe counts
+are both 402. The audit therefore assigns corrected classification
+`PASS_RUNTIME_VALIDATOR_BUG` while preserving the original evidence unchanged.
+
+Peak GPU allocated/reserved was 6,774,482,432 / 8,009,023,488 B. Final CPU
+keyframe archive was 10,497,024,000 B and GPU archived payload was 0 B. The
+PHASE4-VB-001 memory objective succeeded. No evaluation or paper metrics were
+run. Because `save_checkpoints=False` and the completion hook blocked execution
+before final parameter saving, no `params.npz`, final map, trajectory, or
+checkpoint exists. The existing run does not need repetition for runtime or
+memory classification. If future evaluation is needed, first validate the
+output-save boundary through dry-run inspection and a 0–49 smoke test; only
+then may a full-scene output-saving rerun be separately authorized. See
+`docs/experiments/PHASE4_VB001_FULL_SCENE_AUDIT.md`.
+
+## Historical Phase 4 Gate 5 Reconciliation — 2026-10-10
+
+This bounded checkpoint is superseded by the 2026-10-11 full-scene audit
+reconciliation above. At the time, Gate 5 completed Replica `room0` frames
+0–999 with `PASS_FRAME_LIMIT`,
 intercepting dataset index 1000 before the real loader. The run recorded
 4,411,916 final Gaussians, 201 logical keyframes, 5,248,512,000 B CPU archive,
 0 B GPU archived payload, maximum allocated/reserved

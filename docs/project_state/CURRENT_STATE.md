@@ -9,6 +9,34 @@
 This snapshot records the state used for the 2026-10-04 migration checkpoint.
 Detailed evidence is in the linked runtime records.
 
+## Current checkpoint pointer — 2026-10-11
+
+This section is a convenience pointer requested for the session checkpoint; it
+does not promote this legacy file to current-state authority. Canonical values
+remain in `project_management/PROJECT_STATUS.md` and the exact resume point in
+`project_management/SESSION_HANDOFF.md`.
+
+- PHASE4-VB-001 completed online Replica `room0` frames 0–1999 with no OOM.
+- Corrected classification is `PASS_RUNTIME_VALIDATOR_BUG`, not an algorithm
+  or runtime failure. The original harness summary remains `FAIL_RUNTIME`
+  because its expected-keyframe formula omitted the released terminal
+  `time_idx == num_frames-2` keyframe. Expected and observed counts are 402.
+- Peak GPU allocated/reserved was 6,774,482,432 / 8,009,023,488 B. Final CPU
+  archive was 10,497,024,000 B and GPU archived payload was 0 B.
+- Final evaluation artifacts are missing because the harness blocked before
+  the released final `save_params(...)` path. No final `params.npz`, map,
+  reloadable trajectory/camera parameters, keyframe-index `.npy`, PLY, or
+  evaluation output exists.
+- No evaluation or paper metrics have been reproduced from saved final
+  outputs. PHASE4-VB-001 is not complete as an evaluable result.
+- Next-session workflow is strictly: read-only output-save dry-run inspection;
+  one bounded output-save smoke test for frames 0–49 if inspection passes;
+  review `params.npz`, keyframe indices, trajectory, Gaussian/semantic state,
+  and provenance; then stop for approval.
+- Do not run full-scene output-saving 0–1999 before the smoke output is
+  validated and explicit approval is given. Evaluation remains a later,
+  separately authorized gate.
+
 ## Baseline
 
 - Released SGS-SLAM baseline commit: `e4183986204242a8bb422624618af07780a49d26`; branch: `main`. The research repository may have later documentation commits; do not substitute their HEAD for this baseline revision.

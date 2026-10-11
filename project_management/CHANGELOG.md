@@ -4,6 +4,32 @@
 > `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
 > `SESSION_HANDOFF.md` for current state.
 
+## 2026-10-11 — PHASE4-VB-001 full-scene audit checkpoint
+
+### Runtime evidence reconciliation
+
+- Recorded that PHASE4-VB-001 completed online Replica `room0` frames 0–1999
+  with no OOM and met its measured memory objective.
+- Preserved the original harness `FAIL_RUNTIME` evidence while recording the
+  corrected audit classification `PASS_RUNTIME_VALIDATOR_BUG`. The validator
+  omitted the released terminal `time_idx == num_frames-2` keyframe; expected
+  and observed final keyframe counts are both 402.
+- Recorded peak GPU allocated/reserved of 6,774,482,432 / 8,009,023,488 B,
+  final CPU archive of 10,497,024,000 B, and GPU archived payload of 0 B.
+
+### Output and handoff
+
+- Recorded that no final `params.npz`, map/checkpoint, reloadable camera
+  trajectory, keyframe-index `.npy`, PLY, or evaluation output was saved
+  because the harness stopped before the released final `save_params(...)`
+  path.
+- Set the next-session workflow to read-only dry-run inspection, then one
+  bounded output-save smoke test for frames 0–49, followed by smoke-artifact
+  review and an explicit approval stop.
+- Full-scene output-saving 0–1999 and all evaluation/metric work remain
+  unauthorized until their respective gates. No source/config/algorithm
+  change, experiment, evaluation, commit, or push occurred in this checkpoint.
+
 ## 2026-10-05 — Documentation-only state reconciliation
 
 ### Documentation
