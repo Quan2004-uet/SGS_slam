@@ -83,6 +83,55 @@ unchanged except for explicit authority notes.
 - `docs/baseline_reproduction/runtime/13_bounded_online_50_frames.md`.
 - Git state at documentation HEAD `63943487478cd876339e8ec1660e91bab1215fab`.
 
+## DEC-010 — Evaluate PHASE4-VB-001 from saved full-scene state
+
+- Date: 2026-10-11.
+- Session: SESSION_004.
+- Status: ACCEPTED.
+
+### Context
+
+PHASE4-VB-001 completed Replica `room0` frames 0–1999 and saved a readable
+final `params.npz`, Gaussian/semantic PLY exports, standalone keyframe indices,
+and timing/memory telemetry. Save success, artifact completeness, and telemetry
+completeness all passed. No evaluation has run.
+
+### Decision
+
+Use the saved full-scene state at
+`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`
+for the next Evaluation / Export Audit. Do not rerun online SLAM if saved-state
+loading succeeds. Audit evaluator loading, rendering, metric definitions,
+sampling, GT alignment, trajectory alignment, semantic labels, and output
+paths before separately authorizing metric execution.
+
+Keep PHASE4-VB002 as a future optimization track. Do not introduce it into the
+PHASE4-VB-001 evaluation baseline.
+
+### Rationale
+
+The output-saving result is complete and checksummed, so another online run
+would spend substantial compute without adding required state. Separating the
+read-only evaluation audit from execution preserves metric attribution and
+prevents accidental use of the wrong online/post-opt or paper protocol.
+
+### Consequences
+
+- Evaluation, ATE, PSNR, SSIM, LPIPS, DepthL1, mIoU, rendering metrics,
+  semantic metrics, and paper metrics remain `NOT RUN` until separately
+  authorized.
+- Runtime binary artifacts remain Git-ignored on the server; documentation
+  records their paths, sizes, hashes, and provenance.
+- The historical validator-bug run remains authoritative for detailed
+  residency invariants; the minimal output-save run does not claim detailed
+  residency telemetry it did not collect.
+
+### Evidence
+
+- `docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`.
+- `results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/`.
+- `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`.
+
 ## Migrated durable decision index
 
 The following accepted decisions were first summarized in the 2026-10-04

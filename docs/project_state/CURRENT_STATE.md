@@ -16,26 +16,25 @@ does not promote this legacy file to current-state authority. Canonical values
 remain in `project_management/PROJECT_STATUS.md` and the exact resume point in
 `project_management/SESSION_HANDOFF.md`.
 
-- PHASE4-VB-001 completed online Replica `room0` frames 0–1999 with no OOM.
-- Corrected classification is `PASS_RUNTIME_VALIDATOR_BUG`, not an algorithm
-  or runtime failure. The original harness summary remains `FAIL_RUNTIME`
-  because its expected-keyframe formula omitted the released terminal
-  `time_idx == num_frames-2` keyframe. Expected and observed counts are 402.
-- Peak GPU allocated/reserved was 6,774,482,432 / 8,009,023,488 B. Final CPU
-  archive was 10,497,024,000 B and GPU archived payload was 0 B.
-- Final evaluation artifacts are missing because the harness blocked before
-  the released final `save_params(...)` path. No final `params.npz`, map,
-  reloadable trajectory/camera parameters, keyframe-index `.npy`, PLY, or
-  evaluation output exists.
-- No evaluation or paper metrics have been reproduced from saved final
-  outputs. PHASE4-VB-001 is not complete as an evaluable result.
-- Next-session workflow is strictly: read-only output-save dry-run inspection;
-  one bounded output-save smoke test for frames 0–49 if inspection passes;
-  review `params.npz`, keyframe indices, trajectory, Gaussian/semantic state,
-  and provenance; then stop for approval.
-- Do not run full-scene output-saving 0–1999 before the smoke output is
-  validated and explicit approval is given. Evaluation remains a later,
-  separately authorized gate.
+- PHASE4-VB-001 validation and full-scene state preservation are complete.
+- Final status: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`; Replica `room0` frames
+  0–1999 completed with 4,956,467 Gaussians and 402 keyframes ending
+  `[1989, 1994, 1998, 1999]`.
+- Runtime was 14,173.47515856901 s. Peak GPU allocated/reserved was
+  5,817,509,888 / 7,189,037,056 B; process RSS/HWM was 17,960,493,056 B host
+  RAM.
+- A readable final `params.npz`, RGB/semantic PLY files, and standalone
+  `keyframe_time_indices.npy` now exist under
+  `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`.
+- The historical detailed full-scene run remains classified
+  `PASS_RUNTIME_VALIDATOR_BUG` and supplies detailed residency-invariant
+  evidence. The minimal output-save harness intentionally did not duplicate
+  that heavy residency telemetry.
+- No evaluation, ATE, rendering/depth/semantic metrics, post-SLAM
+  optimization, or paper metrics have run.
+- The next workflow is an Evaluation / Export Audit from saved state. If
+  loading succeeds, do not rerun online SLAM. Stop after the audit for separate
+  authorization before metric execution.
 
 ## Baseline
 

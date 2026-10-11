@@ -6,6 +6,12 @@ Branch: `phase4-vb-001-cpu-keyframe-offload`
 Audited HEAD: `ecb2ae67b073fe7002df6cda76999a18e603a901`  
 Evidence: `results/runtime_artifacts/phase4_vb001_full_scene_0_1999/`
 
+> **Superseding output-save result (2026-10-11):** This audit remains the
+> provenance record for the earlier detailed full-scene runtime and validator
+> bug. A later minimal full-scene run saved and verified the final state with
+> status `PASS_FULL_OUTPUT_SAVE_TELEMETRY`. See
+> `PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`. Evaluation remains `NOT RUN`.
+
 This is a source-, harness-, and existing-evidence-only audit. No CUDA workload, experiment, evaluation, or post-SLAM optimization was run. The original evidence files were not rewritten.
 
 ## 1. Runtime facts
@@ -147,7 +153,12 @@ Final output availability:
 - PLY output: **NO**;
 - evaluation output: **NO**.
 
-A future evaluator cannot evaluate this completed run without reconstructing the final state. Since the process has ended and no checkpoint was saved, that requires repeating the 2,000-frame online SLAM run with an explicitly reviewed output-saving boundary. No rerun is required to classify the existing runtime and memory result.
+This historical run alone cannot be evaluated without reconstructing its final
+state. At the time of this audit, that required a new 2,000-frame online run
+with a reviewed output-saving boundary. That separately authorized run has now
+completed and saved the final state, as recorded in section 11 and the
+dedicated output-save result. No further online rerun is required if the saved
+state loads successfully.
 
 ## 9. Is a rerun required?
 
@@ -168,3 +179,21 @@ Justification:
 - `PASS_RUNTIME_VALIDATOR_BUG` accurately preserves both facts: the online full-scene runtime completed successfully, and the harness's final aggregate status was corrupted by an incorrect keyframe expectation. The original evidence must remain unchanged and should be interpreted together with this audit note.
 
 No evaluation, ATE, rendering metrics, semantic metrics, post-SLAM optimization, or paper metrics were run or reproduced.
+
+## 11. Later output-save resolution
+
+The missing-state limitation described in sections 8 and 9 applies to this
+historical detailed run only. It was resolved by the separately authorized
+minimal output-save workflow:
+
+- minimal 0–49 save smoke: `PASS_MINIMAL_OUTPUT_SAVE_SMOKE`;
+- telemetry 0–49 save smoke: `PASS_TELEMETRY_OUTPUT_SAVE_SMOKE`;
+- full-scene 0–1999 output save: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
+
+The final state now exists at
+`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`.
+It includes readable `params.npz`, map/semantic PLY exports, standalone
+keyframe indices, estimated/GT trajectory data, semantic state, and telemetry.
+No evaluation or paper metrics were run. The next gate is Evaluation / Export
+Audit from this saved state; another online SLAM run is not required if loading
+succeeds.

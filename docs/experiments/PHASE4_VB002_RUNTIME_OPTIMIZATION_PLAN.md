@@ -6,6 +6,13 @@ Planning branch: `phase4-vb-001-cpu-keyframe-offload`
 Planning HEAD: `ecb2ae67b073fe7002df6cda76999a18e603a901`  
 Predecessor: `PHASE4-VB-001` — CPU offload of resident keyframe payloads
 
+> **State update (2026-10-11):** The recommended low-overhead VB001
+> output-saving path has now completed with
+> `PASS_FULL_OUTPUT_SAVE_TELEMETRY`. A readable final state and telemetry exist;
+> see `PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`. The immediate next gate
+> is Evaluation / Export Audit from saved state. VB002 remains future work and
+> must not begin as part of that audit.
+
 This is a source- and existing-evidence-only plan. No experiment, CUDA
 workload, full scene, evaluation, source/config/algorithm edit, commit, or push
 was performed while preparing it.
@@ -18,12 +25,11 @@ PHASE4-VB-001 solved the measured VRAM-capacity problem: the online Replica
 no OOM. However, the continuous run took **22,299.70758857 seconds**, or about
 **6 h 11 m 39.708 s**.
 
-That turnaround is too slow for routine repetition. The previous run also did
-not preserve `params.npz`, the final map, camera trajectory, or a checkpoint,
-so at least one output-saving full-scene run is still needed before evaluation.
-Repeating six-hour runs to repair output handling, validate a runtime variant,
-or prepare evaluation would be expensive and would make failures near the end
-particularly costly.
+That turnaround was too slow for routine repetition. A later minimal
+output-saving run completed in 14,173.47515856901 seconds and preserved
+`params.npz`, the final map, camera trajectory, semantic state, keyframe
+indices, and telemetry. Therefore no additional VB001 online run is needed
+before the Evaluation / Export Audit if saved-state loading succeeds.
 
 The source-reported averages at full-scene completion were:
 
@@ -212,13 +218,12 @@ metric validation; they are not runtime-equivalent VB001/VB002 optimizations.
 
 ## 5. Recommended next step
 
-### Recommendation: option D — low-overhead output-saving run first
+### Completed recommendation: option D — low-overhead output-saving run
 
-The safest near-term path is to design and audit the low-overhead output-saving
-harness, then execute one separately authorized VB001 full-scene output-saving
-run. This obtains the missing evaluation baseline while changing only
-instrumentation and save-boundary behavior. It avoids evaluating a new cache
-variant before any VB001 final map exists.
+The low-overhead output-saving harness was audited, smoke-tested, and executed
+once over the full scene. It obtained the missing evaluation baseline while
+changing only instrumentation and save-boundary behavior. The result is
+`PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
 
 Expected tradeoff:
 
@@ -229,12 +234,10 @@ Expected tradeoff:
 - result: a saved VB001 final state suitable for a later, separately authorized
   evaluation gate.
 
-In parallel at the design level, prepare PHASE4-VB002 with a 16-entry bounded
-LRU cache. Do not put that cache into the immediate VB001 output-saving run.
-After the VB001 outputs exist, validate VB002 through R1–R5 before its own
-full-scene output-saving R6. If the overriding priority becomes avoiding any
-likely six-hour VB001 rerun rather than preserving a VB001 evaluation baseline,
-option B is the alternative, but that produces VB002—not VB001—outputs.
+The immediate next step is the Evaluation / Export Audit from the saved VB001
+state. After that baseline is established, PHASE4-VB002 may be reconsidered
+with the proposed 16-entry bounded LRU cache and R1–R6 gates. It remains a
+separate future variant, not part of current evaluation work.
 
 Options A–D from the decision question are therefore ranked:
 
@@ -318,11 +321,12 @@ are reviewed.
 
 ## 8. Decision summary
 
-**Choose D: create and audit a low-overhead VB001 output-saving harness first.**
-It has the lowest scientific risk and produces the missing baseline artifact.
-Expect an unknown low-to-medium speed improvement with approximately VB001 GPU
-memory behavior. Then pursue **PHASE4-VB002**, starting with a 16-entry bounded
-GPU LRU cache, as the strongest evidence-backed runtime research candidate.
+**Option D is complete:** the low-overhead VB001 output-saving harness passed
+smoke validation and the full-scene run saved the evaluation baseline. The
+next action is Evaluation / Export Audit from that saved state.
+
+After the evaluation baseline is established, **PHASE4-VB002** with a 16-entry
+bounded GPU LRU cache remains the strongest evidence-backed runtime candidate.
 Its trace-projected tradeoff is ~417.8 MB nominal payload VRAM for ~59.9% cache
 hits and a reduction in miss-transfer volume from ~2.987 TB to ~1.198 TB;
 actual wall-clock speedup remains unknown until bounded gates run.

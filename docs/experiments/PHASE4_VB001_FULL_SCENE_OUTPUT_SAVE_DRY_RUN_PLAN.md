@@ -5,6 +5,12 @@ Repository: `/home/robot/research/SGS_slam`
 Branch: `phase4-vb-001-cpu-keyframe-offload`  
 HEAD: `ecb2ae67b073fe7002df6cda76999a18e603a901`
 
+> **Plan outcome (2026-10-11): COMPLETE.** The smoke and full-scene gates were
+> later explicitly authorized and passed. Final status is
+> `PASS_FULL_OUTPUT_SAVE_TELEMETRY`; the verified result and artifact hashes
+> are recorded in `PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`. This file is
+> retained as the pre-execution plan. Evaluation remains `NOT RUN`.
+
 ## Scope and gate
 
 This is a `DRY-RUN / INSPECT ONLY` plan. No CUDA workload, SLAM frame,
@@ -50,14 +56,15 @@ All required evidence files were found:
 - `project_management/PROJECT_STATUS.md`
 - `docs/project_state/state.yaml`
 
-The smoke-test summary
+At the time this dry-run was written, the smoke-test summary
 `results/runtime_artifacts/phase4_vb001_output_save_smoke_0_49/PHASE4_VB001_OUTPUT_SAVE_SMOKE_SUMMARY.md`
-does not exist. No 0-49 output-saving smoke test is recorded, and no smoke
-artifacts were found at that path.
+did not exist and no smoke artifacts were present at that path. Subsequent
+minimal smoke and telemetry smoke gates used dedicated minimal-harness paths
+and both passed; see the superseding output-save result linked above.
 
-Therefore the normal workflow is: run/review the smoke test first. A
-full-scene output-saving run must not be treated as authorized unless the user
-explicitly approves skipping that gate.
+The historical workflow therefore required smoke validation before explicit
+full-scene authorization. That authorization was later granted and the
+full-scene output-saving run passed; it must not be repeated automatically.
 
 The dataset expectation is Replica `room0`, 2,000 frames, with RGB, depth,
 semantic IDs, semantic colors, instance IDs, and instance colors present.
@@ -300,8 +307,9 @@ The final evidence summary will include:
 
 ## Approval gate
 
-STEP 2 is not authorized by this document. The smoke-test gate is also not
-present in the current evidence. Any later execution requires explicit user
-approval and a fresh CUDA preflight.
+At the time of this plan, Step 2 was not authorized. The user subsequently
+authorized the smoke validations and exactly one full-scene output-save run.
+Those gates passed and are complete. Do not rerun the full scene; proceed next
+to a separate Evaluation / Export Audit from saved state.
 
-STOPPED HERE — DRY-RUN/INSPECT ONLY COMPLETE. DO NOT RUN FULL-SCENE 0–1999 UNTIL USER EXPLICITLY APPROVES STEP 2.
+HISTORICAL STOP POINT — DRY-RUN/INSPECT ONLY WAS COMPLETE; LATER AUTHORIZATION AND RESULTS ARE RECORDED IN THE OUTPUT-SAVE RESULT DOCUMENT.

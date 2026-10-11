@@ -15,13 +15,25 @@
 | Phase 3C-1 — Continuous frames 0–4 | PASS |
 | Phase 3C-2 — Continuous frames 0–19 | PASS |
 | Phase 3C-3 — Continuous frames 0–49 | PASS |
-| Phase 3C-4 — Continuous frames 0–99 | Planned; not started |
-| Later bounded horizon | TBD from runtime evidence |
-| Full Replica `room0` | Pending |
-| Online evaluation | Pending |
+| Phase 3C-4 — Continuous frames 0–99 | PASS |
+| Phase 3C-6 — Continuous frames 0–499 | PASS |
+| Phase 3 baseline full Replica `room0` | CLOSED — OOM limitation documented |
+| PHASE4-VB-001 bounded validation through 0–999 | PASS |
+| PHASE4-VB-001 full-scene runtime audit | `PASS_RUNTIME_VALIDATOR_BUG` |
+| PHASE4-VB-001 output-save smoke gates | PASS |
+| PHASE4-VB-001 full-scene output save 0–1999 | `PASS_FULL_OUTPUT_SAVE_TELEMETRY` |
+| Evaluation / Export Audit from saved state | NEXT |
+| Online evaluation execution | Not started; requires audit and approval |
 | Post-opt | Pending |
 | Paper comparison | Pending |
-| Phase 4 — Paper ↔ source ↔ runtime verification | Pending runtime verification |
-| Phase 5+ — Research improvements | Pending baseline reproduction |
+| PHASE4-VB002 runtime optimization | Future track; not started |
+| Phase 5+ — Research improvements | Pending evaluation baseline |
 
-Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md), [50-frame report](../baseline_reproduction/runtime/13_bounded_online_50_frames.md), and `results/runtime_artifacts/phase3c3/`.
+Immediate planning gate: audit the exact saved-state loader, renderer,
+RGB/depth/trajectory/semantic metric protocols, frame sampling, GT alignment,
+and output paths. Do not execute evaluation during the audit and do not rerun
+online SLAM if the saved state loads successfully.
+
+Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md),
+[full-scene output-save result](../experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md),
+and Git-ignored runtime evidence under `results/runtime_artifacts/`.

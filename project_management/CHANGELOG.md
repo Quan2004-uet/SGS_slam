@@ -4,6 +4,29 @@
 > `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
 > `SESSION_HANDOFF.md` for current state.
 
+## 2026-10-11 — PHASE4-VB-001 full-scene output-save checkpoint
+
+### Experiments and artifacts
+
+- Recorded `PASS_FULL_OUTPUT_SAVE_TELEMETRY` for Replica `room0` frames
+  0–1999: 2,000 frames completed, final frame 1999, 4,956,467 Gaussians, and
+  402 keyframes ending `[1989, 1994, 1998, 1999]`.
+- Recorded runtime 14,173.47515856901 s, tracking/mapping/overall FPS of
+  0.3354664059815056 / 0.25086898791330586 / 0.14110865384985266, peak GPU
+  allocated/reserved of 5,817,509,888 / 7,189,037,056 B, and process RSS/HWM
+  of 17,960,493,056 B host RAM.
+- Verified readable `params.npz`, `params.ply`, `seg_params.ply`, and
+  `keyframe_time_indices.npy`; recorded their sizes and SHA256 values in the
+  dedicated result document. Runtime binaries/logs remain Git-ignored.
+
+### Project state
+
+- Marked PHASE4-VB-001 validation and full-scene state preservation complete.
+- Set the next task to Evaluation / Export Audit from saved state, not another
+  online SLAM run.
+- Kept evaluation and paper metrics `NOT RUN` / `NOT REPRODUCED YET`.
+- Kept PHASE4-VB002 as future work; no algorithm/config change was made.
+
 ## 2026-10-11 — PHASE4-VB-001 full-scene audit checkpoint
 
 ### Runtime evidence reconciliation
