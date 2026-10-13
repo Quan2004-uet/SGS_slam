@@ -1,171 +1,77 @@
 # SGS-SLAM Project Status
 
-> **CURRENT PROJECT-STATE AUTHORITY.** Repository/source/config/runtime
-> evidence has highest priority. This file defines the current phase and gate;
-> use `SESSION_HANDOFF.md` for the exact operational resume point.
+> **CURRENT PROJECT-STATE AUTHORITY.** Repository/source/config/runtime evidence has highest priority. This file defines the current phase; use `SESSION_HANDOFF.md` for the exact resume point.
 
-Last reconciled: 2026-10-12.
+Last reconciled: 2026-10-14.
 
 ## Project Identity
 
 - Repository: SGS-SLAM — Semantic Gaussian Splatting for Neural Dense SLAM.
-- Current branch: `phase4-vb-001-cpu-keyframe-offload`.
-- Evaluation run HEAD: `63adf3aed8ae2201a46d11cec473672f9e91fd0e`.
-- Qualitative export run HEAD: `7122eb56222031dc6bdb96033f2f15a22293b9da`.
+- Branch: `phase4-vb-001-cpu-keyframe-offload`.
+- Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
 
-## Current Phase and Checkpoint
+## Current Phase
 
-- Phase: Phase 4 — Memory-management research variant.
-- Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads.
-- Runtime/output checkpoint: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
-- Latest completed gate: `PASS_QUALITATIVE_EXPORT`.
-- Evaluation status: complete for the Replica `room0` released training-view
-  protocol.
-- Camera-view qualitative export: complete for representative frames
-  `[0,499,999,1499,1999]`.
-- 3D map reconstruction/segmentation visualization: not run.
-- Paper reproduction status: not claimed and not complete.
-- Immediate next task: **Scene Reconstruction / 3D Segmentation Visualization
-  Audit**.
+- Phase 4 — CPU Keyframe Offload / Reproducible Memory Baseline Variant: **COMPLETE**.
+- Variant `PHASE4-VB-001`: **COMPLETE / VALIDATED**.
+- Closure status: `PASS_PHASE4_CLOSURE`.
+- Next phase: **PLANNED / NOT STARTED**.
+- Canonical closure package: `results/runtime_artifacts/phase4_closure/`.
 
-SESSION_004 is closed. Future work must not resume from output saving, Gates
-E1--E4, or camera-view qualitative export. The saved full-scene state and PLY
-exports remain the authoritative inputs for later visualization/analysis; no
-online SLAM or evaluation rerun is required.
+Phase 4 changed memory ownership, not the SGS-SLAM objective: archived keyframe `color`, `depth`, `semantic_id`, and `semantic_color` payloads are CPU-authoritative and synchronously staged to GPU when selected. Archived `est_w2c` remains GPU-resident. The implementation adds no pinned memory, asynchronous copy, prefetch, persistent GPU cache, compression, or eviction and retains the released keyframe and optimization policies.
 
-## Validated PHASE4-VB-001 Chain
+## Baseline Limitation and Variant Result
 
-- Gates 1 and 2: PASS.
-- Gate 3 frames 0–99, Gate 4 frames 0–499, Gate 5 frames 0–999:
-  `PASS_FRAME_LIMIT`.
-- Historical full-scene online run: frames 0–1999 completed; corrected status
-  `PASS_RUNTIME_VALIDATOR_BUG` because the old validator omitted the released
-  `num_frames-2` terminal keyframe.
-- Minimal output-save smoke 0–49: `PASS_MINIMAL_OUTPUT_SAVE_SMOKE`.
-- Telemetry output-save smoke 0–49: `PASS_TELEMETRY_OUTPUT_SAVE_SMOKE`.
-- Full-scene output save 0–1999: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
-- E1 load-only: `PASS_EVAL_E1_LOAD_ONLY`.
-- E2 single-frame render: `PASS_EVAL_E2_SINGLE_FRAME_RENDER`.
-- E3 bounded five-frame metrics: `PASS_EVAL_E3_BOUNDED_SUBSET`.
-- E4 full released evaluation: `PASS_EVAL_E4_FULL_RELEASED`.
-- Representative camera-view qualitative export:
-  `PASS_QUALITATIVE_EXPORT`.
+- Unchanged Phase 3 baseline: frames 0–1293 completed; CUDA OOM during mapping at frame 1294 on the tested RTX 5080. Peak allocated/reserved before termination: 13,602,712,064 / 15,843,983,360 B.
+- PHASE4-VB-001 detailed full-scene run: frames 0–1999 completed without CUDA OOM; corrected classification `PASS_RUNTIME_VALIDATOR_BUG`. Peak allocated/reserved: 6,774,482,432 / 8,009,023,488 B. Final CPU archive: 10,497,024,000 B. Persistent GPU archived payload: 0 B. Runtime: 22,299.70758857 s under detailed instrumentation.
+- Separate authoritative output-save run: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`; 2,000 frames, 402 logical keyframes, 4,956,467 Gaussians, runtime 14,173.47515856901 s, peak allocated/reserved 5,817,509,888 / 7,189,037,056 B.
+- Final checkpoint: `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz`.
 
-## Full-Scene Runtime and Saved State
+The two variant runs answer different questions and their memory/runtime values must not be merged: the detailed run is the authoritative offload-memory audit; the output-save run is the authoritative saved-state source.
 
-- Frames: 2,000, exactly 0–1999; final frame 1999.
-- Runtime: 14,173.47515856901 s (approximately 3 h 56 m 13 s).
-- Final Gaussians: 4,956,467.
-- Logical keyframes: 402; tail `[1989, 1994, 1998, 1999]`.
-- Tracking/mapping/overall FPS: 0.3354664059815056 /
-  0.25086898791330586 / 0.14110865384985266.
-- Peak GPU allocated/reserved: 5,817,509,888 / 7,189,037,056 B.
-- Process RSS/HWM: 17,960,493,056 B host RAM, not GPU VRAM.
+## Validation and Evaluation Chain
 
-Stable output:
-`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/`
+- Runtime gates 1 and 2: PASS.
+- Gate 3 (0–99), Gate 4 (0–499), Gate 5 (0–999): `PASS_FRAME_LIMIT`.
+- Full-scene detailed runtime: corrected `PASS_RUNTIME_VALIDATOR_BUG` after auditing the terminal-keyframe validator.
+- Full-scene saved output: `PASS_FULL_OUTPUT_SAVE_TELEMETRY`.
+- Evaluation E1–E4: complete; E4 status `PASS_EVAL_E4_FULL_RELEASED`.
+- Visualization: `PASS_V1_VISUALIZATION_AUDIT`, `PASS_V2_CAMERA_ALIGNED_QUALITATIVE`, `PASS_V3A_FULL_SCENE_VISUALIZATION_PROOF`, `PASS_V3B_FINAL_PRESENTATION_PACKAGE`, and `PASS_V3C_PRESENTATION_REFINEMENT`.
 
-The readable `params.npz` contains Gaussian/map state, estimated and GT camera
-trajectories, intrinsics, `w2c`, timestep, semantic state, keyframe indices,
-and original dimensions. RGB/semantic PLY files and standalone keyframe indices
-also exist. Artifact sizes and SHA256 values are recorded in
-`docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`.
+## Final Released-Protocol Evidence
 
-## Full Released Evaluation Result
+- Image/depth/semantic protocol: 401 sampled training views; no skipped frames.
+- Trajectory: all 2,000 saved poses.
+- PSNR: 33.313067015269745 dB.
+- MS-SSIM: 0.9794702553689628 (released output calls this SSIM, but implementation computes MS-SSIM).
+- LPIPS-Alex: 0.06755526393577642.
+- Depth L1: 0.004951576771391114 m.
+- Semantic-color mIoU: 0.9165854801076707 under the released GT-palette-assisted recoloring protocol.
+- Released Horn-aligned mean relative-w2c translation error: 0.002740748680388891 m; this is not RMSE.
+- Supplementary true RMSE over the same aligned errors: 0.003398270593244735 m.
+- Canonical evaluation record: `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
 
-- Status: `PASS_EVAL_E4_FULL_RELEASED`.
-- Image/depth/semantic frames: 401, exact rule
-  `{0} union {5k-1 | k=1..400}`; first `[0,4,9]`, tail
-  `[1989,1994,1999]`; none skipped.
-- Trajectory frames: all 2,000 finite-pose frames.
-- PSNR: 33.313067 dB.
-- MS-SSIM: 0.979470. The released source labels this “SSIM”, but computes
-  multi-scale SSIM.
-- LPIPS-Alex: 0.067555.
-- Depth L1: 0.00495158 m / 0.495158 cm.
-- Semantic-color mIoU: 0.916585.
-- Released Horn-aligned mean relative-w2c translation error:
-  0.00274075 m / 0.274075 cm. This is not true RMSE.
-- Supplementary true RMSE from the same aligned errors:
-  0.00339827 m / 0.339827 cm.
-- Evaluation wall time: 74.4107 s; renderer 10.0479 s; metrics 50.8178 s;
-  trajectory 0.0101 s.
-- Evaluation peak GPU allocated/reserved: 1,846,789,120 /
-  2,057,306,112 B (11.12% / 12.39% of physical VRAM).
-- Renderer invoked and metrics computed: yes. SLAM rerun and E4 image export:
-  no. A later separately authorized qualitative gate exported five selected
-  camera views without recomputing metrics.
-- CUDA OOM, non-finite metrics, and hidden skipped frames: none.
+## Scientific Interpretation
 
-Canonical evaluation record:
-`docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
+`RUNTIME VERIFIED`: CPU-authoritative keyframe observation storage removed the measured persistent GPU archive growth and allowed Replica `room0` frames 0–1999 to complete on the tested 16-GB GPU. The saved reconstruction is loadable, has finite released-protocol metrics, reproduces representative observed views, and has interpretable full-scene geometry, semantic-ID metadata, and trajectory context.
 
-Runtime evidence:
-`results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`.
+Not established: accuracy equivalence to a full-scene baseline (the baseline did not complete), benchmark-wide superiority, novel-view accuracy, cross-scene generalization, post-SLAM quality, or fixed semantic IDs as released per-pixel predictions.
 
-## Camera-View Qualitative Export
+## Known Limitations
 
-- Status: `PASS_QUALITATIVE_EXPORT`.
-- Frames: `[0,499,999,1499,1999]`.
-- RGB, metric-depth, semantic-color, GT reference, side-by-side, and composite
-  artifacts passed validation for all five frames.
-- RGB PNG visualization clamps to `[0,1]`; raw depth NPY files remain meters;
-  depth PNGs use a common 0--6 m Turbo scale; semantic comparisons use released
-  nearest-current-GT-palette recoloring.
-- Runtime: 9.213427657989087 s.
-- Peak GPU allocated/reserved: 1,774,468,608 / 1,935,671,296 B.
-- Renderer invoked: yes. New metrics computed and SLAM rerun: no.
-- Output root:
-  `results/qualitative/phase4_vb001_room0_representative/`.
-- Canonical record:
-  `docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`.
+- One Replica scene and one tested GPU configuration.
+- CPU archive growth remains proportional to retained payloads; final detailed archive was 10.497 GB.
+- Synchronous pageable host-to-device staging; no isolated transfer-time measurement.
+- No pinned-memory, asynchronous overlap, prefetch, cache, eviction, compression, or reduced-precision archive.
+- Direct full-scene baseline quality comparison is unavailable because the unchanged baseline OOMed.
+- Virtual full-scene views are diagnostics, not novel-view accuracy evidence; Gaussian-center views are not continuous surfaces.
 
-This is a selected training-camera comparison package. Paper-style 3D
-reconstruction and semantic-map visualization have not run.
+## Planned Next Phase
 
-## Protocol Boundaries
-
-- RGB uses GT RGB divided by 255, GT-depth-valid masking, released
-  `calc_psnr`, MS-SSIM, and LPIPS AlexNet with clamped `[0,1]` inputs.
-- Depth uses Replica scale 6553.5 and masked mean absolute error in meters.
-- Semantic evaluation renders `semantic_colors`, recolors to the nearest
-  current-frame GT palette, ignores GT black, and averages frame mIoU values.
-  It does not compare `semantic_ids` directly.
-- Trajectory uses normalized real-first quaternions, relative w2c, and Horn
-  rigid rotation+translation alignment without scale.
-
-## Scientific Interpretation and Limits
-
-`RUNTIME VERIFIED`: for Replica `room0` on the tested RTX 5080,
-PHASE4-VB-001 removes the measured GPU-memory scalability failure that caused
-the unchanged Phase 3 baseline to OOM, reaches frame 1999, saves a reloadable
-state, and completes the audited released-code evaluation from that state.
-
-These are `room0` released-code metrics. They do not establish full paper
-reproduction, superiority over the paper or baseline, benchmark-wide results,
-or generalization to other scenes/datasets. Post-SLAM optimization was not run.
-
-## Immediate Operational Next Task
-
-Perform a read-only **Scene Reconstruction / 3D Segmentation Visualization
-Audit**. It must inspect the repository-native visualization path for
-`params.ply` and `seg_params.ply`, establish camera/viewer, color, background,
-crop, output, and provenance conventions, and propose a bounded visualization
-gate without rendering it during the audit.
-
-The Paper / Baseline Comparison Audit remains the subsequent research task; it
-must still establish protocol/stage comparability before any reproduction or
-superiority claim.
-
-Do not start PHASE4-VB002 in this checkpoint. It remains a future runtime
-optimization track.
+The next phase is planned but not started. First priority is controlled multi-scene validation of the unchanged PHASE4-VB-001 variant. Subsequent, separately gated systems hypotheses are transport optimization (pinned memory, non-blocking copies, streams/prefetch), a bounded reuse-aware GPU cache, and archive compaction. Keyframe eviction is an algorithmic experiment and must remain separate.
 
 ## STOPPED HERE
 
-PHASE4-VB-001 full-scene runtime, state preservation, released Replica `room0`
-evaluation, and camera-view qualitative export are complete through
-`PASS_QUALITATIVE_EXPORT`. Resume with the Scene Reconstruction / 3D
-Segmentation Visualization Audit—not another SLAM, evaluation, or camera-view
-export run.
+Phase 4 is closed at `PASS_PHASE4_CLOSURE`. Do not resume V3 gates, rerun SLAM/E4, or begin the next phase implicitly. Start a new named session and gate only after explicit authorization.

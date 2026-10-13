@@ -4,6 +4,55 @@
 > `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
 > `SESSION_HANDOFF.md` for current state.
 
+## 2026-10-14 — Phase 4 closure
+
+### Evidence consolidation
+
+- Closed Phase 4 and PHASE4-VB-001 with `PASS_PHASE4_CLOSURE` after locating the authoritative Phase 3 baseline, variant gates, full-scene telemetry, saved state, E4 metrics, and visualization V1–V3C evidence.
+- Preserved the distinction between the detailed full-scene telemetry run and the independent output-save run; no values were merged across those executions without attribution.
+- Created `results/runtime_artifacts/phase4_closure/` with the closure report, evidence index, final metrics, baseline/variant comparison, limitations, next-phase recommendations, hashes, validation metadata, and checksums.
+- Verified the final checkpoint, PLYs, visualization manifests/metadata, and evaluation JSON by SHA256 before and after documentation work.
+
+### State and scope
+
+- Reconciled canonical project status and handoff, created `SESSION_005`, recorded durable decision DEC-014, and updated the derived state and roadmap.
+- Marked visualization Gates V1, V2, V3A, V3B, and V3C complete.
+- Kept the next phase planned and not started. No SLAM/evaluation run, metric recomputation, source/config change, checkpoint mutation, commit, push, or tag occurred.
+
+## 2026-10-13 — PHASE4-VB-001 visualization V1/V2 checkpoint
+
+### Visualization evidence
+
+- Recorded `PASS_V1_VISUALIZATION_AUDIT` for the final saved-state RGB/raw
+  semantic 3D visualization pipeline, Gaussian diagnostics, camera analysis,
+  and verified 29-ID semantic mapping.
+- Recorded that current exterior cameras lie substantially outside the
+  observed trajectory, most Gaussians are high-opacity, and PNG clipping plus
+  dense overlap contribute to poor interpretability. Diagnostics did not
+  support a widespread giant-scale failure.
+- Recorded `PASS_V2_CAMERA_ALIGNED_QUALITATIVE` for five complete packages at
+  frames `[0,499,999,1499,1999]`, common-scale metric-depth comparison,
+  scientifically labeled semantic panels, four presentation summaries, and a
+  verified 29-class legend.
+- Preserved the semantic distinction between continuous learned colors,
+  GT-palette-assisted evaluation recoloring, and categorical semantic IDs.
+- Verified authoritative checkpoint/PLY hashes remained unchanged. V2
+  packaging used CPU only and performed no SLAM, renderer invocation, metric
+  computation, algorithm/config change, or checkpoint mutation.
+
+### Documentation and handoff
+
+- Reconciled SESSION_004, canonical project status, operational handoff,
+  derived state, roadmap, changelog, and durable decisions with completed V1
+  and V2 evidence.
+- Set the exact next task to `PHASE4-VIS-GATE-V3-A — Bounded Full-Scene 3D
+  Visualization Proof`.
+- Required V3-A to retain unfiltered reference views, use aligned-ID
+  categorical semantics separately, preserve V2 as primary fidelity evidence,
+  and keep any filtering visualization-only and reproducible.
+- No Gate V3-A work, SLAM/evaluation rerun, commit, push, or upload occurred in
+  this checkpoint.
+
 ## 2026-10-12 — PHASE4-VB-001 qualitative export checkpoint
 
 ### Qualitative evidence

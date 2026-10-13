@@ -2,300 +2,91 @@ authority: derived
 canonical_project_status: project_management/PROJECT_STATUS.md
 canonical_handoff: project_management/SESSION_HANDOFF.md
 role: derived_machine_readable_snapshot
-last_updated: 2026-10-12
-authority_reconciled: 2026-10-12
+last_updated: 2026-10-14
+authority_reconciled: 2026-10-14
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
   branch: main
-
-publication:
-  status: success
-  repository: https://github.com/Quan2004-uet/SGS_slam.git
-  branch: main
-  initial_publication_commit: edcb98a8772653fa567a09fd2cfa39b834efa18b
-  tag: migration-2026-10-03
-  tag_target: edcb98a8772653fa567a09fd2cfa39b834efa18b
-  upstream: https://github.com/ShuhongLL/SGS-SLAM.git
-  verified_date: 2026-10-03
-
-assets:
-  repository_id: QuanDinh/SGS-SLAM-assets
-  url: https://huggingface.co/datasets/QuanDinh/SGS-SLAM-assets
-  repo_type: dataset
-  visibility: private
-  upload_status: success
-  verified_date: 2026-10-04
-  local_files: 96111
-  remote_local_files_present: 96111
-  remote_extra_files: [.gitattributes]
-  data_remote_path: data/
-  migration_remote_path: migration/
-  replica_zip: data/Replica_data.zip
-  migration_archive: migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst
-  migration_archive_checksum: migration/SGS_SLAM_MIGRATION_2026-10-03.tar.zst.sha256
+  dataset: Replica
+  scene: room0
+  status: closed_oom_limitation_documented
+  completed_frames: 0-1293
+  failing_frame: 1294
+  failing_stage: mapping
+  cuda_oom: true
+  max_allocated_bytes: 13602712064
+  max_reserved_bytes: 15843983360
+  evidence: results/runtime_artifacts/full_scene_room0/full_scene_room0_results.json
 
 workflow:
   phase: 4
-  phase_name: Phase 4 — Memory-management research variant
-  phase_status: vb001_room0_evaluation_and_camera_view_qualitative_complete
+  phase_name: Phase 4 — CPU Keyframe Offload / Reproducible Memory Baseline Variant
+  phase_status: complete
   active_variant: PHASE4-VB-001
-  current_gate: scene_reconstruction_3d_segmentation_visualization_audit
-  current_gate_status: not_started
-  latest_completed_gate: PHASE4-VB-001 room0 camera-view qualitative export
-  latest_gate_status: PASS_QUALITATIVE_EXPORT
-  full_scene_status: online_completed_final_state_saved
-  full_scene_variant_status: PASS_FULL_OUTPUT_SAVE_TELEMETRY
-  original_harness_status: FAIL_RUNTIME
-  validator_bug: expected keyframes omitted released num_frames-2 terminal keyframe
-  expected_final_keyframes: 402
-  observed_final_keyframes: 402
-  variant_completion_status: validation_state_preservation_released_room0_evaluation_and_camera_view_qualitative_complete
-  next_recommended_phase: Phase 4 — Scene Reconstruction / 3D Segmentation Visualization Audit
-  next_gate: scene_reconstruction_3d_segmentation_visualization_audit
-  evaluation_status: complete_for_replica_room0_released_training_view_protocol
-  camera_view_qualitative_status: complete
-  map_view_3d_visualization_status: not_run
+  variant_status: complete_validated
+  closure_status: PASS_PHASE4_CLOSURE
+  latest_completed_gate: PHASE4-CLOSURE
+  next_phase_status: planned_not_started
+  next_recommended_phase: controlled_multi_scene_validation_then_isolated_runtime_optimization
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_004
+  id: SESSION_005
+  title: Phase 4 Final Experimental Synthesis and Closure
   status: closed
-  started: 2026-10-10
-  last_active: 2026-10-12
-  closed: 2026-10-12
+  started: 2026-10-14
+  closed: 2026-10-14
+  head: 507aea652a5da15c92d358c19b8d6705c510242b
 
-next_run:
-  role: read_only_scene_reconstruction_3d_segmentation_visualization_audit
-  dataset: Replica
-  scene: room0
-  saved_state: experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz
-  execute_slam: false
-  execute_evaluation: false
-  prerequisite: use_saved_params_ply_and_seg_params_ply_without_rerunning_slam_or_evaluation
-  stop_after: document_3d_visualization_protocol_and_proposed_bounded_gate
-  audit_targets: [params_ply_viewer_path, seg_params_ply_viewer_path, rgb_map_colors, semantic_map_colors, camera_view, background, crop, output_format, provenance]
+variant:
+  identifier: PHASE4-VB-001
+  detailed_runtime_status: PASS_RUNTIME_VALIDATOR_BUG
+  detailed_completed_frames: 0-1999
+  detailed_runtime_seconds: 22299.70758857
+  detailed_max_allocated_bytes: 6774482432
+  detailed_max_reserved_bytes: 8009023488
+  detailed_cpu_archive_bytes: 10497024000
+  detailed_persistent_gpu_archive_bytes: 0
+  detailed_archived_keyframes: 402
+  output_save_status: PASS_FULL_OUTPUT_SAVE_TELEMETRY
+  output_save_runtime_seconds: 14173.47515856901
+  output_save_max_allocated_bytes: 5817509888
+  output_save_max_reserved_bytes: 7189037056
+  output_save_final_gaussians: 4956467
+  final_checkpoint: experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz
+  checkpoint_sha256: dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2
 
-next_actions:
-  stopped_here: PHASE4-VB-001 E4 evaluation and representative camera-view qualitative export passed; SESSION_004 is closed.
-  immediate_operational: Audit Scene Reconstruction / 3D Segmentation visualization from saved PLY maps
-  next_research_gate: Scene Reconstruction / 3D Segmentation Visualization Audit
-  after_audit: Request explicit authorization before rendering 3D map views
-  subsequent_research_gate: Paper / Baseline Comparison Audit
-  direct_full_scene_authorized: false
-  online_slam_rerun_required: false
-  evaluation_gate: PASS_EVAL_E4_FULL_RELEASED
-  start_next_session_with_evaluation_export_audit: false
-  start_next_session_with_paper_baseline_comparison_audit: false
-  start_next_session_with_3d_visualization_audit: true
-
-environment:
-  role: runtime_verified_destination_host_snapshot
-  destination_revalidation_required: false
-  conda: /home/robot/miniconda3/envs/sgs_slam_5080
-  python: 3.10.22
-  pytorch: 2.7.1+cu128
-  torchvision: 0.22.1+cu128
-  cuda: "12.8"
-  system_cuda_toolkit: "12.8.93"
-  numpy: 1.26.4
-  opencv: 4.9.0.80
-  renderer_revision: cb65e4b86bc3bd8ed42174b72a62e8d3a3a71110
-
-gpu:
-  role: runtime_verified_destination_host_snapshot
-  model: NVIDIA GeForce RTX 5080
-  vram_bytes: 16609378304
-  vram_gib_class: 16
-
-dataset:
-  root: data/Replica
-  scene: room0
-  frames: 2000
-  width: 1200
-  height: 680
-
-latest_runtime:
-  status: CUDA_OOM_ALLOCATOR_OPT
-  last_frame: 1332
-  failing_frame: 1333
-  stage: mapping
-  gaussians: null
-  keyframes: null
-  keyframe_ids: null
-  keyframe_payload_bytes: null
-  tracking_adam_bytes: null
-  mapping_adam_bytes: null
-  max_allocated_peak_bytes: 12547390464
-  max_reserved_bytes: 15839789056
-  vram_sufficient_through_last_frame: false
-  evidence_json: results/runtime_artifacts/full_scene_room0_allocator_opt_fast/full_scene_room0_allocator_opt_fast_results.json
-  evidence_log: results/runtime_artifacts/full_scene_room0_allocator_opt_fast/full_scene_room0_allocator_opt_fast.log
-
-latest_variant_runtime:
-  variant: PHASE4-VB-001
-  status: PASS_FULL_OUTPUT_SAVE_TELEMETRY
-  online_runtime_completed: true
-  completed_frames: 0-1999
-  final_completed_frame: 1999
-  natural_online_loop_completion: true
-  index_2000_loaded: false
-  cuda_oom: false
-  logical_keyframes: 402
-  expected_logical_keyframes: 402
-  final_keyframe_tail: [1989, 1994, 1998, 1999]
-  final_gaussians: 4956467
-  runtime_seconds: 14173.47515856901
-  tracking_fps: 0.3354664059815056
-  mapping_fps: 0.25086898791330586
-  overall_slam_fps: 0.14110865384985266
-  final_serialization_seconds: 9.3924627660017
-  max_allocated_bytes: 5817509888
-  max_reserved_bytes: 7189037056
-  process_hwm_bytes: 17960493056
-  detailed_residency_telemetry: unknown_minimal_harness_intentionally_omitted_heavy_instrumentation
-  memory_objective_succeeded: true
-  evaluation_run: true
-  paper_metrics_reproduced: false
-  save_success: true
-  artifact_completeness: true
-  telemetry_completeness: true
-  final_evaluation_artifacts_available: true
-  params_npz_saved: true
-  params_npz_readable: true
-  final_map_saved: true
-  trajectory_saved: true
-  gt_trajectory_saved: true
-  semantic_state_saved: true
-  keyframe_time_indices_npy_saved: true
-  ply_saved: true
-  evaluation_outputs_saved: true
-  checkpoint_saved: false
-  rerun_required_for_runtime_memory_classification: false
-  rerun_required_for_future_evaluation: false
-  output_directory: experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/
-  evidence_directory: results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/
-  result_file: docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md
-
-latest_evaluation:
+evaluation:
   status: PASS_EVAL_E4_FULL_RELEASED
-  e1_status: PASS_EVAL_E1_LOAD_ONLY
-  e2_status: PASS_EVAL_E2_SINGLE_FRAME_RENDER
-  e3_status: PASS_EVAL_E3_BOUNDED_SUBSET
-  e4_status: PASS_EVAL_E4_FULL_RELEASED
-  dataset: Replica
-  scene: room0
-  image_metric_frame_count: 401
-  image_metric_sampling: "{0} union {5k-1 | k=1..400}"
-  first_frame_ids: [0, 4, 9]
-  final_frame_ids: [1989, 1994, 1999]
-  skipped_frames: []
-  trajectory_frame_count: 2000
-  mean_psnr_db: 33.313067
-  mean_ms_ssim: 0.979470
-  mean_lpips_alex: 0.067555
-  mean_depth_l1_m: 0.00495158
-  mean_depth_l1_cm: 0.495158
-  mean_semantic_color_miou: 0.916585
-  released_horn_aligned_mean_w2c_translation_error_m: 0.00274075
-  released_horn_aligned_mean_w2c_translation_error_cm: 0.274075
-  supplementary_true_rmse_m: 0.00339827
-  supplementary_true_rmse_cm: 0.339827
-  runtime_seconds: 74.4107
-  renderer_seconds: 10.0479
-  metric_seconds: 50.8178
-  trajectory_seconds: 0.0101
-  max_allocated_bytes: 1846789120
-  max_reserved_bytes: 2057306112
-  renderer_invoked: true
-  metrics_computed: true
-  slam_rerun: false
-  image_export_performed: false
-  cuda_oom: false
-  non_finite_metrics: false
-  paper_reproduction_claimed: false
-  evidence_directory: results/runtime_artifacts/phase4_vb001_eval_e4_full_released/
-  result_file: docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md
+  sampled_image_frames: 401
+  trajectory_frames: 2000
+  psnr_db: 33.313067015269745
+  ms_ssim: 0.9794702553689628
+  lpips_alex: 0.06755526393577642
+  depth_l1_m: 0.004951576771391114
+  semantic_color_miou: 0.9165854801076707
+  released_ate_mean_m: 0.002740748680388891
+  supplementary_ate_rmse_m: 0.003398270593244735
+  evidence: results/runtime_artifacts/phase4_vb001_eval_e4_full_released
 
-latest_qualitative_export:
-  status: PASS_QUALITATIVE_EXPORT
-  type: representative_training_camera_views
-  dataset: Replica
-  scene: room0
-  frame_ids: [0, 499, 999, 1499, 1999]
-  frame_count: 5
-  native_width: 1200
-  native_height: 680
-  rgb_export_complete: true
-  depth_raw_and_visualization_export_complete: true
-  semantic_export_complete: true
-  gt_reference_export_complete: true
-  side_by_side_export_complete: true
-  composite_export_complete: true
-  contact_sheet_export_complete: true
-  existing_e4_metric_annotations_preserved: true
-  new_metrics_computed: false
-  slam_rerun: false
-  runtime_seconds: 9.213427657989087
-  max_allocated_bytes: 1774468608
-  max_reserved_bytes: 1935671296
-  output_directory: results/qualitative/phase4_vb001_room0_representative/
-  contact_sheet: results/qualitative/phase4_vb001_room0_representative/contact_sheet_all_frames.png
-  manifest: results/qualitative/phase4_vb001_room0_representative/qualitative_manifest.json
-  checksums: results/qualitative/phase4_vb001_room0_representative/artifact_checksums.sha256
-  result_file: docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md
-  map_view_3d_reconstruction_visualized: false
-  map_view_3d_segmentation_visualized: false
+visualization:
+  v1: PASS_V1_VISUALIZATION_AUDIT
+  v2: PASS_V2_CAMERA_ALIGNED_QUALITATIVE
+  v3a: PASS_V3A_FULL_SCENE_VISUALIZATION_PROOF
+  v3b: PASS_V3B_FINAL_PRESENTATION_PACKAGE
+  v3c: PASS_V3C_PRESENTATION_REFINEMENT
+  observed_view_fidelity_source: results/runtime_artifacts/phase4_vb001_visualization_v2
+  full_scene_diagnostic_source: results/runtime_artifacts/phase4_vb001_visualization_v3a
+  presentation_source: results/runtime_artifacts/phase4_vb001_visualization_v3c
 
-final_artifacts:
-  output_directory: experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/
-  evidence_directory: results/runtime_artifacts/phase4_vb001_minimal_output_save_full_0_1999/
-  params_npz:
-    exists: true
-    readable: true
-    size_bytes: 322361795
-    sha256: dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2
-  params_ply:
-    exists: true
-    size_bytes: 337040173
-    sha256: d9b4d22ba11c73f8c1d6d0ea5f874bbb5d3254f25b333362a502a5940f604502
-  seg_params_ply:
-    exists: true
-    size_bytes: 337040173
-    sha256: 6cd5a258a8147fe0c0515d04ea702d618f82c2411fc464ab9bfebd2fc2f3b726
-  keyframe_time_indices_npy:
-    exists: true
-    readable: true
-    size_bytes: 3344
-    sha256: fb91f05c127819f6666259668c4d88a2d36a46f575659f576adde37b227e6d37
-  params_keys: [cam_trans, cam_unnorm_rots, gt_w2c_all_frames, intrinsics, keyframe_time_indices, log_scales, logit_opacities, means3D, org_height, org_width, rgb_colors, semantic_colors, semantic_ids, timestep, unnorm_rotations, w2c]
-
-runtime_conclusion:
-  bounded_pass_through_frame: 499
-  phase3c4_status: PASS_FRAME_LIMIT
-  phase3c6_status: PASS_FRAME_LIMIT
-  full_scene_baseline_status: CUDA_OOM
-  full_scene_baseline_last_completed_frame: 1293
-  full_scene_baseline_failing_frame: 1294
-  allocator_opt_status: CUDA_OOM_ALLOCATOR_OPT
-  allocator_opt_last_completed_frame: 1332
-  allocator_opt_failing_frame: 1333
-  baseline_full_scene_pass: false
-  phase4_variant_full_scene_online_completed: true
-  phase4_variant_corrected_status: PASS_RUNTIME_VALIDATOR_BUG
-  phase4_variant_original_harness_status: FAIL_RUNTIME
-  phase4_variant_memory_objective_succeeded: true
-  phase4_variant_final_outputs_saved: true
-  paper_metrics_reproduced: false
-  evaluation_run: true
-  post_opt_run: false
-  conclusion_file: docs/experiments/PHASE3_RUNTIME_CONCLUSION_2026-10-10.md
-  closure_file: docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md
-  closure_decision: close_phase3_with_memory_limitation
-  next_decision: audit_scene_reconstruction_and_3d_segmentation_visualization_from_saved_ply_maps
-
-integrity:
-  baseline_source_changed: false
-  active_variant_source_changed: true
-  config_changed: false
-  algorithm_policy_changed: false
+closure:
+  root: results/runtime_artifacts/phase4_closure
+  report: results/runtime_artifacts/phase4_closure/PHASE4_CLOSURE_REPORT.md
+  evidence_index: results/runtime_artifacts/phase4_closure/FINAL_EVIDENCE_INDEX.md
+  metrics: results/runtime_artifacts/phase4_closure/FINAL_METRICS_SUMMARY.md
+  limitations: results/runtime_artifacts/phase4_closure/FINAL_LIMITATIONS.md
+  next_phase: results/runtime_artifacts/phase4_closure/NEXT_PHASE_RECOMMENDATION.md
+  no_new_experiment: true
+  no_metric_recomputation: true
+  next_phase_started: false

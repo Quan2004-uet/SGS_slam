@@ -210,6 +210,88 @@ SLAM or E1--E4 for either task.
 - `results/qualitative/phase4_vb001_room0_representative/`.
 - `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
 
+## DEC-013 — Use observed-camera evidence as fidelity evidence and keep 3D presentation diagnostic
+
+- Date: 2026-10-13.
+- Session: SESSION_004.
+- Status: ACCEPTED.
+
+### Context
+
+Visualization Gate V1 established that the existing final-Ply exterior views
+use deterministic matching RGB/semantic cameras but place them substantially
+outside the observed trajectory. Most primitives are high-opacity, PNG
+display clipping is substantial, and diagnostics do not support a widespread
+giant-Gaussian scale failure. Gate V2 then packaged five observed-camera
+RGB/depth/semantic comparisons without new rendering or metric computation.
+
+The semantic state contains fixed aligned `semantic_ids` and trainable
+continuous `semantic_colors`. Released per-frame recoloring uses the current
+GT palette and is therefore not an independent categorical prediction.
+
+### Decision
+
+1. Treat V2 camera-aligned observed views as the primary qualitative fidelity
+   evidence for this checkpoint.
+2. Retain existing exterior overview renders as unfiltered diagnostic/reference
+   evidence, not as a reconstruction-quality verdict.
+3. Never label raw learned semantic colors as categorical classes or present
+   GT-palette-assisted recoloring as an independent prediction.
+4. Require Gate V3-A to create ID-categorical 3D semantics separately from
+   aligned per-Gaussian `semantic_ids`, while preserving the raw learned-color
+   view.
+5. Permit filtering only as an explicitly labeled visualization-only
+   diagnostic paired with an unfiltered reference and exact saved
+   masks/thresholds/cameras. It cannot alter model state, evaluation, or
+   scientific metrics.
+
+### Consequences
+
+- Free-view 3D presentation complements but does not replace E4 metrics or V2
+  observed-camera evidence.
+- Gate V3-A begins with a bounded proof of camera, geometry, trajectory, and
+  ID-semantic visualization; it does not immediately produce a polished
+  publication set.
+- `params.npz`, `params.ply`, `seg_params.ply`, Gaussian parameters, and
+  evaluation outputs remain immutable inputs.
+
+### Evidence
+
+- `results/runtime_artifacts/phase4_vb001_visualization_audit/GATE_V1_AUDIT_REPORT.md`.
+- `results/runtime_artifacts/phase4_vb001_visualization_audit/gaussian_diagnostics.json`.
+- `results/runtime_artifacts/phase4_vb001_visualization_audit/semantic_mapping.csv`.
+- `results/runtime_artifacts/phase4_vb001_visualization_v2/GATE_V2_REPORT.md`.
+
+## DEC-014 — Close Phase 4 as a bounded memory-management contribution
+
+- Date: 2026-10-14.
+- Session: SESSION_005.
+- Status: ACCEPTED.
+
+### Context
+
+The unchanged Phase 3 baseline OOMed during mapping at frame 1294 on the tested RTX 5080. PHASE4-VB-001 completed Replica `room0` frames 0–1999, saved a reloadable final state, passed released E4 evaluation, and completed visualization Gates V1 through V3C. The detailed telemetry run and the independent output-save run used different instrumentation and have different runtime/memory measurements.
+
+### Decision
+
+1. Close Phase 4 with `PASS_PHASE4_CLOSURE` as a memory-management/systems result.
+2. Attribute detailed archive residency and staging evidence to the detailed full-scene run; attribute the final checkpoint to the output-save run. Do not combine their runtime or peak-memory values as if they came from one execution.
+3. State the validated contribution narrowly: CPU-authoritative archived `color`, `depth`, `semantic_id`, and `semantic_color`, synchronous pageable H2D staging, GPU-resident `est_w2c`, unchanged keyframe/optimization policy, and full `room0` completion on the tested hardware.
+4. Do not claim full-scene accuracy equivalence to the baseline, benchmark-wide superiority, novel-view accuracy, or categorical per-pixel prediction from fixed semantic IDs.
+5. Keep the next phase planned but not started. Treat multi-scene validation, transport optimization, caching, archive compaction, and keyframe eviction as separately gated hypotheses.
+
+### Consequences
+
+Phase 4 evidence is consolidated under `results/runtime_artifacts/phase4_closure/`. The V2 observed-camera package remains the principal qualitative fidelity evidence; V3 full-scene outputs remain diagnostic/presentation evidence. Future work must preserve the immutable checkpoint and explicitly isolate systems changes from algorithmic keyframe-policy changes.
+
+### Evidence
+
+- `docs/experiments/PHASE3_BASELINE_CLOSURE_2026-10-10.md`.
+- `docs/experiments/PHASE4_VB001_FULL_SCENE_AUDIT.md`.
+- `docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`.
+- `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
+- `results/runtime_artifacts/phase4_closure/PHASE4_CLOSURE_REPORT.md`.
+
 ## Migrated durable decision index
 
 The following accepted decisions were first summarized in the 2026-10-04

@@ -1,131 +1,69 @@
 # Current Session Handoff
 
-> **CURRENT OPERATIONAL HANDOFF AUTHORITY.** Use `PROJECT_STATUS.md` for
-> project-wide state. Repository/runtime evidence overrides either document.
+> **CURRENT OPERATIONAL HANDOFF AUTHORITY.** Use `PROJECT_STATUS.md` for project-wide state. Repository/runtime evidence overrides either document.
 
-Last reconciled: 2026-10-12.
+Last reconciled: 2026-10-14.
 
-## Session
+## Session and Git State
 
-- Session ID: `SESSION_004`.
-- Title: Phase 4 Variant B Full-Scene Validation, State Preservation,
-  Released Evaluation, and Qualitative Export.
+- Session ID: `SESSION_005`.
+- Title: Phase 4 Final Experimental Synthesis and Closure.
 - Status: `CLOSED`.
-- Started: 2026-10-10.
-- Closed: 2026-10-12.
+- Started/closed: 2026-10-14.
 - Branch: `phase4-vb-001-cpu-keyframe-offload`.
-- Evaluation run HEAD: `63adf3aed8ae2201a46d11cec473672f9e91fd0e`.
-- Qualitative export run HEAD: `7122eb56222031dc6bdb96033f2f15a22293b9da`.
+- Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
+- Closure status: `PASS_PHASE4_CLOSURE`.
+- Closure package: `results/runtime_artifacts/phase4_closure/`.
+- No commit, push, tag, checkout, reset, stash, experiment, renderer evaluation, metric recomputation, or source/config change was performed by closure.
 
-## Authoritative Completed Checkpoint
+The worktree contains the intentionally uncommitted Phase 4 documentation and visualization artifacts. The unrelated untracked `vds` entry was not touched. Inspect `git status --short` before any later work.
 
-- Latest gate: `PASS_QUALITATIVE_EXPORT`.
-- Evaluation: complete for Replica `room0` released training-view protocol.
-- Camera-view qualitative export: complete for frames
-  `[0,499,999,1499,1999]`.
-- 3D map reconstruction/segmentation visualization: not run; next audit.
-- Online SLAM rerun: not required.
-- E4 image export: not performed. A separate representative qualitative export
-  completed afterward.
-- Paper reproduction: not claimed and not complete.
+## Closed Boundary
 
-Validation chain: E1 load-only PASS; E2 frame-0 RGB/depth/semantic render PASS;
-E3 frames `[0,4,9,14,19]` metric subset PASS; E4 full released evaluation
-PASS; representative camera-view export PASS. Future sessions must not resume
-from output saving, E1--E4, or the completed camera-view export.
+Phase 4 — CPU Keyframe Offload / Reproducible Memory Baseline Variant is **COMPLETE**. `PHASE4-VB-001` and all visualization gates V1, V2, V3A, V3B, and V3C are complete. The next phase is **PLANNED / NOT STARTED**.
 
-## Saved State and Full-Scene Runtime
+The unchanged Phase 3 baseline OOMed during mapping at frame 1294 after completing frames 0–1293. PHASE4-VB-001 completed frames 0–1999 on the tested RTX 5080 by moving archived `color`, `depth`, `semantic_id`, and `semantic_color` payload ownership to CPU while retaining `est_w2c` on GPU and synchronously staging selected observations.
 
-Saved state:
-`experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz`
+## Authoritative Final State
 
-- Frames 0–1999 completed; 4,956,467 Gaussians; 402 logical keyframes ending
-  `[1989,1994,1998,1999]`.
-- Runtime: 14,173.47515856901 s.
-- Tracking/mapping/overall FPS: 0.3354664059815056 /
-  0.25086898791330586 / 0.14110865384985266.
-- Peak SLAM GPU allocated/reserved: 5,817,509,888 / 7,189,037,056 B.
-- Process HWM: 17,960,493,056 B host RAM.
+- Checkpoint: `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz`.
+- RGB PLY: `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.ply`.
+- Semantic PLY: `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/seg_params.ply`.
+- Checkpoint SHA256: `dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2`.
+- RGB PLY SHA256: `d9b4d22ba11c73f8c1d6d0ea5f874bbb5d3254f25b333362a502a5940f604502`.
+- Semantic PLY SHA256: `6cd5a258a8147fe0c0515d04ea702d618f82c2411fc464ab9bfebd2fc2f3b726`.
 
-## E4 Result
+Detailed memory run: peak GPU allocated/reserved 6,774,482,432 / 8,009,023,488 B; final CPU archive 10,497,024,000 B; persistent archived GPU payload 0 B; 402 keyframes; 2,000 frames; runtime 22,299.70758857 s.
 
-- Image/depth/semantic metric frames: 401, exact released sample
-  `0,4,9,...,1989,1994,1999`; no skipped frames.
-- Trajectory frames: 2,000.
-- PSNR: 33.313067 dB.
-- MS-SSIM: 0.979470.
-- LPIPS: 0.067555.
-- Depth L1: 0.00495158 m / 0.495158 cm.
-- Semantic-color mIoU: 0.916585.
-- Released Horn-aligned mean w2c translation error: 0.00274075 m. It is not
-  true RMSE despite the released source label.
-- Supplementary true RMSE: 0.00339827 m.
-- Evaluation runtime: 74.4107 s.
-- Evaluation peak GPU allocated/reserved: 1,846,789,120 /
-  2,057,306,112 B.
-- Renderer/metrics: yes. SLAM rerun/image export/OOM/non-finite metric: no.
+Separate output-save run: runtime 14,173.47515856901 s; peak GPU allocated/reserved 5,817,509,888 / 7,189,037,056 B; final 4,956,467 Gaussians. Do not combine metrics between these independently instrumented runs without attribution.
 
-Audit:
-`docs/experiments/PHASE4_VB001_EVALUATION_EXPORT_AUDIT.md`
+## Final Quality Evidence
 
-Result:
-`docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`
+- E4: `results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`.
+- PSNR 33.313067015269745 dB; MS-SSIM 0.9794702553689628; LPIPS-Alex 0.06755526393577642.
+- Depth L1 0.004951576771391114 m.
+- Semantic-color mIoU 0.9165854801076707 under released GT-palette-assisted recoloring.
+- Released Horn-aligned mean error 0.002740748680388891 m; supplementary true RMSE 0.003398270593244735 m.
+- V2 is observed-camera qualitative evidence. V3A–V3C package virtual diagnostics and presentation figures; they do not establish novel-view accuracy.
 
-E4 evidence:
-`results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`
+## Closure Records
 
-## Qualitative Export Result
+Read these first if Phase 4 evidence is needed:
 
-- Status: `PASS_QUALITATIVE_EXPORT`.
-- Selected frames: `[0,499,999,1499,1999]`.
-- Every frame passed rendered/GT RGB, metric-depth raw/visualization,
-  semantic raw/recolored/GT, side-by-side, and composite validation.
-- Root contact sheet and 69-artifact manifest are present and checksummed.
-- Runtime: 9.213427657989087 s.
-- Peak GPU allocated/reserved: 1,774,468,608 / 1,935,671,296 B.
-- Renderer invoked: yes. New metrics computed: no. SLAM rerun: no.
-- E4 per-frame values were copied as annotations, not recomputed.
-- Output root:
-  `results/qualitative/phase4_vb001_room0_representative/`.
-- Result:
-  `docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`.
+```text
+results/runtime_artifacts/phase4_closure/PHASE4_CLOSURE_REPORT.md
+results/runtime_artifacts/phase4_closure/FINAL_EVIDENCE_INDEX.md
+results/runtime_artifacts/phase4_closure/FINAL_METRICS_SUMMARY.md
+results/runtime_artifacts/phase4_closure/BASELINE_VS_VARIANT_TABLE.csv
+results/runtime_artifacts/phase4_closure/FINAL_LIMITATIONS.md
+results/runtime_artifacts/phase4_closure/NEXT_PHASE_RECOMMENDATION.md
+results/runtime_artifacts/phase4_closure/metadata/closure_manifest.json
+```
 
-This is camera-view qualitative evidence. The paper-style reconstructed RGB
-3D map and semantic-colored 3D map have not been visualized yet.
+## Next Authorized Work
 
-## Immediate Operational Next Task
-
-Perform a read-only **Scene Reconstruction / 3D Segmentation Visualization
-Audit**:
-
-1. inspect repository-native support for viewing/exporting `params.ply` and
-   `seg_params.ply`;
-2. establish RGB-map and semantic-map color/view conventions;
-3. define bounded, reproducible camera/background/crop/output settings;
-4. distinguish this 3D map-view product from completed camera-view renders;
-5. stop with a proposed execution gate before producing new visualization.
-
-Do not automatically render a 3D scene, run another scene/evaluator, post-opt,
-or VB002. Paper / Baseline Comparison Audit remains the task after this
-visualization track and must not be dropped.
-
-## Relevant Evidence
-
-- `project_management/PROJECT_STATUS.md`
-- `project_management/sessions/SESSION_004.md`
-- `docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md`
-- `docs/experiments/PHASE4_VB001_EVALUATION_EXPORT_AUDIT.md`
-- `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`
-- `docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`
-- `results/runtime_artifacts/phase4_vb001_eval_e1_load_only/`
-- `results/runtime_artifacts/phase4_vb001_eval_e2_single_frame_render/`
-- `results/runtime_artifacts/phase4_vb001_eval_e3_bounded_subset/`
-- `results/runtime_artifacts/phase4_vb001_eval_e4_full_released/`
-- `results/qualitative/phase4_vb001_room0_representative/`
+No next phase has started. On explicit authorization, open a new session and select one isolated objective. Recommended first gate: multi-scene validation of unchanged PHASE4-VB-001 using the same memory and quality protocols. Transport optimization should follow as a separate systems experiment with isolated staging latency, wall time, GPU memory, CPU archive, completion, and quality checks.
 
 ## STOPPED HERE
 
-SESSION_004 ends at `PASS_QUALITATIVE_EXPORT`. Resume with the Scene
-Reconstruction / 3D Segmentation Visualization Audit. No SLAM/evaluation
-rerun, metric recomputation, or repeated camera-view export is needed or
-authorized by this handoff.
+Stop at `PASS_PHASE4_CLOSURE`. Do not rerun Phase 4, begin Phase 5, modify the checkpoint, or implement the recommended optimizations automatically.

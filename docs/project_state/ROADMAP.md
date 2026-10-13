@@ -28,28 +28,34 @@
 | E3 bounded released metrics | `PASS_EVAL_E3_BOUNDED_SUBSET` |
 | E4 full released `room0` evaluation | `PASS_EVAL_E4_FULL_RELEASED` |
 | Representative camera-view qualitative export | `PASS_QUALITATIVE_EXPORT` |
-| Scene Reconstruction / 3D Segmentation Visualization Audit | NEXT |
-| 3D map visualization execution | Pending separate authorization |
-| Paper / Baseline Comparison Audit | Subsequent |
+| Final RGB/raw-semantic 3D map visualization | Generated; diagnostic exterior views retained |
+| PHASE4-VIS-GATE-V1 visualization audit | `PASS_V1_VISUALIZATION_AUDIT` |
+| PHASE4-VIS-GATE-V2 camera-aligned qualitative packaging | `PASS_V2_CAMERA_ALIGNED_QUALITATIVE` |
+| PHASE4-VIS-GATE-V3A full-scene 3D visualization proof | `PASS_V3A_FULL_SCENE_VISUALIZATION_PROOF` |
+| PHASE4-VIS-GATE-V3B final presentation package | `PASS_V3B_FINAL_PRESENTATION_PACKAGE` |
+| PHASE4-VIS-GATE-V3C presentation refinement | `PASS_V3C_PRESENTATION_REFINEMENT` |
+| Phase 4 final synthesis and closure | `PASS_PHASE4_CLOSURE` |
+| Controlled multi-scene validation | PLANNED / NOT STARTED |
+| CPU-offload transport optimization | PLANNED / NOT STARTED |
 | Post-opt | Pending |
 | Paper comparison | Pending |
-| PHASE4-VB002 runtime optimization | Future track; not started |
-| Phase 5+ — Research improvements | Pending evaluation baseline |
+| Phase 5+ — Research improvements | PLANNED / NOT STARTED |
 
-Immediate planning gate: inspect repository-native visualization of
-`params.ply` as the reconstructed RGB map and `seg_params.ply` as the
-semantic-colored 3D map. Establish viewer/camera, color, background, crop,
-output, and provenance rules, then stop before rendering. Camera-view
-qualitative export is already complete and must not be repeated.
+Phase 4 is complete. The closure package is
+`results/runtime_artifacts/phase4_closure/`. Camera-aligned V2 evidence remains
+the primary qualitative fidelity evidence; V3A–V3C virtual views remain
+diagnostic/presentation evidence and do not establish novel-view accuracy.
 
-After the visualization track, compare the audited released-code `room0`
-results with paper/released baseline values, verify protocol and stage
-comparability, prepare a baseline-versus-PHASE4-VB-001 table, and identify
-remaining scenes/experiments. Do not rerun online SLAM or E1--E4 for either
-audit.
+Recommended next research order: (1) validate unchanged PHASE4-VB-001 across
+additional Replica scenes; (2) isolate pinned-memory/non-blocking/streamed
+staging as a systems experiment with transfer timing; (3) evaluate a bounded
+reuse-aware GPU cache; (4) investigate archive precision/compression; and only
+then (5) study eviction as a separate algorithmic/keyframe-policy experiment.
+No next phase has started.
 
 Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md),
 [full-scene output-save result](../experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md),
 [evaluation result](../experiments/PHASE4_VB001_EVALUATION_RESULT.md),
 [qualitative export result](../experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md),
+[Phase 4 closure](../../results/runtime_artifacts/phase4_closure/PHASE4_CLOSURE_REPORT.md),
 and Git-ignored runtime evidence under `results/runtime_artifacts/`.

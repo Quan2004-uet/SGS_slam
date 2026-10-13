@@ -1,18 +1,22 @@
-# SESSION_004 — Phase 4 Variant B Full-Scene Validation, Evaluation, and Qualitative Export
+# SESSION_004 — Phase 4 Variant B Validation, Evaluation, and Visualization
 
 ## Metadata
 
 - Session ID: SESSION_004.
 - Status: CLOSED.
 - Started: 2026-10-10.
-- Last active/closed: 2026-10-12.
+- Last active/closed: 2026-10-13.
 - Branch: `phase4-vb-001-cpu-keyframe-offload`.
+- Starting HEAD: `443d3d3251f0ac8d3e0e5489507fe13b506110a4` (branch point before the
+  Variant-B implementation commit).
+- Ending evidence HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
 - Variant: `PHASE4-VB-001` — CPU offload of resident keyframe payloads.
 
 Objective: validate full-scene Variant-B memory behavior, preserve a reloadable
 final state, audit the released evaluator, and complete staged saved-state
-evaluation and representative camera-view export without changing the
-algorithm or rerunning online SLAM.
+evaluation, representative camera-view export, final-map visualization audit,
+and camera-aligned presentation packaging without changing the algorithm or
+rerunning online SLAM.
 
 ## Work Completed
 
@@ -31,10 +35,57 @@ algorithm or rerunning online SLAM.
 8. E4 complete released evaluation: `PASS_EVAL_E4_FULL_RELEASED`.
 9. Representative frames `[0,499,999,1499,1999]` camera-view export:
    `PASS_QUALITATIVE_EXPORT`.
+10. Generated deterministic final RGB and raw learned-semantic 3D map views
+    from the authoritative final PLYs without modifying them.
+11. Completed PHASE4-VIS-GATE-V1 diagnostic audit:
+    `PASS_V1_VISUALIZATION_AUDIT`.
+12. Completed PHASE4-VIS-GATE-V2 camera-aligned qualitative packaging:
+    `PASS_V2_CAMERA_ALIGNED_QUALITATIVE`.
 
 No source algorithm/config change, online SLAM rerun, post-SLAM optimization,
 or E4 full rendered-image export occurred. The later qualitative gate exported
-only five selected views and did not recompute metrics.
+only five selected views and did not recompute metrics. Visualization work did
+not alter tracking, mapping, optimization, CPU offload, saved Gaussian state,
+scientific config, or released metrics.
+
+## Visualization Gate V1
+
+- Status: `PASS_V1_VISUALIZATION_AUDIT`.
+- Report:
+  `results/runtime_artifacts/phase4_vb001_visualization_audit/GATE_V1_AUDIT_REPORT.md`.
+- Diagnostics:
+  `results/runtime_artifacts/phase4_vb001_visualization_audit/gaussian_diagnostics.json`.
+- Verified 29-ID mapping:
+  `results/runtime_artifacts/phase4_vb001_visualization_audit/semantic_mapping.csv`.
+- The final-Ply RGB and raw semantic free views share identical cameras. The
+  virtual cameras lie substantially outside the training trajectory and were
+  fitted primarily to contain all Gaussian centers.
+- Widespread giant Gaussian scale was not supported; only a small scale tail
+  is large. Millions of high-opacity primitives, exterior viewpoints, dense
+  overlap/occlusion, and PNG display clipping explain much of the poor
+  interpretability, without proving reconstruction failure.
+- Raw semantic colors are continuous learned values, not categorical class
+  predictions. Camera-aligned rendering from the checkpoint is feasible
+  without replaying SLAM.
+
+## Visualization Gate V2
+
+- Status: `PASS_V2_CAMERA_ALIGNED_QUALITATIVE`.
+- Output/report:
+  `results/runtime_artifacts/phase4_vb001_visualization_v2/` and
+  `GATE_V2_REPORT.md` inside that directory.
+- Complete frame packages: `[0,499,999,1499,1999]`.
+- Presentation figures: five-frame RGB, shared-range metric depth, semantic
+  summaries, and the frame-1999 case study.
+- Legend: verified 29-class PNG and CSV copied from the V1 mapping.
+- Reproducibility: `checksums/SHA256SUMS.txt` and structured source,
+  packaging, validation, and artifact manifests.
+- Packaging invoked no GPU renderer, computed no new metric, reran no SLAM,
+  and preserved all source hashes.
+- `rendered_semantic_raw.png` remains a continuous learned-color render;
+  evaluation recoloring is GT-palette-assisted and is not an independent
+  categorical prediction. No verified per-pixel semantic-ID rasterizer was
+  established in V2.
 
 ## Full-Scene Output-Save Result
 
@@ -105,12 +156,21 @@ map-view `Scene Reconstruction | 3D Segmentation` figure.
 - Evaluation run HEAD: `63adf3aed8ae2201a46d11cec473672f9e91fd0e`.
 - E4 harness SHA256:
   `8c31b131e1b294fb0a089589c4f934e1c9912a4969573169f2abe333c847d5e6`.
-- Saved-state SHA256:
-  `dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2`.
 - E1--E4 evidence lives under `results/runtime_artifacts/phase4_vb001_eval_*`.
 - Canonical result: `docs/experiments/PHASE4_VB001_EVALUATION_RESULT.md`.
 - Qualitative result:
   `docs/experiments/PHASE4_VB001_QUALITATIVE_EXPORT_RESULT.md`.
+- Final state SHA256:
+  `dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2`.
+- Final RGB/semantic PLY SHA256:
+  `d9b4d22ba11c73f8c1d6d0ea5f874bbb5d3254f25b333362a502a5940f604502`
+  / `6cd5a258a8147fe0c0515d04ea702d618f82c2411fc464ab9bfebd2fc2f3b726`.
+
+Authoritative final artifacts:
+
+- `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.npz`
+- `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/params.ply`
+- `experiments/Replica/room0_phase4_vb001_minimal_output_save_full_0_1999/seg_params.ply`
 
 ## Scientific Conclusion and Limits
 
@@ -121,18 +181,46 @@ that state. These are one-scene released-code results. They do not establish
 full paper reproduction, accuracy superiority, benchmark-wide contribution,
 or generalization to other scenes.
 
+## Known Unresolved Issues
+
+- Exterior full-map RGB/raw-semantic views remain difficult to interpret.
+- A trajectory/gravity-informed full-scene camera has not been validated.
+- Geometry-only, trajectory-overlay, ID-categorical 3D semantic, and selected
+  class-wise full-scene views remain pending.
+- Any useful visualization-only filtering policy remains untested and must
+  retain an unfiltered reference plus exact masks/thresholds.
+- Paper/baseline comparison, cross-scene validation, post-opt, and VB002 remain
+  future work.
+
+## Git State at Closure
+
+- No upstream is configured for the local branch via `@{upstream}`; the
+  matching remote ref `origin/phase4-vb-001-cpu-keyframe-offload` is currently
+  at the same HEAD.
+- Pre-handoff untracked visualization work: `scripts/visualization/`.
+- Pre-existing unrelated untracked file: `vds` (JSON); not modified.
+- No staged changes existed before the handoff update.
+- This handoff/documentation update remains uncommitted; no push was made.
+
 ## Next Task and Closure
 
-SESSION_004 closes at `PASS_QUALITATIVE_EXPORT`. Quantitative evaluation and
-camera-view qualitative export are complete. The immediate next task is a
-read-only **Scene Reconstruction / 3D Segmentation Visualization Audit** for
-the saved `params.ply` and `seg_params.ply`; it must stop before rendering.
+SESSION_004 closes at `PASS_V2_CAMERA_ALIGNED_QUALITATIVE`. The exact next
+task is **PHASE4-VIS-GATE-V3-A — Bounded Full-Scene 3D Visualization Proof**.
+Start by inspecting this session record, `PROJECT_STATUS.md`,
+`SESSION_HANDOFF.md`, the V1/V2 reports, `gaussian_diagnostics.json`,
+`semantic_mapping.csv`, final `params.npz`, and existing V1 camera metadata.
+
+V3-A must validate trajectory/gravity-informed cameras, unfiltered RGB,
+geometry/Gaussian centers, trajectory overlay, aligned-ID categorical
+semantics, selected class-wise views, and exact reproducibility metadata. Any
+filtering is visualization-only, explicitly diagnostic, paired with an
+unfiltered reference, and may not mutate checkpoint/PLY/evaluation state.
 
 The Paper / Baseline Comparison Audit remains subsequent work and must still
 verify protocol comparability, prepare a baseline-versus-PHASE4-VB-001 table,
 and identify justified claims and missing scenes/experiments. PHASE4-VB002
 remains future work.
 
-Future sessions must not resume from output saving, E1--E4, or the completed
-camera-view export, and must not rerun online SLAM merely to repeat saved-state
+Future sessions must not resume from output saving, E1--E4, qualitative
+export, V1, or V2, and must not rerun online SLAM merely to repeat saved-state
 evaluation or visualization inputs.
