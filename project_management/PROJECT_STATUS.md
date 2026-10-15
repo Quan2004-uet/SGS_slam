@@ -12,7 +12,7 @@ Last reconciled: 2026-10-16.
 - Phase 5 P5-G1 checkpoint HEAD: `86ac4f990932563c721187a5cb458f3e07be9ce6`.
 - Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
 - Current implementation HEAD: `302e3e6bf46d50ea96b010eb5988dfd6616c2317` (`fix(profiler): prevent CUDA event queue overflow`).
-- Current repository HEAD: `c3a76c0860a193187454d420776be4f1b1ced488` (P5-LEAN-001 design checkpoint).
+- Latest session handoff checkpoint: `b30d5a622152e66d14ed2fd94b0a6f86a073eb1d` (P5-LEAN session handoff checkpoint).
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
 

@@ -12,7 +12,7 @@ Last reconciled: 2026-10-16.
 - Date: 2026-10-16 (started 2026-10-15).
 - Branch: `phase5-profiling-instrumentation`.
 - Phase 4 reference HEAD: `37522db553ff18b96592073f9de699db7fa48600`.
-- Current committed HEAD: `c3a76c0860a193187454d420776be4f1b1ced488` (`docs(research): checkpoint p5-lean 21-day design`).
+- Session handoff checkpoint: `b30d5a622152e66d14ed2fd94b0a6f86a073eb1d` (`docs(project): hand off p5-lean checkpoint to p6-bam`).
 - P5-G2 implementation commit: `0118d2cf99bf1fe089f34dea20696ac71101b30d`.
 - Runtime gate status: `BLOCKED_P5_G3A_RETRY1` after C0/C1/C2 completed frames 0–99; detailed telemetry dropped 1,958 CUDA event spans.
 - Profiler repair preflight: `PASS_P5_G3A_FIX1_PREFLIGHT`; no online SLAM workload was run during the repair.
