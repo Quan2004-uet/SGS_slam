@@ -34,6 +34,7 @@ from datasets.gradslam_datasets import (
 from utils.common_utils import seed_everything, save_params_ckpt, save_params
 from utils.eval_helpers import report_loss, report_progress, eval
 from utils.keyframe_selection import keyframe_selection_overlap
+from utils.performance_profiler import build_run_metadata, create_profiler
 from utils.recon_helpers import setup_camera
 from utils.slam_helpers import (
     transformed_params2rendervar, transformed_params2depthplussilhouette,
@@ -248,7 +249,8 @@ def initialize_first_timestep(dataset, num_frames, scene_radius_depth_ratio, mea
 
 def get_loss(params, curr_data, variables, iter_time_idx, loss_weights, use_sil_for_loss, sil_thres,
              use_l1, ignore_outlier_depth_loss, tracking=False, mapping=False, do_ba=False, device="cuda",
-             plot_dir=None, visualize_tracking_loss=False, tracking_iteration=None, load_semantics=False):
+             plot_dir=None, visualize_tracking_loss=False, tracking_iteration=None, load_semantics=False,
+             profiler=None, profile_frame_id=None, profile_iteration_id=None, profile_stage=None):
     # Initialize Loss Dictionary
     losses = {}
 
@@ -276,11 +278,20 @@ def get_loss(params, curr_data, variables, iter_time_idx, loss_weights, use_sil_
                                                                  transformed_pts, device=device)
     # RGB Rendering
     rendervar['means2D'].retain_grad()
+    profile_component = profile_stage or "loss"
+    profile_token = profiler.cuda_start(f"{profile_component}.render_rgb", profile_frame_id,
+                                        profile_iteration_id) if profiler is not None else None
     im, radius, _, = Renderer(raster_settings=curr_data['cam'])(**rendervar)
+    if profiler is not None:
+        profiler.cuda_stop(profile_token)
     variables['means2D'] = rendervar['means2D']  # Gradient only accum from colour render for densification
 
     # Depth & Silhouette Rendering
+    profile_token = profiler.cuda_start(f"{profile_component}.render_depth_silhouette", profile_frame_id,
+                                        profile_iteration_id) if profiler is not None else None
     depth_sil, _, _, = Renderer(raster_settings=curr_data['cam'])(**depth_sil_rendervar)
+    if profiler is not None:
+        profiler.cuda_stop(profile_token)
     depth = depth_sil[0, :, :].unsqueeze(0)
     silhouette = depth_sil[1, :, :]
     presence_sil_mask = (silhouette > sil_thres)
@@ -291,8 +302,14 @@ def get_loss(params, curr_data, variables, iter_time_idx, loss_weights, use_sil_
     # Semantic colors Rendering
     if load_semantics:
         semantic_rendervar = transformed_semantics2rendervar(params, transformed_pts, device=device)
+        profile_token = profiler.cuda_start(f"{profile_component}.render_semantic", profile_frame_id,
+                                            profile_iteration_id) if profiler is not None else None
         rendered_seg, _, _, = Renderer(raster_settings=curr_data['cam'])(**semantic_rendervar)
+        if profiler is not None:
+            profiler.cuda_stop(profile_token)
 
+    profile_token = profiler.cuda_start(f"{profile_component}.loss", profile_frame_id,
+                                        profile_iteration_id) if profiler is not None else None
     # Mask with valid depth values (accounts for outlier depth values)
     nan_mask = (~torch.isnan(depth)) & (~torch.isnan(uncertainty))
     if ignore_outlier_depth_loss:
@@ -380,6 +397,8 @@ def get_loss(params, curr_data, variables, iter_time_idx, loss_weights, use_sil_
 
     weighted_losses = {k: v * loss_weights[k] for k, v in losses.items()}
     loss = sum(weighted_losses.values())
+    if profiler is not None:
+        profiler.cuda_stop(profile_token)
 
     seen = radius > 0
     variables['max_2D_radius'][seen] = torch.max(radius[seen], variables['max_2D_radius'][seen])
@@ -513,9 +532,11 @@ def convert_params_to_store(params):
 KEYFRAME_PAYLOAD_FIELDS = ('color', 'depth', 'semantic_id', 'semantic_color')
 
 
-def archive_keyframe_payload_on_cpu(keyframe):
+def archive_keyframe_payload_on_cpu(keyframe, profiler=None):
     """Return a keyframe whose image/depth/semantic payload is CPU-authoritative."""
     archived_keyframe = keyframe.copy()
+    frame_id = archived_keyframe.get('id', -1)
+    wall_token = profiler.cpu_start(frame_id) if profiler is not None else None
     for field in KEYFRAME_PAYLOAD_FIELDS:
         if field not in archived_keyframe:
             continue
@@ -523,12 +544,19 @@ def archive_keyframe_payload_on_cpu(keyframe):
         if not isinstance(payload, torch.Tensor):
             raise TypeError(f"Keyframe payload '{field}' must be a torch.Tensor")
         archived_keyframe[field] = payload.detach().to(device='cpu', copy=True)
+    if profiler is not None:
+        profiler.cpu_stop(wall_token, "keyframe_archive", frame_id, metric_name="copy_wall_time")
+        profiler.record_archive(archived_keyframe, frame_id)
     return archived_keyframe
 
 
-def stage_keyframe_payload(keyframe, device):
+def stage_keyframe_payload(keyframe, device, profiler=None, frame_id=-1, iteration_id=-1):
     """Synchronously stage one archived keyframe payload without casting it."""
     staged_payload = {}
+    wall_token = (profiler.cpu_start(frame_id, iteration_id)
+                  if profiler is not None and profiler.detailed and
+                  profiler.should_sample(frame_id, iteration_id, "cuda") else None)
+    cuda_token = profiler.cuda_start("h2d_staging", frame_id, iteration_id) if profiler is not None else None
     for field in KEYFRAME_PAYLOAD_FIELDS:
         if field not in keyframe:
             continue
@@ -538,6 +566,10 @@ def stage_keyframe_payload(keyframe, device):
         if payload.device.type != 'cpu':
             raise RuntimeError(f"Archived keyframe payload '{field}' must be CPU-resident")
         staged_payload[field] = payload.to(device=device, non_blocking=False)
+    if profiler is not None:
+        profiler.cuda_stop(cuda_token)
+        profiler.cpu_stop(wall_token, "h2d_staging", frame_id, iteration_id)
+        profiler.record_staging(staged_payload, frame_id, iteration_id)
     return staged_payload
 
 
@@ -555,7 +587,6 @@ def rgbd_slam(config: dict):
     output_dir = os.path.join(config["workdir"], config["run_name"])
     eval_dir = os.path.join(output_dir, "eval")
     os.makedirs(eval_dir, exist_ok=True)
-    
     # Init WandB
     if config['use_wandb']:
         wandb_time_step = 0
@@ -572,6 +603,24 @@ def rgbd_slam(config: dict):
     if config["primary_device"].startswith("cuda:"):
         device_id = int(config["primary_device"].split(':')[1])
         torch.cuda.set_device(device_id)
+
+    profiling_config = config.get("profiling")
+    profiling_enabled = bool(profiling_config) and str(profiling_config.get("mode", "off")).lower() != "off"
+    profile_metadata = None
+    if profiling_enabled:
+        profile_metadata = {
+            "slam_run_name": config["run_name"],
+            "seed": config.get("seed"),
+            "primary_device": config.get("primary_device"),
+            "dataset": config.get("data", {}).get("sequence"),
+            "frame_start": config.get("data", {}).get("start"),
+            "frame_end": config.get("data", {}).get("end"),
+        }
+        profile_metadata.update(build_run_metadata(config, _BASE_DIR))
+        if device.type == "cuda":
+            profile_metadata["gpu_name"] = torch.cuda.get_device_name(device)
+    profiler = create_profiler(profiling_config, metadata=profile_metadata)
+    active_profiler = profiler if profiler.enabled else None
 
     # Load Dataset
     print("Loading Dataset ...")
@@ -749,7 +798,7 @@ def rgbd_slam(config: dict):
                     semantic_color = semantic_color.permute(2, 0, 1) / 255
                     curr_keyframe['semantic_id'] = semantic_id
                     curr_keyframe['semantic_color'] = semantic_color
-                curr_keyframe = archive_keyframe_payload_on_cpu(curr_keyframe)
+                curr_keyframe = archive_keyframe_payload_on_cpu(curr_keyframe, profiler=active_profiler)
                 # Add to keyframe list
                 keyframe_list.append(curr_keyframe)
     else:
@@ -758,6 +807,7 @@ def rgbd_slam(config: dict):
     # Iterate over Scan
     for time_idx in tqdm(range(checkpoint_time_idx, num_frames)):
         # Load RGBD frames incrementally instead of all frames
+        profile_token = profiler.cpu_start(time_idx)
         if load_semantics:
             color, depth, _, gt_pose, semantic_id, semantic_color = dataset[time_idx]
         else:
@@ -780,6 +830,7 @@ def rgbd_slam(config: dict):
             semantic_color = semantic_color.permute(2, 0, 1) / 255
             curr_data['semantic_id'] = semantic_id
             curr_data['semantic_color'] = semantic_color
+        profiler.cpu_stop(profile_token, "frame_preprocessing", time_idx)
         
         # Initialize Data for Tracking
         if seperate_tracking_res:
@@ -801,6 +852,7 @@ def rgbd_slam(config: dict):
 
         # Step 1: Tracking
         tracking_start_time = time.time()
+        tracking_profile_token = profiler.cpu_start(time_idx)
         if time_idx > 0 and not config['tracking']['use_gt_poses']:
             # Reset Optimizer & Learning Rates for tracking
             optimizer = initialize_optimizer(params, params_opt_exclude, config['tracking']['lrs'], tracking=True)
@@ -821,14 +873,28 @@ def rgbd_slam(config: dict):
                                                    config['tracking']['use_l1'], config['tracking']['ignore_outlier_depth_loss'],
                                                    tracking=True, device=device, plot_dir=eval_dir,
                                                    visualize_tracking_loss=config['tracking']['visualize_tracking_loss'],
-                                                   tracking_iteration=iter, load_semantics=load_semantics)
+                                                   tracking_iteration=iter, load_semantics=load_semantics,
+                                                   profiler=active_profiler, profile_frame_id=time_idx,
+                                                   profile_iteration_id=iter, profile_stage="tracking")
                 if config['use_wandb']:
                     # Report Loss
                     wandb_tracking_step = report_loss(losses, wandb_run, wandb_tracking_step, tracking=True, load_semantics=load_semantics)
                 # Backprop
+                profile_token = profiler.cuda_start("tracking.backward", time_idx, iter)
                 loss.backward()
+                profiler.cuda_stop(profile_token)
+                if profiler.detailed:
+                    profiler.record_tensor_bytes("tracking", "gradient_bytes",
+                                                 {name: value.grad for name, value in params.items()
+                                                  if isinstance(value, torch.Tensor) and value.grad is not None},
+                                                 time_idx, iter)
                 # Optimizer Update
+                profile_token = profiler.cuda_start("tracking.optimizer_step", time_idx, iter)
                 optimizer.step()
+                profiler.cuda_stop(profile_token)
+                if profiler.detailed:
+                    profiler.record_tensor_bytes("tracking", "optimizer_state_bytes", optimizer.state,
+                                                 time_idx, iter)
                 optimizer.zero_grad(set_to_none=True)
                 with torch.no_grad():
                     # Save the best candidate rotation & translation
@@ -883,6 +949,7 @@ def rgbd_slam(config: dict):
                 params['cam_trans'][..., time_idx] = rel_w2c_tran
         # Update the runtime numbers
         tracking_end_time = time.time()
+        profiler.cpu_stop(tracking_profile_token, "tracking", time_idx)
         tracking_frame_time_sum += tracking_end_time - tracking_start_time
         tracking_frame_time_count += 1
 
@@ -920,15 +987,19 @@ def rgbd_slam(config: dict):
                     densify_curr_data = curr_data
 
                 # Add new Gaussians to the scene based on the Silhouette
+                profile_token = profiler.cuda_start("mapping.gaussian_append", time_idx)
                 params, variables = add_new_gaussians(params, params_opt_exclude, variables, densify_curr_data, 
                                                       config['mapping']['sil_thres'], time_idx, config['mean_sq_dist_method'],
                                                       device, load_semantics=load_semantics)
+                profiler.cuda_stop(profile_token)
                 post_num_pts = params['means3D'].shape[0]
                 if config['use_wandb']:
                     wandb_run.log({"Mapping/Number of Gaussians": post_num_pts,
                                    "Mapping/step": wandb_time_step})
             
             # Update keyframes for gaussian mapping
+            selection_profile_token = profiler.cpu_start(time_idx)
+            selection_cuda_token = profiler.cuda_start("mapping.keyframe_selection", time_idx)
             with torch.no_grad():
                 # Get the current estimated rotation & translation
                 curr_cam_rot = F.normalize(params['cam_unnorm_rots'][..., time_idx].detach())
@@ -940,6 +1011,8 @@ def rgbd_slam(config: dict):
                 num_keyframes = config['mapping_window_size']-2
                 selected_keyframes = keyframe_selection_overlap(depth, curr_w2c, intrinsics, keyframe_list[:-1],
                                                                 num_keyframes, device=device)
+                profiler.record("mapping.keyframe_selection", "overlap_candidate_count",
+                                len(selected_keyframes), "count", time_idx)
                 selected_time_idx = [keyframe_list[frame_idx]['id'] for frame_idx in selected_keyframes]
                 if len(keyframe_list) > 0:
                     # Add last keyframe to the selected keyframes
@@ -951,19 +1024,24 @@ def rgbd_slam(config: dict):
                 # Print the selected keyframes
                 print(f"\nSelected Keyframes at Frame {time_idx}: {selected_time_idx}")
                 timestamp_keyframes.append(selected_time_idx)
+            profiler.cuda_stop(selection_cuda_token)
+            profiler.cpu_stop(selection_profile_token, "mapping.keyframe_selection", time_idx)
 
             # Reset Optimizer & Learning Rates for Full Map Optimization
             optimizer = initialize_optimizer(params, params_opt_exclude, config['mapping']['lrs'], tracking=False) 
 
             # Mapping
             mapping_start_time = time.time()
+            mapping_profile_token = profiler.cpu_start(time_idx)
             if num_iters_mapping > 0:
                 progress_bar = tqdm(range(num_iters_mapping), desc=f"Mapping Time Step: {time_idx}")
             for iter in range(num_iters_mapping):
                 iter_start_time = time.time()
                 # Randomly select a frame until current time step amongst keyframes
+                profile_token = profiler.cpu_start(time_idx, iter)
                 rand_idx = np.random.randint(0, len(selected_keyframes))
                 selected_rand_keyframe_idx = selected_keyframes[rand_idx]
+                profiler.cpu_stop(profile_token, "mapping.observation_selection", time_idx, iter)
                 staged_keyframe_payload = None
                 if selected_rand_keyframe_idx == -1:
                     # Use Current Frame Data
@@ -974,7 +1052,8 @@ def rgbd_slam(config: dict):
                     # Use Keyframe Data
                     selected_keyframe = keyframe_list[selected_rand_keyframe_idx]
                     iter_time_idx = selected_keyframe['id']
-                    staged_keyframe_payload = stage_keyframe_payload(selected_keyframe, device)
+                    staged_keyframe_payload = stage_keyframe_payload(selected_keyframe, device, profiler=active_profiler,
+                                                                     frame_id=time_idx, iteration_id=iter)
                     iter_color = staged_keyframe_payload['color']
                     iter_depth = staged_keyframe_payload['depth']
                 iter_gt_w2c = gt_w2c_all_frames[:iter_time_idx+1]
@@ -992,27 +1071,45 @@ def rgbd_slam(config: dict):
                 loss, variables, losses = get_loss(params, iter_data, variables, iter_time_idx, config['mapping']['loss_weights'],
                                                 config['mapping']['use_sil_for_loss'], config['mapping']['sil_thres'],
                                                 config['mapping']['use_l1'], config['mapping']['ignore_outlier_depth_loss'],
-                                                mapping=True, device=device, load_semantics=load_semantics)
+                                                mapping=True, device=device, load_semantics=load_semantics,
+                                                profiler=active_profiler, profile_frame_id=time_idx,
+                                                profile_iteration_id=iter, profile_stage="mapping")
                 if config['use_wandb']:
                     # Report Loss
                     wandb_mapping_step = report_loss(losses, wandb_run, wandb_mapping_step, mapping=True, load_semantics=load_semantics)
                 # Backprop
+                profile_token = profiler.cuda_start("mapping.backward", time_idx, iter)
                 loss.backward()
+                profiler.cuda_stop(profile_token)
+                if profiler.detailed:
+                    profiler.record_tensor_bytes("mapping", "gradient_bytes",
+                                                 {name: value.grad for name, value in params.items()
+                                                  if isinstance(value, torch.Tensor) and value.grad is not None},
+                                                 time_idx, iter)
                 with torch.no_grad():
                     # Prune Gaussians
                     if config['mapping']['prune_gaussians']:
+                        profile_token = profiler.cuda_start("mapping.prune", time_idx, iter)
                         params, variables = prune_gaussians(params, params_opt_exclude, variables, optimizer, iter, config['mapping']['pruning_dict'])
+                        profiler.cuda_stop(profile_token)
                         if config['use_wandb']:
                             wandb_run.log({"Mapping/Number of Gaussians - Pruning": params['means3D'].shape[0],
                                            "Mapping/step": wandb_mapping_step})
                     # Gaussian-Splatting's Gradient-based Densification
                     if config['mapping']['use_gaussian_splatting_densification']:
+                        profile_token = profiler.cuda_start("mapping.densify", time_idx, iter)
                         params, variables = densify(params, variables, optimizer, iter, config['mapping']['densify_dict'], params_opt_exclude, device=device)
+                        profiler.cuda_stop(profile_token)
                         if config['use_wandb']:
                             wandb_run.log({"Mapping/Number of Gaussians - Densification": params['means3D'].shape[0],
                                            "Mapping/step": wandb_mapping_step})
                     # Optimizer Update
+                    profile_token = profiler.cuda_start("mapping.optimizer_step", time_idx, iter)
                     optimizer.step()
+                    profiler.cuda_stop(profile_token)
+                    if profiler.detailed:
+                        profiler.record_tensor_bytes("mapping", "optimizer_state_bytes", optimizer.state,
+                                                     time_idx, iter)
                     optimizer.zero_grad(set_to_none=True)
                     # Report Progress
                     if config['report_iter_progress']:
@@ -1035,6 +1132,7 @@ def rgbd_slam(config: dict):
                 progress_bar.close()
             # Update the runtime numbers
             mapping_end_time = time.time()
+            profiler.cpu_stop(mapping_profile_token, "mapping", time_idx)
             mapping_frame_time_sum += mapping_end_time - mapping_start_time
             mapping_frame_time_count += 1
 
@@ -1071,7 +1169,7 @@ def rgbd_slam(config: dict):
                 if load_semantics:
                     curr_keyframe['semantic_id'] = semantic_id
                     curr_keyframe['semantic_color'] = semantic_color
-                curr_keyframe = archive_keyframe_payload_on_cpu(curr_keyframe)
+                curr_keyframe = archive_keyframe_payload_on_cpu(curr_keyframe, profiler=active_profiler)
                 # Add to keyframe list
                 keyframe_list.append(curr_keyframe)
                 keyframe_time_indices.append(time_idx)
@@ -1086,6 +1184,9 @@ def rgbd_slam(config: dict):
         if config['use_wandb']:
             wandb_time_step += 1
 
+        profiler.sample_state(time_idx, params, variables, keyframe_list,
+                              optimizer=optimizer if 'optimizer' in locals() else None)
+        profiler.resolve_cuda_events(time_idx)
         torch.cuda.empty_cache()
 
     if config['save_timestamp_keyframes']:
@@ -1120,6 +1221,7 @@ def rgbd_slam(config: dict):
                        "Final Stats/step": 1})
     
     # Evaluate Final Parameters
+    evaluation_profile_token = profiler.cpu_start(num_frames)
     with torch.no_grad():
         if config['use_wandb']:
             eval(dataset, params, num_frames, eval_dir, sil_thres=config['mapping']['sil_thres'],
@@ -1130,6 +1232,7 @@ def rgbd_slam(config: dict):
             eval(dataset, params, num_frames, eval_dir, sil_thres=config['mapping']['sil_thres'],
                  mapping_iters=config['mapping']['num_iters'], add_new_gaussians=config['mapping']['add_new_gaussians'],
                  device=device, load_semantics=load_semantics, eval_every=config['eval_every'], save_frames=True)
+    profiler.cpu_stop(evaluation_profile_token, "evaluation", num_frames)
 
     # Add Camera Parameters to Save them
     params['timestep'] = variables['timestep']
@@ -1147,7 +1250,10 @@ def rgbd_slam(config: dict):
         params['semantic_ids'] = params['semantic_ids'].type(torch.uint8)
     
     # Save Parameters
+    serialization_profile_token = profiler.cpu_start(num_frames)
     save_params(params, output_dir)
+    profiler.cpu_stop(serialization_profile_token, "serialization", num_frames)
+    profiler.close(status="completed")
 
     # Close WandB Run
     if config['use_wandb']:

@@ -4,6 +4,23 @@
 > `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
 > `SESSION_HANDOFF.md` for current state.
 
+## 2026-10-15 — SESSION_006 / Phase 5 P5-G1 and P5-G2
+
+### Documentation
+
+- Checkpointed the nine P5-G1 research-design documents at `86ac4f990932563c721187a5cb458f3e07be9ce6` and created the isolated `phase5-profiling-instrumentation` branch.
+- Added P5-G2 implementation, telemetry-schema, CPU-test, and P5-G3-readiness reports.
+
+### Instrumentation
+
+- Added disabled-by-default `off`, `light`, and `detailed` profiling with bounded structured telemetry and minimal hooks around the unchanged online SGS-SLAM execution path.
+- Added CPU/GPU timing categories, archive/staging counters, Gaussian/optimizer/storage attribution, PyTorch allocator metrics, and process RSS/HWM sampling. CUDA-specific measurements remain pending bounded runtime validation.
+
+### Validation
+
+- Passed 20 CPU-only tests with CUDA hidden and uninitialized, plus Python compilation and static diff checks.
+- No CUDA workload, online SLAM, experiment, optimization variant, released config/hyperparameter change, Phase 4 artifact mutation, P5-G2 implementation commit, or push occurred.
+
 ## 2026-10-14 — Phase 4 closure
 
 ### Evidence consolidation

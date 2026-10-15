@@ -2,12 +2,14 @@
 
 > **CURRENT PROJECT-STATE AUTHORITY.** Repository/source/config/runtime evidence has highest priority. This file defines the current phase; use `SESSION_HANDOFF.md` for the exact resume point.
 
-Last reconciled: 2026-10-14.
+Last reconciled: 2026-10-15.
 
 ## Project Identity
 
 - Repository: SGS-SLAM — Semantic Gaussian Splatting for Neural Dense SLAM.
-- Branch: `phase4-vb-001-cpu-keyframe-offload`.
+- Branch: `phase5-profiling-instrumentation`.
+- Phase 4 reference HEAD: `37522db553ff18b96592073f9de699db7fa48600`.
+- Phase 5 P5-G1 checkpoint HEAD: `86ac4f990932563c721187a5cb458f3e07be9ce6`.
 - Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
@@ -17,7 +19,10 @@ Last reconciled: 2026-10-14.
 - Phase 4 — CPU Keyframe Offload / Reproducible Memory Baseline Variant: **COMPLETE**.
 - Variant `PHASE4-VB-001`: **COMPLETE / VALIDATED**.
 - Closure status: `PASS_PHASE4_CLOSURE`.
-- Next phase: **PLANNED / NOT STARTED**.
+- Phase 5 — Multi-Scene Validation & Performance Profiling: **IN PROGRESS**.
+- P5-G1: `PASS_P5_G1_DESIGN_READY`.
+- P5-G2: `PASS_P5_G2_CPU_STATIC`; implementation is intentionally uncommitted pending researcher review.
+- P5-G3: **NOT STARTED / REQUIRES EXPLICIT APPROVAL**.
 - Canonical closure package: `results/runtime_artifacts/phase4_closure/`.
 
 Phase 4 changed memory ownership, not the SGS-SLAM objective: archived keyframe `color`, `depth`, `semantic_id`, and `semantic_color` payloads are CPU-authoritative and synchronously staged to GPU when selected. Archived `est_w2c` remains GPU-resident. The implementation adds no pinned memory, asynchronous copy, prefetch, persistent GPU cache, compression, or eviction and retains the released keyframe and optimization policies.
@@ -68,10 +73,12 @@ Not established: accuracy equivalence to a full-scene baseline (the baseline did
 - Direct full-scene baseline quality comparison is unavailable because the unchanged baseline OOMed.
 - Virtual full-scene views are diagnostics, not novel-view accuracy evidence; Gaussian-center views are not continuous surfaces.
 
-## Planned Next Phase
+## Phase 5 Status
 
-The next phase is planned but not started. First priority is controlled multi-scene validation of the unchanged PHASE4-VB-001 variant. Subsequent, separately gated systems hypotheses are transport optimization (pinned memory, non-blocking copies, streams/prefetch), a bounded reuse-aware GPU cache, and archive compaction. Keyframe eviction is an algorithmic experiment and must remain separate.
+P5-G1 established the audit, dataset-readiness, instrumentation, hypothesis, ablation, evaluation, and execution contracts in `docs/research/phase5/`. P5-G2 added disabled-by-default `off`, `light`, and `detailed` profiling, bounded JSONL/summary telemetry, CPU/GPU-memory attribution helpers, and minimal hooks around the existing online path. Twenty CPU-only tests pass with CUDA hidden and uninitialized. CUDA-event correctness, numerical/runtime equivalence, profiling overhead, and multi-scene behavior remain pending P5-G3/P5-G4 runtime verification.
+
+No optimization variant V1–V5 has been implemented. The next authorized gate, only after researcher review, is P5-G3 bounded off/light/detailed profiling on frames 0–99, followed by 0–499 only if the first horizon passes.
 
 ## STOPPED HERE
 
-Phase 4 is closed at `PASS_PHASE4_CLOSURE`. Do not resume V3 gates, rerun SLAM/E4, or begin the next phase implicitly. Start a new named session and gate only after explicit authorization.
+P5-G2 is closed at `PASS_P5_G2_CPU_STATIC`. Do not run online SLAM, initialize CUDA, start P5-G3, implement V1–V5, commit the P5-G2 implementation, or push without explicit researcher approval.
