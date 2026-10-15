@@ -322,3 +322,11 @@ These decisions constrain work but do not themselves define the current task.
 - Status: ACCEPTED.
 
 Administratively close the original Multi-Scene Validation & Performance Profiling plan as `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`, while preserving every historical gate classification and artifact. Its technical completion remains `NOT_ACHIEVED`. The next planned scope is P5-LEAN-001; no technical PASS transfers to that scope. Phase 4 V0, P5-G1/G2, FIX1 preflight, and R2 evidence remain reusable. Budget-Aware Mapping is a priority hypothesis, not an implemented method.
+
+## DEC-016 — Select novelty-aware mapping budget as the lean initial hypothesis
+
+- Date: 2026-10-15.
+- Session: SESSION_012 / P5-LEAN-001.
+- Status: ACCEPTED FOR IMPLEMENTATION AUDIT, NOT VALIDATED.
+
+Use the number/fraction of Gaussians appended before each mapping event to select a discrete low/mid/full iteration budget. Keep V0 at 60 iterations, require a fixed-budget control, preserve Replica pruning iteration 20, and fall back to the configured budget when disabled or invalid. Defer residual stopping because random-view losses are not directly comparable and host decisions can synchronize CUDA. Defer comprehensive DETAILED profiling; use matched LIGHT measurement for bounded validation.

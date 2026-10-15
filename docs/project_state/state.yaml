@@ -2,8 +2,8 @@ authority: derived
 canonical_project_status: project_management/PROJECT_STATUS.md
 canonical_handoff: project_management/SESSION_HANDOFF.md
 role: derived_machine_readable_snapshot
-last_updated: 2026-10-14
-authority_reconciled: 2026-10-14
+last_updated: 2026-10-15
+authority_reconciled: 2026-10-15
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
@@ -21,23 +21,23 @@ baseline:
 
 workflow:
   phase: 5
-  phase_name: Original Phase 5 administratively superseded; P5-LEAN planned
-  phase_status: superseded_incomplete
+  phase_name: P5-LEAN — 21-day runtime optimization study
+  phase_status: in_progress_design_ready
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P5-G3A-FIX1-PREFLIGHT
+  latest_completed_gate: P5-LEAN-001
   next_phase_status: planned_not_started
-  next_recommended_phase: P5-LEAN-001
+  next_recommended_phase: P6-BAM-001
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_011
-  title: P5-TRANSITION-001 Administrative Closure of Original Phase 5
+  id: SESSION_012
+  title: P5-LEAN-001 21-Day Replan and BAM Feasibility Audit
   status: closed
   started: 2026-10-15
   closed: 2026-10-15
-  head: 302e3e6bf46d50ea96b010eb5988dfd6616c2317
+  head: 1fbde976d9bb534cfc6b19f1bbde758521b24601
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -54,12 +54,18 @@ phase5_original:
   bottleneck_decision: NOT_EXECUTED_INCONCLUSIVE
 
 p5_lean:
-  lifecycle: PLANNED_NOT_STARTED
-  first_task: P5-LEAN-001 — Four-Week Research Replan & Budget-Aware Mapping Feasibility Audit
+  lifecycle: IN_PROGRESS
+  first_task: P5-LEAN-001 — 21-Day Research Replan & Budget-Aware Mapping Feasibility Audit
+  first_task_status: PASS_P5_LEAN_001_21DAY_DESIGN_READY
+  selected_candidate: novelty_aware_mapping_budget
+  candidate_status: DESIGNED_NOT_IMPLEMENTED_NOT_VALIDATED
+  deadline: 2026-11-05
+  code_freeze_target: 2026-10-28
 
 phase6:
   priority: Budget-Aware Mapping
-  status: NOT_STARTED
+  status: PLANNED_NOT_STARTED
+  next_task: P6-BAM-001
 
 variant:
   identifier: PHASE4-VB-001

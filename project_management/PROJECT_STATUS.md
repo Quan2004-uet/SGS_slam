@@ -12,6 +12,7 @@ Last reconciled: 2026-10-15.
 - Phase 5 P5-G1 checkpoint HEAD: `86ac4f990932563c721187a5cb458f3e07be9ce6`.
 - Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
 - Current implementation HEAD: `302e3e6bf46d50ea96b010eb5988dfd6616c2317` (`fix(profiler): prevent CUDA event queue overflow`).
+- Current repository HEAD: `1fbde976d9bb534cfc6b19f1bbde758521b24601` (Phase 5 administrative transition checkpoint).
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
 
@@ -29,7 +30,10 @@ Last reconciled: 2026-10-15.
 - P5-G3A-R3: **NOT_EXECUTED**.
 - P5-G3B (0–499): **NOT_EXECUTED**.
 - Multi-scene profiling and final bottleneck decision: **NOT_EXECUTED / INCONCLUSIVE**.
-- P5-LEAN: **PLANNED_NOT_STARTED**; first task `P5-LEAN-001` pending researcher review.
+- P5-LEAN: **IN PROGRESS**; `P5-LEAN-001` is `PASS_P5_LEAN_001_21DAY_DESIGN_READY`.
+- Three-week execution window: 2026-10-15 through 2026-11-05; code/config freeze target 2026-10-28.
+- Selected candidate: novelty-aware Budget-Aware Mapping using pre/post append Gaussian counts; **DESIGNED, NOT IMPLEMENTED OR VALIDATED**.
+- Next task: `P6-BAM-001 — Budget-Aware Mapping Minimal Implementation`, `PLANNED_NOT_STARTED` pending researcher review.
 - Canonical closure package: `results/runtime_artifacts/phase4_closure/`.
 
 Phase 4 changed memory ownership, not the SGS-SLAM objective: archived keyframe `color`, `depth`, `semantic_id`, and `semantic_color` payloads are CPU-authoritative and synchronously staged to GPU when selected. Archived `est_w2c` remains GPU-resident. The implementation adds no pinned memory, asynchronous copy, prefetch, persistent GPU cache, compression, or eviction and retains the released keyframe and optimization policies.
@@ -80,12 +84,12 @@ Not established: accuracy equivalence to a full-scene baseline (the baseline did
 - Direct full-scene baseline quality comparison is unavailable because the unchanged baseline OOMed.
 - Virtual full-scene views are diagnostics, not novel-view accuracy evidence; Gaussian-center views are not continuous surfaces.
 
-## Phase 5 Status
+## P5-LEAN Status
 
 P5-G1 established the audit, dataset-readiness, instrumentation, hypothesis, ablation, evaluation, and execution contracts in `docs/research/phase5/`. P5-G2 added disabled-by-default `off`, `light`, and `detailed` profiling, bounded JSONL/summary telemetry, CPU/GPU-memory attribution helpers, and minimal hooks around the existing online path. Twenty CPU-only tests pass with CUDA hidden and uninitialized. Direct-host recovery using `/home/robot/miniconda3/envs/sgs_slam_5080` passed the CUDA smoke test. Retry 1 completed C0/C1/C2 on room0 frames 0–99; C1 had zero dropped spans, while C2 had zero pending events but 1,958 dropped CUDA event spans. Logged keyframe traces matched, but final Gaussian counts were not bit-exact. Detailed timing is therefore diagnostic, not gate-valid.
 
-No optimization variant V1–V5 has been implemented. The original Phase 5 execution plan is administratively retired; its historical gates and artifacts remain unchanged. Do not resume G3A retry loops automatically. The next authorized scope is P5-LEAN-001, which remains planned and not started.
+No optimization variant V1–V5 has been implemented. The original Phase 5 execution plan remains administratively retired and its historical gates are unchanged. P5-LEAN-001 completed the mapping-loop audit, selected a novelty-aware tiered mapping-budget hypothesis, and defined lean profiling, evaluation, ablation, schedule and implementation contracts. Comprehensive DETAILED profiling remains deferred. Core quality obligations and the additional-scene priority remain in force.
 
 ## STOPPED HERE
 
-P5-G3A retry 1 remains `BLOCKED_P5_G3A_RETRY1` because detailed profiling dropped 1,958 event spans. FIX1 is `PASS_P5_G3A_FIX1_PREFLIGHT`: the profiler repair passed CPU and synthetic CUDA tests. R2 precheck is `BLOCKED_P5_G3A_R2` because OFF-A/OFF-B final Gaussian counts differed by 644; numerical reproducibility remains unresolved. CUDA environment recovery is `PASS_P5_G3A_CUDA_ENV_RECOVERED`. Do not run 0–499, another scene, V1–V5, or push. P5-LEAN-001 requires separate researcher review and is not to be executed in this transition.
+Stop at `PASS_P5_LEAN_001_21DAY_DESIGN_READY`. Budget-Aware Mapping is not implemented or validated. Do not reopen G3A retry loops, run any horizon, start P6-BAM-001, implement keyframe reuse, or push without separate researcher authorization.

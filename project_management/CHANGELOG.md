@@ -1,5 +1,12 @@
 # Research Changelog
 
+## 2026-10-15 — SESSION_012 / P5-LEAN-001 21-day design gate
+
+- Audited the active mapping loop and existing Phase 4/P5 evidence without running SLAM or CUDA.
+- Selected novelty-aware tiered mapping budgets as the initial hypothesis, with fixed-budget controls and a pruning-floor invariant.
+- Added lean profiling/evaluation protocols, selective ablation plan, three-week schedule and P6-BAM-001 implementation contract.
+- Gate result: `PASS_P5_LEAN_001_21DAY_DESIGN_READY`; no algorithm or profiler source changed.
+
 ## 2026-10-15 — SESSION_011 / P5-TRANSITION-001
 
 - Administratively retired the original Phase 5 execution plan as `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`; technical completion is not claimed.

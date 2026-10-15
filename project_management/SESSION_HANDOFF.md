@@ -6,22 +6,24 @@ Last reconciled: 2026-10-15.
 
 ## Session and Git State
 
-- Session ID: `SESSION_011`.
-- Title: P5-TRANSITION-001 Administrative Closure of Original Phase 5.
+- Session ID: `SESSION_012`.
+- Title: P5-LEAN-001 21-Day Replan and BAM Feasibility Audit.
 - Status: `CLOSED`.
 - Date: 2026-10-15.
 - Branch: `phase5-profiling-instrumentation`.
 - Phase 4 reference HEAD: `37522db553ff18b96592073f9de699db7fa48600`.
-- Current committed HEAD before this documentation checkpoint: `302e3e6bf46d50ea96b010eb5988dfd6616c2317`.
+- Current committed HEAD: `1fbde976d9bb534cfc6b19f1bbde758521b24601`.
 - P5-G2 implementation commit: `0118d2cf99bf1fe089f34dea20696ac71101b30d`.
 - Runtime gate status: `BLOCKED_P5_G3A_RETRY1` after C0/C1/C2 completed frames 0–99; detailed telemetry dropped 1,958 CUDA event spans.
 - Profiler repair preflight: `PASS_P5_G3A_FIX1_PREFLIGHT`; no online SLAM workload was run during the repair.
 - R2 precheck: `BLOCKED_P5_G3A_R2`; OFF-A/OFF-B completed 0–10 but final Gaussian counts differed by 644. LIGHT/DETAILED were not run.
 - Environment recovery: `PASS_P5_G3A_CUDA_ENV_RECOVERED`.
 - Original Phase 5 lifecycle: `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`; technical completion: `NOT_ACHIEVED`.
-- P5-LEAN lifecycle: `PLANNED_NOT_STARTED`; P5-LEAN-001 is pending researcher review.
+- P5-LEAN lifecycle: `IN_PROGRESS`; P5-LEAN-001 completed at design/readiness scope.
+- P5-LEAN-001 result: `PASS_P5_LEAN_001_21DAY_DESIGN_READY`; P5-LEAN is now active, while P6-BAM-001 remains `PLANNED_NOT_STARTED`.
+- Deadline: 2026-11-05; code/config freeze target: 2026-10-28.
 
-The P5-G2 implementation is committed at the checkpoint above. Retry-1 runtime reports/state updates are uncommitted. The unrelated untracked `vds` entry remains untouched. Inspect `git status --short --untracked-files=all` before later work; do not stage broadly.
+The P5-G2 implementation is committed at `0118d2cf`; FIX1 is committed at `302e3e6`. Historical runtime reports remain untracked. The unrelated untracked `vds` entry remains untouched. Inspect `git status --short --untracked-files=all` before later work; do not stage broadly.
 
 ## Completed Boundary
 
@@ -52,8 +54,8 @@ The initial sandbox pre-run snapshot remains preserved at `results/runtime_artif
 
 ## Next Authorized Work
 
-The original Phase 5 plan is administratively closed as incomplete. The next authorized work is P5-LEAN-001 after researcher review. Do not automatically resume G3A retry loops, run 0–499, implement V1–V5, or execute P5-LEAN-001 in this handoff.
+P5-LEAN-001 is complete at design/readiness scope. The next proposed task is P6-BAM-001 after researcher review: implement only the novelty-aware mapping-budget controller, disabled by default, with CPU tests and a separately authorized 0–10 LIGHT smoke test. Do not resume G3A retry loops or comprehensive DETAILED profiling.
 
 ## STOPPED HERE
 
-Stop at `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`; Retry1 remains blocked and OFF baseline reproducibility is unresolved. Do not run 0–499, another scene, implement V1–V5, or push automatically.
+Stop at `PASS_P5_LEAN_001_21DAY_DESIGN_READY`. Budget-Aware Mapping remains a hypothesis, not an implementation or contribution. Do not run SLAM/CUDA, start P6-BAM-001, or push automatically.
