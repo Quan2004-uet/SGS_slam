@@ -274,6 +274,11 @@ class PerformanceProfiler:
         self._pending_cuda: list[Tuple[Any, Any, Dict[str, Any]]] = []
         self._cuda_batch_wall_start_ns: Optional[int] = None
         self._dropped_cuda_event_spans = 0
+        self._cuda_span_requests = 0
+        self._cuda_span_sampled = 0
+        self._cuda_span_accepted = 0
+        self._cuda_span_resolved = 0
+        self._cuda_span_intentionally_unsampled = 0
         self._archive_bytes = 0
         self._archive_count = 0
         self._staged_bytes = 0
@@ -347,9 +352,28 @@ class PerformanceProfiler:
             self.cpu_stop(token, component, frame_id, iteration_id)
 
     def cuda_start(self, component: str, frame_id: int, iteration_id: Optional[int] = None) -> Any:
-        if not self.cuda_timing_available or not self.should_sample(frame_id, iteration_id, "cuda"):
+        if not self.detailed:
             return None
+        self._cuda_span_requests += 1
+        if not self.cuda_timing_available:
+            self._cuda_span_intentionally_unsampled += 1
+            return None
+        if not self.should_sample(frame_id, iteration_id, "cuda"):
+            self._cuda_span_intentionally_unsampled += 1
+            return None
+        self._cuda_span_sampled += 1
+        # Resolve a bounded chunk before the queue can overflow.  The old
+        # implementation waited for the next frame boundary and counted every
+        # span beyond max_pending_cuda_events as a drop.  Draining here keeps
+        # event memory bounded and preserves every sampled span.  The explicit
+        # synchronization is amortized over a full queue, rather than paid per
+        # CUDA operation.
         if len(self._pending_cuda) >= self.settings.max_pending_cuda_events:
+            self.resolve_cuda_events(frame_id=frame_id, force=True)
+        if len(self._pending_cuda) >= self.settings.max_pending_cuda_events:
+            # This is a defensive failure path for a broken event backend.  It
+            # is intentionally visible in the summary rather than silently
+            # converting an accepted span into an unaccounted measurement.
             self._dropped_cuda_event_spans += 1
             return None
         if not self._pending_cuda and self._cuda_batch_wall_start_ns is None:
@@ -357,6 +381,7 @@ class PerformanceProfiler:
         start = torch.cuda.Event(enable_timing=True)
         end = torch.cuda.Event(enable_timing=True)
         start.record()
+        self._cuda_span_accepted += 1
         return start, end, {
             "component": component,
             "frame_id": frame_id,
@@ -393,6 +418,7 @@ class PerformanceProfiler:
                 context["frame_id"],
                 context["iteration_id"],
             )
+            self._cuda_span_resolved += 1
 
     def record(
         self,
@@ -554,6 +580,15 @@ class PerformanceProfiler:
             "staging": {"event_count": self._staging_events, "cumulative_bytes": self._staged_bytes},
             "pending_cuda_events_at_close": len(self._pending_cuda),
             "dropped_cuda_event_spans": self._dropped_cuda_event_spans,
+            "cuda_event_accounting": {
+                "requested": self._cuda_span_requests,
+                "sampled": self._cuda_span_sampled,
+                "accepted": self._cuda_span_accepted,
+                "resolved": self._cuda_span_resolved,
+                "pending": len(self._pending_cuda),
+                "dropped": self._dropped_cuda_event_spans,
+                "intentionally_unsampled": self._cuda_span_intentionally_unsampled,
+            },
             "cuda_event_validation": "PENDING_P5_G3_CUDA_VALIDATION",
         }
 

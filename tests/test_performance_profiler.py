@@ -244,6 +244,64 @@ class PerformanceProfilerTests(unittest.TestCase):
         self.assertTrue(metadata["git_commit"])
         self.assertEqual(config, {"seed": 0, "profiling": {"mode": "light"}})
 
+    def test_21_chunked_cuda_queue_resolves_without_drops_using_fake_events(self):
+        class FakeEvent:
+            def __init__(self, enable_timing=True):
+                self.recorded = False
+
+            def record(self):
+                self.recorded = True
+
+            def elapsed_time(self, other):
+                return 0.25
+
+        with tempfile.TemporaryDirectory() as root, mock.patch("torch.cuda.is_available", return_value=True), \
+                mock.patch("torch.cuda.Event", FakeEvent), mock.patch("torch.cuda.synchronize"):
+            profiler = PerformanceProfiler(self.settings(root, mode="detailed", max_pending_cuda_events=4))
+            for frame in range(100):
+                for iteration in range(60):
+                    token = profiler.cuda_start("mapping.render", frame, iteration)
+                    profiler.cuda_stop(token)
+                profiler.resolve_cuda_events(frame)
+            profiler.close()
+            summary = json.loads(profiler.summary_path.read_text())
+            accounting = summary["cuda_event_accounting"]
+            self.assertEqual(accounting["dropped"], 0)
+            self.assertEqual(accounting["pending"], 0)
+            self.assertEqual(accounting["accepted"], accounting["resolved"])
+            self.assertGreater(accounting["accepted"], 512)
+
+    def test_22_cuda_accounting_distinguishes_unsampled_requests(self):
+        class FakeEvent:
+            def __init__(self, enable_timing=True):
+                pass
+
+            def record(self):
+                pass
+
+            def elapsed_time(self, other):
+                return 1.0
+
+        with tempfile.TemporaryDirectory() as root, mock.patch("torch.cuda.is_available", return_value=True), \
+                mock.patch("torch.cuda.Event", FakeEvent), mock.patch("torch.cuda.synchronize"):
+            profiler = PerformanceProfiler(self.settings(root, mode="detailed", cuda_event_interval=2))
+            for iteration in range(8):
+                token = profiler.cuda_start("mapping.loss", 0, iteration)
+                profiler.cuda_stop(token)
+            profiler.close()
+            accounting = json.loads(profiler.summary_path.read_text())["cuda_event_accounting"]
+            self.assertEqual(accounting["requested"], 8)
+            self.assertEqual(accounting["sampled"], 4)
+            self.assertEqual(accounting["intentionally_unsampled"], 4)
+            self.assertEqual(accounting["accepted"], accounting["resolved"])
+            self.assertEqual(accounting["dropped"], 0)
+
+    def test_23_nested_optimizer_storage_is_deduplicated(self):
+        tensor = torch.zeros(8, dtype=torch.float32)
+        optimizer_state = {"state": {0: {"exp_avg": tensor, "exp_avg_sq": tensor.view(2, 4)}}}
+        self.assertEqual(tensor_storage_bytes(optimizer_state), tensor.untyped_storage().nbytes())
+        self.assertEqual(tensor_storage_bytes({"empty": torch.empty(0)}), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
