@@ -9,6 +9,10 @@
 This snapshot records the state used for the 2026-10-04 migration checkpoint.
 Detailed evidence is in the linked runtime records.
 
+## Administrative transition pointer — 2026-10-15
+
+This legacy snapshot is not the current authority. The original Phase 5 execution plan is administratively superseded as `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`; its technical completion is `NOT_ACHIEVED`. P5-LEAN is `PLANNED_NOT_STARTED`, with `P5-LEAN-001` pending researcher review. See the canonical project-management files and `docs/research/phase5/PHASE5_TO_P5_LEAN_TRANSITION.md`.
+
 ## Current checkpoint pointer — 2026-10-12
 
 This section is a convenience pointer requested for the session checkpoint; it

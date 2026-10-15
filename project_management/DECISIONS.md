@@ -314,3 +314,11 @@ decision authority:
   baseline reproduction.
 
 These decisions constrain work but do not themselves define the current task.
+
+## DEC-015 — Retire the incomplete original Phase 5 plan
+
+- Date: 2026-10-15.
+- Session: SESSION_011 / P5-TRANSITION-001.
+- Status: ACCEPTED.
+
+Administratively close the original Multi-Scene Validation & Performance Profiling plan as `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`, while preserving every historical gate classification and artifact. Its technical completion remains `NOT_ACHIEVED`. The next planned scope is P5-LEAN-001; no technical PASS transfers to that scope. Phase 4 V0, P5-G1/G2, FIX1 preflight, and R2 evidence remain reusable. Budget-Aware Mapping is a priority hypothesis, not an implemented method.

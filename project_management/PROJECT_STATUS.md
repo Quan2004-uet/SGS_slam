@@ -11,6 +11,7 @@ Last reconciled: 2026-10-15.
 - Phase 4 reference HEAD: `37522db553ff18b96592073f9de699db7fa48600`.
 - Phase 5 P5-G1 checkpoint HEAD: `86ac4f990932563c721187a5cb458f3e07be9ce6`.
 - Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
+- Current implementation HEAD: `302e3e6bf46d50ea96b010eb5988dfd6616c2317` (`fix(profiler): prevent CUDA event queue overflow`).
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
 
@@ -19,10 +20,16 @@ Last reconciled: 2026-10-15.
 - Phase 4 — CPU Keyframe Offload / Reproducible Memory Baseline Variant: **COMPLETE**.
 - Variant `PHASE4-VB-001`: **COMPLETE / VALIDATED**.
 - Closure status: `PASS_PHASE4_CLOSURE`.
-- Phase 5 — Multi-Scene Validation & Performance Profiling: **IN PROGRESS**.
+- Original Phase 5 — Multi-Scene Validation & Performance Profiling: **SUPERSEDED_BY_P5_LEAN_INCOMPLETE** (technical completion `NOT_ACHIEVED`).
 - P5-G1: `PASS_P5_G1_DESIGN_READY`.
-- P5-G2: `PASS_P5_G2_CPU_STATIC`; implementation is intentionally uncommitted pending researcher review.
-- P5-G3: **NOT STARTED / REQUIRES EXPLICIT APPROVAL**.
+- P5-G2: `PASS_P5_G2_CPU_STATIC`; implementation is committed at `0118d2cf` and FIX1 at `302e3e6`.
+- P5-G3A retry 1 (room0 0–99): `BLOCKED_P5_G3A_RETRY1`; CUDA environment recovery is `PASS_P5_G3A_CUDA_ENV_RECOVERED`. C0/C1/C2 completed the horizon, but detailed telemetry dropped 1,958 CUDA event spans, so the zero-drop gate failed.
+- P5-G3A-FIX1 profiler preflight: `PASS_P5_G3A_FIX1_PREFLIGHT`; queue overflow repair passed CPU tests and bounded synthetic CUDA validation. No new SLAM run was authorized.
+- P5-G3A-R2 precheck (room0 0–10): `BLOCKED_P5_G3A_R2`; OFF-A/OFF-B differed by 644 final Gaussians, so LIGHT/DETAILED were not run.
+- P5-G3A-R3: **NOT_EXECUTED**.
+- P5-G3B (0–499): **NOT_EXECUTED**.
+- Multi-scene profiling and final bottleneck decision: **NOT_EXECUTED / INCONCLUSIVE**.
+- P5-LEAN: **PLANNED_NOT_STARTED**; first task `P5-LEAN-001` pending researcher review.
 - Canonical closure package: `results/runtime_artifacts/phase4_closure/`.
 
 Phase 4 changed memory ownership, not the SGS-SLAM objective: archived keyframe `color`, `depth`, `semantic_id`, and `semantic_color` payloads are CPU-authoritative and synchronously staged to GPU when selected. Archived `est_w2c` remains GPU-resident. The implementation adds no pinned memory, asynchronous copy, prefetch, persistent GPU cache, compression, or eviction and retains the released keyframe and optimization policies.
@@ -75,10 +82,10 @@ Not established: accuracy equivalence to a full-scene baseline (the baseline did
 
 ## Phase 5 Status
 
-P5-G1 established the audit, dataset-readiness, instrumentation, hypothesis, ablation, evaluation, and execution contracts in `docs/research/phase5/`. P5-G2 added disabled-by-default `off`, `light`, and `detailed` profiling, bounded JSONL/summary telemetry, CPU/GPU-memory attribution helpers, and minimal hooks around the existing online path. Twenty CPU-only tests pass with CUDA hidden and uninitialized. CUDA-event correctness, numerical/runtime equivalence, profiling overhead, and multi-scene behavior remain pending P5-G3/P5-G4 runtime verification.
+P5-G1 established the audit, dataset-readiness, instrumentation, hypothesis, ablation, evaluation, and execution contracts in `docs/research/phase5/`. P5-G2 added disabled-by-default `off`, `light`, and `detailed` profiling, bounded JSONL/summary telemetry, CPU/GPU-memory attribution helpers, and minimal hooks around the existing online path. Twenty CPU-only tests pass with CUDA hidden and uninitialized. Direct-host recovery using `/home/robot/miniconda3/envs/sgs_slam_5080` passed the CUDA smoke test. Retry 1 completed C0/C1/C2 on room0 frames 0–99; C1 had zero dropped spans, while C2 had zero pending events but 1,958 dropped CUDA event spans. Logged keyframe traces matched, but final Gaussian counts were not bit-exact. Detailed timing is therefore diagnostic, not gate-valid.
 
-No optimization variant V1–V5 has been implemented. The next authorized gate, only after researcher review, is P5-G3 bounded off/light/detailed profiling on frames 0–99, followed by 0–499 only if the first horizon passes.
+No optimization variant V1–V5 has been implemented. The original Phase 5 execution plan is administratively retired; its historical gates and artifacts remain unchanged. Do not resume G3A retry loops automatically. The next authorized scope is P5-LEAN-001, which remains planned and not started.
 
 ## STOPPED HERE
 
-P5-G2 is closed at `PASS_P5_G2_CPU_STATIC`. Do not run online SLAM, initialize CUDA, start P5-G3, implement V1–V5, commit the P5-G2 implementation, or push without explicit researcher approval.
+P5-G3A retry 1 remains `BLOCKED_P5_G3A_RETRY1` because detailed profiling dropped 1,958 event spans. FIX1 is `PASS_P5_G3A_FIX1_PREFLIGHT`: the profiler repair passed CPU and synthetic CUDA tests. R2 precheck is `BLOCKED_P5_G3A_R2` because OFF-A/OFF-B final Gaussian counts differed by 644; numerical reproducibility remains unresolved. CUDA environment recovery is `PASS_P5_G3A_CUDA_ENV_RECOVERED`. Do not run 0–499, another scene, V1–V5, or push. P5-LEAN-001 requires separate researcher review and is not to be executed in this transition.

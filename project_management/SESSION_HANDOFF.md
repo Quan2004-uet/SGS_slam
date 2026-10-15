@@ -6,16 +6,22 @@ Last reconciled: 2026-10-15.
 
 ## Session and Git State
 
-- Session ID: `SESSION_006`.
-- Title: Phase 5 Profiling Design and CPU-Static Instrumentation.
+- Session ID: `SESSION_011`.
+- Title: P5-TRANSITION-001 Administrative Closure of Original Phase 5.
 - Status: `CLOSED`.
 - Date: 2026-10-15.
 - Branch: `phase5-profiling-instrumentation`.
 - Phase 4 reference HEAD: `37522db553ff18b96592073f9de699db7fa48600`.
-- P5-G1 checkpoint/current committed HEAD: `86ac4f990932563c721187a5cb458f3e07be9ce6`.
-- Gate status: `PASS_P5_G2_CPU_STATIC`.
+- Current committed HEAD before this documentation checkpoint: `302e3e6bf46d50ea96b010eb5988dfd6616c2317`.
+- P5-G2 implementation commit: `0118d2cf99bf1fe089f34dea20696ac71101b30d`.
+- Runtime gate status: `BLOCKED_P5_G3A_RETRY1` after C0/C1/C2 completed frames 0–99; detailed telemetry dropped 1,958 CUDA event spans.
+- Profiler repair preflight: `PASS_P5_G3A_FIX1_PREFLIGHT`; no online SLAM workload was run during the repair.
+- R2 precheck: `BLOCKED_P5_G3A_R2`; OFF-A/OFF-B completed 0–10 but final Gaussian counts differed by 644. LIGHT/DETAILED were not run.
+- Environment recovery: `PASS_P5_G3A_CUDA_ENV_RECOVERED`.
+- Original Phase 5 lifecycle: `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`; technical completion: `NOT_ACHIEVED`.
+- P5-LEAN lifecycle: `PLANNED_NOT_STARTED`; P5-LEAN-001 is pending researcher review.
 
-The worktree intentionally contains uncommitted P5-G2 instrumentation, tests, reports, and canonical state updates for researcher review. The unrelated untracked `vds` entry remains untouched. Inspect `git status --short --untracked-files=all` before later work; do not stage broadly.
+The P5-G2 implementation is committed at the checkpoint above. Retry-1 runtime reports/state updates are uncommitted. The unrelated untracked `vds` entry remains untouched. Inspect `git status --short --untracked-files=all` before later work; do not stage broadly.
 
 ## Completed Boundary
 
@@ -40,10 +46,14 @@ The following are not established by P5-G2 and remain `PENDING_P5_G3_CUDA_VALIDA
 - LIGHT/DETAILED instrumentation overhead and telemetry volume.
 - Full-scene and multi-scene performance conclusions.
 
+## P5-G3A Retry-1 Result
+
+The initial sandbox pre-run snapshot remains preserved at `results/runtime_artifacts/phase5_profiling/p5_g3a_room0_0_99/comparison/pre_run_system_state.log`. Direct-host recovery with `/home/robot/miniconda3/envs/sgs_slam_5080` passed `CUDA_SMOKE_PASS`. Retry-1 artifacts are under `results/runtime_artifacts/phase5_profiling/p5_g3a_retry1_room0_0_99/`. C0/C1/C2 each processed 0–99. C2 closed with zero pending events but 1,958 dropped CUDA event spans, so the gate is blocked.
+
 ## Next Authorized Work
 
-Only after explicit researcher approval, perform P5-G3 bounded off/light/detailed comparisons on Replica `room0` frames 0–99. Inspect completion, numerical equivalence, telemetry schema, event accuracy, memory attribution, and overhead before considering frames 0–499. Do not implement V1–V5 during P5-G3.
+The original Phase 5 plan is administratively closed as incomplete. The next authorized work is P5-LEAN-001 after researcher review. Do not automatically resume G3A retry loops, run 0–499, implement V1–V5, or execute P5-LEAN-001 in this handoff.
 
 ## STOPPED HERE
 
-Stop at `PASS_P5_G2_CPU_STATIC`. Do not start P5-G3, run CUDA/online SLAM, commit the implementation, or push automatically.
+Stop at `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`; Retry1 remains blocked and OFF baseline reproducibility is unresolved. Do not run 0–499, another scene, implement V1–V5, or push automatically.

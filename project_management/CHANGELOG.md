@@ -1,8 +1,61 @@
 # Research Changelog
 
+## 2026-10-15 — SESSION_011 / P5-TRANSITION-001
+
+- Administratively retired the original Phase 5 execution plan as `SUPERSEDED_BY_P5_LEAN_INCOMPLETE`; technical completion is not claimed.
+- Preserved historical G1/G2, G3A, FIX1, R2, and Phase 4 evidence and documented unexecuted R3/G3B/multi-scene work.
+- Prepared P5-LEAN-001 as planned/not started, with Budget-Aware Mapping recorded as a hypothesis rather than a validated contribution.
+
 > Historical change record. This file does not define current Phase, Session,
 > `STOPPED HERE`, or `NEXT TASK`; use `PROJECT_STATUS.md` and
 > `SESSION_HANDOFF.md` for current state.
+
+## 2026-10-15 — SESSION_008 / P5-G3A retry 1
+
+### Runtime validation
+
+- Reused the recovered direct-host CUDA environment and ran Replica room0 frames 0–99 under OFF, LIGHT, and DETAILED conditions with fresh retry directories.
+- C0, C1, and C2 reached frame 99 without OOM or non-finite saved state. Logged keyframe traces matched; final Gaussian counts were not bit-exact.
+- LIGHT telemetry closed with zero pending and zero dropped spans. DETAILED telemetry closed with zero pending but 1,958 dropped CUDA event spans.
+
+### Gate boundary
+
+- Gate result: `BLOCKED_P5_G3A_RETRY1`. No 0–499 run, second scene, V1–V4 implementation, push, or Phase 4 artifact modification occurred.
+- Retry artifacts and compact comparisons are under `results/runtime_artifacts/phase5_profiling/p5_g3a_retry1_room0_0_99/`; the previous blocked evidence remains unchanged.
+
+## 2026-10-15 — P5-G3A-FIX1 profiler repair
+
+- Verified that Retry1 drops came from queue overflow between frame-boundary resolutions at `max_pending_cuda_events=512`.
+- Added bounded chunked event resolution and explicit requested/sampled/accepted/resolved/pending/dropped accounting.
+- CPU suite passed 23/23 without CUDA initialization. A 0.09-second synthetic RTX 5080 microtest resolved 648/648 spans with zero drops and zero pending events.
+- Result: `PASS_P5_G3A_FIX1_PREFLIGHT`; no Replica or online SLAM workload was rerun. Gaussian-count reproducibility remains unresolved.
+
+## 2026-10-15 — P5-G3A-R2 minimal precheck
+
+- Checkpointed FIX1 as `302e3e6` with message `fix(profiler): prevent CUDA event queue overflow`.
+- Ran only OFF-A and OFF-B on Replica room0 frames 0–10. Both completed with finite state and matching logged keyframe traces, but final Gaussian counts differed by 644.
+- Stopped before LIGHT/DETAILED per contract. Gate result: `BLOCKED_P5_G3A_R2`; no 0–99 or 0–499 run occurred.
+
+## 2026-10-15 — SESSION_007 / P5-G3A preflight
+
+### Checkpoint
+
+- Created the P5-G2 implementation checkpoint `0118d2cf99bf1fe089f34dea20696ac71101b30d` with message `perf: add phase5 profiling instrumentation`.
+- Repaired only the local Phase 4 branch pointer to validated commit `37522db553ff18b96592073f9de699db7fa48600`.
+
+### Runtime boundary
+
+- Prepared immutable room0 frames 0–99 off/light/detailed configs.
+- Blocked before C0: PyTorch reported no CUDA device and `nvidia-smi` could not communicate with the NVIDIA driver.
+- No CUDA workload, online SLAM frame, 0–499 run, second scene, optimization variant, or push occurred.
+- Saved preflight and blocker evidence under `results/runtime_artifacts/phase5_profiling/p5_g3a_room0_0_99/`.
+
+## 2026-10-15 — P5-G3A CUDA environment recovery
+
+- Confirmed the initial failure was sandbox GPU visibility plus use of `/usr/bin/python`, not a broken validated PyTorch environment.
+- Direct-host `nvidia-smi` and `/home/robot/miniconda3/envs/sgs_slam_5080/bin/python` now expose the RTX 5080 with driver 580.167.08 and PyTorch `2.7.1+cu128`.
+- A one-element CUDA tensor smoke test passed with `CUDA_SMOKE_PASS`.
+- Recorded `PASS_P5_G3A_CUDA_ENV_RECOVERED`; no SGS-SLAM, C0/C1/C2, frame, or profiling workload was executed.
 
 ## 2026-10-15 — SESSION_006 / Phase 5 P5-G1 and P5-G2
 

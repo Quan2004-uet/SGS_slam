@@ -20,24 +20,46 @@ baseline:
   evidence: results/runtime_artifacts/full_scene_room0/full_scene_room0_results.json
 
 workflow:
-  phase: 4
-  phase_name: Phase 4 — CPU Keyframe Offload / Reproducible Memory Baseline Variant
-  phase_status: complete
+  phase: 5
+  phase_name: Original Phase 5 administratively superseded; P5-LEAN planned
+  phase_status: superseded_incomplete
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: PHASE4-CLOSURE
+  latest_completed_gate: P5-G3A-FIX1-PREFLIGHT
   next_phase_status: planned_not_started
-  next_recommended_phase: controlled_multi_scene_validation_then_isolated_runtime_optimization
+  next_recommended_phase: P5-LEAN-001
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_005
-  title: Phase 4 Final Experimental Synthesis and Closure
+  id: SESSION_011
+  title: P5-TRANSITION-001 Administrative Closure of Original Phase 5
   status: closed
-  started: 2026-10-14
-  closed: 2026-10-14
-  head: 507aea652a5da15c92d358c19b8d6705c510242b
+  started: 2026-10-15
+  closed: 2026-10-15
+  head: 302e3e6bf46d50ea96b010eb5988dfd6616c2317
+
+phase5_original:
+  lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
+  technical_completion: NOT_ACHIEVED
+  g1: PASS_P5_G1_DESIGN_READY
+  g2: PASS_P5_G2_CPU_STATIC
+  g3a_initial: BLOCKED_P5_G3A
+  g3a_retry1: BLOCKED_P5_G3A_RETRY1
+  g3a_fix1: PASS_P5_G3A_FIX1_PREFLIGHT
+  g3a_r2: BLOCKED_P5_G3A_R2
+  g3a_r3: NOT_EXECUTED
+  g3b: NOT_EXECUTED
+  multi_scene: NOT_EXECUTED
+  bottleneck_decision: NOT_EXECUTED_INCONCLUSIVE
+
+p5_lean:
+  lifecycle: PLANNED_NOT_STARTED
+  first_task: P5-LEAN-001 — Four-Week Research Replan & Budget-Aware Mapping Feasibility Audit
+
+phase6:
+  priority: Budget-Aware Mapping
+  status: NOT_STARTED
 
 variant:
   identifier: PHASE4-VB-001

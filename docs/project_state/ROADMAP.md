@@ -39,7 +39,10 @@
 | CPU-offload transport optimization | PLANNED / NOT STARTED |
 | Post-opt | Pending |
 | Paper comparison | Pending |
-| Phase 5+ — Research improvements | PLANNED / NOT STARTED |
+| Original Phase 5 — Multi-Scene Validation & Performance Profiling | `SUPERSEDED_BY_P5_LEAN_INCOMPLETE` — technical completion not achieved |
+| P5-LEAN-001 — Four-Week Research Replan & Budget-Aware Mapping Feasibility Audit | PLANNED / NOT STARTED |
+| Phase 6 — Budget-Aware Mapping | NOT STARTED |
+| Optional bounded GPU Keyframe Reuse | DEFERRED / CONDITIONAL |
 
 Phase 4 is complete. The closure package is
 `results/runtime_artifacts/phase4_closure/`. Camera-aligned V2 evidence remains
@@ -51,7 +54,7 @@ additional Replica scenes; (2) isolate pinned-memory/non-blocking/streamed
 staging as a systems experiment with transfer timing; (3) evaluate a bounded
 reuse-aware GPU cache; (4) investigate archive precision/compression; and only
 then (5) study eviction as a separate algorithmic/keyframe-policy experiment.
-No next phase has started.
+The original Phase 5 plan is administratively superseded and technically incomplete. The revised next scope is P5-LEAN-001, followed by a feasibility-controlled Budget-Aware Mapping study, optional bounded keyframe reuse, and final evaluation. No revised phase has started.
 
 Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md),
 [full-scene output-save result](../experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md),
