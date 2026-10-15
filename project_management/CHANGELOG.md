@@ -1,5 +1,11 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_012 closure / P6-BAM handoff
+
+- Closed SESSION_012 after the committed P5-LEAN-001 design checkpoint `c3a76c0`.
+- Added the mandatory Phase 4 artifact-isolation contract and dedicated Phase 6 output root `results/runtime_artifacts/phase6_bam/`.
+- Preserved P6-BAM-001 as `PLANNED_NOT_STARTED`; no algorithm, profiler, SLAM, or CUDA work was performed during handoff.
+
 ## 2026-10-15 — SESSION_012 / P5-LEAN-001 21-day design gate
 
 - Audited the active mapping loop and existing Phase 4/P5 evidence without running SLAM or CUDA.

@@ -2,7 +2,7 @@
 
 > **CURRENT PROJECT-STATE AUTHORITY.** Repository/source/config/runtime evidence has highest priority. This file defines the current phase; use `SESSION_HANDOFF.md` for the exact resume point.
 
-Last reconciled: 2026-10-15.
+Last reconciled: 2026-10-16.
 
 ## Project Identity
 
@@ -12,7 +12,7 @@ Last reconciled: 2026-10-15.
 - Phase 5 P5-G1 checkpoint HEAD: `86ac4f990932563c721187a5cb458f3e07be9ce6`.
 - Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
 - Current implementation HEAD: `302e3e6bf46d50ea96b010eb5988dfd6616c2317` (`fix(profiler): prevent CUDA event queue overflow`).
-- Current repository HEAD: `1fbde976d9bb534cfc6b19f1bbde758521b24601` (Phase 5 administrative transition checkpoint).
+- Current repository HEAD: `c3a76c0860a193187454d420776be4f1b1ced488` (P5-LEAN-001 design checkpoint).
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
 
@@ -33,7 +33,7 @@ Last reconciled: 2026-10-15.
 - P5-LEAN: **IN PROGRESS**; `P5-LEAN-001` is `PASS_P5_LEAN_001_21DAY_DESIGN_READY`.
 - Three-week execution window: 2026-10-15 through 2026-11-05; code/config freeze target 2026-10-28.
 - Selected candidate: novelty-aware Budget-Aware Mapping using pre/post append Gaussian counts; **DESIGNED, NOT IMPLEMENTED OR VALIDATED**.
-- Next task: `P6-BAM-001 — Budget-Aware Mapping Minimal Implementation`, `PLANNED_NOT_STARTED` pending researcher review.
+- Next task: `P6-BAM-001 — Novelty-Aware Budgeted Mapping Minimal Implementation & CPU Validation`, `PLANNED_NOT_STARTED` pending researcher review.
 - Canonical closure package: `results/runtime_artifacts/phase4_closure/`.
 
 Phase 4 changed memory ownership, not the SGS-SLAM objective: archived keyframe `color`, `depth`, `semantic_id`, and `semantic_color` payloads are CPU-authoritative and synchronously staged to GPU when selected. Archived `est_w2c` remains GPU-resident. The implementation adds no pinned memory, asynchronous copy, prefetch, persistent GPU cache, compression, or eviction and retains the released keyframe and optimization policies.
@@ -92,4 +92,4 @@ No optimization variant V1–V5 has been implemented. The original Phase 5 execu
 
 ## STOPPED HERE
 
-Stop at `PASS_P5_LEAN_001_21DAY_DESIGN_READY`. Budget-Aware Mapping is not implemented or validated. Do not reopen G3A retry loops, run any horizon, start P6-BAM-001, implement keyframe reuse, or push without separate researcher authorization.
+Stop at `PASS_P5_LEAN_001_21DAY_DESIGN_READY`. Budget-Aware Mapping is not implemented or validated. P6-BAM-001 must use the dedicated `results/runtime_artifacts/phase6_bam/` root and immutable run IDs. Do not reopen G3A retry loops, run any horizon, start P6-BAM-001, implement keyframe reuse, or push without separate researcher authorization.
