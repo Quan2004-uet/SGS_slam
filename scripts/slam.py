@@ -805,7 +805,10 @@ def rgbd_slam(config: dict):
     else:
         checkpoint_time_idx = 0
     
-    # Iterate over Scan
+    # Iterate over Scan. P6-BAM-005 host timer covers the online frame loop
+    # only; it adds no CUDA synchronization and excludes initialization,
+    # final evaluation, and serialization.
+    online_loop_start = time.perf_counter()
     for time_idx in tqdm(range(checkpoint_time_idx, num_frames)):
         # Load RGBD frames incrementally instead of all frames
         profile_token = profiler.cpu_start(time_idx)
@@ -1204,6 +1207,9 @@ def rgbd_slam(config: dict):
                               optimizer=optimizer if 'optimizer' in locals() else None)
         profiler.resolve_cuda_events(time_idx)
         torch.cuda.empty_cache()
+
+    online_loop_wall_seconds = time.perf_counter() - online_loop_start
+    print(f"Online SLAM frame-loop wall time: {online_loop_wall_seconds:.9f} s")
 
     if config['save_timestamp_keyframes']:
         # Save keyframes selected at each timestamp

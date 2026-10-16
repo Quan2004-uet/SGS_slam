@@ -26,20 +26,20 @@ workflow:
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P6-BAM-003-R1
-  next_phase_status: researcher_review_required
-  next_recommended_phase: P6-BAM-003-R2-V-A2-0-499-matched-review-only
+  latest_completed_gate: P6-BAM-005
+  next_phase_status: researcher_review_required_before_0_1999
+  next_recommended_phase: P6-BAM-005-0-1999-full-scene-review-only
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_015
-  title: P6-BAM-003 Matched LIGHT 0–49 Bounded Comparison
+  id: SESSION_017
+  title: P6-BAM-005 Matched 0–499 V0/V-A2 Validation
   status: closed
   started: 2026-10-16
   closed: 2026-10-16
-  head: bb830b1f6a0a31028f14fe390b8cb4e1a50c47fe
-  head_role: session_start
-  checkpoint: commit_containing_P6_BAM_003_0_49_REPORT
+  head: 937cd4bb7df25824e5b43de555d5de78ce11f16c
+  head_role: experiment_source_baseline
+  checkpoint: P6_BAM_005_documentation_checkpoint
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -60,13 +60,13 @@ p5_lean:
   first_task: P5-LEAN-001 — 21-Day Research Replan & Budget-Aware Mapping Feasibility Audit
   first_task_status: PASS_P5_LEAN_001_21DAY_DESIGN_READY
   selected_candidate: novelty_aware_mapping_budget
-  candidate_status: BOUNDED_0_49_RUNTIME_AND_QUALITY_SCREEN_PASS_STATISTICAL_VALIDATION_PENDING
+  candidate_status: BOUNDED_0_499_RUNTIME_AND_QUALITY_SCREEN_PASS_STATISTICAL_VALIDATION_PENDING
   deadline: 2026-11-05
   code_freeze_target: 2026-10-28
 
 phase6:
   priority: Budget-Aware Mapping
-  status: PASS_P6_BAM_003_R1_QUALITY_CONSTRAINED_0_49_SCREENING_ONLY
+  status: PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED_SINGLE_PAIR
   p6_bam_003_status: INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME
   p6_bam_003_r1_run_id: p6_bam_003_r1_room0_0_49_va2_r01
   p6_bam_003_r1_source_sha: 60372fcc4fac2caa1bfa09c712d9092467289228
@@ -77,16 +77,30 @@ phase6:
   p6_bam_003_r1_process_wall_change_vs_v0: -11.33_percent
   p6_bam_003_r1_historical_psnr_margin: NARROW_MISS_0.00164_DB
   adaptive_activation: ADAPTIVE_ACTIVATION_CONFIRMED
+  p6_bam_005_status: PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED
+  p6_bam_005_source_sha: 937cd4bb7df25824e5b43de555d5de78ce11f16c
+  p6_bam_005_v0_run_id: p6_bam_005_room0_0_499_v0_r01
+  p6_bam_005_va2_run_id: p6_bam_005_room0_0_499_va2_r01
+  p6_bam_005_v0_mapping_iters: 30000
+  p6_bam_005_va2_mapping_iters: 22695
+  p6_bam_005_va2_tiers: FULL_1_MID_12_LOW_487
+  p6_bam_005_online_wall_seconds_v0: 2319.049
+  p6_bam_005_online_wall_seconds_va2: 1963.458
+  p6_bam_005_online_wall_change: -15.33_percent
+  p6_bam_005_process_wall_seconds_v0: 2349.67
+  p6_bam_005_process_wall_seconds_va2: 1994.25
+  p6_bam_005_quality_15pct_vs_v0: PASS_ALL
+  p6_bam_005_historical_p5_online_runtime_target: MISSED_20_PERCENT
   full_scene_runtime_status: NOT_VALIDATED
-  speedup_status: NOT_VALIDATED
-  quality_status: PRELIMINARY_PSNR_DEPTH_L1_CONCERN
+  speedup_status: PRELIMINARY_SINGLE_PAIR_BOUNDED_0_499
+  quality_status: PRELIMINARY_15_PERCENT_SCREEN_PASS
   implementation_commit: a3aefc745b73da520fa2ae53e77b0349fd25fa00
   execution_commit: bb830b1f6a0a31028f14fe390b8cb4e1a50c47fe
   v0_run_id: p6_bam_003_room0_0_49_v0_r01
   va_run_id: p6_bam_003_room0_0_49_va_r01
   v0_executed_mapping_iters: 3000
   va_executed_mapping_iters: 1740
-  next_task: researcher_review_before_any_0_499_V0_VA2_run
+  next_task: researcher_review_before_any_0_1999_full_scene_run
   p6_bam_004_status: PLANNED_NOT_STARTED_REQUIRES_RESEARCHER_AUTHORIZATION
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite

@@ -1,5 +1,12 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_017 / P6-BAM-005 matched 0–499 V0/V-A2 validation
+
+- Added a measurement-only monotonic host timer around the online frame loop in `scripts/slam.py`; it adds no CUDA synchronization and changes no algorithm behavior.
+- Ran one matched sequential LIGHT V0/V-A2 pair on Replica room0 frames 0–499 using frozen, parity-checked effective configurations. Both completed 500 frames and were saved with final maps, poses, keyframes, telemetry, metrics, and matched RGB/depth/semantic samples.
+- V0 executed 30,000 mapping iterations; V-A2 executed 22,695 (−24.35%). V-A2 online loop wall was 1,963.46 s versus 2,319.05 s (−15.33%); process wall was −15.13%. All seven researcher-defined 15% quality screens and all historical P5 provisional quality margins passed. The historical ≥20% online-wall target was not met.
+- Recorded `PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED` as a bounded single-pair result only. Preserved the original P6-BAM-003 INCONCLUSIVE status and all Phase 4/P6 reference hashes. No 0–1999 run or push occurred.
+
 ## 2026-10-16 — SESSION_016 / P6-BAM-003-R1 V-A2 quality-constrained screen
 
 - Added the isolated `configs/replica/phase6_bam_va2.py` wrapper with LOW/MID/FULL budgets 45/60/60 and frozen thresholds 0.01/0.05; no controller or algorithm source changed.

@@ -45,6 +45,7 @@
 | P6-BAM-002 — Matched LIGHT 0–10 Smoke Validation | `PASS_P6_BAM_002_SMOKE_INTEGRATION`; `ADAPTIVE_ACTIVATION_CONFIRMED` |
 | P6-BAM-003 — Matched LIGHT 0–49 Validation | `INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME`; structural PASS, preliminary PSNR/Depth L1 concern |
 | P6-BAM-003-R1 — V-A2 quality-constrained 0–49 screen | `PASS_P6_BAM_003_R1_QUALITY_CONSTRAINED_0_49`; 15% screens pass vs V0, historical PSNR provisional margin narrowly missed; screening only |
+| P6-BAM-005 — matched V0/V-A2 0–499 quality-constrained validation | `PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED`; 500-frame single-pair screen, online wall −15.33%, all seven 15% checks pass; ≥20% historical online-wall target missed |
 | P6-BAM-004 — 0–99 fixed-budget ablation | PLANNED / NOT STARTED; requires quality review and separate authorization |
 | Optional bounded GPU Keyframe Reuse | DEFERRED / CONDITIONAL |
 
@@ -53,7 +54,7 @@ Phase 4 is complete. The closure package is
 the primary qualitative fidelity evidence; V3A–V3C virtual views remain
 diagnostic/presentation evidence and do not establish novel-view accuracy.
 
-Recommended next research order: (1) researcher review of the P6-BAM-003-R1 V-A2 0–49 screen and, if separately authorized, one matched V0/V-A2 0–499 LIGHT comparison; (2) validate unchanged PHASE4-VB-001 across additional Replica scenes; (3) isolate pinned-memory/non-blocking/streamed staging as a systems experiment with transfer timing; (4) evaluate a bounded reuse-aware GPU cache; (5) investigate archive precision/compression; and only then (6) study eviction as a separate algorithmic/keyframe-policy experiment. The original Phase 5 plan remains administratively superseded and technically incomplete. P5-LEAN-001 completed design readiness under the 15 October–5 November schedule. P6-BAM-001 passed CPU/static implementation and FIX1 on 16 October. P6-BAM-002 passed bounded 0–10 GPU smoke integration. Original P6-BAM-003 remains inconclusive: its V-A PSNR and Depth L1 exceeded provisional degradation targets. The single V-A2 R1 0–49 candidate screen passes the new 15% limits against saved V0 and improves process wall by 11.33%, but narrowly misses the historical P5 PSNR margin; full-scene speedup, online-wall target and statistical quality remain unvalidated. No subsequent run is authorized automatically. Bounded keyframe reuse remains conditional.
+Recommended next action: researcher review of the P6-BAM-005 0–499 matched V0/V-A2 result before any 0–1999 full-scene validation. The bounded pair shows 15.33% lower online-loop wall and passes all seven researcher-defined 15% quality checks; it misses the older ≥20% online-wall target and is not statistical evidence. The original Phase 5 plan remains administratively superseded and technically incomplete. P5-LEAN-001 design readiness, P6-BAM-001/FIX1 CPU/static, and P6-BAM-002 bounded smoke statuses remain intact. Original P6-BAM-003 remains inconclusive. The R1 V-A2 0–49 candidate screen remains a historical PASS. No subsequent run is authorized automatically. Bounded keyframe reuse remains conditional.
 
 Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md),
 [full-scene output-save result](../experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md),
