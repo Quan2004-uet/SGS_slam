@@ -1,7 +1,8 @@
 # SESSION_020 — P6-BAM-006 Final Research Checkpoint and Publication
 
 - Started: 2026-10-17.
-- Status: `IN_PROGRESS`.
+- Status: `CLOSED`.
+- Closed: 2026-10-17.
 - Objective: audit completed P6-BAM-006 evidence, publish reviewed source and
   reports to the existing research branch, back up all three validated
   visualization packages to the private Hugging Face dataset, and close safely
@@ -52,5 +53,16 @@ is a separate diagnostic and does not represent per-pixel prediction.
 ## Publication and closure
 
 GitHub and Hugging Face results will be recorded here only after independent
-remote verification. Exact remote commit, uploaded path/counts/hashes, final
-closure status, and the next research task will be appended before closure.
+remote verification. Exact completion records:
+
+- GitHub: commit `7454f170f3ece83b38f2429a43084ff550cf49a2` was pushed to the
+  newly created same-named research branch and independently read back with
+  `git ls-remote`; no force push or history rewrite was used.
+- Hugging Face: `PASS_P6_BAM_006_HF_VISUALIZATION_BACKUP`, private dataset
+  `QuanDinh/SGS-SLAM-assets`, path
+  `phase6_bam/p6_bam_006/visualization/`, revision
+  `6cc42c8db3ce69f58bdb2de797c03b90bf930e73`; 186 files, 123 PNGs,
+  74,675,326 bytes, all independently SHA256 matched.
+- Final session classification: `READY_TO_CLOSE_SESSION`.
+- Next research task: Phase 4 vs Phase 6 qualitative comparison packaging
+  and thesis/report preparation. No new experiment is authorized automatically.

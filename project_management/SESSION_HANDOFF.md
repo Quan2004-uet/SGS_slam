@@ -6,7 +6,7 @@ Last reconciled: 2026-10-17.
 
 ## Current session
 
-- Session: `SESSION_020` — P6-BAM-006 final research checkpoint and publication; in progress. SESSION_019 remains closed and unchanged as the historical full-scene run record.
+- Session: `SESSION_020` — P6-BAM-006 final research checkpoint and publication; closed 2026-10-17. SESSION_019 remains closed and unchanged as the historical full-scene run record.
 - Branch: `phase5-profiling-instrumentation`; starting HEAD `0df67b3b19a17233d894af389d10c05796d9ed1b`.
 - Experiment source revision: `002927f3b24dd69418c17da08bd4ae987bae9ee2`.
 - Phase 4 tag: `phase4-cpu-keyframe-offload-validated` peels to `37522db553ff18b96592073f9de699db7fa48600`.
@@ -69,19 +69,17 @@ Phase 4 checkpoint `params.npz`
   `6cc42c8db3ce69f58bdb2de797c03b90bf930e73`. It contains 186 files / 123
   PNGs; all 186 remote files matched local staged bytes by SHA256. Full details:
   `docs/research/phase6_bam/P6_BAM_006_HF_VISUALIZATION_BACKUP_REPORT.md`.
-- GitHub: intended remote is
+- GitHub: remote
   `https://github.com/Quan2004-uet/SGS_slam.git`, branch
-  `phase5-profiling-instrumentation`. The branch was absent from the remote at
-  audit; local history descends from advertised remote `main` and the Phase 4
-  reference. A reviewed normal push may create this same-named research branch;
-  status remains pending until remote SHA is read back and verified.
-- Session remains in progress until the GitHub commit is published and
-  verified, all state files agree, and final artifact hashes are rechecked.
+  `phase5-profiling-instrumentation`. The branch was absent at audit and was
+  created by a normal non-force push. Commit `7454f170f3ece83b38f2429a43084ff550cf49a2`
+  was read back from the remote and matched local HEAD at verification.
+- Hugging Face and GitHub publication are verified. Session closure is
+  recorded in SESSION_020; final state consistency and hashes were rechecked.
 
 ## STOPPED HERE / next research action
 
-Finish the explicitly requested report/source publication and final state
-consistency check. After closure, the next research task is Phase 4 versus
+The final publication and consistency check are complete. The next research task is Phase 4 versus
 Phase 6 qualitative comparison packaging and thesis/report preparation. No
 additional SLAM, tracking, mapping, evaluation, fixed-budget ablation, variant,
 or scene run is authorized automatically. Keep Phase 4 immutable and preserve

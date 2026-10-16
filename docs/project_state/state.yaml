@@ -34,11 +34,16 @@ workflow:
 session:
   id: SESSION_020
   title: P6-BAM-006 Final Research Checkpoint and Publication
-  status: in_progress
+  status: closed
   started: 2026-10-17
+  closed: 2026-10-17
   starting_head: 0df67b3b19a17233d894af389d10c05796d9ed1b
   experiment_source_revision: 002927f3b24dd69418c17da08bd4ae987bae9ee2
   checkpoint: PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED
+  publication_checkpoint: 7454f170f3ece83b38f2429a43084ff550cf49a2
+  github_remote_verified: true
+  huggingface_backup_verified: true
+  closure: READY_TO_CLOSE_SESSION
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -110,6 +115,11 @@ phase6:
   p6_bam_006_hf_file_count: 186
   p6_bam_006_hf_png_count: 123
   p6_bam_006_hf_verified_bytes: 74675326
+  github_branch: phase5-profiling-instrumentation
+  github_remote_verified_sha: 7454f170f3ece83b38f2429a43084ff550cf49a2
+  visualization_original_png_count: 9
+  visualization_phase4_matched_png_count: 9
+  visualization_extended_png_count: 105
   full_scene_runtime_status: FULL_SCENE_RUNTIME_SPEEDUP_UNVERIFIED
   speedup_status: PRELIMINARY_SINGLE_PAIR_BOUNDED_0_499
   quality_status: PRELIMINARY_15_PERCENT_SCREEN_PASS

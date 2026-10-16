@@ -11,9 +11,10 @@
   `phase6_bam/p6_bam_006/visualization/`. The upload contains 186 files / 123
   PNGs (74,675,326 bytes); all 186 downloaded remote files matched staged
   SHA256 exactly. No dataset, checkpoint or PLY model was included.
-- GitHub publication and session closure are pending the explicit reviewed
-  commit and independent same-branch remote verification. No SLAM, tracking,
-  mapping or evaluation workload ran.
+- Published the reviewed checkpoint to the same-named GitHub research branch
+  at `7454f170f3ece83b38f2429a43084ff550cf49a2`; remote branch SHA was read
+  back and matched. The branch did not previously exist and was created by a
+  normal non-force push. No SLAM, tracking, mapping or evaluation workload ran.
 
 ## 2026-10-16 — SESSION_019 / P6-BAM-006 full-scene V-A2
 

@@ -10,6 +10,7 @@ Status: `PASS_P6_BAM_006_HF_VISUALIZATION_BACKUP`
 - Destination: `phase6_bam/p6_bam_006/visualization/`.
 - Upload commit: `6cc42c8db3ce69f58bdb2de797c03b90bf930e73`.
 - Independently observed repository HEAD after upload: the same commit.
+- GitHub report/source checkpoint: `7454f170f3ece83b38f2429a43084ff550cf49a2`, published to and read back from `origin/phase5-profiling-instrumentation`.
 - The destination prefix was empty before upload; the repository already contained unrelated `data/`, `migration/`, and Phase 4 artifact paths, all left intact.
 
 ## Included files
@@ -19,7 +20,7 @@ The deterministic local staging tree is
 The upload command used the explicit source directory and exact target prefix:
 
 ```text
-hf upload QuanDinh/SGS-SLAM-assets <staging>/phase6_bam/p6_bam_006/visualization phase6_bam/p6_bam_006/visualization --repo-type dataset
+hf upload QuanDinh/SGS-SLAM-assets /home/robot/research/SGS_slam/results/runtime_artifacts/phase6_bam/p6_bam_006_publication_staging_r02/phase6_bam/p6_bam_006/visualization phase6_bam/p6_bam_006/visualization --repo-type dataset
 ```
 
 The remote contains 186 files totaling 74,675,326 bytes, including 123 PNGs:
@@ -39,6 +40,12 @@ inventory records original and staged hashes. Six `.npy` visualization
 intermediates were deliberately excluded; these are listed in the manifest.
 The extended package's 50 Phase 4 reference images are retained and clearly
 labeled under `reconstruction_fidelity/phase4_reference/`.
+
+The archived `P6_BAM_006_FINAL_SESSION_HANDOFF.md` is the sanitized snapshot
+prepared immediately before upload, so it accurately marks publication as
+pending at that staging timestamp. The canonical repository handoff was
+updated after both remotes were verified; the snapshot is not represented as
+byte-identical to that later local revision.
 
 Excluded: Replica datasets/raw training images, NPZ checkpoints, RGB/semantic
 PLY model files, unrelated Phase 4/Phase 5 trees, unrelated run logs, caches,

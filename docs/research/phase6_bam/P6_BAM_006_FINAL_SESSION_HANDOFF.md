@@ -58,20 +58,24 @@ not new Phase 6 predictions. Phase 4 is the immutable reference tree under
 
 ## Publication status
 
-The reviewed documentation/source commit is intended for
+The reviewed documentation/source commit was published to
 `origin/phase5-profiling-instrumentation` at
-`https://github.com/Quan2004-uet/SGS_slam.git`. GitHub publication must be
-reported PASS only after the remote branch SHA is read back and matches.
+`https://github.com/Quan2004-uet/SGS_slam.git`. The remote branch ref was read
+back and matched `7454f170f3ece83b38f2429a43084ff550cf49a2`.
 
 The visualization-only backup target is the private dataset
 `QuanDinh/SGS-SLAM-assets`, at
-`phase6_bam/p6_bam_006/visualization/`. Staging excludes model NPZ/PLY files,
+`phase6_bam/p6_bam_006/visualization/`, upload revision
+`6cc42c8db3ce69f58bdb2de797c03b90bf930e73`. The remote contains 186 files
+(123 PNGs, 74,675,326 bytes); an independent download matched every file by
+SHA256. Staging excludes model NPZ/PLY files,
 dataset/raw training data, and six `.npy` visualization intermediates; text
-metadata is sanitized in copies only. Hugging Face publication must be
-reported PASS only after remote inventory verification. Exact commit/revision,
-counts, bytes, and any hash-verification limits are recorded in
-`docs/research/phase6_bam/P6_BAM_006_HF_VISUALIZATION_BACKUP_REPORT.md` after
-publication.
+metadata is sanitized in copies only. Exact transfer and hash-verification
+details are in `docs/research/phase6_bam/P6_BAM_006_HF_VISUALIZATION_BACKUP_REPORT.md`.
+
+The documentation copy of this handoff in the HF backup is the sanitized
+pre-upload snapshot; at staging time, it correctly left both publications
+pending. This repository copy is the final post-verification handoff.
 
 ## Next research work
 
