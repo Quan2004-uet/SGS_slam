@@ -22,12 +22,12 @@ baseline:
 workflow:
   phase: 5
   phase_name: P5-LEAN — 21-day runtime optimization study
-  phase_status: p6_bam_006_completed_publication_checkpoint_in_progress
+  phase_status: p6_bam_006_completed_final_research_checkpoint_published
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
   latest_completed_gate: P6-BAM-006-FULL-SCENE
-  next_phase_status: completed_single_run_quality_screen_runtime_unverified_session_020_publication
+  next_phase_status: completed_single_run_quality_screen_runtime_unverified_no_automatic_run
   next_recommended_phase: phase4_vs_phase6_qualitative_comparison_packaging_and_thesis_report_preparation
   paper_metrics_reproduced: false
 
