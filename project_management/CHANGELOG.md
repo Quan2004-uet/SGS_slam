@@ -1,5 +1,12 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_015 / P6-BAM-003 bounded 0–49 comparison
+
+- Froze matched V0/V-A room0 frames 0–49 LIGHT configs on documentation HEAD `bb830b1` and ran exactly one sequential GPU execution per variant in new isolated Phase 6 result/telemetry directories.
+- Both completed 50 frames and 50 mapping events with finite saved state, valid CPU offload/staging, zero dropped LIGHT spans and preserved prune-iteration coverage. V0 executed 3,000 mapping iterations; V-A 1,740 (1 FULL, 14 MID, 35 LOW).
+- Observed process wall 192.27 versus 143.28 s, but matched preliminary final-map evaluation showed PSNR −0.739 dB and Depth L1 +19.26% for V-A. Classified `INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME` under provisional quality targets; no speedup or non-inferiority claim.
+- Preserved Phase 4 and P6-BAM-002 checksums, old untracked evidence and algorithm/config/profiler source. No additional evaluator, retry, 0–99 run or push.
+
 ## 2026-10-16 — SESSION_014 / P6-BAM-002 matched LIGHT smoke
 
 - Ran exactly one V0 and one V-A Replica room0 frames 0–10 LIGHT GPU validation under source `a3aefc7`, in separate new directories under `results/runtime_artifacts/phase6_bam/`.

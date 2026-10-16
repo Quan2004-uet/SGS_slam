@@ -11,8 +11,8 @@ Last reconciled: 2026-10-16.
 - Phase 4 reference HEAD: `37522db553ff18b96592073f9de699db7fa48600`.
 - Phase 5 P5-G1 checkpoint HEAD: `86ac4f990932563c721187a5cb458f3e07be9ce6`.
 - Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
-- Current implementation HEAD: `302e3e6bf46d50ea96b010eb5988dfd6616c2317` (`fix(profiler): prevent CUDA event queue overflow`).
-- Latest session handoff checkpoint: `b30d5a622152e66d14ed2fd94b0a6f86a073eb1d` (P5-LEAN session handoff checkpoint).
+- Profiler FIX1 implementation ancestor: `302e3e6bf46d50ea96b010eb5988dfd6616c2317`.
+- P6-BAM-001 FIX1 implementation source: `a3aefc745b73da520fa2ae53e77b0349fd25fa00`; P6-BAM-003 execution HEAD: `bb830b1f6a0a31028f14fe390b8cb4e1a50c47fe` (P6-BAM-002 documentation-only descendant).
 - P6-BAM-001 start HEAD: `c6742854b884495ece0cc18fbc9296c1d5e31371`; implementation checkpoint is the commit containing `docs/research/phase6_bam/P6_BAM_001_IMPLEMENTATION_REPORT.md`.
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
@@ -35,9 +35,10 @@ Last reconciled: 2026-10-16.
 - P6-BAM-001: `PASS_P6_BAM_001_CPU_STATIC`; novelty-aware controller and dedicated controls are implemented but **NOT_RUNTIME_VALIDATED**.
 - P6-BAM-001 FIX1: `PASS_P6_BAM_001_FIX1_CPU_STATIC`. Source audit found the reported cross-event budget leak absent at `e644df4`; configured/effective iteration names are now explicit, with a 38-test CPU regression gate. **NOT_RUNTIME_VALIDATED**.
 - P6-BAM-002: `PASS_P6_BAM_002_SMOKE_INTEGRATION`, `ADAPTIVE_ACTIVATION_CONFIRMED` on two matched LIGHT Replica room0 runs, frames 0–10. This is bounded runtime integration only, not full-scene, speedup or quality validation.
+- P6-BAM-003: `INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME`. Both matched LIGHT room0 runs completed frames 0–49 with valid budgets, finite saved state and isolated artifacts. V-A executed 1,740 versus V0 3,000 mapping iterations, but preliminary matched evaluation showed PSNR −0.739 dB and Depth L1 +19.26%, exceeding provisional P5-LEAN quality targets. A single pair cannot establish causality or non-inferiority.
 - Three-week execution window: 2026-10-15 through 2026-11-05; code/config freeze target 2026-10-28.
-- Selected candidate: novelty-aware Budget-Aware Mapping using pre/post append Gaussian counts; **IMPLEMENTED / CPU-STATIC VALIDATED / 0–10 SMOKE-INTEGRATION VALIDATED ONLY**.
-- Next proposed task: `P6-BAM-003 — Matched 0–49 Validation`, `PLANNED_NOT_STARTED` pending researcher review and separate authorization.
+- Selected candidate: novelty-aware Budget-Aware Mapping using pre/post append Gaussian counts; **IMPLEMENTED / 0–49 FUNCTIONAL RUNTIME VERIFIED / PRELIMINARY QUALITY INCONCLUSIVE**.
+- Next proposed action: targeted P6-BAM-003 quality/variability review. `P6-BAM-004 — 0–99 fixed-budget ablation` remains `PLANNED_NOT_STARTED` and requires separate researcher review/authorization; no automatic run.
 - Canonical closure package: `results/runtime_artifacts/phase4_closure/`.
 
 Phase 4 changed memory ownership, not the SGS-SLAM objective: archived keyframe `color`, `depth`, `semantic_id`, and `semantic_color` payloads are CPU-authoritative and synchronously staged to GPU when selected. Archived `est_w2c` remains GPU-resident. The implementation adds no pinned memory, asynchronous copy, prefetch, persistent GPU cache, compression, or eviction and retains the released keyframe and optimization policies.
@@ -92,8 +93,8 @@ Not established: accuracy equivalence to a full-scene baseline (the baseline did
 
 P5-G1 established the audit, dataset-readiness, instrumentation, hypothesis, ablation, evaluation, and execution contracts in `docs/research/phase5/`. P5-G2 added disabled-by-default `off`, `light`, and `detailed` profiling, bounded JSONL/summary telemetry, CPU/GPU-memory attribution helpers, and minimal hooks around the existing online path. Twenty CPU-only tests pass with CUDA hidden and uninitialized. Direct-host recovery using `/home/robot/miniconda3/envs/sgs_slam_5080` passed the CUDA smoke test. Retry 1 completed C0/C1/C2 on room0 frames 0–99; C1 had zero dropped spans, while C2 had zero pending events but 1,958 dropped CUDA event spans. Logged keyframe traces matched, but final Gaussian counts were not bit-exact. Detailed timing is therefore diagnostic, not gate-valid.
 
-No original Phase 5 optimization variant V1–V5 has been implemented. The original Phase 5 execution plan remains administratively retired and its historical gates are unchanged. P5-LEAN-001 completed the mapping-loop audit and design contracts. P6-BAM-001 implemented V0, V-A and fixed-budget controls with 37 passing CPU tests, expanded to 38 in FIX1. P6-BAM-002 confirmed bounded 0–10 integration and adaptive activation: V0 executed 660 mapping iterations and V-A 420, with isolated Phase 6 artifacts. Runtime speedup and quality remain unvalidated. Comprehensive DETAILED profiling remains deferred. Core quality obligations and the additional-scene priority remain in force.
+No original Phase 5 optimization variant V1–V5 has been implemented. The original Phase 5 execution plan remains administratively retired and its historical gates are unchanged. P5-LEAN-001 completed the mapping-loop audit and design contracts. P6-BAM-001 implemented V0, V-A and fixed-budget controls with 37 passing CPU tests, expanded to 38 in FIX1. P6-BAM-002 confirmed bounded 0–10 integration and adaptive activation. P6-BAM-003 completed one matched 0–49 LIGHT pair: V0 executed 3,000 mapping iterations, V-A 1,740; whole-process times were 192.27 s and 143.28 s. These are provisional single-pair observations, not a validated speedup. Matched quality is inconclusive because PSNR and Depth L1 exceeded provisional degradation targets. Comprehensive DETAILED profiling remains deferred. Core quality obligations and the additional-scene priority remain in force.
 
 ## STOPPED HERE
 
-Stop at `PASS_P6_BAM_002_SMOKE_INTEGRATION` and `ADAPTIVE_ACTIVATION_CONFIRMED`. Evidence is in `docs/research/phase6_bam/P6_BAM_002_SMOKE_REPORT.md` and isolated run directories under `results/runtime_artifacts/phase6_bam/`. Do not infer full-scene feasibility, repeat runs, start P6-BAM-003, reopen G3A, implement keyframe reuse or push without separate researcher authorization.
+Stop at `INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME`. Evidence is in `docs/research/phase6_bam/P6_BAM_003_0_49_REPORT.md`, its comparison and isolated Phase 6 run directories. Review preliminary quality/variability before any 0–99 decision. Do not infer full-scene feasibility or statistically validated speedup, repeat runs, start P6-BAM-004, reopen G3A, implement keyframe reuse or push without separate researcher authorization.

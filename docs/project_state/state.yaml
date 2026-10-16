@@ -22,24 +22,24 @@ baseline:
 workflow:
   phase: 5
   phase_name: P5-LEAN — 21-day runtime optimization study
-  phase_status: in_progress_smoke_integration_validated_only
+  phase_status: in_progress_bounded_0_49_quality_inconclusive
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P6-BAM-002
+  latest_completed_gate: P6-BAM-003
   next_phase_status: planned_not_started
-  next_recommended_phase: P6-BAM-003
+  next_recommended_phase: P6-BAM-003-quality-review
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_014
-  title: P6-BAM-002 Matched LIGHT 0–10 GPU Smoke Validation
+  id: SESSION_015
+  title: P6-BAM-003 Matched LIGHT 0–49 Bounded Comparison
   status: closed
   started: 2026-10-16
   closed: 2026-10-16
-  head: a3aefc745b73da520fa2ae53e77b0349fd25fa00
+  head: bb830b1f6a0a31028f14fe390b8cb4e1a50c47fe
   head_role: session_start
-  checkpoint: commit_containing_P6_BAM_002_SMOKE_REPORT
+  checkpoint: commit_containing_P6_BAM_003_0_49_REPORT
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -60,23 +60,25 @@ p5_lean:
   first_task: P5-LEAN-001 — 21-Day Research Replan & Budget-Aware Mapping Feasibility Audit
   first_task_status: PASS_P5_LEAN_001_21DAY_DESIGN_READY
   selected_candidate: novelty_aware_mapping_budget
-  candidate_status: IMPLEMENTED_SMOKE_INTEGRATION_0_10_ONLY
+  candidate_status: BOUNDED_0_49_RUNTIME_FUNCTIONAL_QUALITY_INCONCLUSIVE
   deadline: 2026-11-05
   code_freeze_target: 2026-10-28
 
 phase6:
   priority: Budget-Aware Mapping
-  status: PASS_P6_BAM_002_SMOKE_INTEGRATION
+  status: INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME
   adaptive_activation: ADAPTIVE_ACTIVATION_CONFIRMED
   full_scene_runtime_status: NOT_VALIDATED
   speedup_status: NOT_VALIDATED
-  quality_status: NOT_VALIDATED
-  source_commit: a3aefc745b73da520fa2ae53e77b0349fd25fa00
-  v0_run_id: p6_bam_002_room0_0_10_v0_r01
-  va_run_id: p6_bam_002_room0_0_10_va_r01
-  v0_executed_mapping_iters: 660
-  va_executed_mapping_iters: 420
-  next_task: P6-BAM-003
+  quality_status: PRELIMINARY_PSNR_DEPTH_L1_CONCERN
+  implementation_commit: a3aefc745b73da520fa2ae53e77b0349fd25fa00
+  execution_commit: bb830b1f6a0a31028f14fe390b8cb4e1a50c47fe
+  v0_run_id: p6_bam_003_room0_0_49_v0_r01
+  va_run_id: p6_bam_003_room0_0_49_va_r01
+  v0_executed_mapping_iters: 3000
+  va_executed_mapping_iters: 1740
+  next_task: P6-BAM-003-quality-review
+  p6_bam_004_status: PLANNED_NOT_STARTED_REQUIRES_RESEARCHER_AUTHORIZATION
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite
 
