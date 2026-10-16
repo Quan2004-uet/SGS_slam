@@ -313,6 +313,23 @@ evaluation and visualization roots, writing the list only to the separate
 comparison root. This keeps the checksum file outside the enumerated trees and
 prevents it from hashing itself. No Phase 4/P6 historical destination is used.
 
+Example after all four output trees exist and have been validated (run only
+after authorization; this was not run during preflight):
+
+```bash
+RUN=results/runtime_artifacts/phase6_bam/p6_bam_006_room0_0_1999_va2_r01
+TELEMETRY=results/runtime_artifacts/phase6_bam/telemetry/p6_bam_006_room0_0_1999_va2_r01
+EVAL=results/runtime_artifacts/phase6_bam/p6_bam_006_comparison/evaluation/va2_attempt01
+VIS=results/runtime_artifacts/phase6_bam/p6_bam_006_comparison/visualization/va2
+COMPARE=results/runtime_artifacts/phase6_bam/p6_bam_006_comparison
+find "$RUN" "$TELEMETRY" "$EVAL" "$VIS" -type f -print0 \
+  | sort -z | xargs -0 sha256sum > "$COMPARE/SHA256SUMS.txt"
+```
+
+Keep the source commit and effective-config/data-config hashes in the
+provenance record alongside this artifact-file manifest; the dataset itself is
+not copied into the Phase 6 output tree.
+
 ### Addendum verification and disposition
 
 Verified from source: online timer boundary and printed duration in
