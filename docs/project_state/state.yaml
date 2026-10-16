@@ -22,24 +22,24 @@ baseline:
 workflow:
   phase: 5
   phase_name: P5-LEAN — 21-day runtime optimization study
-  phase_status: in_progress_implementation_cpu_static
+  phase_status: in_progress_smoke_integration_validated_only
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P6-BAM-001-FIX1
+  latest_completed_gate: P6-BAM-002
   next_phase_status: planned_not_started
-  next_recommended_phase: P6-BAM-002
+  next_recommended_phase: P6-BAM-003
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_013
-  title: P6-BAM-001 Minimal Implementation and CPU Validation
+  id: SESSION_014
+  title: P6-BAM-002 Matched LIGHT 0–10 GPU Smoke Validation
   status: closed
   started: 2026-10-16
   closed: 2026-10-16
-  head: c6742854b884495ece0cc18fbc9296c1d5e31371
+  head: a3aefc745b73da520fa2ae53e77b0349fd25fa00
   head_role: session_start
-  checkpoint: commit_containing_P6_BAM_001_IMPLEMENTATION_REPORT
+  checkpoint: commit_containing_P6_BAM_002_SMOKE_REPORT
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -60,14 +60,23 @@ p5_lean:
   first_task: P5-LEAN-001 — 21-Day Research Replan & Budget-Aware Mapping Feasibility Audit
   first_task_status: PASS_P5_LEAN_001_21DAY_DESIGN_READY
   selected_candidate: novelty_aware_mapping_budget
-  candidate_status: IMPLEMENTED_CPU_STATIC_NOT_RUNTIME_VALIDATED
+  candidate_status: IMPLEMENTED_SMOKE_INTEGRATION_0_10_ONLY
   deadline: 2026-11-05
   code_freeze_target: 2026-10-28
 
 phase6:
   priority: Budget-Aware Mapping
-  status: PASS_P6_BAM_001_FIX1_CPU_STATIC_NOT_RUNTIME_VALIDATED
-  next_task: P6-BAM-002
+  status: PASS_P6_BAM_002_SMOKE_INTEGRATION
+  adaptive_activation: ADAPTIVE_ACTIVATION_CONFIRMED
+  full_scene_runtime_status: NOT_VALIDATED
+  speedup_status: NOT_VALIDATED
+  quality_status: NOT_VALIDATED
+  source_commit: a3aefc745b73da520fa2ae53e77b0349fd25fa00
+  v0_run_id: p6_bam_002_room0_0_10_v0_r01
+  va_run_id: p6_bam_002_room0_0_10_va_r01
+  v0_executed_mapping_iters: 660
+  va_executed_mapping_iters: 420
+  next_task: P6-BAM-003
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite
 

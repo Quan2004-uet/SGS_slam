@@ -41,8 +41,9 @@
 | Paper comparison | Pending |
 | Original Phase 5 — Multi-Scene Validation & Performance Profiling | `SUPERSEDED_BY_P5_LEAN_INCOMPLETE` — technical completion not achieved |
 | P5-LEAN-001 — 21-Day Research Replan & Budget-Aware Mapping Feasibility Audit | `PASS_P5_LEAN_001_21DAY_DESIGN_READY` |
-| P6-BAM-001 — Budget-Aware Mapping Minimal Implementation | `PASS_P6_BAM_001_CPU_STATIC`; runtime not validated |
-| P6-BAM-002 — Matched LIGHT 0–10 Smoke Validation | PLANNED / NOT STARTED |
+| P6-BAM-001 — Budget-Aware Mapping Minimal Implementation | `PASS_P6_BAM_001_CPU_STATIC` and FIX1 CPU/static PASS |
+| P6-BAM-002 — Matched LIGHT 0–10 Smoke Validation | `PASS_P6_BAM_002_SMOKE_INTEGRATION`; `ADAPTIVE_ACTIVATION_CONFIRMED` |
+| P6-BAM-003 — Matched 0–49 Validation | PLANNED / NOT STARTED; requires researcher review |
 | Optional bounded GPU Keyframe Reuse | DEFERRED / CONDITIONAL |
 
 Phase 4 is complete. The closure package is
@@ -55,7 +56,7 @@ additional Replica scenes; (2) isolate pinned-memory/non-blocking/streamed
 staging as a systems experiment with transfer timing; (3) evaluate a bounded
 reuse-aware GPU cache; (4) investigate archive precision/compression; and only
 then (5) study eviction as a separate algorithmic/keyframe-policy experiment.
-The original Phase 5 plan remains administratively superseded and technically incomplete. P5-LEAN-001 completed design readiness under the 15 October–5 November schedule. P6-BAM-001 passed CPU/static implementation on 16 October; P6-BAM-002 runtime validation is next and requires separate authorization. Bounded keyframe reuse remains conditional.
+The original Phase 5 plan remains administratively superseded and technically incomplete. P5-LEAN-001 completed design readiness under the 15 October–5 November schedule. P6-BAM-001 passed CPU/static implementation and FIX1 on 16 October. P6-BAM-002 passed only the bounded 0–10 GPU smoke integration on 16 October; full-scene speedup and quality are not validated. P6-BAM-003 requires separate researcher review/authorization. Bounded keyframe reuse remains conditional.
 
 Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md),
 [full-scene output-save result](../experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md),

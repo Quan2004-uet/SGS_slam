@@ -1,5 +1,12 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_014 / P6-BAM-002 matched LIGHT smoke
+
+- Ran exactly one V0 and one V-A Replica room0 frames 0–10 LIGHT GPU validation under source `a3aefc7`, in separate new directories under `results/runtime_artifacts/phase6_bam/`.
+- Both completed 11 frames and 11 mapping events with finite saved state and zero dropped LIGHT spans. V0 executed 660/660 configured mapping iterations; V-A executed 420/660 with 1 FULL, 4 MID and 6 LOW events. Prune iteration 20 remained reachable in all events.
+- Recorded `PASS_P6_BAM_002_SMOKE_INTEGRATION` and `ADAPTIVE_ACTIVATION_CONFIRMED`. Runtime/quality/full-scene conclusions remain unvalidated. Phase 4 reference checkpoint checksum remained unchanged.
+- Preserved logs, effective configs, telemetry and CPU validation under the isolated Phase 6 root; no algorithm, profiler or released config edit and no push.
+
 ## 2026-10-16 — SESSION_013 / P6-BAM-001 FIX1 lifecycle clarification
 
 - Verified the reported 30-to-60 cross-event leak was absent in `e644df4` because the configured budget was reloaded inside the per-frame loop.
