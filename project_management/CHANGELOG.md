@@ -1,5 +1,12 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_016 / P6-BAM-003-R1 V-A2 quality-constrained screen
+
+- Added the isolated `configs/replica/phase6_bam_va2.py` wrapper with LOW/MID/FULL budgets 45/60/60 and frozen thresholds 0.01/0.05; no controller or algorithm source changed.
+- Passed CPU/static config parity checks and all 15 mapping-budget unit tests. Ran exactly one matched LIGHT Replica room0 0–49 V-A2 execution; 50/50 frames completed with 2,445/3,000 iterations, valid budget telemetry, finite saved state, active CPU archive/H2D staging and zero dropped LIGHT spans.
+- Against saved V0, all researcher-defined 15% quality checks passed; process wall improved 11.33%. Historical P5 provisional PSNR bound was narrowly exceeded and online-wall target was not measured. Classified the candidate screen `PASS_P6_BAM_003_R1_QUALITY_CONSTRAINED_0_49`; original P6-BAM-003 remains historically INCONCLUSIVE.
+- Preserved Phase 4 and previous P6 hashes, with all outputs isolated below `results/runtime_artifacts/phase6_bam/`. No reruns, other horizons/variants, tuning, push, or P6-BAM-004 execution.
+
 ## 2026-10-16 — SESSION_015 / P6-BAM-003 bounded 0–49 comparison
 
 - Froze matched V0/V-A room0 frames 0–49 LIGHT configs on documentation HEAD `bb830b1` and ran exactly one sequential GPU execution per variant in new isolated Phase 6 result/telemetry directories.

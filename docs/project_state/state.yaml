@@ -22,13 +22,13 @@ baseline:
 workflow:
   phase: 5
   phase_name: P5-LEAN — 21-day runtime optimization study
-  phase_status: in_progress_bounded_0_49_quality_inconclusive
+  phase_status: in_progress_bounded_va2_0_49_screen_pass
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P6-BAM-003
-  next_phase_status: planned_not_started
-  next_recommended_phase: P6-BAM-003-quality-review
+  latest_completed_gate: P6-BAM-003-R1
+  next_phase_status: researcher_review_required
+  next_recommended_phase: P6-BAM-003-R2-V-A2-0-499-matched-review-only
   paper_metrics_reproduced: false
 
 session:
@@ -60,13 +60,22 @@ p5_lean:
   first_task: P5-LEAN-001 — 21-Day Research Replan & Budget-Aware Mapping Feasibility Audit
   first_task_status: PASS_P5_LEAN_001_21DAY_DESIGN_READY
   selected_candidate: novelty_aware_mapping_budget
-  candidate_status: BOUNDED_0_49_RUNTIME_FUNCTIONAL_QUALITY_INCONCLUSIVE
+  candidate_status: BOUNDED_0_49_RUNTIME_AND_QUALITY_SCREEN_PASS_STATISTICAL_VALIDATION_PENDING
   deadline: 2026-11-05
   code_freeze_target: 2026-10-28
 
 phase6:
   priority: Budget-Aware Mapping
-  status: INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME
+  status: PASS_P6_BAM_003_R1_QUALITY_CONSTRAINED_0_49_SCREENING_ONLY
+  p6_bam_003_status: INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME
+  p6_bam_003_r1_run_id: p6_bam_003_r1_room0_0_49_va2_r01
+  p6_bam_003_r1_source_sha: 60372fcc4fac2caa1bfa09c712d9092467289228
+  p6_bam_003_r1_executed_mapping_iters: 2445
+  p6_bam_003_r1_tiers: FULL_1_MID_12_LOW_37
+  p6_bam_003_r1_quality_15pct_vs_v0: PASS_ALL
+  p6_bam_003_r1_process_wall_seconds: 170.49
+  p6_bam_003_r1_process_wall_change_vs_v0: -11.33_percent
+  p6_bam_003_r1_historical_psnr_margin: NARROW_MISS_0.00164_DB
   adaptive_activation: ADAPTIVE_ACTIVATION_CONFIRMED
   full_scene_runtime_status: NOT_VALIDATED
   speedup_status: NOT_VALIDATED
@@ -77,7 +86,7 @@ phase6:
   va_run_id: p6_bam_003_room0_0_49_va_r01
   v0_executed_mapping_iters: 3000
   va_executed_mapping_iters: 1740
-  next_task: P6-BAM-003-quality-review
+  next_task: researcher_review_before_any_0_499_V0_VA2_run
   p6_bam_004_status: PLANNED_NOT_STARTED_REQUIRES_RESEARCHER_AUTHORIZATION
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite
