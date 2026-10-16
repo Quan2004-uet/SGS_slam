@@ -46,7 +46,7 @@
 | P6-BAM-003 — Matched LIGHT 0–49 Validation | `INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME`; structural PASS, preliminary PSNR/Depth L1 concern |
 | P6-BAM-003-R1 — V-A2 quality-constrained 0–49 screen | `PASS_P6_BAM_003_R1_QUALITY_CONSTRAINED_0_49`; 15% screens pass vs V0, historical PSNR provisional margin narrowly missed; screening only |
 | P6-BAM-005 — matched V0/V-A2 0–499 quality-constrained validation | `PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED`; 500-frame single-pair screen, online wall −15.33%, all seven 15% checks pass; ≥20% historical online-wall target missed |
-| P6-BAM-006 — authorized V-A2 full-scene 0–1999 execution/evaluation | `PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED`; 2,000 frames, 401 E4 views, all seven 15% checks pass vs stored Phase 4; RGB and learned-semantic-color 3D views pass; matched full-scene runtime speedup unverified |
+| P6-BAM-006 — authorized V-A2 full-scene 0–1999 execution/evaluation | `PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED`; 2,000 frames, 401 E4 views, all seven 15% checks pass vs stored Phase 4; original, V1-matched, and extended V2/V3A camera-family 3D visualization packages pass; matched full-scene runtime speedup unverified |
 | P6-BAM-004 — 0–99 fixed-budget ablation | PLANNED / NOT STARTED; requires quality review and separate authorization |
 | Optional bounded GPU Keyframe Reuse | DEFERRED / CONDITIONAL |
 
@@ -55,7 +55,7 @@ Phase 4 is complete. The closure package is
 the primary qualitative fidelity evidence; V3A–V3C virtual views remain
 diagnostic/presentation evidence and do not establish novel-view accuracy.
 
-Recommended next action: researcher review of the P6-BAM-006 full-scene execution, quality comparison and visualization inventory. One V-A2 0–1999 run completed and passes the seven 15% screens against stored Phase 4 E4 metrics; this is single-run quality screening, not statistical non-inferiority. Matched full-scene runtime speedup remains unverified because no full-scene V0 was run and historical Phase 4 process timing is not comparable to the new online-loop timer. The original Phase 5 plan remains administratively superseded and technically incomplete; original P6-BAM-003 remains inconclusive. No additional run is authorized automatically.
+Recommended next research action after SESSION_020 publication/closure: package the Phase 4 versus Phase 6 qualitative comparison and prepare thesis/report materials. P6-BAM-006 completed one V-A2 0–1999 run and passes the seven 15% screens against stored Phase 4 E4 metrics; this is single-run quality screening, not statistical non-inferiority. Matched full-scene runtime speedup remains unverified because no full-scene V0 was run and historical Phase 4 process timing is not comparable to the new online-loop timer. The controller selected LOW/45 for 1,987/2,000 events; no advantage over fixed-45 has been established. The original Phase 5 plan remains administratively superseded and technically incomplete; original P6-BAM-003 remains inconclusive. No additional run is authorized automatically.
 
 Gate evidence: [runtime index](../baseline_reproduction/runtime/README.md),
 [full-scene output-save result](../experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md),

@@ -1,5 +1,20 @@
 # Research Changelog
 
+## 2026-10-17 — SESSION_020 / P6-BAM-006 final checkpoint and publication
+
+- Audited the completed P6-BAM-006 full-scene reports, protected model hashes,
+  Phase 4 checkpoint hash, and all three visualization packages. The 9/9/105
+  PNGs are readable and nonuniform; the extended package's 50 embedded Phase 4
+  references remain labeled as references.
+- Prepared and uploaded a sanitized visualization-only backup to the private
+  `QuanDinh/SGS-SLAM-assets` dataset at
+  `phase6_bam/p6_bam_006/visualization/`. The upload contains 186 files / 123
+  PNGs (74,675,326 bytes); all 186 downloaded remote files matched staged
+  SHA256 exactly. No dataset, checkpoint or PLY model was included.
+- GitHub publication and session closure are pending the explicit reviewed
+  commit and independent same-branch remote verification. No SLAM, tracking,
+  mapping or evaluation workload ran.
+
 ## 2026-10-16 — SESSION_019 / P6-BAM-006 full-scene V-A2
 
 - Completed the one authorized Replica room0 V-A2 run for frames 0–1999. All frames and 2,000 mapping events completed; checkpoint-first recovery/final NPZ and RGB/semantic-color PLY saving and CPU integrity validation preceded the in-process final evaluator.

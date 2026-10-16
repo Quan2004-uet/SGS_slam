@@ -6,6 +6,19 @@
 > `project_management/PROJECT_STATUS.md`. For the current resume point use
 > `project_management/SESSION_HANDOFF.md`.
 
+## Later reconciliation pointer — 2026-10-17
+
+This migration snapshot is retained as historical evidence and is not a live
+status authority. The later project state is: P6-BAM-006-FULL completed with
+`PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED`; its single V-A2 full-scene
+quality screen and all three Phase 6 visualization packages are preserved.
+Matched full-scene runtime speedup remains unverified, and the predominantly
+LOW/45 behavior does not establish superiority over fixed-45 mapping. No new
+SLAM/evaluation run is authorized automatically. For the current publication
+checkpoint, see `project_management/PROJECT_STATUS.md`,
+`project_management/SESSION_HANDOFF.md`, and
+`docs/research/phase6_bam/P6_BAM_006_FINAL_SESSION_HANDOFF.md`.
+
 This snapshot records the state used for the 2026-10-04 migration checkpoint.
 Detailed evidence is in the linked runtime records.
 

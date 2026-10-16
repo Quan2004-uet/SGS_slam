@@ -19,6 +19,7 @@ import math
 import os
 import platform
 import resource
+import shutil
 import subprocess
 import sys
 import time
@@ -51,6 +52,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--width", type=int, default=960)
     parser.add_argument("--height", type=int, default=540)
     parser.add_argument("--device", default="cuda:0")
+    parser.add_argument(
+        "--camera-dir", type=Path, default=None,
+        help="Reuse the authoritative trajectory_observed/room_overview/top_oblique camera JSONs from a validated visualization package.",
+    )
     parser.add_argument("--skip-native-render", action="store_true")
     return parser.parse_args()
 
@@ -386,6 +391,7 @@ def render_native(
     cameras: dict[str, dict[str, Any]],
     output: Path,
     device: str,
+    view_names: tuple[str, ...] = VIEW_NAMES,
 ) -> dict[str, Any]:
     import torch
     import torch.nn.functional as functional
@@ -420,7 +426,7 @@ def render_native(
                 "scales": scales,
                 "means2D": means2d,
             }
-            for name in VIEW_NAMES:
+            for name in view_names:
                 camera = cameras[name]
                 settings = setup_camera(
                     camera["resolution"][0], camera["resolution"][1],
@@ -509,13 +515,44 @@ def main() -> int:
     if missing_ids:
         raise ValueError(f"Palette misses semantic IDs: {missing_ids}")
     w2cs, centers, forwards, camera_down = trajectory_from_params(params["cam_unnorm_rots"], params["cam_trans"])
-    cameras, gravity = build_cameras(
-        params["means3D"], params["semantic_ids"], params["intrinsics"],
-        (int(params["org_width"]), int(params["org_height"])),
-        w2cs, centers, forwards, camera_down, args.width, args.height,
-    )
-    for name, camera in cameras.items():
-        dump_json(output / "cameras" / f"{name}.json", camera)
+    if args.camera_dir is None:
+        cameras, gravity = build_cameras(
+            params["means3D"], params["semantic_ids"], params["intrinsics"],
+            (int(params["org_width"]), int(params["org_height"])),
+            w2cs, centers, forwards, camera_down, args.width, args.height,
+        )
+        for name, camera in cameras.items():
+            dump_json(output / "cameras" / f"{name}.json", camera)
+    else:
+        camera_root = args.camera_dir.resolve()
+        cameras = {}
+        for name in VIEW_NAMES:
+            source_camera = camera_root / f"{name}.json"
+            if not source_camera.is_file():
+                raise FileNotFoundError(source_camera)
+            camera = json.loads(source_camera.read_text(encoding="utf-8"))
+            if camera.get("view_name") != name or camera.get("resolution") != [args.width, args.height]:
+                raise ValueError(f"Camera {source_camera} has unexpected view name or resolution")
+            cameras[name] = camera
+            shutil.copyfile(source_camera, output / "cameras" / source_camera.name)
+        camera_integrity = True
+        for camera in cameras.values():
+            w2c = np.asarray(camera["world_to_camera_w2c"], dtype=np.float64)
+            c2w = np.asarray(camera["camera_to_world_c2w"], dtype=np.float64)
+            camera_integrity &= bool(
+                w2c.shape == (4, 4)
+                and c2w.shape == (4, 4)
+                and np.isfinite(w2c).all()
+                and np.isfinite(c2w).all()
+                and np.allclose(w2c @ c2w, np.eye(4), atol=1e-6)
+            )
+        gravity = {
+            "camera_source": str(camera_root),
+            "camera_selection": "authoritative supplied JSON; no camera regeneration",
+            "validation_pass": bool(camera_integrity),
+        }
+        if not camera_integrity:
+            raise ValueError("Supplied camera matrices failed finite/inverse validation")
 
     rng = np.random.default_rng(SAMPLE_SEED)
     sample_count = min(SAMPLE_COUNT, count)

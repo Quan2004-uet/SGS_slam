@@ -46,6 +46,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--semantic", required=True, type=Path)
     parser.add_argument("--params-npz", type=Path, default=None)
     parser.add_argument("--class-mapping", type=Path, default=None)
+    parser.add_argument(
+        "--camera-dir", type=Path, default=None,
+        help="Reuse overview/oblique/top_oblique camera JSON files from this directory.",
+    )
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--width", type=int, default=1600)
     parser.add_argument("--height", type=int, default=900)
@@ -390,6 +394,22 @@ def render_gaussian_map(
     return results, memory
 
 
+def map_points_fit_camera(fit_points: np.ndarray, camera: dict[str, Any]) -> bool:
+    extrinsic = np.asarray(camera["world_to_camera_extrinsic"], dtype=np.float64)
+    intrinsic = np.asarray(camera["intrinsic_matrix"], dtype=np.float64)
+    points_camera = (extrinsic[:3, :3] @ fit_points.T).T + extrinsic[:3, 3]
+    z = points_camera[:, 2]
+    u = intrinsic[0, 0] * points_camera[:, 0] / z + intrinsic[0, 2]
+    v = intrinsic[1, 1] * points_camera[:, 1] / z + intrinsic[1, 2]
+    return bool(
+        np.isfinite(points_camera).all()
+        and np.all(z >= float(camera["near_clip"]))
+        and np.all(z <= float(camera["far_clip"]))
+        and np.all(u >= 0) and np.all(u <= int(camera["image_width"]) - 1)
+        and np.all(v >= 0) and np.all(v <= int(camera["image_height"]) - 1)
+    )
+
+
 def semantic_statistics(vertex: np.ndarray, params_npz: Path | None, class_mapping: Path | None) -> dict[str, Any]:
     decoded = stack_fields(vertex, ["f_dc_0", "f_dc_1", "f_dc_2"]) * C0 + 0.5
     quantized = np.rint(np.clip(decoded, 0.0, 1.0) * 255.0).astype(np.uint8)
@@ -474,8 +494,29 @@ def main() -> int:
     semantic = args.semantic.resolve()
     params_npz = args.params_npz.resolve() if args.params_npz else None
     class_mapping = args.class_mapping.resolve() if args.class_mapping else None
+    camera_dir = args.camera_dir.resolve() if args.camera_dir else None
     output = args.output.resolve()
-    for subdir in ("reconstruction", "semantic", "paired", "cameras", "metadata", "logs"):
+    expected_subdirs = {"reconstruction", "semantic", "paired", "cameras", "metadata", "logs"}
+    if output.exists():
+        existing_files = [path for path in output.rglob("*") if path.is_file()]
+        existing_dirs = {
+            path.relative_to(output).parts[0]
+            for path in output.rglob("*") if path.is_dir()
+        }
+        unexpected_files = []
+        for path in existing_files:
+            relative = path.relative_to(output).as_posix()
+            is_log = relative.startswith("logs/renderer_")
+            is_identical_camera = (
+                relative.startswith("cameras/") and camera_dir is not None
+                and (camera_dir / path.name).is_file()
+                and path.read_bytes() == (camera_dir / path.name).read_bytes()
+            )
+            if not (is_log or is_identical_camera):
+                unexpected_files.append(relative)
+        if unexpected_files or not existing_dirs.issubset(expected_subdirs):
+            raise FileExistsError(f"Refusing to overwrite populated visualization output: {output}")
+    for subdir in expected_subdirs:
         (output / subdir).mkdir(parents=True, exist_ok=True)
 
     log_lines: list[str] = []
@@ -507,13 +548,41 @@ def main() -> int:
         raise ValueError("Reconstruction and semantic PLY schemas differ")
 
     fit_points = stack_fields(reconstruction_vertex, ["x", "y", "z"])
-    cameras = camera_set(
-        reconstruction_meta, fit_points, args.width, args.height, args.fov_y_deg, args.fit_margin
-    )
-    if not all(cam["full_map_point_projection"]["all_map_points_inside_image"] for cam in cameras.values()):
+    camera_sources: dict[str, Path] = {}
+    if camera_dir is not None:
+        cameras = {}
+        for name in VIEW_NAMES:
+            source_path = camera_dir / f"{name}.json"
+            if not source_path.is_file():
+                raise FileNotFoundError(f"Missing required camera definition: {source_path}")
+            camera = json.loads(source_path.read_text(encoding="utf-8"))
+            if camera.get("viewpoint") != name:
+                raise ValueError(f"Camera name mismatch in {source_path}")
+            if (camera.get("image_width"), camera.get("image_height")) != (args.width, args.height):
+                raise ValueError(f"Requested image size differs from source camera: {source_path}")
+            cameras[name] = camera
+            camera_sources[name] = source_path
+        map_fit_by_view = {name: map_points_fit_camera(fit_points, camera) for name, camera in cameras.items()}
+    else:
+        cameras = camera_set(
+            reconstruction_meta, fit_points, args.width, args.height, args.fov_y_deg, args.fit_margin
+        )
+        map_fit_by_view = {
+            name: camera["full_map_point_projection"]["all_map_points_inside_image"]
+            for name, camera in cameras.items()
+        }
+    if camera_dir is None and not all(map_fit_by_view.values()):
         raise ValueError("At least one deterministic camera does not contain every map Gaussian center")
     for name, camera in cameras.items():
-        json_dump(output / "cameras" / f"{name}.json", camera)
+        if name in camera_sources:
+            camera_destination = output / "cameras" / f"{name}.json"
+            if not camera_destination.exists():
+                import shutil
+                shutil.copyfile(camera_sources[name], camera_destination)
+            elif camera_destination.read_bytes() != camera_sources[name].read_bytes():
+                raise FileExistsError(f"Refusing to replace a different camera file: {camera_destination}")
+        else:
+            json_dump(output / "cameras" / f"{name}.json", camera)
 
     log("Rendering reconstruction map with native Gaussian rasterizer")
     reconstruction_render, reconstruction_memory = render_gaussian_map(
@@ -538,6 +607,10 @@ def main() -> int:
         "point_or_gaussian_size": "saved exp(scale_0..2), renderer scale_modifier=1.0",
         "background_configuration": args.background,
         "camera_files": [f"cameras/{name}.json" for name in VIEW_NAMES],
+        "camera_source_directory": str(camera_dir) if camera_dir else None,
+        "camera_source_sha256": {
+            name: sha256_file(path) for name, path in camera_sources.items()
+        },
         "repo_commit_sha": commit,
         "branch": branch,
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -585,8 +658,9 @@ def main() -> int:
         ),
         "same_camera_parameters_for_v1_and_v2": camera_correspondence,
         "all_map_gaussian_centers_inside_each_view": all(
-            cam["full_map_point_projection"]["all_map_points_inside_image"] for cam in cameras.values()
+            map_fit_by_view.values()
         ),
+        "map_gaussian_centers_inside_by_view": map_fit_by_view,
         "images_nonempty_and_nonuniform": images_nonempty,
         "camera_parameters_finite": camera_finite,
         "source_ply_hashes_unchanged": sources_unchanged,

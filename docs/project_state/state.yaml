@@ -2,8 +2,8 @@ authority: derived
 canonical_project_status: project_management/PROJECT_STATUS.md
 canonical_handoff: project_management/SESSION_HANDOFF.md
 role: derived_machine_readable_snapshot
-last_updated: 2026-10-16
-authority_reconciled: 2026-10-16
+last_updated: 2026-10-17
+authority_reconciled: 2026-10-17
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
@@ -22,23 +22,22 @@ baseline:
 workflow:
   phase: 5
   phase_name: P5-LEAN — 21-day runtime optimization study
-  phase_status: in_progress_bounded_va2_0_49_screen_pass
+  phase_status: p6_bam_006_completed_publication_checkpoint_in_progress
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
   latest_completed_gate: P6-BAM-006-FULL-SCENE
-  next_phase_status: completed_single_run_quality_screen_runtime_unverified_researcher_review
-  next_recommended_phase: researcher_review_of_p6_bam_006_reports_no_automatic_run
+  next_phase_status: completed_single_run_quality_screen_runtime_unverified_session_020_publication
+  next_recommended_phase: phase4_vs_phase6_qualitative_comparison_packaging_and_thesis_report_preparation
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_019
-  title: P6-BAM-006 Authorized Full-Scene V-A2 Execution and Evaluation
-  status: closed
-  started: 2026-10-16
-  closed: 2026-10-16
-  head: 002927f3b24dd69418c17da08bd4ae987bae9ee2
-  head_role: source_revision_before_documentation_checkpoint
+  id: SESSION_020
+  title: P6-BAM-006 Final Research Checkpoint and Publication
+  status: in_progress
+  started: 2026-10-17
+  starting_head: 0df67b3b19a17233d894af389d10c05796d9ed1b
+  experiment_source_revision: 002927f3b24dd69418c17da08bd4ae987bae9ee2
   checkpoint: PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED
 
 phase5_original:
@@ -101,6 +100,16 @@ phase6:
   p6_bam_006_online_wall_seconds: 12383.450696435
   p6_bam_006_process_wall_seconds: 12766.4
   p6_bam_006_quality_15pct_vs_phase4: PASS_ALL
+  p6_bam_006_original_visualization: PASS_9_PNG
+  p6_bam_006_phase4_v1_camera_matched: PASS_9_PNG
+  p6_bam_006_phase4_v2_v3a_extended_camera_matched: PASS_105_PNG
+  p6_bam_006_hf_backup: PASS_P6_BAM_006_HF_VISUALIZATION_BACKUP
+  p6_bam_006_hf_repo: QuanDinh/SGS-SLAM-assets
+  p6_bam_006_hf_path: phase6_bam/p6_bam_006/visualization
+  p6_bam_006_hf_commit: 6cc42c8db3ce69f58bdb2de797c03b90bf930e73
+  p6_bam_006_hf_file_count: 186
+  p6_bam_006_hf_png_count: 123
+  p6_bam_006_hf_verified_bytes: 74675326
   full_scene_runtime_status: FULL_SCENE_RUNTIME_SPEEDUP_UNVERIFIED
   speedup_status: PRELIMINARY_SINGLE_PAIR_BOUNDED_0_499
   quality_status: PRELIMINARY_15_PERCENT_SCREEN_PASS
@@ -110,7 +119,7 @@ phase6:
   va_run_id: p6_bam_003_room0_0_49_va_r01
   v0_executed_mapping_iters: 3000
   va_executed_mapping_iters: 1740
-  next_task: researcher_review_p6_bam_006_full_scene_reports_no_automatic_run
+  next_task: phase4_vs_phase6_qualitative_comparison_packaging_and_thesis_report_preparation_no_automatic_run
   p6_bam_004_status: PLANNED_NOT_STARTED_REQUIRES_RESEARCHER_AUTHORIZATION
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite

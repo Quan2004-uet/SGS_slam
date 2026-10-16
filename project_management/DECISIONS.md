@@ -330,3 +330,11 @@ Administratively close the original Multi-Scene Validation & Performance Profili
 - Status: ACCEPTED FOR IMPLEMENTATION AUDIT, NOT VALIDATED.
 
 Use the number/fraction of Gaussians appended before each mapping event to select a discrete low/mid/full iteration budget. Keep V0 at 60 iterations, require a fixed-budget control, preserve Replica pruning iteration 20, and fall back to the configured budget when disabled or invalid. Defer residual stopping because random-view losses are not directly comparable and host decisions can synchronize CUDA. Defer comprehensive DETAILED profiling; use matched LIGHT measurement for bounded validation.
+
+## DEC-017 — Close P6-BAM-006 narrowly and preserve runtime claims
+
+- Date: 2026-10-17.
+- Session: SESSION_020.
+- Status: ACCEPTED.
+
+P6-BAM-006 is accepted as a single-run full-scene execution and 15% quality-screen PASS, with the original Phase 4 artifacts as immutable references. Do not state a matched full-scene runtime speedup: no full-scene V0 was run and Phase 4 timing boundaries differ. The 1,987/2,000 LOW/45 decisions do not establish adaptive superiority to fixed-45. Treat the three Phase 6 visualization packages as separate artifacts (original cameras, Phase 4 V1 matched, and Phase 4 V2/V3A extended matched); identify the 50 embedded Phase 4 reference images as references. `seg_params.ply` is learned semantic-color visualization, not categorical-ID geometry or a per-pixel predictor. No additional experiment is authorized automatically.
