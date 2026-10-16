@@ -13,6 +13,7 @@ Last reconciled: 2026-10-16.
 - Experimental evidence / pre-closure-commit HEAD: `507aea652a5da15c92d358c19b8d6705c510242b`.
 - Current implementation HEAD: `302e3e6bf46d50ea96b010eb5988dfd6616c2317` (`fix(profiler): prevent CUDA event queue overflow`).
 - Latest session handoff checkpoint: `b30d5a622152e66d14ed2fd94b0a6f86a073eb1d` (P5-LEAN session handoff checkpoint).
+- P6-BAM-001 start HEAD: `c6742854b884495ece0cc18fbc9296c1d5e31371`; implementation checkpoint is the commit containing `docs/research/phase6_bam/P6_BAM_001_IMPLEMENTATION_REPORT.md`.
 - Released baseline: `e4183986204242a8bb422624618af07780a49d26` (`main`).
 - Dataset/config: Replica `room0`, `configs/replica/slam.py`, seed 0.
 
@@ -31,9 +32,10 @@ Last reconciled: 2026-10-16.
 - P5-G3B (0–499): **NOT_EXECUTED**.
 - Multi-scene profiling and final bottleneck decision: **NOT_EXECUTED / INCONCLUSIVE**.
 - P5-LEAN: **IN PROGRESS**; `P5-LEAN-001` is `PASS_P5_LEAN_001_21DAY_DESIGN_READY`.
+- P6-BAM-001: `PASS_P6_BAM_001_CPU_STATIC`; novelty-aware controller and dedicated controls are implemented but **NOT_RUNTIME_VALIDATED**.
 - Three-week execution window: 2026-10-15 through 2026-11-05; code/config freeze target 2026-10-28.
-- Selected candidate: novelty-aware Budget-Aware Mapping using pre/post append Gaussian counts; **DESIGNED, NOT IMPLEMENTED OR VALIDATED**.
-- Next task: `P6-BAM-001 — Novelty-Aware Budgeted Mapping Minimal Implementation & CPU Validation`, `PLANNED_NOT_STARTED` pending researcher review.
+- Selected candidate: novelty-aware Budget-Aware Mapping using pre/post append Gaussian counts; **IMPLEMENTED / CPU-STATIC VALIDATED / NOT_RUNTIME_VALIDATED**.
+- Next proposed task: `P6-BAM-002 — Matched LIGHT 0–10 Smoke Validation`, `PLANNED_NOT_STARTED` pending separate authorization.
 - Canonical closure package: `results/runtime_artifacts/phase4_closure/`.
 
 Phase 4 changed memory ownership, not the SGS-SLAM objective: archived keyframe `color`, `depth`, `semantic_id`, and `semantic_color` payloads are CPU-authoritative and synchronously staged to GPU when selected. Archived `est_w2c` remains GPU-resident. The implementation adds no pinned memory, asynchronous copy, prefetch, persistent GPU cache, compression, or eviction and retains the released keyframe and optimization policies.
@@ -88,8 +90,8 @@ Not established: accuracy equivalence to a full-scene baseline (the baseline did
 
 P5-G1 established the audit, dataset-readiness, instrumentation, hypothesis, ablation, evaluation, and execution contracts in `docs/research/phase5/`. P5-G2 added disabled-by-default `off`, `light`, and `detailed` profiling, bounded JSONL/summary telemetry, CPU/GPU-memory attribution helpers, and minimal hooks around the existing online path. Twenty CPU-only tests pass with CUDA hidden and uninitialized. Direct-host recovery using `/home/robot/miniconda3/envs/sgs_slam_5080` passed the CUDA smoke test. Retry 1 completed C0/C1/C2 on room0 frames 0–99; C1 had zero dropped spans, while C2 had zero pending events but 1,958 dropped CUDA event spans. Logged keyframe traces matched, but final Gaussian counts were not bit-exact. Detailed timing is therefore diagnostic, not gate-valid.
 
-No optimization variant V1–V5 has been implemented. The original Phase 5 execution plan remains administratively retired and its historical gates are unchanged. P5-LEAN-001 completed the mapping-loop audit, selected a novelty-aware tiered mapping-budget hypothesis, and defined lean profiling, evaluation, ablation, schedule and implementation contracts. Comprehensive DETAILED profiling remains deferred. Core quality obligations and the additional-scene priority remain in force.
+No original Phase 5 optimization variant V1–V5 has been implemented. The original Phase 5 execution plan remains administratively retired and its historical gates are unchanged. P5-LEAN-001 completed the mapping-loop audit and design contracts. P6-BAM-001 implemented V0, V-A and fixed-budget controls with 37 passing CPU tests; runtime benefit and quality remain unknown. Comprehensive DETAILED profiling remains deferred. Core quality obligations and the additional-scene priority remain in force.
 
 ## STOPPED HERE
 
-Stop at `PASS_P5_LEAN_001_21DAY_DESIGN_READY`. Budget-Aware Mapping is not implemented or validated. P6-BAM-001 must use the dedicated `results/runtime_artifacts/phase6_bam/` root and immutable run IDs. Do not reopen G3A retry loops, run any horizon, start P6-BAM-001, implement keyframe reuse, or push without separate researcher authorization.
+Stop at `PASS_P6_BAM_001_CPU_STATIC`. Budget-Aware Mapping is not runtime validated. P6-BAM-002 must use the dedicated `results/runtime_artifacts/phase6_bam/` root and immutable run IDs. Do not reopen G3A retry loops, run any horizon, implement keyframe reuse, or push without separate researcher authorization.

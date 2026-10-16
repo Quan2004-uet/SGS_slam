@@ -22,22 +22,24 @@ baseline:
 workflow:
   phase: 5
   phase_name: P5-LEAN — 21-day runtime optimization study
-  phase_status: in_progress_design_ready
+  phase_status: in_progress_implementation_cpu_static
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P5-LEAN-001
+  latest_completed_gate: P6-BAM-001
   next_phase_status: planned_not_started
-  next_recommended_phase: P6-BAM-001
+  next_recommended_phase: P6-BAM-002
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_012
-  title: P5-LEAN-001 21-Day Replan and BAM Feasibility Audit
+  id: SESSION_013
+  title: P6-BAM-001 Minimal Implementation and CPU Validation
   status: closed
-  started: 2026-10-15
-  closed: 2026-10-15
-  head: b30d5a622152e66d14ed2fd94b0a6f86a073eb1d
+  started: 2026-10-16
+  closed: 2026-10-16
+  head: c6742854b884495ece0cc18fbc9296c1d5e31371
+  head_role: session_start
+  checkpoint: commit_containing_P6_BAM_001_IMPLEMENTATION_REPORT
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -58,14 +60,14 @@ p5_lean:
   first_task: P5-LEAN-001 — 21-Day Research Replan & Budget-Aware Mapping Feasibility Audit
   first_task_status: PASS_P5_LEAN_001_21DAY_DESIGN_READY
   selected_candidate: novelty_aware_mapping_budget
-  candidate_status: DESIGNED_NOT_IMPLEMENTED_NOT_VALIDATED
+  candidate_status: IMPLEMENTED_CPU_STATIC_NOT_RUNTIME_VALIDATED
   deadline: 2026-11-05
   code_freeze_target: 2026-10-28
 
 phase6:
   priority: Budget-Aware Mapping
-  status: PLANNED_NOT_STARTED
-  next_task: P6-BAM-001
+  status: PASS_P6_BAM_001_CPU_STATIC_NOT_RUNTIME_VALIDATED
+  next_task: P6-BAM-002
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite
 

@@ -1,5 +1,12 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_013 / P6-BAM-001 CPU/static implementation
+
+- Added a CPU-only novelty-aware mapping budget selector and narrow hook around the existing mapping iteration loop, disabled by default.
+- Added isolated P6 V0, V-A and fixed 30/45 configurations, host scalar budget telemetry and output-directory existence guards.
+- Passed 14 new controller tests and 23 existing profiler tests with CUDA hidden; no SLAM/CUDA workload ran.
+- Recorded `PASS_P6_BAM_001_CPU_STATIC` and `NOT_RUNTIME_VALIDATED`; P6-BAM-002 remains a separately authorized next gate.
+
 ## 2026-10-16 — SESSION_012 closure / P6-BAM handoff
 
 - Closed SESSION_012 after the committed P5-LEAN-001 design checkpoint `c3a76c0`.
