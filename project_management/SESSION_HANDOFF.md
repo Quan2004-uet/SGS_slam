@@ -6,9 +6,10 @@ Last reconciled: 2026-10-16.
 
 ## Session and gate
 
-- Session: `SESSION_017` — P6-BAM-005 matched 0–499 V0/V-A2 validation; completed 2026-10-16.
-- Branch: `phase5-profiling-instrumentation`. Source baseline at run start: `937cd4bb7df25824e5b43de555d5de78ce11f16c`; source worktree carried only the measurement-only timer documented below. Phase 4 reference tag peels to `37522db553ff18b96592073f9de699db7fa48600`.
-- Gate: `PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED`, bounded 500-frame single-pair screening only.
+- Session: `SESSION_018` — P6-BAM-006 CPU/static preflight fix; completed 2026-10-16. SESSION_017's P6-BAM-005 result remains historically closed.
+- Branch: `phase5-profiling-instrumentation`; preparation started at `36284a2cbccd3e148a628c44f6fbcba139ac3ceb`. Phase 4 reference tag peels to `37522db553ff18b96592073f9de699db7fa48600`.
+- Gate: `PASS_P6_BAM_006_PREFLIGHT_FIX_CPU_STATIC_READY`. This is not a runtime gate and does not authorize P6-BAM-006-FULL.
+- Historical bounded experiment: `PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED`, one matched 500-frame pair only.
 - Original P6-BAM-003 remains `INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME`; P6-BAM-003-R1 V-A2 0–49 screening remains PASS. P5-LEAN-001 and P6-BAM-001/FIX1/P6-BAM-002 statuses remain unchanged.
 
 ## Completed evidence
@@ -23,6 +24,10 @@ The sole source edit is a host `time.perf_counter()` interval around the frame l
 
 Phase 4 checkpoint SHA256 remains `dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2`; captured P6-BAM-002, P6-BAM-003 and R1 checkpoint hashes match preflight. Historical P5 reports, SESSION_007–010 and `vds` remain untouched. No historical artifact was overwritten.
 
+P6-BAM-006 preparation added an isolated `0..1999` V-A2 wrapper and saved-state E4 evaluator. Only for that wrapper, complete final metadata, NPZ, RGB/semantic PLYs, and CPU checkpoint validation now precede the in-process evaluator; configurations without the new flag retain their previous order. Effective config is written exclusively beside the run output. Config parity, save ordering, checkpoint schema, E4 frame IDs, evaluator output schema, and Phase 6 path safety are covered by CPU tests. The 45 targeted mapping-budget/profiler/preparation tests, Python compilation, and diff checks pass. No GPU, CUDA, SLAM, saved-state evaluation, or rendering workload was run.
+
+The new source modifications are in `scripts/slam.py` and `utils/common_utils.py`; controller, profiler, tracking, mapping, keyframe, Gaussian lifecycle and offload implementations are unchanged. Full details, hashes, reserved paths, and recovery commands are in `docs/research/phase6_bam/P6_BAM_006_PREFLIGHT_FIX_REPORT.md` and its machine manifest.
+
 ## STOPPED HERE / next decision
 
-P6-BAM-005 is complete. The next possible task is a researcher-reviewed 0–1999 full-scene V0/V-A2 validation; **do not execute it automatically**. This result does not demonstrate statistical non-inferiority, full-scene feasibility or cross-scene performance. Do not repeat either run, add variants/scenes, tune, change algorithms, run P6-BAM-004, or push without separate authorization.
+P6-BAM-006 CPU/static preparation is complete. Next: researcher reviews the preflight-fix report and, if satisfied, separately authorizes exactly one full-scene V-A2 run. **Do not launch it automatically.** The preparation does not establish GPU runtime correctness, full-scene feasibility, statistical non-inferiority, or cross-scene performance. Do not repeat P6-BAM-005, add variants/scenes, tune, change algorithms, run P6-BAM-004, or push without separate authorization.

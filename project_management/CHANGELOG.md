@@ -1,5 +1,25 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_018 / P6-BAM-006 CPU/static preflight fix
+
+- Added an isolated V-A2 full-scene wrapper with explicit 0–1999 frame bounds,
+  LIGHT profiling, 401-view E4 cadence, frame-1999 checkpointing, and parity to
+  the validated P6-BAM-005 V-A2 settings except intended horizon/run changes.
+- Added a full-wrapper-only finalization flag in `scripts/slam.py`: save
+  complete final state and both Gaussian PLY exports, validate
+  NPZ/container/schema/horizon and exports on CPU, then run the existing
+  in-process evaluator. Existing configs retain their previous order. Added an
+  exclusive effective config snapshot for saved-state recovery.
+- Added a Phase 6-only saved-checkpoint evaluator using the unchanged metric
+  helper, exact 401-frame schedule, full 2000-pose ATE mean/true RMSE, output
+  validation, and fail-closed artifact paths.
+- Passed 45 CPU tests plus Python compilation and diff checks. No SLAM/CUDA,
+  evaluation, rendering, or PLY conversion ran. Phase 4/P6 historical artifacts
+  remain untouched; the prior P6-BAM-006 preflight blocker is preserved as
+  historical evidence and followed by `PASS_P6_BAM_006_PREFLIGHT_FIX_CPU_STATIC_READY`.
+- Full-scene V-A2 remains pending separate researcher authorization; no run or
+  push was performed.
+
 ## 2026-10-16 — SESSION_017 / P6-BAM-005 matched 0–499 V0/V-A2 validation
 
 - Added a measurement-only monotonic host timer around the online frame loop in `scripts/slam.py`; it adds no CUDA synchronization and changes no algorithm behavior.

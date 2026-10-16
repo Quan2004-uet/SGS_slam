@@ -26,20 +26,20 @@ workflow:
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P6-BAM-005
-  next_phase_status: researcher_review_required_before_0_1999
-  next_recommended_phase: P6-BAM-005-0-1999-full-scene-review-only
+  latest_completed_gate: P6-BAM-006-PREFLIGHT-FIX
+  next_phase_status: researcher_authorization_required_before_0_1999
+  next_recommended_phase: P6-BAM-006-full-scene-V-A2-review-only
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_017
-  title: P6-BAM-005 Matched 0–499 V0/V-A2 Validation
+  id: SESSION_018
+  title: P6-BAM-006 CPU/Static Preflight Fix
   status: closed
   started: 2026-10-16
   closed: 2026-10-16
-  head: 937cd4bb7df25824e5b43de555d5de78ce11f16c
-  head_role: experiment_source_baseline
-  checkpoint: P6_BAM_005_documentation_checkpoint
+  head: 36284a2cbccd3e148a628c44f6fbcba139ac3ceb
+  head_role: preparation_start_head
+  checkpoint: P6_BAM_006_PREFLIGHT_FIX_CPU_STATIC_READY
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -91,6 +91,8 @@ phase6:
   p6_bam_005_process_wall_seconds_va2: 1994.25
   p6_bam_005_quality_15pct_vs_v0: PASS_ALL
   p6_bam_005_historical_p5_online_runtime_target: MISSED_20_PERCENT
+  p6_bam_006_preflight_status: PASS_P6_BAM_006_PREFLIGHT_FIX_CPU_STATIC_READY
+  p6_bam_006_full_scene_status: NOT_AUTHORIZED_NOT_STARTED
   full_scene_runtime_status: NOT_VALIDATED
   speedup_status: PRELIMINARY_SINGLE_PAIR_BOUNDED_0_499
   quality_status: PRELIMINARY_15_PERCENT_SCREEN_PASS
@@ -100,7 +102,7 @@ phase6:
   va_run_id: p6_bam_003_room0_0_49_va_r01
   v0_executed_mapping_iters: 3000
   va_executed_mapping_iters: 1740
-  next_task: researcher_review_before_any_0_1999_full_scene_run
+  next_task: researcher_review_and_separate_authorization_before_p6_bam_006_full
   p6_bam_004_status: PLANNED_NOT_STARTED_REQUIRES_RESEARCHER_AUTHORIZATION
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite

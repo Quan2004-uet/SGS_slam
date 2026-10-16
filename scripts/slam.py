@@ -1,4 +1,5 @@
 import argparse
+import json
 import os
 import shutil
 import sys
@@ -31,7 +32,7 @@ from datasets.gradslam_datasets import (
     ScannetPPDataset,
     NeRFCaptureDataset
 )
-from utils.common_utils import seed_everything, save_params_ckpt, save_params
+from utils.common_utils import seed_everything, save_params_ckpt, save_params, validate_final_checkpoint
 from utils.eval_helpers import report_loss, report_progress, eval
 from utils.keyframe_selection import keyframe_selection_overlap
 from utils.mapping_budget import select_mapping_budget, record_mapping_budget
@@ -588,6 +589,9 @@ def rgbd_slam(config: dict):
     output_dir = os.path.join(config["workdir"], config["run_name"])
     eval_dir = os.path.join(output_dir, "eval")
     os.makedirs(eval_dir, exist_ok=True)
+    with open(os.path.join(output_dir, "effective_config.json"), "x", encoding="utf-8") as config_file:
+        json.dump(config, config_file, indent=2, sort_keys=True)
+        config_file.write("\n")
     # Init WandB
     if config['use_wandb']:
         wandb_time_step = 0
@@ -1242,7 +1246,35 @@ def rgbd_slam(config: dict):
                        "Final Stats/Average Mapping Frame Time (s)": mapping_frame_time_avg,
                        "Final Stats/step": 1})
     
-    # Evaluate Final Parameters
+    def save_final_state():
+        # Assemble the complete final metadata after online processing ends.
+        params['timestep'] = variables['timestep']
+        params['intrinsics'] = intrinsics.detach().cpu().numpy()
+        params['w2c'] = first_frame_w2c.detach().cpu().numpy()
+        params['org_width'] = dataset_config["desired_image_width"]
+        params['org_height'] = dataset_config["desired_image_height"]
+        params['gt_w2c_all_frames'] = []
+        for gt_w2c_tensor in gt_w2c_all_frames:
+            params['gt_w2c_all_frames'].append(gt_w2c_tensor.detach().cpu().numpy())
+        params['gt_w2c_all_frames'] = np.stack(params['gt_w2c_all_frames'], axis=0)
+        params['keyframe_time_indices'] = np.array(keyframe_time_indices)
+        if load_semantics:
+            params['semantic_ids'] = params['semantic_ids'].type(torch.uint8)
+
+        serialization_profile_token = profiler.cpu_start(num_frames)
+        save_params(params, output_dir)
+        if config.get("checkpoint_first_finalization", False):
+            validate_final_checkpoint(
+                os.path.join(output_dir, "params.npz"), num_frames,
+                require_semantics=load_semantics,
+            )
+        profiler.cpu_stop(serialization_profile_token, "serialization", num_frames)
+
+    checkpoint_first_finalization = bool(config.get("checkpoint_first_finalization", False))
+    if checkpoint_first_finalization:
+        # P6-BAM-006 only: persist and validate before risky downstream eval.
+        save_final_state()
+
     evaluation_profile_token = profiler.cpu_start(num_frames)
     with torch.no_grad():
         if config['use_wandb']:
@@ -1255,26 +1287,9 @@ def rgbd_slam(config: dict):
                  mapping_iters=config['mapping']['num_iters'], add_new_gaussians=config['mapping']['add_new_gaussians'],
                  device=device, load_semantics=load_semantics, eval_every=config['eval_every'], save_frames=True)
     profiler.cpu_stop(evaluation_profile_token, "evaluation", num_frames)
-
-    # Add Camera Parameters to Save them
-    params['timestep'] = variables['timestep']
-    params['intrinsics'] = intrinsics.detach().cpu().numpy()
-    params['w2c'] = first_frame_w2c.detach().cpu().numpy()
-    params['org_width'] = dataset_config["desired_image_width"]
-    params['org_height'] = dataset_config["desired_image_height"]
-    params['gt_w2c_all_frames'] = []
-    for gt_w2c_tensor in gt_w2c_all_frames:
-        params['gt_w2c_all_frames'].append(gt_w2c_tensor.detach().cpu().numpy())
-    params['gt_w2c_all_frames'] = np.stack(params['gt_w2c_all_frames'], axis=0)
-    params['keyframe_time_indices'] = np.array(keyframe_time_indices)
-
-    if load_semantics:
-        params['semantic_ids'] = params['semantic_ids'].type(torch.uint8)
-    
-    # Save Parameters
-    serialization_profile_token = profiler.cpu_start(num_frames)
-    save_params(params, output_dir)
-    profiler.cpu_stop(serialization_profile_token, "serialization", num_frames)
+    if not checkpoint_first_finalization:
+        # Preserve the original finalization order for all existing configs.
+        save_final_state()
     profiler.close(status="completed")
 
     # Close WandB Run
