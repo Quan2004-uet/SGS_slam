@@ -44,3 +44,7 @@ AST parse of `scripts/slam.py`, helper, four wrappers, shared base and test: **8
 `UNKNOWN / NEEDS RUNTIME VERIFICATION`: OFF equivalence in a fresh controlled run, actual append distributions, proportion of LOW/MID/FULL selections, telemetry schema in a live run, pruning coverage, reconstruction and tracking quality, speedup, and RNG-related run variability. Historical R2 OFF/OFF final Gaussian counts differed by 644 over frames 0–10; CPU tests cannot resolve that variability.
 
 Next proposed task: `P6-BAM-002 — Matched LIGHT 0–10 Smoke Validation`, with separate authorization. Use new immutable P6 directories and effective config snapshots. Do not infer speedup or quality equivalence from this gate.
+
+## FIX1 clarification (2026-10-16)
+
+The original 37-test CPU/static PASS is preserved. A follow-up source review raised a possible cross-event budget leak. The source actually reloaded `mapping.num_iters` inside each frame before its mapping event, so that leak did not occur in `e644df4`. FIX1 renamed and separated configured and effective event budgets explicitly, and added a source-AST event-sequence regression. See `P6_BAM_001_FIX1_REPORT.md`. Runtime status remains `NOT_RUNTIME_VALIDATED`.

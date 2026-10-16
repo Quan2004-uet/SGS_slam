@@ -844,9 +844,6 @@ def rgbd_slam(config: dict):
         else:
             tracking_curr_data = curr_data
 
-        # Optimization Iterations
-        num_iters_mapping = config['mapping']['num_iters']
-        
         # Initialize the camera pose for the current frame
         if time_idx > 0:
             params = initialize_camera_pose(params, time_idx, forward_prop=config['tracking']['forward_prop'])
@@ -1030,10 +1027,11 @@ def rgbd_slam(config: dict):
             profiler.cuda_stop(selection_cuda_token)
             profiler.cpu_stop(selection_profile_token, "mapping.keyframe_selection", time_idx)
 
+            configured_mapping_iters = config['mapping']['num_iters']
             pruning_config = config['mapping']['pruning_dict'] if config['mapping']['prune_gaussians'] else None
-            budget_decision = select_mapping_budget(config, num_iters_mapping, pre_num_pts,
+            budget_decision = select_mapping_budget(config, configured_mapping_iters, pre_num_pts,
                                                     post_num_pts, time_idx, pruning_config)
-            num_iters_mapping = budget_decision.effective_iters
+            effective_mapping_iters = budget_decision.effective_iters
 
             # Reset Optimizer & Learning Rates for Full Map Optimization
             optimizer = initialize_optimizer(params, params_opt_exclude, config['mapping']['lrs'], tracking=False) 
@@ -1042,9 +1040,9 @@ def rgbd_slam(config: dict):
             mapping_start_time = time.time()
             mapping_profile_token = profiler.cpu_start(time_idx)
             executed_mapping_iters = 0
-            if num_iters_mapping > 0:
-                progress_bar = tqdm(range(num_iters_mapping), desc=f"Mapping Time Step: {time_idx}")
-            for iter in range(num_iters_mapping):
+            if effective_mapping_iters > 0:
+                progress_bar = tqdm(range(effective_mapping_iters), desc=f"Mapping Time Step: {time_idx}")
+            for iter in range(effective_mapping_iters):
                 iter_start_time = time.time()
                 # Randomly select a frame until current time step amongst keyframes
                 profile_token = profiler.cpu_start(time_idx, iter)
@@ -1138,7 +1136,7 @@ def rgbd_slam(config: dict):
                 mapping_iter_time_sum += iter_end_time - iter_start_time
                 mapping_iter_time_count += 1
                 executed_mapping_iters += 1
-            if num_iters_mapping > 0:
+            if effective_mapping_iters > 0:
                 progress_bar.close()
             if profiler.enabled:
                 record_mapping_budget(profiler, budget_decision, time_idx, pre_num_pts,

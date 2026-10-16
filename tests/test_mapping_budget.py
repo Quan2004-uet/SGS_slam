@@ -169,10 +169,61 @@ class MappingBudgetTests(unittest.TestCase):
     def test_static_integration_scope(self):
         source = (ROOT / "scripts/slam.py").read_text()
         self.assertIn("post_num_pts = None  # An absent append", source)
-        self.assertIn("select_mapping_budget(config, num_iters_mapping, pre_num_pts,", source)
-        self.assertIn("for iter in range(num_iters_mapping):", source)
+        self.assertIn("select_mapping_budget(config, configured_mapping_iters, pre_num_pts,", source)
+        self.assertIn("for iter in range(effective_mapping_iters):", source)
         self.assertIn("executed_mapping_iters += 1", source)
         self.assertIn("record_mapping_budget(profiler, budget_decision", source)
+
+    def test_mapping_event_sequence_uses_source_assignments_and_loop_range(self):
+        """Run the actual CPU budget statements extracted from the mapping branch."""
+        tree = ast.parse((ROOT / "scripts/slam.py").read_text())
+        slam = next(node for node in tree.body if isinstance(node, ast.FunctionDef)
+                    and node.name == "rgbd_slam")
+        frame_loop = next(node for node in ast.walk(slam) if isinstance(node, ast.For)
+                          and isinstance(node.target, ast.Name) and node.target.id == "time_idx")
+        mapping_if = next(node for node in frame_loop.body if isinstance(node, ast.If)
+                          and "config['map_every']" in ast.unparse(node.test))
+        names = ("configured_mapping_iters", "budget_decision", "effective_mapping_iters")
+        assignments = [next(node for node in mapping_if.body if isinstance(node, ast.Assign)
+                            and any(isinstance(target, ast.Name) and target.id == name
+                                    for target in node.targets)) for name in names]
+        loop = next(node for node in mapping_if.body if isinstance(node, ast.For)
+                    and isinstance(node.target, ast.Name) and node.target.id == "iter")
+        self.assertEqual(ast.unparse(loop.iter), "range(effective_mapping_iters)")
+        self.assertIn("tqdm(range(effective_mapping_iters),", ast.unparse(mapping_if))
+        module = ast.fix_missing_locations(ast.Module(body=[*copy.deepcopy(assignments),
+            ast.For(target=copy.deepcopy(loop.target), iter=copy.deepcopy(loop.iter),
+                    body=ast.parse("observed.append(iter)").body, orelse=[])], type_ignores=[]))
+        code = compile(module, str(ROOT / "scripts/slam.py"), "exec")
+
+        def sequence(control, expected, posts=(None, 1000, 1100, 1030, None, 1000)):
+            received_maxima = []
+
+            def checked_select(config, configured_iters, pre, post, frame, pruning):
+                received_maxima.append(configured_iters)
+                return select_mapping_budget(config, configured_iters, pre, post, frame, pruning)
+
+            scope = {"config": {"mapping": {"num_iters": 60, "budget_control": control}},
+                     "select_mapping_budget": checked_select, "pruning_config": PRUNING}
+            actual = []
+            for frame, post in enumerate(posts):
+                scope.update(time_idx=frame, pre_num_pts=1000, post_num_pts=post, observed=[])
+                exec(code, scope)
+                actual.append(scope["effective_mapping_iters"])
+                self.assertEqual(scope["configured_mapping_iters"], 60)
+                self.assertEqual(scope["budget_decision"].configured_iters, 60)
+                self.assertEqual(len(scope["observed"]), scope["effective_mapping_iters"])
+                self.assertIn(20, scope["observed"])  # Replica's last required prune.
+            self.assertEqual(actual, expected)
+            self.assertEqual(received_maxima, [60] * len(posts))
+
+        sequence(ADAPTIVE, [60, 30, 60, 45, 60, 30])
+        valid_posts = (None, 1000, 1100, 1030, 1000, 1000)
+        sequence({"enabled": True, "mode": "fixed", "fixed_iters": 30},
+                 [60, 30, 30, 30, 30, 30], valid_posts)
+        sequence({"enabled": True, "mode": "fixed", "fixed_iters": 45},
+                 [60, 45, 45, 45, 45, 45], valid_posts)
+        sequence({"enabled": False}, [60] * 6)
 
 
 if __name__ == "__main__":

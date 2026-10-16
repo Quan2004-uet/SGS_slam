@@ -1,5 +1,11 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_013 / P6-BAM-001 FIX1 lifecycle clarification
+
+- Verified the reported 30-to-60 cross-event leak was absent in `e644df4` because the configured budget was reloaded inside the per-frame loop.
+- Separated configured and effective mapping-iteration locals at each mapping event and added a source-AST six-event regression.
+- Passed 38 CPU tests; recorded `PASS_P6_BAM_001_FIX1_CPU_STATIC` while retaining the original P6-BAM-001 PASS and `NOT_RUNTIME_VALIDATED` status.
+
 ## 2026-10-16 — SESSION_013 / P6-BAM-001 CPU/static implementation
 
 - Added a CPU-only novelty-aware mapping budget selector and narrow hook around the existing mapping iteration loop, disabled by default.

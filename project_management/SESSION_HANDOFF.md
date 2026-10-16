@@ -23,6 +23,7 @@ Last reconciled: 2026-10-16.
 - P5-LEAN lifecycle: `IN_PROGRESS`; P5-LEAN-001 completed at design/readiness scope.
 - P5-LEAN-001 result: `PASS_P5_LEAN_001_21DAY_DESIGN_READY`; P5-LEAN remains active.
 - P6-BAM-001 result: `PASS_P6_BAM_001_CPU_STATIC`; runtime validation remains `NOT_RUNTIME_VALIDATED`.
+- P6-BAM-001 FIX1 result: `PASS_P6_BAM_001_FIX1_CPU_STATIC`; configured and effective mapping budgets are explicit per event, with 38 passing CPU tests. No runtime validation has occurred.
 - Deadline: 2026-11-05; code/config freeze target: 2026-10-28.
 
 The P5-G2 implementation is committed at `0118d2cf`; FIX1 is committed at `302e3e6`; the P5-LEAN design checkpoint is `c3a76c0`. P6-BAM-001 adds only the CPU budget controller, mapping hook, dedicated wrappers, tests and documentation. Historical runtime reports and sessions 007–010 remain untracked. The unrelated untracked `vds` entry remains untouched. Inspect `git status --short --untracked-files=all` before later work; do not stage broadly.
@@ -30,6 +31,8 @@ The P5-G2 implementation is committed at `0118d2cf`; FIX1 is committed at `302e3
 ## P6-BAM-001 Completed Boundary
 
 The CPU-only controller selects 30/45/60 mapping iterations from current-event append fraction, with full-budget frame 0 and explicit full-budget fallbacks. Fixed 30/45 and disabled V0 controls have dedicated wrappers. The mapping hook reads only Python tensor-shape counts and records one host scalar event after each completed mapping loop. The 14 new tests and 23 existing profiler tests passed with CUDA hidden. No online SLAM, CUDA, dataset, or Phase 4 artifact write occurred. See `docs/research/phase6_bam/P6_BAM_001_IMPLEMENTATION_REPORT.md`.
+
+FIX1 source review found that the base `e644df4` implementation already reloaded the configured 60 iterations inside each frame; the reported persistent cross-event leak did not occur. FIX1 makes the configured/effective distinction explicit within each mapping event and adds a source-AST sequence regression. The expanded suite passed 15 mapping-budget and 23 profiler CPU tests. See `docs/research/phase6_bam/P6_BAM_001_FIX1_REPORT.md`.
 
 ## Preserved P5 Boundary
 
@@ -70,14 +73,14 @@ P5-LEAN-001 remains complete at design/readiness scope. P6-BAM-001 is complete a
 
 ## STOPPED HERE
 
-Stop at `PASS_P6_BAM_001_CPU_STATIC`. Budget-Aware Mapping remains a runtime-unvalidated hypothesis, not an established speedup or quality contribution. Do not run SLAM/CUDA, start P6-BAM-002, or push automatically.
+Stop at `PASS_P6_BAM_001_FIX1_CPU_STATIC`. Budget-Aware Mapping remains a runtime-unvalidated hypothesis, not an established speedup or quality contribution. Do not run SLAM/CUDA, start P6-BAM-002, or push automatically.
 
 ## Next-Session Startup Checklist
 
 1. Open `/home/robot/research/SGS_slam`.
 2. Read `AGENTS.md` and this handoff.
 3. Verify branch, HEAD, `c3a76c0` ancestry, and the peeled Phase 4 tag.
-4. Read `docs/research/phase6_bam/P6_BAM_001_IMPLEMENTATION_REPORT.md` and the P5-LEAN evaluation/profiling protocols.
+4. Read `docs/research/phase6_bam/P6_BAM_001_IMPLEMENTATION_REPORT.md`, `P6_BAM_001_FIX1_REPORT.md`, and the P5-LEAN evaluation/profiling protocols.
 5. Review `scripts/slam.py` output-path construction and the import-time guard in `configs/replica/phase6_bam_base.py`.
 6. For separately authorized P6-BAM-002, freeze distinct V0/V-A LIGHT configs, unique run IDs and effective config snapshots before either run.
 7. Confirm output destinations are absent immediately before each run; stop if any exists.

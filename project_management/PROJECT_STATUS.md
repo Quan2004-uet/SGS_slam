@@ -33,6 +33,7 @@ Last reconciled: 2026-10-16.
 - Multi-scene profiling and final bottleneck decision: **NOT_EXECUTED / INCONCLUSIVE**.
 - P5-LEAN: **IN PROGRESS**; `P5-LEAN-001` is `PASS_P5_LEAN_001_21DAY_DESIGN_READY`.
 - P6-BAM-001: `PASS_P6_BAM_001_CPU_STATIC`; novelty-aware controller and dedicated controls are implemented but **NOT_RUNTIME_VALIDATED**.
+- P6-BAM-001 FIX1: `PASS_P6_BAM_001_FIX1_CPU_STATIC`. Source audit found the reported cross-event budget leak absent at `e644df4`; configured/effective iteration names are now explicit, with a 38-test CPU regression gate. **NOT_RUNTIME_VALIDATED**.
 - Three-week execution window: 2026-10-15 through 2026-11-05; code/config freeze target 2026-10-28.
 - Selected candidate: novelty-aware Budget-Aware Mapping using pre/post append Gaussian counts; **IMPLEMENTED / CPU-STATIC VALIDATED / NOT_RUNTIME_VALIDATED**.
 - Next proposed task: `P6-BAM-002 — Matched LIGHT 0–10 Smoke Validation`, `PLANNED_NOT_STARTED` pending separate authorization.
@@ -94,4 +95,4 @@ No original Phase 5 optimization variant V1–V5 has been implemented. The origi
 
 ## STOPPED HERE
 
-Stop at `PASS_P6_BAM_001_CPU_STATIC`. Budget-Aware Mapping is not runtime validated. P6-BAM-002 must use the dedicated `results/runtime_artifacts/phase6_bam/` root and immutable run IDs. Do not reopen G3A retry loops, run any horizon, implement keyframe reuse, or push without separate researcher authorization.
+Stop at `PASS_P6_BAM_001_FIX1_CPU_STATIC`. Budget-Aware Mapping is not runtime validated. P6-BAM-002 must use the dedicated `results/runtime_artifacts/phase6_bam/` root and immutable run IDs. Do not reopen G3A retry loops, run any horizon, implement keyframe reuse, or push without separate researcher authorization.
