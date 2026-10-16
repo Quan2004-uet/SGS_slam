@@ -1,5 +1,12 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_019 / P6-BAM-006 full-scene V-A2
+
+- Completed the one authorized Replica room0 V-A2 run for frames 0–1999. All frames and 2,000 mapping events completed; checkpoint-first recovery/final NPZ and RGB/semantic-color PLY saving and CPU integrity validation preceded the in-process final evaluator.
+- The existing E4-compatible evaluator completed 401 final-map views and 2,000-pose ATE. All seven 15% quality screens passed against the stored Phase 4 E4 reference. The existing saved-model visualizer produced and validated bounded RGB and learned-semantic-color 3D map views.
+- Recorded 90,195 executed mapping iterations (24.8375% below all-60 equivalent), 1 FULL / 12 MID / 1,987 LOW decisions, 12,383.451 s online wall, and 12,766.40 s whole-process wall. Full-scene runtime speedup is explicitly unverified: no matched full-scene V0 exists and Phase 4 historical process timing has a different scope.
+- Added full-scene report, comparison, visualization inventory and updated project handoff. Phase 4 and P6-BAM-005 hashes are unchanged; all 1,659 entries in the new artifact checksum inventory validate. No source/config/algorithm changes or additional SLAM/evaluation runs were made.
+
 ## 2026-10-16 — SESSION_018 addendum / P6-BAM-006 performance and artifact coverage
 
 - Appended a dated follow-up to the P6-BAM-006 CPU/static report documenting the existing online `perf_counter` scope and FPS derivation, `/usr/bin/time` process throughput/RSS, LIGHT mapping/tracking and allocator/archive/H2D/budget telemetry, and sampled Gaussian/memory trends.

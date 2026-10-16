@@ -6,9 +6,9 @@ Last reconciled: 2026-10-16.
 
 ## Session and gate
 
-- Session: `SESSION_018` — P6-BAM-006 CPU/static preflight fix; completed 2026-10-16. SESSION_017's P6-BAM-005 result remains historically closed.
+- Session: `SESSION_019` — P6-BAM-006 authorized full-scene V-A2 execution and evaluation; completed 2026-10-16. SESSION_018's CPU/static preparation remains preserved.
 - Branch: `phase5-profiling-instrumentation`; preparation started at `36284a2cbccd3e148a628c44f6fbcba139ac3ceb`. Phase 4 reference tag peels to `37522db553ff18b96592073f9de699db7fa48600`.
-- Gate: `PASS_P6_BAM_006_PREFLIGHT_FIX_CPU_STATIC_READY`. This is not a runtime gate and does not authorize P6-BAM-006-FULL.
+- Gate: `PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED` for the single authorized room0 0–1999 V-A2 run. This validates execution and the bounded quality screen, not a matched full-scene speedup or statistical non-inferiority.
 - Historical bounded experiment: `PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED`, one matched 500-frame pair only.
 - Original P6-BAM-003 remains `INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME`; P6-BAM-003-R1 V-A2 0–49 screening remains PASS. P5-LEAN-001 and P6-BAM-001/FIX1/P6-BAM-002 statuses remain unchanged.
 
@@ -28,8 +28,16 @@ P6-BAM-006 preparation added an isolated `0..1999` V-A2 wrapper and saved-state 
 
 The new source modifications are in `scripts/slam.py` and `utils/common_utils.py`; controller, profiler, tracking, mapping, keyframe, Gaussian lifecycle and offload implementations are unchanged. Full details, hashes, reserved paths, and recovery commands are in `docs/research/phase6_bam/P6_BAM_006_PREFLIGHT_FIX_REPORT.md` and its machine manifest.
 
+## P6-BAM-006 full-scene completion — 2026-10-16
+
+Exactly one authorized V-A2 run completed Replica room0 frames 0–1999 at source SHA `002927f3b24dd69418c17da08bd4ae987bae9ee2`. Process exit was 0; online wall 12,383.451 s; whole-process wall 12,766.40 s. The checkpoint-first path preserved `params1999.npz`, final `params.npz`, `params.ply`, `seg_params.ply`, and keyframe metadata before evaluation. CPU integrity checks passed. The in-process Phase 4 E4-compatible evaluator completed exactly 401 sampled final-map views and all-2000-pose Horn ATE. All seven 15% quality screens passed against stored Phase 4 E4 values. Offline RGB and learned-semantic-color 3D visualization passed from the saved model.
+
+V-A2 used 90,195 iterations (24.8375% below 120,000 all-60 equivalent), with 1 FULL, 12 MID, and 1,987 LOW decisions. Final model: 5,004,577 Gaussians, 402 keyframes, 10,497,024,000 logical archive bytes, and 85,969 H2D events / 2,244,822,528,000 cumulative bytes. Phase 4 and P6-BAM-005 hashes are unchanged; all 1,659 files listed in the new SHA256 inventory validated.
+
+Runtime qualification: historical Phase 4 process time is not comparable to this run's online-loop wall, and no full-scene V0 was run. Therefore `FULL_SCENE_RUNTIME_SPEEDUP_UNVERIFIED` is recorded independently; P6-BAM-005 remains the matched bounded runtime evidence. Reports are `P6_BAM_006_FULL_SCENE_REPORT.md`, `P6_BAM_006_FULL_SCENE_COMPARISON.md`, and `P6_BAM_006_3D_VISUALIZATION_INVENTORY.md`. No further experiment is authorized automatically.
+
 The 2026-10-16 addendum was completed from documentation checkpoint `b946322`. It verified that the prepared 2000-frame run can report online-loop seconds/FPS and `/usr/bin/time` process seconds/throughput as distinct scopes; LIGHT already records tracking/mapping stage spans, sampled RSS/HWM and allocator high-water values, archive/H2D totals, Gaussian trends, and per-event budget/tier decisions. The report maps checkpoint, evaluation, 3D RGB/semantic-color visualization and checksum-manifest products to their producer and isolated destination. Forty-five relevant CPU-only tests passed; no source/config/profiler change or runtime workload was made. Phase 4 checkpoint SHA remains unchanged and reserved P6-BAM-006 run/comparison destinations remain absent.
 
 ## STOPPED HERE / next decision
 
-P6-BAM-006 CPU/static preparation is complete. Next: researcher reviews the preflight-fix report and, if satisfied, separately authorizes exactly one full-scene V-A2 run. **Do not launch it automatically.** The preparation does not establish GPU runtime correctness, full-scene feasibility, statistical non-inferiority, or cross-scene performance. Do not repeat P6-BAM-005, add variants/scenes, tune, change algorithms, run P6-BAM-004, or push without separate authorization.
+P6-BAM-006's one authorized full-scene V-A2 run, checkpoint save, E4 evaluation and 3D visualization are complete. Next: researcher review of the final reports and decision on future work. Do not launch another SLAM/evaluation run, P6-BAM-004, add variants/scenes, tune, change algorithms, or push without separate authorization. Full-scene runtime speedup versus V0 remains unverified; the observed quality comparison is one run against historical Phase 4, not statistical non-inferiority.

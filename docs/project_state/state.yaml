@@ -26,20 +26,20 @@ workflow:
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P6-BAM-006-PREFLIGHT-FIX
-  next_phase_status: researcher_authorization_required_before_0_1999
-  next_recommended_phase: P6-BAM-006-full-scene-V-A2-review-only
+  latest_completed_gate: P6-BAM-006-FULL-SCENE
+  next_phase_status: completed_single_run_quality_screen_runtime_unverified_researcher_review
+  next_recommended_phase: researcher_review_of_p6_bam_006_reports_no_automatic_run
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_018
-  title: P6-BAM-006 CPU/Static Preflight Fix
+  id: SESSION_019
+  title: P6-BAM-006 Authorized Full-Scene V-A2 Execution and Evaluation
   status: closed
   started: 2026-10-16
   closed: 2026-10-16
-  head: 36284a2cbccd3e148a628c44f6fbcba139ac3ceb
-  head_role: preparation_start_head
-  checkpoint: P6_BAM_006_PREFLIGHT_FIX_CPU_STATIC_READY
+  head: 002927f3b24dd69418c17da08bd4ae987bae9ee2
+  head_role: source_revision_before_documentation_checkpoint
+  checkpoint: PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED
 
 phase5_original:
   lifecycle: SUPERSEDED_BY_P5_LEAN_INCOMPLETE
@@ -66,7 +66,7 @@ p5_lean:
 
 phase6:
   priority: Budget-Aware Mapping
-  status: PASS_P6_BAM_005_0_499_QUALITY_CONSTRAINED_SINGLE_PAIR
+  status: PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED_SINGLE_RUN
   p6_bam_003_status: INCONCLUSIVE_P6_BAM_003_QUALITY_OR_RUNTIME
   p6_bam_003_r1_run_id: p6_bam_003_r1_room0_0_49_va2_r01
   p6_bam_003_r1_source_sha: 60372fcc4fac2caa1bfa09c712d9092467289228
@@ -92,8 +92,16 @@ phase6:
   p6_bam_005_quality_15pct_vs_v0: PASS_ALL
   p6_bam_005_historical_p5_online_runtime_target: MISSED_20_PERCENT
   p6_bam_006_preflight_status: PASS_P6_BAM_006_PREFLIGHT_FIX_CPU_STATIC_READY
-  p6_bam_006_full_scene_status: NOT_AUTHORIZED_NOT_STARTED
-  full_scene_runtime_status: NOT_VALIDATED
+  p6_bam_006_full_scene_status: PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED
+  p6_bam_006_run_id: p6_bam_006_room0_0_1999_va2_r01
+  p6_bam_006_source_sha: 002927f3b24dd69418c17da08bd4ae987bae9ee2
+  p6_bam_006_frames_completed: 2000
+  p6_bam_006_executed_mapping_iters: 90195
+  p6_bam_006_tiers: FULL_1_MID_12_LOW_1987
+  p6_bam_006_online_wall_seconds: 12383.450696435
+  p6_bam_006_process_wall_seconds: 12766.4
+  p6_bam_006_quality_15pct_vs_phase4: PASS_ALL
+  full_scene_runtime_status: FULL_SCENE_RUNTIME_SPEEDUP_UNVERIFIED
   speedup_status: PRELIMINARY_SINGLE_PAIR_BOUNDED_0_499
   quality_status: PRELIMINARY_15_PERCENT_SCREEN_PASS
   implementation_commit: a3aefc745b73da520fa2ae53e77b0349fd25fa00
@@ -102,7 +110,7 @@ phase6:
   va_run_id: p6_bam_003_room0_0_49_va_r01
   v0_executed_mapping_iters: 3000
   va_executed_mapping_iters: 1740
-  next_task: researcher_review_and_separate_authorization_before_p6_bam_006_full
+  next_task: researcher_review_p6_bam_006_full_scene_reports_no_automatic_run
   p6_bam_004_status: PLANNED_NOT_STARTED_REQUIRES_RESEARCHER_AUTHORIZATION
   output_root: results/runtime_artifacts/phase6_bam
   artifact_policy: immutable_phase4_references_unique_run_ids_no_overwrite
