@@ -1,5 +1,11 @@
 # Research Changelog
 
+## 2026-10-16 — SESSION_018 addendum / P6-BAM-006 performance and artifact coverage
+
+- Appended a dated follow-up to the P6-BAM-006 CPU/static report documenting the existing online `perf_counter` scope and FPS derivation, `/usr/bin/time` process throughput/RSS, LIGHT mapping/tracking and allocator/archive/H2D/budget telemetry, and sampled Gaussian/memory trends.
+- Mapped which existing stages produce the recovery/final checkpoints, RGB and semantic-color PLYs, per-frame/aggregate evaluation products, 3D map visualizations, and SHA256 inventory. Confirmed the saved checkpoint retains semantic IDs/colors and source/dataset provenance; categorical-ID PLY export remains not implemented.
+- Re-ran 45 CPU-only preparation, mapping-budget, and profiler tests successfully. No source/config/profiler changes, GPU/CUDA calls, SLAM, evaluation, rendering, or PLY conversion occurred. P6-BAM-006-FULL remains unauthorized.
+
 ## 2026-10-16 — SESSION_018 / P6-BAM-006 CPU/static preflight fix
 
 - Added an isolated V-A2 full-scene wrapper with explicit 0–1999 frame bounds,

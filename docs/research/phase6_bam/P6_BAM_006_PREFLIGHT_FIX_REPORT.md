@@ -230,3 +230,112 @@ env P6_BAM_RUN_ID=p6_bam_006_room0_0_1999_va2_r01 PYTHONDONTWRITEBYTECODE=1 \
 
 The comparison directory must first be created only after authorization and
 verified absent. This report does **not** authorize execution.
+
+## Dated addendum — performance counters and complete artifact inventory
+
+**2026-10-16, continuation of SESSION_018.** This is a source/static audit
+follow-up; it does not alter the prior PASS result or authorize execution. No
+SLAM, CUDA evaluator, 3D rendering, PLY conversion, or dataset workload was run.
+
+### Runtime and memory evidence available in the prepared run
+
+The existing `scripts/slam.py` `time.perf_counter()` interval begins immediately
+before the frame-processing loop and ends immediately after it. Its log line is
+`Online SLAM frame-loop wall time: ... s`; for the frozen 2,000-frame horizon,
+record online FPS as `2000 / online_loop_wall_seconds`. This boundary includes
+the frame loop's tracking, selection, mapping, append, staging/archive work and
+in-loop profiler/`empty_cache()` overhead, and excludes startup, final
+evaluation and serialization. It is not a synchronized GPU kernel-time sum.
+
+The documented `/usr/bin/time` invocation records whole-process
+`elapsed_seconds` and `peak_rss_kb`, including startup, online processing,
+finalization/evaluation and save work. Record whole-process throughput as
+`2000 / elapsed_seconds`; retain both the original time file and derived rates
+in the comparison evidence. These are different timing scopes and must not be
+merged.
+
+With the wrapper's LIGHT `cpu_timing_interval=1`, `telemetry.jsonl` and
+`telemetry_summary.json` provide per-frame `tracking.wall_time.ms` and
+`mapping.wall_time.ms` aggregates. The mapping span includes current-event
+mapping work and its existing host-side span boundary; the tracking span is
+the existing tracking stage. No per-iteration CUDA synchronization is added.
+Per-event mapping telemetry carries configured/effective/executed iterations,
+tier, novelty validity/fraction, fallback, and prune-floor fields; tier counts
+are derived from its 2,000 event records.
+
+LIGHT state sampling is every five frames (including a terminal sample when
+the cadence lands there): Gaussian and keyframe counts, process RSS and
+`VmHWM`, cumulative CPU archive logical bytes/count, and cumulative H2D staging
+bytes/events. The summary retains final archive and staging totals. It also
+queries PyTorch `max_memory_allocated()` and `max_memory_reserved()` at each
+state sample; these allocator high-water values persist across samples and
+require no explicit synchronization. Report them as **PyTorch allocator
+high-water marks**, not exact device-wide VRAM peaks. Sampled `memory_allocated`
+and `memory_reserved` are samples, not transient device-wide maxima. The
+external `/usr/bin/time` peak RSS supplements the sampled process RSS/HWM.
+These existing fields are sufficient for frame-trend plots at five-frame
+resolution; no source/profiler change or GPU sync is needed.
+
+### Artifact responsibility and destinations
+
+| Artifact | Producer | Proposed isolated destination |
+|---|---|---|
+| `params1999.npz`, `keyframe_time_indices1999.npy` | In-loop SLAM checkpoint branch at frame 1999 | `<run>/` |
+| Final `params.npz` (Gaussian state, semantic IDs/colors, 2,000 estimated and GT poses, intrinsics, keyframe indices and dimensions) | Checkpoint-first SLAM finalization, before evaluation | `<run>/` |
+| `params.ply`, `seg_params.ply` | Existing `save_params` called during checkpoint-first finalization | `<run>/`; semantic PLY is learned semantic color, not categorical class-ID properties |
+| `effective_config.json` | SLAM startup snapshot | `<run>/` |
+| LIGHT `telemetry.jsonl`, `telemetry_summary.json`, `run_metadata.json` | Existing profiler | `results/runtime_artifacts/phase6_bam/telemetry/<run_id>/` |
+| Process log, `/usr/bin/time` record, derived runtime rates and source/config provenance | Authorized launcher and post-run CPU analysis | `results/runtime_artifacts/phase6_bam/p6_bam_006_comparison/` |
+| Per-view metrics, exact evaluated IDs, aggregate/trajectory JSON, RGB/depth/semantic renders | Existing evaluator, either in-run or saved-state evaluation | `<run>/eval/` for in-run, or unique `p6_bam_006_comparison/evaluation/va2_attemptNN/` for recovery evaluation |
+| 3D RGB and semantic-color map visualizations plus visualization manifest | Existing `scripts/visualization/render_final_maps.py`, from saved PLY/checkpoint | Unique `p6_bam_006_comparison/visualization/va2/` |
+| SHA256 inventory for run, telemetry, evaluation and visualization products | Post-run CPU checksum pass; write outside hashed trees | `p6_bam_006_comparison/SHA256SUMS.txt` |
+
+`params.npz` and both PLYs are saved and CPU-validated before risky online
+evaluation. The saved-state evaluator can produce the 401-view per-frame metric
+files and RGB/depth/semantic renders without rerunning mapping. The separate
+3D map visualization is also derived from the saved Gaussian products and is
+not generated by the ordinary evaluator. The frame-1999 recovery checkpoint is
+not a substitute for final metadata; use final `params.npz` whenever present.
+
+Semantic IDs and learned semantic colors are retained in the NPZ. The
+GT-palette provenance is attributable through the captured effective config,
+dataset semantic-ID/color inputs, and frozen dataset/evaluator source revision;
+the checkpoint does not embed a standalone palette file. `seg_params.ply`
+contains semantic-color Gaussian attributes and not semantic-ID fields. The
+existing 3D semantic-color visualization consumes that PLY and can use NPZ
+IDs for aligned metadata; a categorical-ID 3D exporter remains
+`NOT_IMPLEMENTED`.
+
+Before an authorized run, create only the designated comparison directory
+after checking it is absent. After SLAM, saved-state evaluation and optional
+visualization finish, generate checksums for files under the run, telemetry,
+evaluation and visualization roots, writing the list only to the separate
+comparison root. This keeps the checksum file outside the enumerated trees and
+prevents it from hashing itself. No Phase 4/P6 historical destination is used.
+
+### Addendum verification and disposition
+
+Verified from source: online timer boundary and printed duration in
+`scripts/slam.py`; CPU timing component spans and summary aggregation in
+`utils/performance_profiler.py`; archive/H2D and Gaussian-count counters in
+that profiler; CPU checkpoint schema in `utils/common_utils.py`; and saved
+evaluation/visualization artifact paths in
+`scripts/evaluate_saved_phase6.py` and
+`scripts/visualization/render_final_maps.py`. The future run can record all
+requested runtime rates, memory/archive/H2D/budget measurements, critical
+model and trajectory artifacts, per-frame/aggregate metrics, rendered images,
+3D RGB/semantic-color visualization products, and a separate SHA256 inventory
+without modifying the controller, profiler, or online algorithm.
+
+CPU-only revalidation command:
+
+```bash
+/home/robot/miniconda3/envs/sgs_slam_5080/bin/python -m unittest \
+  tests.test_p6_bam_006_preparation \
+  tests.test_mapping_budget \
+  tests.test_performance_profiler
+```
+
+The report addendum does not claim runtime success or guarantee that full-scene
+memory/disk capacity will be sufficient. Recheck capacity, source and all
+unique destinations immediately before any separately authorized execution.

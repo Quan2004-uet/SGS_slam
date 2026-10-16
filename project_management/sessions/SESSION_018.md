@@ -58,3 +58,26 @@ visualization commands are prepared but unexecuted. Recheck source/config
 provenance, Phase 4 checksum, dataset, host/GPU/disk capacity, and unique output
 paths immediately before any authorized run. No P6-BAM-006 full-scene run is
 authorized by this session.
+
+## 2026-10-16 continuation — performance and artifact addendum
+
+Resumed the same P6-BAM-006 preparation objective at HEAD `b946322` in
+response to the researcher addendum. Source review confirmed that no new
+profiler hook is needed: the existing online `perf_counter` wall is printed;
+`/usr/bin/time` captures whole-process elapsed time and peak RSS; LIGHT captures
+tracking/mapping host spans, PyTorch allocator high-water marks, sampled
+process memory, archive/H2D totals, Gaussian trends, and per-event budget/tier
+fields. Online FPS and process throughput are derived with the fixed 2,000
+frame numerator and their distinct recorded wall durations.
+
+The implementation report now maps checkpoint, final NPZ/PLY, trajectory and
+keyframe metadata, telemetry, per-frame/aggregate evaluation renders/metrics,
+3D RGB/semantic-color visualization, and a separate SHA256 manifest to their
+producing stage and isolated destination. Semantic IDs/colors remain in NPZ;
+palette provenance is attributable from captured config/dataset/source
+provenance, while categorical-ID PLY export remains unimplemented.
+
+Validation: 45 CPU-only preparation/mapping-budget/profiler tests passed.
+`git diff --check` passed. No source/config changes, CUDA, SLAM, saved-state
+evaluation, renderer, or PLY export ran. Phase 4/P6 runtime artifacts remain
+untouched. Addendum documentation checkpoint: see current Git HEAD.

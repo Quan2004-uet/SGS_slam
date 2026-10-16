@@ -28,6 +28,8 @@ P6-BAM-006 preparation added an isolated `0..1999` V-A2 wrapper and saved-state 
 
 The new source modifications are in `scripts/slam.py` and `utils/common_utils.py`; controller, profiler, tracking, mapping, keyframe, Gaussian lifecycle and offload implementations are unchanged. Full details, hashes, reserved paths, and recovery commands are in `docs/research/phase6_bam/P6_BAM_006_PREFLIGHT_FIX_REPORT.md` and its machine manifest.
 
+The 2026-10-16 addendum was completed from documentation checkpoint `b946322`. It verified that the prepared 2000-frame run can report online-loop seconds/FPS and `/usr/bin/time` process seconds/throughput as distinct scopes; LIGHT already records tracking/mapping stage spans, sampled RSS/HWM and allocator high-water values, archive/H2D totals, Gaussian trends, and per-event budget/tier decisions. The report maps checkpoint, evaluation, 3D RGB/semantic-color visualization and checksum-manifest products to their producer and isolated destination. Forty-five relevant CPU-only tests passed; no source/config/profiler change or runtime workload was made. Phase 4 checkpoint SHA remains unchanged and reserved P6-BAM-006 run/comparison destinations remain absent.
+
 ## STOPPED HERE / next decision
 
 P6-BAM-006 CPU/static preparation is complete. Next: researcher reviews the preflight-fix report and, if satisfied, separately authorizes exactly one full-scene V-A2 run. **Do not launch it automatically.** The preparation does not establish GPU runtime correctness, full-scene feasibility, statistical non-inferiority, or cross-scene performance. Do not repeat P6-BAM-005, add variants/scenes, tune, change algorithms, run P6-BAM-004, or push without separate authorization.
