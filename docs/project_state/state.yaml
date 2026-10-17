@@ -75,7 +75,8 @@ session:
   comparison_ready_with_caveat: 31
   comparison_not_comparable: 0
   comparison_missing: 0
-  github_push: NOT_REQUESTED
+  github_push: PASS_FINAL_CLOSURE
+  closure_commit: f00351cdf2b95445dd996751303926961f34d008
 
 session_020_record:
   status: closed
