@@ -1,3 +1,10 @@
+## 2026-10-18 — SESSION_021 / P6-BAM-007 final closure
+
+- Closed P6-BAM-007 Gates 0–5C: Gate 4 remains `PASS_WITH_LIMITATIONS`, Gate 5A `PASS_TECHNICAL_FREEZE`, Gate 5B `PASS_REMOTE_VERIFIED`, and Gate 5C `PASS_FINAL_CLOSURE`.
+- Accepted researcher-provided laptop terminal evidence for the portable backup: 86 physical files, 84 inventory entries, 47,535,429 payload bytes, and 85/85 SHA256 checks passed. Direct Codex access to the laptop was not performed.
+- Preserved publication references: GitHub commit `f3f0e508c8feccd302c7ec5acede4f8935654829`; private Hugging Face dataset revision `f5a53f74901dbe09329471009be92356c32fa901`. No re-upload occurred.
+- Closed SESSION_021 only. P5-LEAN remains an independent active workstream; no SLAM, tracking, mapping, rendering, metric recomputation, or experiment was run.
+
 # Research Changelog
 
 ## 2026-10-17 — SESSION_020 / P6-BAM-006 final checkpoint and publication

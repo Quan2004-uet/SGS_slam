@@ -2,17 +2,26 @@
 
 > **CURRENT OPERATIONAL HANDOFF AUTHORITY.** Repository/source/config/runtime evidence takes precedence; `PROJECT_STATUS.md` records project-wide status.
 
-Last reconciled: 2026-10-17.
+Last reconciled: 2026-10-18.
 
 ## Current session
 
-- Session: `SESSION_020` — P6-BAM-006 final research checkpoint and publication; closed 2026-10-17. SESSION_019 remains closed and unchanged as the historical full-scene run record.
-- Branch: `phase5-profiling-instrumentation`; starting HEAD `0df67b3b19a17233d894af389d10c05796d9ed1b`.
+- Session: `SESSION_021` — CLOSED 2026-10-18 after P6-BAM-007 Gate 5C final closure. SESSION_020 and earlier records remain preserved.
+- Branch: `phase5-profiling-instrumentation`; closure commit is recorded in the repository history.
+- P6-BAM-007: Gates 0–3 PASS; Gate 4 PASS_WITH_LIMITATIONS; Gate 5A PASS_TECHNICAL_FREEZE; Gate 5B PASS_REMOTE_VERIFIED; Gate 5C PASS_FINAL_CLOSURE.
+- GitHub publication: `f3f0e508c8feccd302c7ec5acede4f8935654829` on `phase5-profiling-instrumentation`. Hugging Face private dataset revision: `f5a53f74901dbe09329471009be92356c32fa901`, prefix `phase6_bam/p6_bam_007/`.
+- Laptop backup: researcher-provided terminal evidence confirms `/home/quan/research/SGS_slam_backups/P6-BAM-007/final_package/`, 86 physical files, 84 inventory entries, 47,535,429 payload bytes and 85/85 SHA256 PASS. This is not direct Codex filesystem verification.
+- Final closure report: `results/runtime_artifacts/phase6_bam/p6_bam_007_qualitative_comparison/gate5c_final_closure/run_01/GATE5C_FINAL_REPORT.md`.
+- P5-LEAN remains a separate active workstream; this closure does not end Phase 5 or claim the complete thesis/research project is finished. Continue from its current authoritative Phase 5 records without changing unrelated work.
+
+### SESSION_020 closed evidence retained below
+
+- Branch and historical experiment records in the closed session remain unchanged.
 - Experiment source revision: `002927f3b24dd69418c17da08bd4ae987bae9ee2`.
 - Phase 4 tag: `phase4-cpu-keyframe-offload-validated` peels to `37522db553ff18b96592073f9de699db7fa48600`.
 - P6-BAM-006 experiment result remains `PASS_P6_BAM_006_FULL_SCENE_QUALITY_CONSTRAINED`; this session does not run SLAM/evaluation.
 
-## Completed experiment evidence
+## SESSION_020 closed experiment evidence
 
 P6-BAM-006-FULL completed exactly one Replica room0 V-A2 run over frames
 0–1999 and 2,000 mapping events. The checkpoint-first final model was CPU
@@ -31,7 +40,7 @@ single-run quality screen, not statistical non-inferiority. The original
 P6-BAM-003 result remains INCONCLUSIVE; P5 historical status remains
 `SUPERSEDED_BY_P5_LEAN_INCOMPLETE` / technically incomplete.
 
-## Preserved artifacts
+## SESSION_020 preserved artifacts
 
 - Model/evaluation run:
   `results/runtime_artifacts/phase6_bam/p6_bam_006_room0_0_1999_va2_r01/`
@@ -61,7 +70,7 @@ Known model hashes: Phase 6 `params.npz`
 Phase 4 checkpoint `params.npz`
 `dc6f94cf24ff2ed4d3f8220d05586d321dbc5ad425cb5d5cba73a31aa90f88f2`.
 
-## Publication status
+## SESSION_020 publication status
 
 - Hugging Face visualization backup is independently verified PASS at
   `QuanDinh/SGS-SLAM-assets`,
@@ -77,7 +86,7 @@ Phase 4 checkpoint `params.npz`
 - Hugging Face and GitHub publication are verified. Session closure is
   recorded in SESSION_020; final state consistency and hashes were rechecked.
 
-## STOPPED HERE / next research action
+## SESSION_020 stopped point / next research action
 
 The final publication and consistency check are complete. The next research task is Phase 4 versus
 Phase 6 qualitative comparison packaging and thesis/report preparation. No

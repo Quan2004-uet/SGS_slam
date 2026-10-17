@@ -22,18 +22,62 @@ baseline:
 workflow:
   phase: 5
   phase_name: P5-LEAN — 21-day runtime optimization study
-  phase_status: p6_bam_006_completed_final_research_checkpoint_published
+  phase_status: p6_bam_007_gate5c_closed_with_limitations
   active_variant: PHASE4-VB-001
   variant_status: complete_validated
   closure_status: PASS_PHASE4_CLOSURE
-  latest_completed_gate: P6-BAM-006-FULL-SCENE
-  next_phase_status: completed_single_run_quality_screen_runtime_unverified_no_automatic_run
-  next_recommended_phase: phase4_vs_phase6_qualitative_comparison_packaging_and_thesis_report_preparation
+  latest_completed_gate: P6-BAM-007-GATE5C
+  next_phase_status: P6-BAM-007_closed_session_021_closed_phase5_workstream_active
+  next_recommended_phase: resume_independent_P5_LEAN_workstream_from_canonical_handoff
   paper_metrics_reproduced: false
 
 session:
-  id: SESSION_020
-  title: P6-BAM-006 Final Research Checkpoint and Publication
+  id: SESSION_021
+  title: Phase 4 vs Phase 6 Qualitative Comparison and Thesis Preparation
+  status: closed
+  started: 2026-10-17
+  starting_head: 17fe98a82a1c7c38b05b7fdefe154bb7b0002453
+  previous_session: SESSION_020
+  previous_session_status: closed
+  immediate_task: P6-BAM-007 closed; resume independent Phase 5 workstream
+  initialization_status: PASS_SESSION_021_INITIALIZATION
+  gate_0_read_only_audit: complete
+  gate_1_camera_modality_audit: complete_documented
+  gate_2_cpu_figure_generation: PASS_P6_BAM_007_GATE2_SIDE_BY_SIDE
+  gate_2_output_root: results/runtime_artifacts/phase6_bam/p6_bam_007_qualitative_comparison/gate2_side_by_side/run_02
+  gate_2_pair_count: 43
+  gate_2_preview_count: 7
+  gate_2_source_sha_checks: 86
+  gate_2_camera_checks: 43
+  gate_2_panel_pixel_checks: 86
+  gate_2_model_hashes_preserved: true
+  gate_2_gpu_rendering_or_evaluation: false
+  gate_3_thesis_packaging: PASS_P6_BAM_007_GATE3_THESIS_PACKAGING
+  gate_3_output_root: results/runtime_artifacts/phase6_bam/p6_bam_007_qualitative_comparison/gate3_thesis_packaging/run_04
+  gate_3_figure_count: 8
+  gate_3_slide_count: 5
+  gate_3_thesis_plate_count: 1
+  gate_3_total_png_count: 14
+  gate_3_gate2_source_verified: true
+  gate_3_source_images_unchanged: true
+  gate_3_camera_provenance_verified: true
+  gate_3_checkpoint_hashes_preserved: true
+  gate_3_gpu_or_model_work: false
+  gate_4_validation: PASS_WITH_LIMITATIONS
+  gate_5a_publication_freeze: PASS_TECHNICAL_FREEZE
+  gate_5b_publication: PASS_REMOTE_VERIFIED
+  gate_5c_final_backup_closure: PASS_FINAL_CLOSURE
+  github_commit: f3f0e508c8feccd302c7ec5acede4f8935654829
+  huggingface_revision: f5a53f74901dbe09329471009be92356c32fa901
+  laptop_backup: researcher_reported_85_of_85_sha256_pass
+  comparison_candidate_pairs: 43
+  comparison_ready: 12
+  comparison_ready_with_caveat: 31
+  comparison_not_comparable: 0
+  comparison_missing: 0
+  github_push: NOT_REQUESTED
+
+session_020_record:
   status: closed
   started: 2026-10-17
   closed: 2026-10-17
