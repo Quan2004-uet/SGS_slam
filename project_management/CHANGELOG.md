@@ -1,3 +1,41 @@
+# 2026-10-22 — Phase 4 Variant B Office4 local closure
+
+- Added the Office4 offline evidence audit and final results reports after independently verifying online artifacts, checkpoint integrity, E4 files, supplementary Depth RMSE, trajectory metrics, and frozen source/config hashes.
+- Recorded `CLOSED_EVALUATED` for `p4_vb001_office4_full_0_1999_r01`; all 1,612 original E4 manifest files verified. Optional 3D visualization remains `DEFERRED_OPTIONAL`.
+- Updated Office4-scoped project status, handoff, roadmap and machine-readable closure state. Room0 was already evaluated in the original Phase 4 record; Room1/Room2 and Office0–Office3 have prior closures, leaving no Phase 4 Replica scenes in the inventory. Phase 5/6/7 records are unchanged. No experiment, commit, push or upload was performed.
+
+# 2026-10-22 — Phase 4 Replica office2 final results and experiment closure
+
+- Revalidated Office2 online completion (2,000/2,000, exit 0), checkpoint validation/CRC/SHA256, 401 E4 metric views, all 2,000 trajectory poses, 401 supplementary standard Depth RMSE records, and all 1,612 original E4 manifest entries. No missing or changed entries; offline and final integrity statuses pass.
+- Added `docs/research/phase4_multiscene/PHASE4_OFFICE2_FINAL_RESULTS.md` and recorded Office2 as `CLOSED_EVALUATED`; optional 3D visualization remains `DEFERRED_OPTIONAL`.
+- Updated Phase 4 multiscene state pointers. Remaining scenes are office3 and office4; the campaign remains incomplete. Existing Room1/Room2/Office0/Office1 checkpoints and Phase 5/6/7 records remain intact.
+- No SLAM, E4, supplementary rendering, trajectory evaluation, or visualization was run for this archival task. Raw evidence was preserved locally; no commit, push, or upload occurred. E4 process exit code was not present in retained evidence and is not claimed.
+
+# 2026-10-22 — Phase 4 Replica office1 final results and experiment closure
+
+- Revalidated Office1 online completion, checkpoint SHA256/CRC, 401 E4 metric views, 2,000-pose trajectory, 401 supplementary standard Depth RMSE records, and all 1,612 original E4 manifest entries. No missing or changed entries; final status is `PASS_OFFLINE_EVALUATION` / `PASS_FINAL_INTEGRITY_VALIDATION`.
+- Added `docs/research/phase4_multiscene/PHASE4_OFFICE1_FINAL_RESULTS.md` and recorded Office1 as `CLOSED_EVALUATED`; optional 3D visualization remains `DEFERRED_OPTIONAL`.
+- Updated canonical status/handoff and dated reconciliation records. Remaining Phase 4 Replica scenes are office2–office4; this does not complete the multiscene campaign. Room0/Room1/Room2/Office0 and Phase 5/6/7 records remain unchanged.
+- No SLAM, E4, supplementary rendering, or visualization was run. Raw historical evidence was preserved; no commit, push, or upload occurred.
+
+# 2026-10-19 — Research-session boundary and handoff finalization
+
+- Inspected all session records and canonical status/handoff. `SESSION_021` is the latest recorded session and was already CLOSED on 2026-10-18; no later open session exists, so no session ID was created or historical session record rewritten. Older PAUSED sessions remain untouched.
+- Updated the handoff with the frozen room1 source worktree/commit, existing model/evidence/telemetry/evaluation roots, Gate 5 report and current project-status pointer. Recorded room2 as planned/not started and that the researcher may scope a separate direction, while no method, algorithm change, experiment or branch is authorized.
+- Room1 remains immutable local evidence. P5-LEAN remains active; no runtime, artifact, publication, commit or push action was performed.
+
+# 2026-10-19 — TASK 16 local room1 closure state update
+
+- Reconciled canonical project status and handoff with the completed Phase 6 V-A2 Replica/room1 Gate 4/Gate 5 result `ROOM1_GATE5_CLOSED_QUALIFIED`; recorded exact saved metrics, runtime/memory, qualifications, hash checks and local GPU-server artifact paths.
+- Recorded GitHub publication and Hugging Face upload as `NOT_REQUESTED`; results remain local. Added Replica/room2 preparation as `PLANNED_NOT_STARTED`, requiring separate authorization and dataset/config/source/resource/output-isolation preflight. No room2 run was authorized.
+- Added dated reconciliation notes to the legacy migration snapshot, roadmap and derived state file without replacing historical Phase 4/5/room0 records or changing the independent active P5-LEAN workstream. No runtime execution, artifact modification, publication, commit or push occurred.
+
+# 2026-10-19 — Phase 6 room1 Gate 5 closure and local archive dry run
+
+- Verified completed room1 V-A2 Gate 4/Gate 5 evidence for frames 0–1999 without running SLAM, CUDA, rendering, or evaluation. Frozen source 17/17, Gate 4 hashes 7/7 and artifact-manifest entries 1,623/1,623, Gate 5 hashes 1,614/1,614; fresh CPU artifact validation passed.
+- Recorded exact saved quality, trajectory, runtime, memory, adaptive-budget and H2D values. Qualified the historical depth “RMSE” label (implementation is MAE), GT-palette-assisted semantic-color mIoU, runtime effective-config default serialization, absent device-wide NVML peak, pending CUDA-event validation, and unrecorded separate Gate 5 runtime.
+- Added the final closure report and per-file Hugging Face dry-run archive plan/manifest. No remote inspection, upload, dataset copy, Git publication, room2 work or new experiment occurred. Current P5-LEAN project state and handoff remain unchanged.
+
 ## 2026-10-18 — SESSION_021 / P6-BAM-007 final closure
 
 - Closed P6-BAM-007 Gates 0–5C: Gate 4 remains `PASS_WITH_LIMITATIONS`, Gate 5A `PASS_TECHNICAL_FREEZE`, Gate 5B `PASS_REMOTE_VERIFIED`, and Gate 5C `PASS_FINAL_CLOSURE`.
@@ -6,6 +44,39 @@
 - Closed SESSION_021 only. P5-LEAN remains an independent active workstream; no SLAM, tracking, mapping, rendering, metric recomputation, or experiment was run.
 
 # Research Changelog
+
+## 2026-10-27 — Gate R2-B project-state synchronization
+
+- Reconciled the current Phase 4 summary with its eight Replica scene closure/evaluation records while preserving the dated per-scene history and optional visualization qualifications.
+- Clarified that SESSION_021 remains CLOSED, P5-LEAN remains independently IN PROGRESS, and the original Phase 5 plan remains technically incomplete and superseded.
+- Recorded Phase 6 V-A2 room0/room1 and P6-BAM-007 Gate 5C closure without removing their scientific or measurement limitations.
+- Recorded Phase 7 BCGM as researcher-selected `PLANNED_NOT_IMPLEMENTED`; implementation and validation remain NOT_VERIFIED. No session was created and no experiment or implementation was performed.
+- This entry documents state only; it does not verify current checkpoint hashes or independent backup coverage.
+
+## 2026-10-22 — Phase 4 Replica office0 final results and experiment closure
+
+- Reverified actual Office0 online/offline evidence: online exit 0, 2,000/2,000 frames, checkpoint validation and NPZ CRC PASS, and current checkpoint SHA256 matches the recorded value. Offline status is `PASS_OFFLINE_EVALUATION`; final integrity status is `PASS_FINAL_INTEGRITY_VALIDATION` with all 15 required checks passing.
+- Rehashed the exact 1,612 original E4 manifest entries: 1,612 matched, zero missing and zero changed. Confirmed 401 E4 metric views, 2,000 trajectory poses, and 401 supplementary standard Depth RMSE records. E4 process exit/stdout/stderr were not recorded and are not claimed.
+- Added `docs/research/phase4_multiscene/PHASE4_OFFICE0_FINAL_RESULTS.md`; recorded Office0 `CLOSED_EVALUATED` and optional 3D visualization `DEFERRED_OPTIONAL`. Remaining Phase 4 scenes are office1–office4; the eight-scene extension remains incomplete.
+- Updated canonical project status and handoff, this changelog, the legacy migration snapshot, roadmap, and derived state. No applicable open session ledger was rewritten. Room0/Room1/Room2 and Phase 6/7 records remain independent and unchanged.
+- No SLAM, E4, supplementary evaluation, or visualization was run for archival. No artifact was moved/deleted and no commit, push, or upload occurred.
+
+## 2026-10-21 — Phase 4 Replica room2 final results and experiment closure
+
+- Reverified the isolated frozen-source room2 run from actual artifacts: 2,000/2,000 frames, online exit 0, `PASS_CHECKPOINT_VALIDATION`, checkpoint CRC PASS, SHA256 `d772e65a3c0bc163cf20960d30bd0b88f9182477462f9c1fe8dadd0a86155c3f`, and all 11 model/evidence manifest entries match.
+- Verified 401 finite E4 values per metric and complete 401-view render sets, 2,000 finite aligned trajectory errors, and 401 finite supplementary standard Depth RMSE values. Final integrity status is `PASS_OFFLINE_EVALUATION`; E4 exit code/stdout were not retained and are not claimed.
+- Resolved the initial supplementary partial status as an output-directory self-inclusion false positive: the helper compared its containing E4 tree including its own new supplementary subtree. Original E4 hashes and checkpoint remained unchanged; final independent integrity checks pass. Original partial evidence remains preserved.
+- Added `docs/research/phase4_multiscene/PHASE4_ROOM2_FINAL_RESULTS.md`; recorded Room2 `CLOSED_EVALUATED` and visualization `DEFERRED_OPTIONAL`. Remaining Phase 4 scenes are office0–office4; the full extension is not complete.
+- Updated canonical status and handoff, this changelog, requested legacy snapshot, roadmap, and derived state. No applicable open session ledger was rewritten; SESSION_021 remains historical and closed. P5-LEAN and Phase 6/7 remain unchanged.
+- No SLAM, evaluation, or visualization was rerun. No checkpoint/artifact was modified, moved, or deleted; no commit, push, or upload occurred.
+
+## 2026-10-21 — Phase 4 Replica room1 final results and experiment closure
+
+- Reverified the isolated frozen-source room1 run: 2,000/2,000 frames, process exit 0, failure classification NONE, checkpoint CRC PASS, SHA256 match, all 11 online artifact-manifest entries match, and 2,000 validated poses.
+- Reverified saved-state E4 exit 0 and 401 sampled image/depth/semantic views; supplementary standard Depth RMSE completed all same 401 views. All required metric arrays are finite, original E4 metric hashes and checkpoint hash are unchanged, and no CUDA OOM is recorded.
+- Added `docs/research/phase4_multiscene/PHASE4_ROOM1_FINAL_RESULTS.md`; recorded experiment `CLOSED_EVALUATED` and optional 3D visualization `DEFERRED_OPTIONAL` in canonical state. The six remaining scenes are room2 and office0–office4; the full eight-scene Replica extension is not complete.
+- Updated canonical project status and handoff, this changelog, the legacy migration pointer, roadmap, and derived state. SESSION_021 history and Phase 6/7 results remain unchanged; no applicable open session ledger was rewritten. P5-LEAN remains the active independent workstream.
+- No SLAM, evaluation, or visualization was rerun for this archival task. No artifact was moved/deleted and no commit, push, or upload occurred.
 
 ## 2026-10-17 — SESSION_020 / P6-BAM-006 final checkpoint and publication
 

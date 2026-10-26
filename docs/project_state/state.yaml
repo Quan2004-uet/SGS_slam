@@ -2,8 +2,8 @@ authority: derived
 canonical_project_status: project_management/PROJECT_STATUS.md
 canonical_handoff: project_management/SESSION_HANDOFF.md
 role: derived_machine_readable_snapshot
-last_updated: 2026-10-18
-authority_reconciled: 2026-10-18
+last_updated: 2026-10-27
+authority_reconciled: 2026-10-27
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
@@ -29,6 +29,17 @@ workflow:
   latest_completed_gate: P6-BAM-007-GATE5C
   next_phase_status: P6-BAM-007_closed_session_021_closed_phase5_workstream_active
   next_recommended_phase: resume_independent_P5_LEAN_workstream_from_canonical_handoff
+  phase4_replica_eight_scene_status: closed_evaluated
+  phase5_original_status: superseded_by_p5_lean_incomplete
+  p5_lean_status: in_progress
+  phase6_bam_va2_room0_status: full_scene_quality_constrained_recorded
+  phase6_bam_va2_room1_status: room1_gate5_closed_qualified
+  phase6_bam_007_status: gate5c_final_closure
+  phase7_direction: BCGM
+  phase7_status: planned_not_implemented
+  phase7_implementation_validation: not_verified
+  phase7_gate_r3_status: not_performed
+  phase7_gate_r4_status: not_performed
   paper_metrics_reproduced: false
 
 session:
@@ -40,6 +51,7 @@ session:
   previous_session: SESSION_020
   previous_session_status: closed
   immediate_task: P6-BAM-007 closed; resume independent Phase 5 workstream
+  later_active_session_verified: false
   initialization_status: PASS_SESSION_021_INITIALIZATION
   gate_0_read_only_audit: complete
   gate_1_camera_modality_audit: complete_documented
@@ -230,3 +242,491 @@ closure:
   no_new_experiment: true
   no_metric_recomputation: true
   next_phase_started: false
+
+# Supplemental local closure state added 2026-10-19. The historical P6-BAM-006
+# room0 values above remain unchanged; this is a separate Replica/room1 run.
+phase6_room1_local_closure:
+  run_id: p6_bam_ms_room1_gate3_0_1999_r01
+  source_commit: 002927f3b24dd69418c17da08bd4ae987bae9ee2
+  scene: room1
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  gate4: PASS
+  gate5: PASS
+  overall_status: ROOM1_GATE5_CLOSED_QUALIFIED
+  final_gaussians: 6682135
+  final_keyframes: 402
+  metrics:
+    psnr_db: 34.096186264494705
+    ms_ssim: 0.9714362002964924
+    lpips_alex: 0.09135246086410453
+    depth_l1_m: 0.004393707946328413
+    semantic_color_miou_gt_palette_assisted: 0.9265354206849918
+    released_ate_mean_m: 0.004655330867990601
+    supplementary_true_ate_rmse_m: 0.004802019103114381
+  runtime:
+    full_process_wall_seconds: 16075.75
+    full_process_fps: 0.1244109917
+    gate5_process_runtime: NOT_MEASURED
+  memory:
+    pytorch_peak_allocated_gib: 9.521
+    pytorch_peak_reserved_gib: 11.654
+    peak_process_rss_gib: 18.234
+    device_wide_nvml_vram_peak: NOT_MEASURED
+    cuda_event_timing: UNVALIDATED
+  integrity:
+    cpu_artifact_validation: PASS
+    frozen_source_hashes: 17/17_PASS
+    gate4_sha256_entries: 7/7_PASS
+    gate4_artifact_manifest_entries: 1623/1623_PASS
+    gate5_sha256_entries: 1614/1614_PASS
+  qualifications:
+    saved_depth_rmse_is_conventional_rmse: false
+    semantic_color_miou_uses_gt_palette_assistance: true
+    runtime_config_has_three_inactive_or_default_fields_vs_pre_run_lock: true
+    approved_va2_scientific_settings_changed: false
+  artifact_storage: GPU_SERVER_LOCAL
+  github_publication: NOT_REQUESTED
+  huggingface_upload: NOT_REQUESTED
+  model_path: results/runtime_artifacts/phase6_bam/p6_bam_ms_room1_gate3_0_1999_r01
+  evidence_path: results/runtime_artifacts/phase6_bam/multiscene_evidence/p6_bam_ms_room1_gate3_0_1999_r01
+  telemetry_path: results/runtime_artifacts/phase6_bam/telemetry/p6_bam_ms_room1_gate3_0_1999_r01
+  evaluation_path: results/runtime_artifacts/phase6_bam/evaluation/p6_bam_ms_room1_gate3_0_1999_r01_offline
+  closure_report: docs/experiments/PHASE6_MULTISCENE_ROOM1_GATE5_FINAL_REPORT.md
+  archive_plan: docs/experiments/PHASE6_MULTISCENE_ROOM1_EVIDENCE_ARCHIVE_PLAN.md
+
+phase6_room2_candidate:
+  status: PLANNED_NOT_STARTED
+  next_candidate: Phase 6 V-A2 — Replica/room2 preparation
+  requires_separate_researcher_authorization: true
+  required_preflight:
+    - dataset_identity
+    - configuration_and_source_lock
+    - available_resource_check
+    - isolated_output_paths
+  execution_authorized: false
+
+# Separate Phase 4 Variant B Replica/room1 closure; does not complete the
+# eight-scene extension or alter Phase 6/7 records above.
+phase4_room1_local_closure:
+  run_id: p4_vb001_room1_full_0_1999_r01
+  source_commit: 68f9060f7ff4d8d141be1d5f71339401327edd06
+  scene: room1
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  status: CLOSED_EVALUATED
+  online_exit_code: 0
+  online_frames_validated: 2000
+  gaussian_count: 6663167
+  keyframe_count: 402
+  checkpoint_sha256: 3ab49193b0a1160405ff90ee6387a8e06c713c127c1e2bf2f1ca9cdf1b0443f4
+  checkpoint_crc: PASS
+  offline_status: PASS_OFFLINE_EVALUATION
+  offline_sampled_views: 401
+  trajectory_poses: 2000
+  metrics:
+    psnr_db: 33.93622684716584
+    ms_ssim: 0.9699054904412153
+    lpips_alex: 0.09743846615223664
+    depth_l1_m: 0.00436371473823105
+    supplementary_standard_depth_rmse_m: 0.020464102616935584
+    aligned_ate_mean_m: 0.004262120556727725
+    true_aligned_ate_rmse_m: 0.004411847720561559
+    semantic_color_miou_gt_palette_assisted: 0.9236634195237521
+  runtime:
+    process_wall_seconds: 18472.333261692
+    end_to_end_slam_fps: 0.1082700258633601
+    tracking_average_throughput_fps: 0.255512569872522
+    mapping_average_throughput_fps: 0.19319996808390055
+    online_loop_fps: NOT_AVAILABLE
+  memory:
+    nvml_gpu_wide_sampled_peak_mib: 11341
+    nvml_samples: 17917
+    pytorch_peak_allocated_bytes: 8066530816
+    pytorch_peak_reserved_bytes: 10626269184
+    pytorch_peak_allocated_gib: 7.512542247772217
+    pytorch_peak_reserved_gib: 9.896484375
+  optional_3d_visualization: DEFERRED_OPTIONAL
+  remaining_phase4_replica_scenes:
+    - office0
+    - office1
+    - office2
+    - office3
+    - office4
+  final_report: docs/research/phase4_multiscene/PHASE4_ROOM1_FINAL_RESULTS.md
+  online_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/p4_vb001_room1_full_0_1999_r01
+  offline_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/offline_eval/p4_vb001_room1_full_0_1999_r01_offline_eval
+  checkpoint_path: /home/robot/research/SGS_slam_phase4_multiscene/experiments/Replica/p4_vb001_room1_full_0_1999_r01/params.npz
+
+# Separate Phase 4 Variant B Replica/room2 closure; does not complete the
+# eight-scene extension or alter Phase 6/7 records.
+phase4_room2_local_closure:
+  run_id: p4_vb001_room2_full_0_1999_r01
+  source_commit: 68f9060f7ff4d8d141be1d5f71339401327edd06
+  scene: room2
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  status: CLOSED_EVALUATED
+  online_exit_code: 0
+  online_frames_validated: 2000
+  gaussian_count: 5587273
+  keyframe_count: 402
+  checkpoint_sha256: d772e65a3c0bc163cf20960d30bd0b88f9182477462f9c1fe8dadd0a86155c3f
+  checkpoint_crc: PASS
+  offline_status: PASS_OFFLINE_EVALUATION
+  offline_sampled_views: 401
+  trajectory_poses: 2000
+  metrics:
+    psnr_db: 35.08130356082298
+    ms_ssim: 0.9833379945255575
+    lpips_alex: 0.07416503871802677
+    depth_l1_m: 0.00573806987524943
+    supplementary_standard_depth_rmse_m: 0.04636771678851954
+    aligned_ate_mean_m: 0.002571350682804283
+    true_aligned_ate_rmse_m: 0.0027287721506437973
+    semantic_color_miou_gt_palette_assisted: 0.9162398735108886
+  runtime:
+    process_wall_seconds: 17895.405414523004
+    end_to_end_slam_fps: 0.11176053035249492
+    tracking_average_seconds_per_frame: 3.494788026213646
+    tracking_reciprocal_fps: 0.2861403874853688
+    mapping_average_seconds_per_frame: 5.313655699849129
+    mapping_reciprocal_fps: 0.1881943536590813
+    online_loop_fps: NOT_AVAILABLE
+  memory:
+    nvml_gpu_wide_sampled_peak_mib: 9341
+    nvml_samples: 17379
+    pytorch_peak_allocated_bytes: 6737296384
+    pytorch_peak_reserved_bytes: 8529117184
+  e4_process_exit_code: NOT_RECORDED
+  optional_3d_visualization: DEFERRED_OPTIONAL
+  remaining_phase4_replica_scenes:
+    - office0
+    - office1
+    - office2
+    - office3
+    - office4
+  final_report: docs/research/phase4_multiscene/PHASE4_ROOM2_FINAL_RESULTS.md
+  online_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/p4_vb001_room2_full_0_1999_r01
+  offline_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/offline_eval/p4_vb001_room2_full_0_1999_r01_offline_eval
+  checkpoint_path: /home/robot/research/SGS_slam_phase4_multiscene/experiments/Replica/p4_vb001_room2_full_0_1999_r01/params.npz
+
+# Separate Phase 4 Variant B Replica/office0 closure; does not complete the
+# eight-scene extension or alter Phase 6/7 records.
+phase4_office0_local_closure:
+  run_id: p4_vb001_office0_full_0_1999_r01
+  source_commit: 68f9060f7ff4d8d141be1d5f71339401327edd06
+  scene: office0
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  status: CLOSED_EVALUATED
+  online_exit_code: 0
+  online_frames_validated: 2000
+  gaussian_count: 6088334
+  keyframe_count: 402
+  checkpoint_sha256: 6d0f180d7677a38c29295ae9ffc10d745f726aac700f40338543a062a9bf7390
+  checkpoint_crc: PASS
+  offline_status: PASS_OFFLINE_EVALUATION
+  final_integrity_status: PASS_FINAL_INTEGRITY_VALIDATION
+  original_e4_manifest:
+    files: 1612
+    verified: 1612
+    missing: 0
+    changed: 0
+  offline_sampled_views: 401
+  trajectory_poses: 2000
+  supplementary_standard_depth_rmse_records: 401
+  metrics:
+    psnr_db: 38.69793345862791
+    ms_ssim: 0.9832896119044011
+    lpips_alex: 0.08275568896807042
+    depth_l1_m: 0.0036909948602467406
+    supplementary_standard_depth_rmse_m: 0.01903626183679585
+    aligned_ate_mean_m: 0.005481421752582262
+    true_aligned_ate_rmse_m: 0.006053878949032237
+    semantic_color_miou_gt_palette_assisted: 0.920670209062726
+  runtime:
+    process_wall_seconds: 17693.695785642994
+    end_to_end_slam_fps: 0.11303460985368803
+    tracking_average_seconds_per_frame: 3.6919138610363005
+    tracking_reciprocal_fps: 0.27086222421216116
+    mapping_average_seconds_per_frame: 5.0167394688129425
+    mapping_reciprocal_fps: 0.1993326554461516
+    online_loop_fps: NOT_AVAILABLE
+  memory:
+    nvml_gpu_wide_sampled_peak_mib: 9623
+    nvml_samples: 17175
+    pytorch_peak_allocated_bytes: 7003875328
+    pytorch_peak_reserved_bytes: 8847884288
+  e4_process_exit_code: NOT_RECORDED
+  optional_3d_visualization: DEFERRED_OPTIONAL
+  remaining_phase4_replica_scenes:
+    - office1
+    - office2
+    - office3
+    - office4
+  final_report: docs/research/phase4_multiscene/PHASE4_OFFICE0_FINAL_RESULTS.md
+  online_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/p4_vb001_office0_full_0_1999_r01
+  offline_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/offline_eval/p4_vb001_office0_full_0_1999_r01_offline_eval
+  checkpoint_path: /home/robot/research/SGS_slam_phase4_multiscene/experiments/Replica/p4_vb001_office0_full_0_1999_r01/params.npz
+
+# Separate Phase 4 Variant B Replica/office1 closure; the multiscene campaign
+# remains incomplete and later scenes require separate preparation/authorization.
+phase4_office1_local_closure:
+  run_id: p4_vb001_office1_full_0_1999_r01
+  source_commit: 68f9060f7ff4d8d141be1d5f71339401327edd06
+  source_sha256: a26aafe4686acf65ca5523eb2758b7026ee35cc4e6a63690fc1f433c950732b3
+  scene: office1
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  status: CLOSED_EVALUATED
+  online_status: CORE_ARTIFACTS_VALIDATED
+  online_exit_code: 0
+  online_frames_validated: 2000
+  gaussian_count: 5549520
+  keyframe_count: 402
+  checkpoint_sha256: f2bcf577a62655929b066ea0ce05148f64ded7509c27eba88002f5090490704b
+  checkpoint_crc: PASS
+  checkpoint_validation_status: PASS_CHECKPOINT_VALIDATION
+  offline_status: PASS_OFFLINE_EVALUATION
+  final_integrity_status: PASS_FINAL_INTEGRITY_VALIDATION
+  original_e4_manifest:
+    files: 1612
+    verified: 1612
+    missing: 0
+    changed: 0
+    sha256: c2593a47f764f04caa7f565c7188f89c2b97f8ba4efe4d207ee5c93f451a31ba
+  offline_sampled_views: 401
+  trajectory_poses: 2000
+  supplementary_standard_depth_rmse_records: 401
+  metrics:
+    psnr_db: 39.432348237073334
+    ms_ssim: 0.9826767333130587
+    lpips_alex: 0.09379343187756967
+    depth_l1_m: 0.0029153336996985994
+    supplementary_standard_depth_rmse_m: 0.015814388257670755
+    aligned_ate_mean_m: 0.0019245655435345093
+    aligned_ate_mean_cm: 0.19245655435345094
+    true_aligned_ate_rmse_m: 0.0021758263025428584
+    true_aligned_ate_rmse_cm: 0.21758263025428584
+    semantic_color_miou_gt_palette_assisted: 0.9509944874842283
+  runtime:
+    process_wall_seconds: 15728.539716726009
+    end_to_end_slam_fps: 0.12715738625583686
+    tracking_average_seconds_per_frame: 3.1307195452451704
+    tracking_reciprocal_fps: 0.31941538855461066
+    mapping_average_seconds_per_frame: 4.604963395357132
+    mapping_reciprocal_fps: 0.21715699217245274
+    online_loop_fps: NOT_AVAILABLE
+  memory:
+    nvml_gpu_wide_sampled_peak_mib: 9179
+    nvml_samples: 15272
+    pytorch_peak_allocated_bytes: 6457900544
+    pytorch_peak_reserved_bytes: 8359247872
+  optional_3d_visualization: DEFERRED_OPTIONAL
+  remaining_phase4_replica_scenes:
+    - office2
+    - office3
+    - office4
+  final_report: docs/research/phase4_multiscene/PHASE4_OFFICE1_FINAL_RESULTS.md
+  online_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/p4_vb001_office1_full_0_1999_r01
+  offline_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/offline_eval/p4_vb001_office1_full_0_1999_r01_offline_eval
+  checkpoint_path: /home/robot/research/SGS_slam_phase4_multiscene/experiments/Replica/p4_vb001_office1_full_0_1999_r01/params.npz
+# Separate Phase 4 Variant B Replica/office2 closure; office3 and office4 remain.
+phase4_office2_local_closure:
+  run_id: p4_vb001_office2_full_0_1999_r01
+  scene: office2
+  source_commit: 68f9060f7ff4d8d141be1d5f71339401327edd06
+  source_sha256: a26aafe4686acf65ca5523eb2758b7026ee35cc4e6a63690fc1f433c950732b3
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  status: CLOSED_EVALUATED
+  online_status: CORE_ARTIFACTS_VALIDATED
+  online_exit_code: 0
+  online_frames_validated: 2000
+  checkpoint_validation_status: PASS_CHECKPOINT_VALIDATION
+  checkpoint_sha256: 7508fc2a3fb6916dd6211221b75693ae868b97b3b830bb1fac9227a5e697726d
+  checkpoint_crc: PASS
+  offline_status: PASS_OFFLINE_EVALUATION
+  trajectory_status: PASS_TRAJECTORY_METRICS
+  final_integrity_status: PASS_FINAL_INTEGRITY_VALIDATION
+  offline_sampled_views: 401
+  trajectory_poses: 2000
+  supplementary_depth_rmse_status: PASS_SUPPLEMENTARY_DEPTH_RMSE
+  supplementary_standard_depth_rmse_records: 401
+  metrics:
+    psnr_db: 32.05055297223707
+    ms_ssim: 0.9669492452816476
+    lpips_alex: 0.09961088107634067
+    depth_l1_m: 0.006733047930080156
+    standard_depth_rmse_m: 0.04190794845461125
+    aligned_ate_mean_m: 0.0030677457674380725
+    true_aligned_ate_rmse_m: 0.0033443906342707497
+    semantic_color_miou_gt_palette_assisted: 0.9062349859139421
+  runtime:
+    process_wall_seconds: 13293.532819613989
+    end_to_end_fps: 0.15044909634924833
+    tracking_average_seconds_per_frame: 2.7042347106933593
+    tracking_reciprocal_throughput_fps: 0.36979038692377497
+    mapping_average_seconds_per_frame: 3.8219406394958497
+    mapping_reciprocal_throughput_fps: 0.26164718249834185
+  memory:
+    pytorch_peak_allocated_bytes: 5246518784
+    pytorch_peak_reserved_bytes: 7342129152
+    nvml_gpu_wide_sampled_peak_mib: 8209
+    nvml_sample_count: 12909
+  gaussian_count: 4424471
+  keyframe_count: 402
+  original_e4_manifest:
+    expected_entries: 1612
+    verified_entries: 1612
+    missing: 0
+    changed: 0
+    sha256: c13b00d2eb47c767af4d6a619e4ae8b74491e3cec3f5e5a0a0344aebc4cad9b6
+  e4_process_exit_code: NOT_RECORDED_IN_EXISTING_ARTIFACTS
+  optional_3d_visualization: DEFERRED_OPTIONAL
+  remaining_phase4_replica_scenes:
+    - office4
+  final_report: docs/research/phase4_multiscene/PHASE4_OFFICE2_FINAL_RESULTS.md
+  online_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/p4_vb001_office2_full_0_1999_r01
+  offline_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/offline_eval/p4_vb001_office2_full_0_1999_r01_offline_eval
+  checkpoint_path: /home/robot/research/SGS_slam_phase4_multiscene/experiments/Replica/p4_vb001_office2_full_0_1999_r01/params.npz
+
+
+# Separate Phase 4 Variant B Replica/office3 closure; office4 remains.
+phase4_office3_local_closure:
+  run_id: p4_vb001_office3_full_0_1999_r01
+  scene: office3
+  source_commit: 68f9060f7ff4d8d141be1d5f71339401327edd06
+  source_sha256: a26aafe4686acf65ca5523eb2758b7026ee35cc4e6a63690fc1f433c950732b3
+  online_config_sha256: 3c53069d2c35917675ff755d52dfd9a43ce7ba46b44605fc93d57d6381633f9f
+  e4_config_sha256: 90501711e2f2c24b05b6c1c0dbd9fac9dc5f3438593df341279783c3b04e844e
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  status: CLOSED_EVALUATED
+  online_status: CORE_ARTIFACTS_VALIDATED
+  online_exit_code: 0
+  online_frames_validated: 2000
+  checkpoint_validation_status: PASS_CHECKPOINT_VALIDATION
+  checkpoint_sha256: 2c5c30a16ac179d4be37e2ca622945d72c8b16993f4378c331a566349b6ca26c
+  checkpoint_crc: PASS
+  gaussian_count: 5116198
+  keyframe_count: 402
+  offline_status: PASS_OFFLINE_EVALUATION
+  trajectory_status: PASS_TRAJECTORY_METRICS
+  final_integrity_status: PASS_FINAL_INTEGRITY_VALIDATION
+  offline_sampled_views: 401
+  trajectory_poses: 2000
+  supplementary_depth_rmse_status: PASS_SUPPLEMENTARY_DEPTH_RMSE
+  supplementary_standard_depth_rmse_records: 401
+  metrics:
+    psnr_db: 29.992374439191938
+    ms_ssim: 0.9503379866963907
+    lpips_alex: 0.11827323098952633
+    depth_l1_m: 0.014195865046864658
+    standard_depth_rmse_m: 0.0853922480437391
+    aligned_ate_mean_m: 0.003248163677829446
+    true_aligned_ate_rmse_m: 0.003592273487731734
+    semantic_color_miou_gt_palette_assisted: 0.8436161550655589
+  runtime:
+    process_wall_seconds: 14158.963376194995
+    end_to_end_fps: 0.1412532787084212
+    tracking_average_seconds_per_frame: 2.9503237673044205
+    tracking_reciprocal_throughput_fps: 0.33894585098829866
+    mapping_average_seconds_per_frame: 4.004411844134331
+    mapping_reciprocal_throughput_fps: 0.24972456353728995
+  memory:
+    pytorch_peak_allocated_bytes: 6299927552
+    pytorch_peak_reserved_bytes: 8197767168
+    nvml_gpu_wide_sampled_peak_mib: 9025
+    nvml_sample_count: 13747
+  original_e4_manifest:
+    expected_entries: 1612
+    verified_entries: 1612
+    missing: 0
+    changed: 0
+    unlisted: 0
+    sha256: 0a329f1add7e656c64027cc99cac176d6cea1ba2fa3a66307701169097dc7123
+  e4_process_exit_code: NOT_RECORDED_IN_EXISTING_ARTIFACTS
+  optional_3d_visualization: DEFERRED_OPTIONAL
+  remaining_phase4_replica_scenes:
+    - office4
+  final_report: docs/research/phase4_multiscene/PHASE4_OFFICE3_FINAL_RESULTS.md
+  offline_audit_report: docs/research/phase4_multiscene/PHASE4_OFFICE3_OFFLINE_EVALUATION_REPORT.md
+  online_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/p4_vb001_office3_full_0_1999_r01
+  offline_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/offline_eval/p4_vb001_office3_full_0_1999_r01_offline_eval
+  checkpoint_path: /home/robot/research/SGS_slam_phase4_multiscene/experiments/Replica/p4_vb001_office3_full_0_1999_r01/params.npz
+
+
+# Phase 4 Variant B Replica/office4 local closure; the eight-scene inventory is complete.
+phase4_office4_local_closure:
+  run_id: p4_vb001_office4_full_0_1999_r01
+  scene: office4
+  source_commit: 68f9060f7ff4d8d141be1d5f71339401327edd06
+  source_sha256: a26aafe4686acf65ca5523eb2758b7026ee35cc4e6a63690fc1f433c950732b3
+  online_config_sha256: 92a0a54660ed71b0f618521941f06b1e221d62ee3a25c07fcefe89484fc39ca8
+  e4_config_sha256: 0cc073433dae43413987d200262f74abfb4757a653df738e461b8a8f381a65b2
+  frame_start: 0
+  frame_end_inclusive: 1999
+  frame_count: 2000
+  status: CLOSED_EVALUATED
+  gate5_1_status: PASS_GATE5_1_FINAL_EVIDENCE_ARCHIVING
+  online_status: CORE_ARTIFACTS_VALIDATED
+  online_exit_code: 0
+  online_failure_classification: NONE
+  online_frames_validated: 2000
+  checkpoint_validation_status: PASS_CHECKPOINT_VALIDATION
+  checkpoint_crc: PASS
+  checkpoint_sha256: 5ad2f28b79a8e1868fcb3ab6dc234f867e8ceeba03e0a5a974e59383f7f9263c
+  gaussian_count: 5244062
+  keyframe_count: 402
+  offline_status: PASS_OFFLINE_EVALUATION
+  final_integrity_status: PASS_FINAL_INTEGRITY_VALIDATION
+  offline_sampled_views: 401
+  trajectory_status: PASS_TRAJECTORY_METRICS
+  trajectory_poses: 2000
+  supplementary_depth_rmse_status: PASS_SUPPLEMENTARY_DEPTH_RMSE
+  supplementary_standard_depth_rmse_records: 401
+  metrics:
+    psnr_db: 31.98514147351805
+    ms_ssim: 0.9481332642479133
+    lpips_alex: 0.15473074450197066
+    depth_l1_m: 0.013629693485984574
+    standard_depth_rmse_m: 0.07042747174302234
+    aligned_ate_mean_m: 0.005827276646533747
+    true_aligned_ate_rmse_m: 0.0065538699635214704
+    semantic_color_miou_gt_palette_assisted: 0.8949128346457764
+  runtime:
+    process_wall_seconds: 14896.24389675702
+    end_to_end_fps: 0.13426203369531356
+    tracking_average_seconds_per_frame: 3.065659881711006
+    tracking_reciprocal_throughput_fps: 0.3261940458449944
+    mapping_average_seconds_per_frame: 4.2547724332809445
+    mapping_reciprocal_throughput_fps: 0.23503019625161925
+  memory:
+    pytorch_peak_allocated_bytes: 6389555200
+    pytorch_peak_reserved_bytes: 8065646592
+    nvml_gpu_wide_sampled_peak_mib: 8819
+    nvml_sample_count: 14464
+  original_e4_manifest:
+    expected_entries: 1612
+    verified_entries: 1612
+    missing: 0
+    changed: 0
+    unlisted: 0
+    sha256: 7b3c6e4d8d35268ebf1cf5edb730b19e9921dbca3d250cd472bae7d361572e7d
+  e4_process_exit_code: NOT_RECORDED_IN_EXISTING_ARTIFACTS
+  optional_3d_visualization: DEFERRED_OPTIONAL
+  remaining_phase4_replica_scenes: []
+  final_report: docs/research/phase4_multiscene/PHASE4_OFFICE4_FINAL_RESULTS.md
+  offline_audit_report: docs/research/phase4_multiscene/PHASE4_OFFICE4_OFFLINE_EVALUATION_REPORT.md
+  online_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/p4_vb001_office4_full_0_1999_r01
+  offline_artifacts: /home/robot/research/SGS_slam_phase4_multiscene/results/runtime_artifacts/phase4_multiscene/offline_eval/p4_vb001_office4_full_0_1999_r01_offline_eval
+  checkpoint_path: /home/robot/research/SGS_slam_phase4_multiscene/experiments/Replica/p4_vb001_office4_full_0_1999_r01/params.npz

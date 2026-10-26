@@ -19,6 +19,67 @@ checkpoint, see `project_management/PROJECT_STATUS.md`,
 `project_management/SESSION_HANDOFF.md`, and
 `docs/research/phase6_bam/P6_BAM_006_FINAL_SESSION_HANDOFF.md`.
 
+## Local reconciliation pointer — 2026-10-19
+
+This addendum records a later completed experiment without replacing the
+historical room0/Phase 4/Phase 5 snapshot below. Canonical status and operational
+handoff remain in the project-management files.
+
+- Phase 6 V-A2 Replica/room1 run `p6_bam_ms_room1_gate3_0_1999_r01`, frozen
+  source `002927f3b24dd69418c17da08bd4ae987bae9ee2`, frames 0–1999: Gate 4
+  PASS; Gate 5 PASS; overall `ROOM1_GATE5_CLOSED_QUALIFIED`.
+- Saved model: 2,000 frames, 6,682,135 Gaussians, 402 keyframes. Metrics:
+  PSNR 34.096186264494705 dB; MS-SSIM 0.9714362002964924; LPIPS-Alex
+  0.09135246086410453; Depth L1 0.004393707946328413 m; GT-palette-assisted
+  semantic-color mIoU 0.9265354206849918; released ATE Mean
+  0.004655330867990601 m; true ATE RMSE 0.004802019103114381 m.
+- Process wall 16,075.75 s / 0.124411 FPS; PyTorch allocated/reserved
+  9.521/11.654 GiB; peak process RSS 18.234 GiB. Device-wide NVML peak and
+  separate Gate 5 runtime are NOT_MEASURED; CUDA-event timing is unvalidated.
+- Integrity: Gate 4 checksums 7/7, artifact manifest 1,623/1,623, Gate 5
+  checksums 1,614/1,614, source hashes 17/17, CPU artifact validation PASS.
+  Artifacts remain on the GPU server under `results/runtime_artifacts/phase6_bam/`.
+- GitHub publication and Hugging Face upload are NOT_REQUESTED. Room2
+  preparation is PLANNED_NOT_STARTED and requires separate authorization and
+  dataset/config/source/resource/output-isolation preflight. No run is
+  authorized. Full qualifications and artifact paths are in
+  `docs/experiments/PHASE6_MULTISCENE_ROOM1_GATE5_FINAL_REPORT.md`.
+
+## Local Phase 4 room1 closure pointer — 2026-10-21
+
+This addendum records final archival and closure of one additional Phase 4
+Variant B scene. It does not replace the historical room0 result or mean that
+the eight-scene Replica extension is complete.
+
+- Replica room1 run `p4_vb001_room1_full_0_1999_r01`, frozen source
+  `68f9060f7ff4d8d141be1d5f71339401327edd06`, frames 0–1999:
+  `CLOSED_EVALUATED`; online exit 0; 2,000/2,000 frames and poses; 6,663,167
+  Gaussians; 402 keyframes. Offline status `PASS_OFFLINE_EVALUATION` covers
+  401 E4 image/depth/semantic views, 2,000 trajectory poses, and a separate
+  same-view supplementary standard Depth RMSE pass. Optional 3D visualization
+  is `DEFERRED_OPTIONAL`.
+- Final metrics, exact provenance, performance scopes, and evidence locations
+  are in `docs/research/phase4_multiscene/PHASE4_ROOM1_FINAL_RESULTS.md`.
+- At the time of this room1 reconciliation, remaining Phase 4 Replica scenes
+  were room2 and office0–office4; room2 was subsequently closed in the dated
+  addendum below. Phase 6/7 records are unchanged. P5-LEAN remains the
+  independent active workstream.
+
+## Local Phase 4 room2 closure pointer — 2026-10-21
+
+- Phase 4 Variant B Replica room2 run `p4_vb001_room2_full_0_1999_r01`, frozen
+  source `68f9060f7ff4d8d141be1d5f71339401327edd06`, frames 0–1999:
+  `CLOSED_EVALUATED`. Online exit 0, 2,000/2,000 frames, checkpoint
+  `PASS_CHECKPOINT_VALIDATION` and SHA256
+  `d772e65a3c0bc163cf20960d30bd0b88f9182477462f9c1fe8dadd0a86155c3f`;
+  offline `PASS_OFFLINE_EVALUATION` covers 401 E4 views, 2,000 poses and 401
+  supplementary standard Depth RMSE values. E4 process exit code was not
+  retained. Optional visualization is `DEFERRED_OPTIONAL`.
+- Exact results and paths are in
+  `docs/research/phase4_multiscene/PHASE4_ROOM2_FINAL_RESULTS.md`. Remaining
+  Phase 4 Replica scenes are office0–office4; the eight-scene extension is not
+  complete. Phase 6/7 and P5-LEAN remain unchanged.
+
 This snapshot records the state used for the 2026-10-04 migration checkpoint.
 Detailed evidence is in the linked runtime records.
 
@@ -128,3 +189,18 @@ On the GPU server, clone the GitHub repository, download and verify the private 
 ## Do Not Re-do
 
 Do not repeat completed environment, dataset, renderer, first-frame, 5-frame, 20-frame, or 50-frame gates unless regression evidence appears.
+
+## Local Phase 4 office0 closure pointer — 2026-10-22
+
+- Phase 4 Variant B Replica office0 run `p4_vb001_office0_full_0_1999_r01`, frozen source `68f9060f7ff4d8d141be1d5f71339401327edd06`, frames 0–1999: `CLOSED_EVALUATED`. Online exit 0; 2,000/2,000 frames; checkpoint SHA256 `6d0f180d7677a38c29295ae9ffc10d745f726aac700f40338543a062a9bf7390`, CRC/schema validation PASS. Offline `PASS_OFFLINE_EVALUATION`; final integrity `PASS_FINAL_INTEGRITY_VALIDATION`; 401 E4 views, 2,000 poses, 401 supplementary standard Depth RMSE records, and 1,612/1,612 original E4 manifest entries unchanged. E4 exit code/stdout/stderr were not retained.
+- Optional 3D visualization is `DEFERRED_OPTIONAL`. Exact metrics, performance scope and evidence paths are in `docs/research/phase4_multiscene/PHASE4_OFFICE0_FINAL_RESULTS.md`. Remaining scenes are office1–office4; the eight-scene extension is incomplete. Phase 6/7 and P5-LEAN remain unchanged.
+
+## Local Phase 4 office1 closure pointer — 2026-10-22
+
+- Phase 4 Variant B Replica office1 run `p4_vb001_office1_full_0_1999_r01`, frozen source `68f9060f7ff4d8d141be1d5f71339401327edd06`, frames 0–1999: `CLOSED_EVALUATED`. Online `CORE_ARTIFACTS_VALIDATED`, exit 0, 2,000/2,000 frames; checkpoint SHA256 `f2bcf577a62655929b066ea0ce05148f64ded7509c27eba88002f5090490704b`, CRC/schema validation PASS. Offline and final integrity are `PASS_OFFLINE_EVALUATION` and `PASS_FINAL_INTEGRITY_VALIDATION`; 401 E4 views, 2,000 trajectory poses, 401 supplementary standard Depth RMSE records, and 1,612/1,612 original E4 manifest entries are verified unchanged.
+- Optional 3D visualization is `DEFERRED_OPTIONAL`. Exact results and artifact paths are in `docs/research/phase4_multiscene/PHASE4_OFFICE1_FINAL_RESULTS.md`. Remaining scenes are office2, office3, and office4; the multiscene campaign remains incomplete. This dated record does not change Phase 5/6/7 or P5-LEAN.
+
+## Local Phase 4 office2 closure pointer — 2026-10-22
+
+- Phase 4 Variant B Replica office2 run `p4_vb001_office2_full_0_1999_r01`, frozen source `68f9060f7ff4d8d141be1d5f71339401327edd06`, frames 0–1999: `CLOSED_EVALUATED`. Online `CORE_ARTIFACTS_VALIDATED`, exit 0; checkpoint SHA256 `7508fc2a3fb6916dd6211221b75693ae868b97b3b830bb1fac9227a5e697726d`, CRC PASS; offline `PASS_OFFLINE_EVALUATION`; final integrity `PASS_FINAL_INTEGRITY_VALIDATION`. Evidence validates 401 E4 views, 2,000 trajectory poses, 401 supplementary standard Depth RMSE records, and 1,612/1,612 original E4 manifest files unchanged.
+- Optional visualization is `DEFERRED_OPTIONAL`. Exact metrics and paths are in `docs/research/phase4_multiscene/PHASE4_OFFICE2_FINAL_RESULTS.md`. Remaining Phase 4 scenes are office3 and office4; the multiscene campaign remains incomplete. This dated local record does not change Phase 5/6/7 state.
