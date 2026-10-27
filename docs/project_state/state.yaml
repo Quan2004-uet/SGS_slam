@@ -215,6 +215,8 @@ phase7_final_closure:
       - 40902595b60e235f983b2ebcca5983fc7ddd55eb
       - bd98f25f15f724d2d4a1414e16b7369007703332
     remote_head_verified: bd98f25f15f724d2d4a1414e16b7369007703332
+    session_008_closure_commit: 88e0ac5fb5f0f68efd89ae225430893dcf25de33
+    session_008_closure_push: PUSH_PENDING_HTTP_403
   huggingface:
     repository_id: QuanDinh/SGS-SLAM-assets
     repo_type: dataset

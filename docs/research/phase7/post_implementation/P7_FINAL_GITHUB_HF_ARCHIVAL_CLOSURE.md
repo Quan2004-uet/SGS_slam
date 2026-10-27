@@ -29,7 +29,8 @@ BCGM admission caps là 9.000 candidate Gaussian mỗi insertion event và 4.500
 - Branch: `phase7-bcgm`.
 - Commit `40902595b60e235f983b2ebcca5983fc7ddd55eb`: `research(phase7): archive BCGM implementation and evidence index` (selective 74-path allowlist; không chứa checkpoints/datasets/runtime artifacts).
 - Commit `bd98f25f15f724d2d4a1414e16b7369007703332`: `docs(phase7): archive post-implementation audit and final handoff`.
-- Runtime verification: `git ls-remote --heads origin refs/heads/phase7-bcgm` trả SHA `bd98f25f15f724d2d4a1414e16b7369007703332`; khớp local `HEAD`. Worktree sạch tại preflight trước các cập nhật closure.
+- Runtime verification trước closure: `git ls-remote --heads origin refs/heads/phase7-bcgm` trả SHA `bd98f25f15f724d2d4a1414e16b7369007703332`, khớp local HEAD tại preflight.
+- SESSION_008 documentation commit `88e0ac5fb5f0f68efd89ae225430893dcf25de33` được tạo local; push trả HTTP 403 (permission denied cho `HatsuharuYasa`). Sau lần push, remote được recheck và vẫn ở `bd98f25f15f724d2d4a1414e16b7369007703332`. Do đó hai Phase7 archival commits nêu trên đã publish; SESSION_008 closure commit hiện `PUSH_PENDING`. Không đổi credentials, force-push hoặc sửa history.
 - Lịch sử HTTP 403 trên commit đầu tiên được giữ như sự kiện lịch sử; commit thứ hai đã được push và remote HEAD hiện tại được kiểm tra thành công.
 
 Không có merge vào `main`, force-push hay tag mới.
@@ -81,6 +82,6 @@ Remote-side comparison of these six hashes is recorded as PASS in the researcher
 
 ## 7. Project handoff
 
-`SESSION_008` closes this documentation/archive verification task. `SESSION_005` remains ACTIVE for its separate room0 workstream; `SESSION_006` and `SESSION_007` remain CLOSED. Current recommendation: complete thesis/report writing around the verified Phase 7-A results and limitations. Do not begin Phase 7-B automatically.
+`SESSION_008` closes this documentation/archive verification task; its documentation commit `88e0ac5fb5f0f68efd89ae225430893dcf25de33` remains local because push was denied. The previously published Phase 7 archival commits remain verified at remote SHA `bd98f25f15f724d2d4a1414e16b7369007703332`. `SESSION_005` remains ACTIVE for its separate room0 workstream; `SESSION_006` and `SESSION_007` remain CLOSED. Current recommendation: complete thesis/report writing around the verified Phase 7-A results and limitations. Do not begin Phase 7-B automatically.
 
 Canonical project state: `project_management/PROJECT_STATUS.md` and `project_management/SESSION_HANDOFF.md`. Detailed analysis: `docs/research/phase7/post_implementation/P7_POST02_*.md` and `P7_POST_FINAL_HANDOFF.md`.

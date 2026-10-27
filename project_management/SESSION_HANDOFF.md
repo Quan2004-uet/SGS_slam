@@ -4,13 +4,13 @@
 
 **Phase 7-A:** `RESEARCH_COMPLETED_WITH_LIMITATIONS`; room0 and room1 2,000-frame runs and their quantitative evidence closures are complete. P7-POST-01/02 are complete. No P7-B is approved or implemented. Recommend thesis/report completion.
 
-**GitHub:** `origin` is `https://github.com/Quan2004-uet/SGS_slam.git`. Current branch `phase7-bcgm` was independently read via `git ls-remote` at `bd98f25f15f724d2d4a1414e16b7369007703332`, matching local HEAD at preflight. The archival commits are `40902595b60e235f983b2ebcca5983fc7ddd55eb` and `bd98f25f15f724d2d4a1414e16b7369007703332`.
+**GitHub:** `origin` is `https://github.com/Quan2004-uet/SGS_slam.git`. Current branch `phase7-bcgm` was independently read via `git ls-remote` at `bd98f25f15f724d2d4a1414e16b7369007703332`, matching local HEAD at preflight. The archival commits are `40902595b60e235f983b2ebcca5983fc7ddd55eb` and `bd98f25f15f724d2d4a1414e16b7369007703332`. SESSION_008 docs commit `88e0ac5fb5f0f68efd89ae225430893dcf25de33` is local; push returned HTTP 403, and remote remains at `bd98f25f15f724d2d4a1414e16b7369007703332`. No credentials were changed and no force push was attempted.
 
 **Hugging Face:** researcher-provided prior validation reports revision `fdc1616e843319af649d3a7ebe710da51be489fc`, 3,425/3,425 paths and sizes matched, and six critical SHA256 comparisons passed. Current metadata recheck was unavailable (HTTP 401/DNS errors); do not describe this as a new independent remote verification or all-file SHA256 validation.
 
 Read `docs/research/phase7/post_implementation/P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md`, `PROJECT_STATUS.md`, and this handoff before further work. Do not rerun SLAM/CUDA/evaluation/rendering or implement P7-B. Existing scientific limitations and external artifact preservation status are documented in that closure report. No source/config/checkpoint/PLY/experiment artifact was changed in SESSION_008.
 
-**Git state at handoff:** documentation changes from SESSION_008 are intended for a separate explicit selective commit/push; do not stage broadly. The source/config and experimental artifacts remain unchanged. `docs/project_state/CURRENT_STATE.md` remains a legacy Phase 4 migration snapshot and was not rewritten. `state.yaml` has a Phase 7 closure overlay while retaining its Phase 4 snapshot as historical context.
+**Git state at handoff:** SESSION_008 documentation commit `88e0ac5fb5f0f68efd89ae225430893dcf25de33` exists locally but push is `PUSH_PENDING` after HTTP 403. Source/config and experimental artifacts remain unchanged. This final state annotation is being recorded in a follow-up local docs-only commit; do not retry push without restored repository write access. `docs/project_state/CURRENT_STATE.md` remains a legacy Phase 4 migration snapshot and was not rewritten. `state.yaml` has a Phase 7 closure overlay while retaining its Phase 4 snapshot as historical context.
 
 # Historical handoff snapshot — P7 Post-Implementation Review (SESSION_007; publication status superseded)
 

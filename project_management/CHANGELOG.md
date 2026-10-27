@@ -1,6 +1,7 @@
 ## 2026-10-28 (Asia/Tokyo) — PHASE7-FINAL-ARCHIVAL-CLOSURE / SESSION_008
 
 - Verified clean Phase 7 worktree before edits; branch `phase7-bcgm`; local HEAD and `origin/phase7-bcgm` both `bd98f25f15f724d2d4a1414e16b7369007703332`. GitHub includes archival commits `40902595…` and `bd98f25…`.
+- Documentation closure commit `88e0ac5fb5f0f68efd89ae225430893dcf25de33` was created locally; push returned HTTP 403. Remote remains at `bd98f25f15f724d2d4a1414e16b7369007703332`. The earlier archival commits remain published; closure commit is `PUSH_PENDING`. No credentials changed and no force push.
 - Independently recomputed local SHA256 for room0/room1 `params.npz`, `params.ply`, and `seg_params.ply`; values match the recorded critical-file hashes. Reconfirmed both checkpoint SHA256 values.
 - Recorded Hugging Face validation supplied by researcher: revision `fdc1616e843319af649d3a7ebe710da51be489fc`; 3,425 expected/remote paths and matching sizes; six critical SHA256 comparisons PASS. Current remote metadata recheck was unavailable (API HTTP 401 and DNS failure), so these are prior reported validation results, not a fresh independent check; no all-file SHA256 claim.
 - Added `P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md`; synchronized current status, handoff, roadmap, derived `state.yaml`, and this changelog; created and closed `SESSION_008`.
