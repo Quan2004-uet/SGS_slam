@@ -1,3 +1,5 @@
+> **Historical snapshot:** the following records the earlier HTTP 403/push-pending state. It was superseded when commit `bd98f25f15f724d2d4a1414e16b7369007703332` was pushed and verified as the current remote HEAD. See `P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md`.
+
 # P7-POST-01 — Git Publication Report
 
 Audit date: 2026-10-28 (Asia/Tokyo).

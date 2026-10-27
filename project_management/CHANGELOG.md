@@ -1,3 +1,11 @@
+## 2026-10-28 (Asia/Tokyo) — PHASE7-FINAL-ARCHIVAL-CLOSURE / SESSION_008
+
+- Verified clean Phase 7 worktree before edits; branch `phase7-bcgm`; local HEAD and `origin/phase7-bcgm` both `bd98f25f15f724d2d4a1414e16b7369007703332`. GitHub includes archival commits `40902595…` and `bd98f25…`.
+- Independently recomputed local SHA256 for room0/room1 `params.npz`, `params.ply`, and `seg_params.ply`; values match the recorded critical-file hashes. Reconfirmed both checkpoint SHA256 values.
+- Recorded Hugging Face validation supplied by researcher: revision `fdc1616e843319af649d3a7ebe710da51be489fc`; 3,425 expected/remote paths and matching sizes; six critical SHA256 comparisons PASS. Current remote metadata recheck was unavailable (API HTTP 401 and DNS failure), so these are prior reported validation results, not a fresh independent check; no all-file SHA256 claim.
+- Added `P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md`; synchronized current status, handoff, roadmap, derived `state.yaml`, and this changelog; created and closed `SESSION_008`.
+- Phase 7-A remains `RESEARCH_COMPLETED_WITH_LIMITATIONS`. No P7-B, experiment, GPU, evaluation, rendering, source/config or scientific artifact change. Recommended next work is thesis/report completion.
+
 ## 2026-10-28 (Asia/Tokyo) — P7-POST-01 / P7-POST-02 archival and research audit
 
 - Created local selective archival commit `40902595b60e235f983b2ebcca5983fc7ddd55eb` with exactly the 74 paths approved in `P7_POST01_APPROVED_STAGING_MANIFEST.json`; no scientific binaries, runtime evidence, datasets or credentials included.

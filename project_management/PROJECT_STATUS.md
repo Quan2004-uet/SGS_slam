@@ -1,4 +1,12 @@
-## Phase 7 Final Research State — 2026-10-28 (Asia/Tokyo)
+# PHASE 7 FINAL ARCHIVAL CLOSURE — SESSION_008 CLOSED
+
+**As of 2026-10-28 (Asia/Tokyo):** Phase 7-A is `RESEARCH_COMPLETED_WITH_LIMITATIONS`; room0 and room1 full-scene validation and P7-POST-01/02 are complete. No P7-B is approved. GitHub `phase7-bcgm` is verified at `bd98f25f15f724d2d4a1414e16b7369007703332` (commits `40902595…` and `bd98f25…`). Hugging Face Phase 7 backup has a researcher-provided PASS validation for 3,425 paths/sizes and six critical hashes at reported revision `fdc1616e843319af649d3a7ebe710da51be489fc`; this session could not independently requery Hugging Face metadata (HTTP 401/DNS failure), and did not verify SHA256 for all files.
+
+`SESSION_008` (PHASE7-FINAL-ARCHIVAL-CLOSURE) is CLOSED. `SESSION_005` remains ACTIVE; `SESSION_006` and `SESSION_007` remain CLOSED. Next recommended work is thesis/report completion, not automatic Phase 7-B. See `docs/research/phase7/post_implementation/P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md` and the current `SESSION_HANDOFF.md`.
+
+---
+
+## Historical Phase 7 research-state snapshot before final archival closure — 2026-10-28
 
 **Current outcome:** room0 `RESEARCH_COMPLETED_WITH_LIMITATIONS`; room1 `PASS_WITH_LIMITATIONS`; `PHASE7_QUANTITATIVE_RESEARCH: COMPLETE_WITH_LIMITATIONS`. Room1 advanced visualization A–H is `DEFERRED_BY_RESEARCH_DECISION`.
 
@@ -7,12 +15,12 @@
 - `SESSION_006` CLOSED 2026-10-28 (Asia/Tokyo), owning room1 quantitative validation. `SESSION_005` remains ACTIVE, separate room0 workstream; it is not closed or rewritten here.
 - Source identities: `scripts/slam.py` SHA256 `ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999`; `utils/bcgm.py` SHA256 `8f30b9c997b10acd988c5a5ac053f2d15c28adde3783ba193ed9da832e908400`. No source or scientific config changed in this synchronization.
 - Final evidence/handoff: `docs/research/phase7/PHASE7_FINAL_PROJECT_STATE_AND_HANDOFF.md`; detailed room0 evidence under `docs/research/phase7/`; room1 evidence under `docs/research/phase7/room1/`.
-- Git/HF: no commit/push/upload. Status is `LOCAL_SESSION_CLOSED_PUBLICATION_PENDING`; existing uncommitted Phase 7 work is preserved.
+- Historical publication state at that earlier research-state synchronization: no commit/push/upload. Superseded by `P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md`; this historical line is retained for provenance.
 
 
 # SGS-SLAM Project Status
 
-## Phase 7 Post-Implementation State — SESSION_007 CLOSED
+## Historical post-implementation state at SESSION_007 closure — superseded by SESSION_008
 
 As of 2026-10-28 (Asia/Tokyo), P7-POST-01 selective archival and P7-POST-02 source/metric/trade-off review are complete locally. Phase 7-A outcomes remain room0 `RESEARCH_COMPLETED_WITH_LIMITATIONS`, room1 `PASS_WITH_LIMITATIONS`, quantitative research `COMPLETE_WITH_LIMITATIONS`; room1 visualization A–H `DEFERRED_BY_RESEARCH_DECISION`. No Phase 7-B was approved or implemented.
 

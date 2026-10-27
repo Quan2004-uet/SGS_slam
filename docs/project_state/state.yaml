@@ -2,8 +2,9 @@ authority: derived
 canonical_project_status: project_management/PROJECT_STATUS.md
 canonical_handoff: project_management/SESSION_HANDOFF.md
 role: derived_machine_readable_snapshot
-last_updated: 2026-10-11
-authority_reconciled: 2026-10-11
+last_updated: 2026-10-28
+authority_reconciled: 2026-10-28
+snapshot_note: Existing workflow/runtime keys below retain the historical Phase 4 migration snapshot; current research state is phase7_final_closure.
 
 baseline:
   commit: e4183986204242a8bb422624618af07780a49d26
@@ -194,3 +195,38 @@ integrity:
   active_variant_source_changed: true
   config_changed: false
   algorithm_policy_changed: false
+
+
+phase7_final_closure:
+  authority: project_management/PROJECT_STATUS.md
+  date: 2026-10-28
+  session: SESSION_008
+  session_status: closed
+  phase7a_status: RESEARCH_COMPLETED_WITH_LIMITATIONS
+  room0_full_scene: COMPLETE_WITH_LIMITATIONS
+  room1_full_scene: PASS_WITH_LIMITATIONS
+  post_implementation_post01: COMPLETE
+  post_implementation_post02: COMPLETE
+  phase7b: NOT_APPROVED_OR_IMPLEMENTED
+  github:
+    repository: https://github.com/Quan2004-uet/SGS_slam.git
+    branch: phase7-bcgm
+    archival_commits:
+      - 40902595b60e235f983b2ebcca5983fc7ddd55eb
+      - bd98f25f15f724d2d4a1414e16b7369007703332
+    remote_head_verified: bd98f25f15f724d2d4a1414e16b7369007703332
+  huggingface:
+    repository_id: QuanDinh/SGS-SLAM-assets
+    repo_type: dataset
+    artifact_root: phase7_bcgm/
+    reported_revision: fdc1616e843319af649d3a7ebe710da51be489fc
+    researcher_provided_validation: PASS
+    expected_and_remote_paths: 3425
+    matching_sizes: 3425
+    critical_sha256_comparisons: 6
+    all_file_sha256_verified: false
+    current_metadata_requery: UNAVAILABLE_HTTP_401_AND_DNS_FAILURE
+  checkpoints:
+    room0_sha256: a02dd4b4ecfd9c982866cf4a4c38c187ef22c75049b8328e18eea20608944917
+    room1_sha256: 27a388536ced6a5cf5dc59395a980e1f74a99c2a438c4290773d4e54eafadf32
+  next_recommended_work: THESIS_AND_REPORT_COMPLETION

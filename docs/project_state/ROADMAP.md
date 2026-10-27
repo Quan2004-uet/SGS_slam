@@ -1,4 +1,10 @@
-## Phase 7 Post-Implementation Review — COMPLETE LOCALLY
+# Phase 7 Final Archival State — 2026-10-28 (Asia/Tokyo)
+
+Phase 7-A room0/room1 quantitative research and P7-POST-01/02 are complete with documented limitations. GitHub archival is published at remote branch `phase7-bcgm` SHA `bd98f25f15f724d2d4a1414e16b7369007703332`. The Hugging Face `phase7_bcgm/` backup has researcher-provided validation evidence for 3,425 path/size matches and six critical SHA256 comparisons at reported revision `fdc1616e843319af649d3a7ebe710da51be489fc`; current remote metadata was not independently accessible during SESSION_008, and no all-file SHA claim is made. `SESSION_008` CLOSED; `SESSION_005` ACTIVE; `SESSION_006/007` CLOSED. No P7-B approved; next recommended work is thesis/report completion. Detailed source-of-truth handoff: `project_management/SESSION_HANDOFF.md` and `docs/research/phase7/post_implementation/P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md`.
+
+---
+
+## Historical SESSION_007 post-implementation snapshot — superseded by SESSION_008
 
 As of 2026-10-28 (Asia/Tokyo), P7-POST-01 and P7-POST-02 are complete as research/documentation work. Phase 7-A room0 and room1 outcomes remain unchanged. No P7-B plan was located or approved; recommended near-term path is thesis closeout (Option A) unless more compute/time is approved. Source-level findings, quantitative trade-offs, evidence preservation status, and next actions are documented in `docs/research/phase7/post_implementation/`.
 

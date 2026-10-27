@@ -1,3 +1,5 @@
+> **Status superseded for archival state (2026-10-28):** GitHub now verifies at `bd98f25f15f724d2d4a1414e16b7369007703332`; researcher-provided Hugging Face validation reports 3,425 files/sizes and six critical hashes at revision `fdc1616e843319af649d3a7ebe710da51be489fc`. Current HF metadata requery was unavailable. See `P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md`. The following records the earlier SESSION_007 handoff accurately.
+
 # Phase 7 Post-Implementation Final Handoff
 
 **Date:** 2026-10-28 (Asia/Tokyo)

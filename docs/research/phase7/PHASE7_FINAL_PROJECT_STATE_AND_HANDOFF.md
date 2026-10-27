@@ -1,3 +1,5 @@
+> **Historical research handoff:** Git/Hugging Face publication fields below describe the earlier research closure and are superseded for archival status by `docs/research/phase7/post_implementation/P7_FINAL_GITHUB_HF_ARCHIVAL_CLOSURE.md` (SESSION_008, 2026-10-28).
+
 # Phase 7 — Final Research State and Handoff
 
 **Ghi nhận:** 2026-10-28 (Asia/Tokyo)<br>
