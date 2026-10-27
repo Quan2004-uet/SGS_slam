@@ -1,0 +1,113 @@
+{
+  "schema": "phase7-gate2-evidence-manifest-v1",
+  "created_date": "2026-10-27",
+  "session": "SESSION_005",
+  "run_id": "p7_bcgm_g2_room0_on_0_499_r01",
+  "validation_status": "PASS_GATE2_WITH_COMPARISON_LIMITATIONS",
+  "git": {
+    "repository": "/home/robot/research/SGS_slam_phase7_bcgm",
+    "branch": "phase7-bcgm",
+    "head": "68f9060f7ff4d8d141be1d5f71339401327edd06",
+    "working_tree_source_uncommitted": true
+  },
+  "run_inputs": {
+    "dataset": "Replica room0, frame IDs 0-499 inclusive, stride 1, 1200x680, seed 0",
+    "dataset_root": "/home/robot/research/SGS_slam/data/Replica/room0",
+    "dataset_trajectory": {
+      "path": "/home/robot/research/SGS_slam/data/Replica/room0/traj.txt",
+      "sha256": "5692a60076e426b403dc64025ff38c443606a506704545ee192d4dbadedaaca2"
+    },
+    "dataset_rgb_depth_semantic_frames_individually_hashed": false,
+    "config": {
+      "path": "configs/replica/phase7_gate2_room0_on_0_499_r01.py",
+      "sha256": "ff025785249c1811c9ee3b3359cd4656b1992e78d9465b610bfe840ea2026b49",
+      "saved_copy_path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/config.py",
+      "saved_copy_sha256": "ff025785249c1811c9ee3b3359cd4656b1992e78d9465b610bfe840ea2026b49",
+      "effective_input_path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01/effective_config_input.json",
+      "effective_input_sha256": "b9fe4e3a54128da3485fbb56dfc1531148a51165817dee6205457de8f4c46a94",
+      "effective_runtime_path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01/effective_config_runtime.json",
+      "effective_runtime_sha256": "0ac7f651f1f03d65926ac78482c68bd9143e252a679906fef8beb89d86d80667",
+      "event_cap": 9000,
+      "global_cap": 4500000
+    },
+    "inherited_replica_config": {
+      "path": "configs/replica/slam.py",
+      "sha256": "08cc1aef22d70fa3ab390339afdf2cb7a77e34be04a2b08ac3b1353dcbea19b3"
+    },
+    "dataset_config": {
+      "path": "/home/robot/research/SGS_slam_phase4_multiscene/configs/data/replica.yaml",
+      "sha256": "4c1e33544bef24c146c4ec9a622bb3ad7a314168db8d192c191db08bad3edf58"
+    },
+    "source": [
+      {"path": "scripts/slam.py", "sha256": "ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999"},
+      {"path": "utils/bcgm.py", "sha256": "8f30b9c997b10acd988c5a5ac053f2d15c28adde3783ba193ed9da832e908400"},
+      {"path": "tools/phase7/gate2_on_runner.py", "sha256": "68f0c6774e6f111a73c523dea574602831f4c6a7a23ede70b56850aa053cdb66"},
+      {"path": "tools/phase7/gate1b_worker.py", "sha256": "9a449ef10506ebbe6ccd0616d29aa02e9183554b333d605c9440ec07e09ad40b"},
+      {"path": "utils/eval_helpers.py", "sha256": "e94366ca256ec2b51b5d0264a5daba2a895cc0375d7b91e976e4ea0e9e28194e"}
+    ],
+    "runner_sha256_explicitly_recorded_in_original_summary": false,
+    "runtime": "Python environment recorded by run as PyTorch 2.7.1+cu128, CUDA 12.8, NVIDIA GeForce RTX 5080"
+  },
+  "run_result": {
+    "status": "COMPLETE",
+    "process_exit_code": 0,
+    "frame_count": 500,
+    "saved_pose_count": 500,
+    "insertion_event_count": 499,
+    "gaussian_count": 2198608,
+    "bcgm_valid_candidates": 1562329,
+    "bcgm_admitted": 1478249,
+    "bcgm_rejected": 84080,
+    "event_cap_activations": 41,
+    "global_cap_activations": 0
+  },
+  "artifact_roots": [
+    {
+      "path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01",
+      "file_count": 7,
+      "total_bytes": 2076328,
+      "sha256_sorted_path_size_file_sha256_inventory": "908179973ae8c3af696eeb736a718fd5ac3e92c639694ea4c98b1f8b3b2ebfc5",
+      "inventory_method": "SHA256 over sorted UTF-8 records: relative_path NUL byte_size NUL per_file_SHA256 LF"
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01",
+      "file_count": 417,
+      "total_bytes": 669808512,
+      "sha256_sorted_path_size_file_sha256_inventory": "a6730543fb8cff25f11ab74f379c17ddb853cf2a867929d2b088369a643395ff",
+      "inventory_method": "SHA256 over sorted UTF-8 records: relative_path NUL byte_size NUL per_file_SHA256 LF"
+    }
+  ],
+  "key_artifacts": [
+    {"path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01/run_summary.json", "sha256": "838ec41a5b1ee9710b7e11bd853d6cd05d2b0dafe412e2f152874a2e19395e48"},
+    {"path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01/stdout_stderr.log", "sha256": "7132d3530f91c1487fb01c4b988f886cb5c81e78b3e4ef96862dddcc9e28566a"},
+    {"path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01/insertion_counts.jsonl", "sha256": "554f97c8e169daa5aaaee74506a2e5a63ae674f59c554ae7c0f8780e1f567e58"},
+    {"path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01/nvml_samples.csv", "sha256": "f79e46957e2e6cc3d7118e6636a084e93be3e98580107526773d830a3415b6cc"},
+    {"path": "results/runtime_artifacts/phase7_gate2/p7_bcgm_g2_room0_on_0_499_r01/nvml_recovered_summary.json", "sha256": "f87a34d4fe584b096303689c1671afd38984f09f05529772d0b664db12be0e3c"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/params.npz", "sha256": "9873d470c2a6adf3c209b814779eeee9a73d99f55bed7df9f7afa0376c2859eb"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/params0.npz", "sha256": "e63e15e4f4d2c0ea18f51e2edff8bd153cee96567841e50f832b080e123ea311"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/config.py", "sha256": "ff025785249c1811c9ee3b3359cd4656b1992e78d9465b610bfe840ea2026b49"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/keyframe_time_indices0.npy", "sha256": "f6df0000bed676f0a4b777e2a1d915b6608dab452e11737f82c685cebf0e8ba7"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/params.ply", "sha256": "391102c565a32f0e1553c11b5d0e984683b8a762f25786c75f2a5db20e4b9e76"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/seg_params.ply", "sha256": "8ade31e9f4f29c6f90754b59b02d78d36b74de5029fa32d2f2f8a88ff3047ded"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/eval/psnr.txt", "sha256": "1e49c497e76327b53146b2a25679717d5ad55b5e9615274776cda0d42822c2e2"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/eval/ssim.txt", "sha256": "e42281f231fce210d65888935ddeeb2266e8adc05bd7ca06ce67a8eb60f8e8b5"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/eval/lpips.txt", "sha256": "eb668542939ace69147f7cc3176fd9eb0ebed3c34851c86a64526996e4a4d474"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/eval/l1.txt", "sha256": "8b839b24234a357c2dc42d60dde5884756a4a0eb4d9d7391b577ad1c2372a883"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/eval/rmse.txt", "sha256": "8b839b24234a357c2dc42d60dde5884756a4a0eb4d9d7391b577ad1c2372a883"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/eval/miou.txt", "sha256": "3b8941b49fdbecfac0977f417f439422cfe2f8f41a8f142c2def2b19327ad861"},
+    {"path": "experiments/Replica/p7_bcgm_g2_room0_on_0_499_r01/eval/metrics.png", "sha256": "5faa00e2da60cd97ac6d1d9920695b8e4de088ec47760fb58918c08e9fed39bd"}
+  ],
+  "known_evidence_limits": [
+    "Original run_summary.json has incorrect NVML aggregation; recovered sidecar is separate and original CSV/summary are unchanged.",
+    "Input RGB/depth/semantic frame files were not individually SHA256-listed; dataset root, scene, frame interval, and trajectory SHA256 are recorded.",
+    "Original summary does not store runner SHA256; the manifest records the inspected current runner identity and the prepared run-contract identity, not an in-summary attestation.",
+    "Historical Phase 4 Gate 4 lacks saved quality/trajectory evaluation, NVML samples, and complete effective source/config identity.",
+    "Gate 2 Global Cap did not activate; runtime behavior is not validated."
+  ],
+  "reports": [
+    "docs/research/phase7/PHASE7_GATE2_FINAL_VALIDATION_REPORT.md",
+    "docs/research/phase7/PHASE7_GATE2_METRIC_COMPARISON.md",
+    "docs/research/phase7/PHASE7_GATE2_NVML_RECOVERY_REPORT.md",
+    "docs/research/phase7/PHASE7_GATE2_BASELINE_REUSE_AUDIT.md"
+  ]
+}

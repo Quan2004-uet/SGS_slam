@@ -1,0 +1,26 @@
+{
+  "artifact_count": 3,
+  "artifacts": [
+    {
+      "path": "results/runtime_artifacts/phase7_gate3_room1/p7_bcgm_r1_full_room1_on_0_1999_r01/offline_ate_validation.json",
+      "sha256": "c90703e21b5660f47cb4921d6fb19f5e15a406826538845422e64137da5cd7e0",
+      "size_bytes": 781
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3_room1/p7_bcgm_r1_full_room1_on_0_1999_r01/offline_ate_validation.md",
+      "sha256": "dbedc228929a99323a992254f7ae0678e089c713199b9005430a38d5a35307bd",
+      "size_bytes": 544
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_r1_full_room1_on_0_1999_r01/params.npz",
+      "sha256": "27a388536ced6a5cf5dc59395a980e1f74a99c2a438c4290773d4e54eafadf32",
+      "size_bytes": 292624100
+    }
+  ],
+  "hash_algorithm": "SHA256",
+  "manifest_version": 1,
+  "run_id": "p7_bcgm_r1_full_room1_on_0_1999_r01",
+  "self_hash_policy": "manifest excludes itself",
+  "status": "PASS_SUPPLEMENTAL_INTEGRITY",
+  "title": "R1 offline ATE supplemental integrity manifest"
+}

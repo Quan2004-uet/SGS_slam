@@ -1,0 +1,2520 @@
+{
+  "baseline_artifact_preservation": "NO_OVERWRITE_OBSERVED; PRE_RUN_HASH_COMPARISON_NOT_AVAILABLE",
+  "created_utc": "2026-10-26T18:51:14.101449+00:00",
+  "dependencies": [
+    {
+      "path": "/home/robot/research/SGS_slam_phase4_multiscene/scripts/slam.py",
+      "role": "frozen_phase4_online_source",
+      "sha256": "a26aafe4686acf65ca5523eb2758b7026ee35cc4e6a63690fc1f433c950732b3",
+      "size_bytes": 61514,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/scripts/slam.py",
+      "role": "phase7_online_source",
+      "sha256": "ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999",
+      "size_bytes": 63670,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/utils/bcgm.py",
+      "role": "bcgm_admission_policy",
+      "sha256": "8f30b9c997b10acd988c5a5ac053f2d15c28adde3783ba193ed9da832e908400",
+      "size_bytes": 4698,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase4_multiscene/configs/replica/slam.py",
+      "role": "frozen_base_replica_config",
+      "sha256": "08cc1aef22d70fa3ab390339afdf2cb7a77e34be04a2b08ac3b1353dcbea19b3",
+      "size_bytes": 4985,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/configs/replica/slam.py",
+      "role": "phase7_base_replica_config",
+      "sha256": "08cc1aef22d70fa3ab390339afdf2cb7a77e34be04a2b08ac3b1353dcbea19b3",
+      "size_bytes": 4985,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase4_multiscene/configs/data/replica.yaml",
+      "role": "camera_dataset_config",
+      "sha256": "4c1e33544bef24c146c4ec9a622bb3ad7a314168db8d192c191db08bad3edf58",
+      "size_bytes": 167,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam/data/Replica/room0/traj.txt",
+      "role": "room0_trajectory",
+      "sha256": "5692a60076e426b403dc64025ff38c443606a506704545ee192d4dbadedaaca2",
+      "size_bytes": 811033,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/utils/eval_helpers.py",
+      "role": "metric_implementation",
+      "sha256": "e94366ca256ec2b51b5d0264a5daba2a895cc0375d7b91e976e4ea0e9e28194e",
+      "size_bytes": 51905,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/tools/phase7/gate1b_runner.py",
+      "role": "runner",
+      "sha256": "044a2d3354fbbea196a35def864c494d7794c093d5dd7091d2e1a289c12942ce",
+      "size_bytes": 14059,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/tools/phase7/gate1b_worker.py",
+      "role": "worker",
+      "sha256": "9a449ef10506ebbe6ccd0616d29aa02e9183554b333d605c9440ec07e09ad40b",
+      "size_bytes": 3832,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/configs/replica/phase7_gate1b_room0_p4_0_99_r01.py",
+      "role": "p4_arm_config",
+      "sha256": "f559e349a65fd3d92c0de0ea553abd93f75b0767e05b6d2729549de1b5c6bc27",
+      "size_bytes": 703,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/configs/replica/phase7_gate1b_room0_off_0_99_r01.py",
+      "role": "off_arm_config",
+      "sha256": "887ab9d9e7b92c11bd002d5bed4c4c3944d993624ef86b39198d8fdd5392e3db",
+      "size_bytes": 746,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase7_bcgm/configs/replica/phase7_gate1b_room0_on_0_99_r01.py",
+      "role": "on_arm_config",
+      "sha256": "498d494db39beb55f28e6c6cee3d1edcc7ed763540b5cfd947c44988ef79e853",
+      "size_bytes": 839,
+      "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+    }
+  ],
+  "hash_algorithm": "SHA256",
+  "immutability_note": "Content-addressed read-only snapshot. SHA256 and ZIP CRC verify bytes at manifest creation; filesystem WORM and independent backup are NOT_VERIFIED. Do not edit this record after creation.",
+  "matched_effective_input_config_sha256_excluding_run_name_and_bcgm": "21fe6546fec201254f320f090cdac4b5d3a00f54c666834075834968df859935",
+  "matched_effective_runtime_config_sha256_excluding_run_name_and_bcgm": "3ac18e7c5e38fe4413b75cf894833ef7645d320eb9c5be1a0042148cd1768c5c",
+  "runs": {
+    "off": {
+      "checkpoint_validation": {
+        "estimated_pose_slots": 100,
+        "gaussian_field_alignment": "PASS",
+        "gaussians": 1406470,
+        "keyframe_indices": 22,
+        "keys": [
+          "means3D",
+          "rgb_colors",
+          "unnorm_rotations",
+          "logit_opacities",
+          "log_scales",
+          "semantic_ids",
+          "semantic_colors",
+          "cam_unnorm_rots",
+          "cam_trans",
+          "timestep",
+          "intrinsics",
+          "w2c",
+          "org_width",
+          "org_height",
+          "gt_w2c_all_frames",
+          "keyframe_time_indices"
+        ],
+        "numeric_finiteness": "PASS",
+        "numpy_load_allow_pickle_false": "PASS",
+        "saved_gt_poses": 100,
+        "zip_crc": "PASS"
+      },
+      "completion_status": "EXIT_0_NORMAL_RETURN_100_SAVED_POSES_99_INSERTION_EVENTS",
+      "config_sha256": "887ab9d9e7b92c11bd002d5bed4c4c3944d993624ef86b39198d8fdd5392e3db",
+      "effective_config_input_sha256": "d0777bb180d135d4c38e424b73605f4df41d99dcd28af8fce804c32f55f20291",
+      "effective_config_runtime_sha256": "c65f4e2d346ab80798a1d806770c507f8561c02ddad22d35547b5aadc1cd6a9d",
+      "file_count": 103,
+      "files": [
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_off_0_99_r01/effective_config_input.json",
+          "role": "runtime_evidence",
+          "sha256": "878c4f019229237e7993b9161da6c29fbcc606ce87aa18a6b2214ebb9c96ad90",
+          "size_bytes": 3279,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_off_0_99_r01/effective_config_runtime.json",
+          "role": "runtime_evidence",
+          "sha256": "b120eba34ee5bcf55502859ef871f97eb634376ccd5eff6b3ec328020a99bbb7",
+          "size_bytes": 3584,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_off_0_99_r01/insertion_counts.jsonl",
+          "role": "runtime_evidence",
+          "sha256": "83a4df0ebd7fb7379816e2c80c338c4a44b99750ebda8959cab5c2aa12c7f776",
+          "size_bytes": 9253,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_off_0_99_r01/nvml_samples.csv",
+          "role": "runtime_evidence",
+          "sha256": "2218b6b30c42fa35e25fe576e854daa01a8219baec6aca3948cb7b7946ebd09e",
+          "size_bytes": 17497,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_off_0_99_r01/run_summary.json",
+          "role": "runtime_evidence",
+          "sha256": "11ab8dd22bfbbb96f36386b97ae604f8b1159420cbfe624d1113fa9abb195b87",
+          "size_bytes": 2188,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_off_0_99_r01/stdout_stderr.log",
+          "role": "runtime_evidence",
+          "sha256": "f26398984b7fdfbff00ce7333a1e362aecd2ad5523bc1a192b5c687240e4bd64",
+          "size_bytes": 316358,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/config.py",
+          "role": "model_and_evaluation",
+          "sha256": "887ab9d9e7b92c11bd002d5bed4c4c3944d993624ef86b39198d8fdd5392e3db",
+          "size_bytes": 746,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/l1.txt",
+          "role": "model_and_evaluation",
+          "sha256": "db0cb4328ff9b00c803c7a7bcc3880796b545eaa8c54666fd4005e10a5a70079",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/lpips.txt",
+          "role": "model_and_evaluation",
+          "sha256": "d49e2b867b70a89d70b1238f3d41ff98df9226739ca51a35670ea4cda8f7cfe4",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/metrics.png",
+          "role": "model_and_evaluation",
+          "sha256": "f87c6c871f46d0e46666e2339190d962b66ecec4564cabfbd0968e8dc4f6d05f",
+          "size_bytes": 79256,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/miou.txt",
+          "role": "model_and_evaluation",
+          "sha256": "10e98b81f24de144e8a6f5eb1e5742db3790112090bcb730752399c0dd897ebd",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "1678a599fcc65c88468205fdd068618c40a8867958e95c10ba69b6a1d9b1cec5",
+          "size_bytes": 703848,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "5d90210b0c824a4504b6548dfa4758c696caf7ef56ef02e2210818afd94a1fdf",
+          "size_bytes": 703128,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "3b3e65f145391a6fdedb313c6fe8d3e9707cd615e02843271d5fad0f9a2cd731",
+          "size_bytes": 704112,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "3fa3db2088c1ac610275fa1547c38cf86c6eec2246e11108a1a13484111dba57",
+          "size_bytes": 700681,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "f97eea91c740cc8bb54ca9f293dd4eec9c92fea1955e757110d0d16cb7a57a7f",
+          "size_bytes": 675811,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "60d2f21601e53a84cd0b04572d9a5853a2a40720b707b01f955cfb7f20e889ee",
+          "size_bytes": 677964,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "473ba536ac9b0b17c038a727ae8c011c9331806310c3d704a0de0eccc2007c24",
+          "size_bytes": 669242,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "55aaf1b2aa1bd8c8653449f9c77d066b9926fbe5ddac442366aef8013354f11f",
+          "size_bytes": 652634,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "4e08e1d1ba368ae1bbfe04b2b16ef5aeeaf62a5f70577ee0bc0b953f7bdefd4b",
+          "size_bytes": 642474,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "674711aeea9e57548bb7891ad0265d154148fb3bc7cf2a7ab0e5ba05c990e7a7",
+          "size_bytes": 629412,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "836fbffcd17e835bda5f4e3d92fe3fd52c90cb81f448d8a3d48f5614e844e1b1",
+          "size_bytes": 618831,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "f9ee1eae302c920c8891afbf1d3fc59dbb61b2b79fb4b70dca0a2df1f1ec1782",
+          "size_bytes": 603472,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "a9d90e8346ea5fb5d4ef836d5cf616cbce9869689ae2fa9a6889db7afaf7caff",
+          "size_bytes": 597034,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "3b5d03cdbb20cacae6920c390d35aae9e903d238b9345478a1a16b1b971a7bd7",
+          "size_bytes": 590291,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "11bcbc9f5bed7aebfc455441e36471b7d8c2d5fb231659044bc248cab91b2bdf",
+          "size_bytes": 582596,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "894cc1cb4337857af6f950256813d89b7a42919a8a17f345c2e2aae6d2f45cb1",
+          "size_bytes": 564321,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "76a27a18d9192e903b1c7492e6764cc6148651793acdd6cbaaf05b22a3910736",
+          "size_bytes": 544000,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "ff658e600311386554459071cbb08329f15e6222d3e9d621a35c4197cd12993b",
+          "size_bytes": 548718,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "b3e816431baf24a7baaa03474104a7709dbb3c2f50e597a26ebe8e1d06efc421",
+          "size_bytes": 548775,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "a14a9898add6c37e694e4660f12db2519d932f11fa54e2862b1345c2e84ea353",
+          "size_bytes": 551816,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/plots/0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "2c79c36c4b83808c8176e1b941daa86829532243a88a9b6e7b267cdad1bf5346",
+          "size_bytes": 555071,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/psnr.txt",
+          "role": "model_and_evaluation",
+          "sha256": "b0b58145dc1a613e5cbec53ed9b01bee55a85c723b2eee817bdaf055aa31f7db",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "b812a437b654ad3883fad98d4c0144c260d7281370fa7d0e9fdd7e0973291720",
+          "size_bytes": 182924,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "b55ac1e52966c1e4bd0cf32fdc91094cacf01388e63abc556d0e9735c0e095c1",
+          "size_bytes": 180218,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "0343c6aaf2f5ea329ef37818ddb47aa5cc8ba8e4bbcc00bff162aa3d3f023b85",
+          "size_bytes": 181316,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "8bcb469ade810300c0427841e0b0f2b92fd943498daa941c36cfaeee2b4e5566",
+          "size_bytes": 184993,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "d379fa6358388e668ebc6cd38c567e2715a9d52dbd462782f23e4b993b239b3b",
+          "size_bytes": 190367,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "97559fbe54d8127dbb0845f3fdb731331b187d0c85d6e7bb8032106a79b46e07",
+          "size_bytes": 197428,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "e2c18fb4945e2f11e1a503d586a60ae93704602f44497f11184136f3a07b0d80",
+          "size_bytes": 200388,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "7ba30248faa588389375463f196156bc5b195111879af0113c4fa16dec95750a",
+          "size_bytes": 201110,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "cb7ddb8ac7600f98e5419393eade6c0279e3f12dcb83ded06ea3563474888758",
+          "size_bytes": 200720,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "b302301f5e8d3e7b71bea0c050d2541c5d2cb780a2b80265a9f2be0d2cd384cd",
+          "size_bytes": 199188,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "83df40d754a688e222072b958949366fbc10dc9b11019713925a1fdf36e372d4",
+          "size_bytes": 198083,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "74a6326e0c86cde7487c478cc711ad39b316ce12cb92c83ce2f3891bb3e6ff28",
+          "size_bytes": 194130,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "c28c3274c75602d2f629380af3b6dac7cf937e6c809c57ad6a5948373a7e401e",
+          "size_bytes": 191491,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "7f732d01d3f6bbd7fc3db175c54202cbe81589f55dba23b47b85f01fa6544a80",
+          "size_bytes": 191548,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "448f7b463c82589e4b9f505f71c0136925b043909b82bcd4daf6a0c79e90514c",
+          "size_bytes": 195670,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "b5849dd94fb3fd8f9d7f2b260439cfd75217428b991b289163cfa8212ca4f3c7",
+          "size_bytes": 198369,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "30691c183cbb9100c935ab6b9404c7a653dbf980590ac1b774f8f65245260c01",
+          "size_bytes": 197402,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "f6c143950ced1c4d9d662d11290d508d3fcc6a3b4552917126ae203f2f6e589f",
+          "size_bytes": 202461,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "77083c4845ba06ec6e9a806d191592618fd62f07e614c0f1584bddb4eabaab19",
+          "size_bytes": 198889,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "10dcc44da851d6d233921d29198eb8f0c7116a002efb234cdc0a3c69602500d2",
+          "size_bytes": 199073,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_depth/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "7f84e97bdb2249c3077c0d45079bc878ee76b6e50a69107a6cd62c987a5d0f30",
+          "size_bytes": 201138,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "568282cb395c19133f871e19e24880205be683027723d2af53da0b5d137a449f",
+          "size_bytes": 906545,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "5fe1610b3768fe78486aa028cedabcb4beb79fc21365718bb816ae7877de3f28",
+          "size_bytes": 903706,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "6a944447adcea3beccadc566ea1283ef44c8e2ff35c695fd620f73eefd89557a",
+          "size_bytes": 900127,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "559ab18308912a0d633791064a307484d8fc519d3ad6bb95f0465495400b0a5b",
+          "size_bytes": 888892,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "19c75d42400ede2703b42b75c8385fb904df5f897b4e57c78575de94b638e367",
+          "size_bytes": 873191,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "7b8171863cc4065189bdf12ea47db84330fce5ca9a14d045e245d632c498aa20",
+          "size_bytes": 861400,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "fdc05ab01342e4b20fd56aa680f91d7b8ce34fcb0e90d083a580054432bb6915",
+          "size_bytes": 855991,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "e523d3b0d5b33e200fa92717421df7b19b69bd3346a01ad486ff74b2e9e6eb2f",
+          "size_bytes": 846854,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "d6170586ac6491694222caa62b04421d97521f7d1959ad85fa17a032881298b1",
+          "size_bytes": 835127,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "b87868f990fdc0463cb737b52139b321afc91781d862b7dd36f62b17c3e75a4f",
+          "size_bytes": 819738,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "8bfb4a69a106af3e68b6b1fdabd83af8ba830cb0794085662b0ea33945e5a38f",
+          "size_bytes": 800730,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "ea21cee3943469db64fa5966496a39a735049e677c2c942580f5cf45d20d096c",
+          "size_bytes": 771035,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "29877af85255a79659fa676deb81a2ff6857fff605b9725cb625c2093a97ebe2",
+          "size_bytes": 763727,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "a066e580a40475842f07dda468784b5ca2fa6ebaed8ce229e3a4689e77e0a9c4",
+          "size_bytes": 766235,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "d9cb941b965fa7541b581c834fe99f908a4212611e16558a3232f368b0bf5e8e",
+          "size_bytes": 768362,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "cf8012204a3e83e0821ef982d1704b34b152f24aa6d7539c2d7c0ed135c1aa74",
+          "size_bytes": 766858,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "70be3c9034b19523261e2ebe7bae98f37cb01cb332edf0c154be913a99d3a367",
+          "size_bytes": 762258,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "eeb3c0748ab18af1a75d6258cb55d2bb4306ce97ebedd871a918fd8c49348987",
+          "size_bytes": 768019,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "c5978e0ebbb9c6be36487cd459e7b5f27f52288285a912c58be81fa1e9bcc32e",
+          "size_bytes": 776638,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "bd6ae306b09a5867e74cbc5c20be56f2890aa1ef9b91a5d63bbea6c61c7169fc",
+          "size_bytes": 792620,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_rgb/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "869d12983da9053ed3c5130e47759957c08deaa0bdb65a777ce437426bc1bb4e",
+          "size_bytes": 805646,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "047774d97edfad933ef26754ae4e560518de70178df71ba75627ee19e518143b",
+          "size_bytes": 24769,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "88e86ac83b5d258b4b4b0eaa4be51e414e527d84ed10b720546042d7f07d6b0a",
+          "size_bytes": 24739,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "d552d691a06a2d91ff883b69cd779426659da9b5cddcf9cf8f6a08a6bf835190",
+          "size_bytes": 24557,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "1a3fdf4eeb079ad58bd49370ed58b9a587cd82ab72e62ecbbc999f77b476ab41",
+          "size_bytes": 24283,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "9c6746970b1a9b1dc9ce48353e9e0985bedf897e47754e224b8b65d03e37cce6",
+          "size_bytes": 23755,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "bf40cd32515f403c25e9b5876afcf8e720c25e3a8a0966b9f8d0ed7b487a6f0c",
+          "size_bytes": 23398,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "865c298603bce100b4b6a924d7ccb0460c01bb207f5d2a69665eac2800fd9021",
+          "size_bytes": 23351,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "246c8b3b3f25d057f449891a8e3c06edb0cc7ba15a5d08929a148c81413df43d",
+          "size_bytes": 22787,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "2893e24e60e944006da9c371de740a88835eff6275d8036195eb828f098038e2",
+          "size_bytes": 22502,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "d56397f8064e42bd3a65a83f533ab50504aec36a4f6224979f2e190820ba379b",
+          "size_bytes": 22324,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "6a3a89c83ee3fe0ab6f4291e5481ca4f352208e3dd5e73f0dd2424f2e5f024fc",
+          "size_bytes": 22415,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "3f1b057660baf292ec1a11f0c92dac43864b5a738ee27dc44eed7ee49e9c9b20",
+          "size_bytes": 21225,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "1f31fd4de44375ebd5b248987c95e7e3f13f1b625317950c379af9e48273c6d4",
+          "size_bytes": 21132,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "da442802c0d8f9a76618aef96705598b6fcc8a1cec63a191e0f3993fc760126c",
+          "size_bytes": 22377,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "630969ee48390d999609b90304f00a18f4cdaf8d5331a413cb4a19aeb3614395",
+          "size_bytes": 23591,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "70a8926b4aaf1a19f255576ab6d0deed8fe5bc442203fc7fc5566cd9ef032816",
+          "size_bytes": 23362,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "5d02e33e13d6750a354ebf03f6848914286c40e3bad328a8c199bc9ac5cea692",
+          "size_bytes": 21638,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "6f3c191e7f99e23417dd67b0b9b85d4afaee276cdad2bc690c87e1af7ca20414",
+          "size_bytes": 21724,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "64dbfa730fc2005d119d4dd26ef76268db21ab125e16ffd942562cea8c4ff250",
+          "size_bytes": 20944,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "2aede83c993c968d6be36cece951b4034e391a03a31f2b7f9c985698b4f4c893",
+          "size_bytes": 22623,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rendered_seg/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "18ddeffda1ab04d97ac55e7f1a5518f1ba0f33963e3235bd44e00ae35b93802c",
+          "size_bytes": 22983,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/rmse.txt",
+          "role": "model_and_evaluation",
+          "sha256": "db0cb4328ff9b00c803c7a7bcc3880796b545eaa8c54666fd4005e10a5a70079",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/eval/ssim.txt",
+          "role": "model_and_evaluation",
+          "sha256": "a3156e39d7d9ddf1a134d3fbe16cc95a150308d965da3a3f6677e98bd3c9d4d5",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/keyframe_time_indices0.npy",
+          "role": "model_and_evaluation",
+          "sha256": "f6df0000bed676f0a4b777e2a1d915b6608dab452e11737f82c685cebf0e8ba7",
+          "size_bytes": 136,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/params.npz",
+          "role": "model_and_evaluation",
+          "sha256": "512a8fe0c29de2bdc8aca656d71737dac37d1726fc6f2525eb5b7dd3babd61a1",
+          "size_bytes": 91434150,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/params.ply",
+          "role": "model_and_evaluation",
+          "sha256": "436ef6f80b92fc8871c2c5bd6cf52bb9d2276caf0e89f15d71a07938d3a60254",
+          "size_bytes": 95640377,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/params0.npz",
+          "role": "model_and_evaluation",
+          "sha256": "cbbcc6054ca5692812dd59845cd0867408e046e92c8411e8a28c4fe3e9939ef1",
+          "size_bytes": 52229000,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_off_0_99_r01/seg_params.ply",
+          "role": "model_and_evaluation",
+          "sha256": "a51a12efc9e1d1efecff0d58aed95324a04491216cdca3b60e740d3902b1a244",
+          "size_bytes": 95640377,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        }
+      ],
+      "initial_checkpoint_validation": {
+        "estimated_pose_slots": 100,
+        "gaussian_field_alignment": "PASS",
+        "gaussians": 815998,
+        "keyframe_indices": null,
+        "keys": [
+          "means3D",
+          "rgb_colors",
+          "unnorm_rotations",
+          "logit_opacities",
+          "log_scales",
+          "semantic_ids",
+          "semantic_colors",
+          "cam_unnorm_rots",
+          "cam_trans"
+        ],
+        "numeric_finiteness": "PASS",
+        "numpy_load_allow_pickle_false": "PASS",
+        "saved_gt_poses": null,
+        "zip_crc": "PASS"
+      },
+      "logical_bytes": 370244666,
+      "metric_samples_per_field": {
+        "l1": 21,
+        "lpips": 21,
+        "miou": 21,
+        "psnr": 21,
+        "rmse": 21,
+        "ssim": 21
+      },
+      "run_id": "p7_bcgm_g1b_room0_off_0_99_r01",
+      "source_commit": "68f9060f7ff4d8d141be1d5f71339401327edd06",
+      "source_sha256": "ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999"
+    },
+    "on": {
+      "admission_checks": {
+        "99_unique_ordered_frames": "PASS",
+        "aggregate_totals": "PASS",
+        "append_matches_worker_trace": "PASS",
+        "candidate_partition": "PASS",
+        "flags_and_reasons": "PASS",
+        "global_cap": "PASS",
+        "per_event_cap": "PASS"
+      },
+      "admission_totals": {
+        "admitted": 564346,
+        "event_cap_activations": 14,
+        "event_cap_frames": [
+          1,
+          2,
+          3,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "events": 99,
+        "global_cap_activations": 0,
+        "max_admitted_per_event": 9000,
+        "rejected": 35201,
+        "valid_candidates": 599547
+      },
+      "checkpoint_validation": {
+        "estimated_pose_slots": 100,
+        "gaussian_field_alignment": "PASS",
+        "gaussians": 1375645,
+        "keyframe_indices": 22,
+        "keys": [
+          "means3D",
+          "rgb_colors",
+          "unnorm_rotations",
+          "logit_opacities",
+          "log_scales",
+          "semantic_ids",
+          "semantic_colors",
+          "cam_unnorm_rots",
+          "cam_trans",
+          "timestep",
+          "intrinsics",
+          "w2c",
+          "org_width",
+          "org_height",
+          "gt_w2c_all_frames",
+          "keyframe_time_indices"
+        ],
+        "numeric_finiteness": "PASS",
+        "numpy_load_allow_pickle_false": "PASS",
+        "saved_gt_poses": 100,
+        "zip_crc": "PASS"
+      },
+      "completion_status": "EXIT_0_NORMAL_RETURN_100_SAVED_POSES_99_INSERTION_EVENTS",
+      "config_sha256": "498d494db39beb55f28e6c6cee3d1edcc7ed763540b5cfd947c44988ef79e853",
+      "effective_config_input_sha256": "c5b76b26ae0f7c6e6c60b18d258e8ae34e27c40811e17fbf13ad1766a74a5c79",
+      "effective_config_runtime_sha256": "453450149c3b28d66ebc688866124e49cc080c340f973ed9c19f2a3f9ce555ec",
+      "file_count": 103,
+      "files": [
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_on_0_99_r01/effective_config_input.json",
+          "role": "runtime_evidence",
+          "sha256": "6089866d75a29c6ee3081faa914ef574ef16b3571ebaa44cfeeae551fb438f38",
+          "size_bytes": 3348,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_on_0_99_r01/effective_config_runtime.json",
+          "role": "runtime_evidence",
+          "sha256": "6209b3eb288ad16dd9139056d6b1715d6a6ceaf0345ef8ff9ee9ecfea05dd74f",
+          "size_bytes": 3653,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_on_0_99_r01/insertion_counts.jsonl",
+          "role": "runtime_evidence",
+          "sha256": "ab71d69662c49b39103be67f4c3c4f7645bb26107e7001bd35ea006586b734e7",
+          "size_bytes": 9252,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_on_0_99_r01/nvml_samples.csv",
+          "role": "runtime_evidence",
+          "sha256": "dad851d467461aff9cd016c5f80d41e0a39b20321317aecb1d27e6a0c4b14ac9",
+          "size_bytes": 17412,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_on_0_99_r01/run_summary.json",
+          "role": "runtime_evidence",
+          "sha256": "e98b5b68a22cc66ba995da7a3debced05c5c846dd5e35d4899965866fc8ad5dc",
+          "size_bytes": 2182,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_on_0_99_r01/stdout_stderr.log",
+          "role": "runtime_evidence",
+          "sha256": "7200a5dac3389985b77bbbd23944f8cf44e9a7618c95fc858d45eca5a68637da",
+          "size_bytes": 343791,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/config.py",
+          "role": "model_and_evaluation",
+          "sha256": "498d494db39beb55f28e6c6cee3d1edcc7ed763540b5cfd947c44988ef79e853",
+          "size_bytes": 839,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/l1.txt",
+          "role": "model_and_evaluation",
+          "sha256": "0fdcfd3b7e3aaaf427c0fe854e2291683d23e0c92363e7c237e22c97981f0c94",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/lpips.txt",
+          "role": "model_and_evaluation",
+          "sha256": "73e5bddb422455a2d1d19104937a67ef05da4b078e5d3403c0807b2a15af4b02",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/metrics.png",
+          "role": "model_and_evaluation",
+          "sha256": "7cd2c3899366f9d5c77c47a1aba557e495fec3148f3bfa3a525b6e7484bc48f4",
+          "size_bytes": 80828,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/miou.txt",
+          "role": "model_and_evaluation",
+          "sha256": "646d68db11ab4108648a6e390dd96b167dba7f9460a309e782464306a65a21e1",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "7b806fa64fb8c95f89dfdc4fa8e6efdfc48a30c12d6d5e05baefaf98c969056a",
+          "size_bytes": 702306,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "f5d8e4b76e1dbfa8fa067ea73ddfea980dfd5f37d548badb0170a767f287b8b4",
+          "size_bytes": 702645,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "46705e286df549384619be4a54326db19bc39a94d96c664fc550a0191d74eb63",
+          "size_bytes": 703794,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "3d8b6596ac2388a16ea5c324d9a92cdb604ec97da6f16221ee1c7c166bae6af8",
+          "size_bytes": 700398,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "2d9002272b1ab4c8df403826fd6dff4e05cddbbd2646471609c8faeeecc68d19",
+          "size_bytes": 674674,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "be9a3501932d3524883edb29ee166d94947eab4d487cb004511d1d2fd46f04da",
+          "size_bytes": 679046,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "64dd03f8ab08bdaed68ea841931b74b4f9191f38d8b4916eaaaf16a418d0bd24",
+          "size_bytes": 668690,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "b266446dc0eda5319623bd8abd76ab8d363c2bd628f8bd1b32359b19218b16c3",
+          "size_bytes": 652744,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "5ab4d03eeadcdeffd3108d0fc6833c45fecc25fbcd383dcb055dd73e64dc6bac",
+          "size_bytes": 642463,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "6599f3cdc9f893ac82d878c380bcfaf30ee54994b18b0e4e4b53812d588eb05a",
+          "size_bytes": 629245,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "b90781715fa721bf6b1ab83bb3dd2ac408c5c92e943175cd493351812c3910e6",
+          "size_bytes": 618787,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "0419919622e70b3906fe6d2d4df6dcf2ab68d82e535712687034af6c18036b4e",
+          "size_bytes": 603312,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "9b98502c0b6f1eee0172f1462cc6df28e76cca264e9a4ac4bd1d3b7fd5f1a9b6",
+          "size_bytes": 596024,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "cf4a3f8216af5b396ba6d79789ceced8263b2de961630e3f7bcd104b971041e0",
+          "size_bytes": 590297,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "e6ace7471bbac44f828f557f5a886e2228cad560103afc031dbe50e1d7629070",
+          "size_bytes": 582179,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "9d4822d6bc368c7dc66b8f5ff032434c8eb1dfc7d807be8cad3e04d0bf4b20b2",
+          "size_bytes": 564996,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "92bc09d755b19279ee06d10239618705aaed3c4fc56cdbfbd32777a8bed6be09",
+          "size_bytes": 545198,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "72c1bd8e8b05732691ecd1884c70cc74c49baeb1b644a3984e5c9ab6924ec240",
+          "size_bytes": 548832,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "ed9842437916057a8beea431955cd533ee68f050e842c90db04fcdac4495f94e",
+          "size_bytes": 548191,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "88e8f5eb36cb4a5d98f010f9663a0183c4bda2a549d8d231fab10d30d59cfc67",
+          "size_bytes": 552947,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/plots/0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "2eb7271e9a81bdedbce0345961591c1b27edc0f77ca9a82a51926e4246ab083c",
+          "size_bytes": 554871,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/psnr.txt",
+          "role": "model_and_evaluation",
+          "sha256": "247f1880898134e1b607155b880fe31a98b29b4819ac50d5ee47fe4b373cc40a",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "24c6a18bde088945a08b26016dc6beb38b273abe75e8ef8c07cfcd495002bb8f",
+          "size_bytes": 182969,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "f894e622326a70245e2f5ad7e2ad69820e2ebc282db9792096edb0ffac21a131",
+          "size_bytes": 180419,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "79b9364d8aa11343af81dfdae1f8516c231ecb26561d6c3e923ed3309f6ba8a1",
+          "size_bytes": 181467,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "181b546ad4b3fb4b5457379001704139ef2965650e5b4cebbe3cd5fe95ce314a",
+          "size_bytes": 185472,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "3d4a8c82683539eb01c6d8a69f33ef7dfa8f8c6af3475b08860fb34b189c23ba",
+          "size_bytes": 190307,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "08a81296bd6bead99762043bf00167ca031b920737690467d27230bea38ad0a3",
+          "size_bytes": 198341,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "dccb422de64352bf5d3be8e78f26083ec98e364cce7957aceae558e58c608c10",
+          "size_bytes": 200274,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "9c34193266fc0093265a339a5c16444acc6e07d5eed6a339197e016dbe18d3e9",
+          "size_bytes": 201165,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "618c36a1ac62a4ca55d632b48c0220ff1a972a419dd43f55a5d57f904e29c774",
+          "size_bytes": 201253,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "8739ae8cc835c8f385702bbd437003a3c067800a8e3c1a9120292551a6e2782f",
+          "size_bytes": 199374,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "94d33645ded28399efdf449853dee6d9a0acf426eb9d59d7da719b2c9f37bc4f",
+          "size_bytes": 198296,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "d34f5fc2d4562d8ba12b329f1c53e7aa487b8f5edb337760d9b6d07d41e5ea49",
+          "size_bytes": 194796,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "8149f74b18f6a44ddb27e32012160fc25286f73e52914ff112a591cbe468b010",
+          "size_bytes": 191372,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "48366fd6f858ebcdca5457feddeddce174f01224f5bb92f29f32130dbc6c60ec",
+          "size_bytes": 192279,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "49b3e00f975686466dd78cb9bd570d77f9c83a6413ea89b4ebf7dde90aa154d4",
+          "size_bytes": 195411,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "a2c3ba0251f6fb10d5081f7d59e3d137f97d4708a3dcf436512aacf8a0b69c67",
+          "size_bytes": 198723,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "3d6b37f100b85a75d830fb23446e151052d23c46aced74b22f18249e3107d2ed",
+          "size_bytes": 198358,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "b20ce8b49cff04adb31022fe995a5591082c012b66596d4f10371011edaa7401",
+          "size_bytes": 203488,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "06e47bd7629465c6a99fbbee1c3c14f8fe99eeca4bfbd9104cd5358b48104e43",
+          "size_bytes": 198494,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "20e7b8e3733d597dcb2409b59d464f96d2842e817284f2ed58504a5d95834bc0",
+          "size_bytes": 199240,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_depth/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "5a9d15ed0fb84c8745327c08ac93af521a58728077725f2f92ac2a5a0e0e00a4",
+          "size_bytes": 201058,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "8f11359eabe44b47e2c8db4e6d33aeb79221f1fe3206db552ca977e600e9801b",
+          "size_bytes": 906525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "8aa7cb176eef9c6f1972d3afb20e3ea6a5609763467a1bcc6fccaa90e6f7fe5b",
+          "size_bytes": 902947,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "156111f850de41434d08c95f280fdb32138b1cde5edb383ae0cd14ed1abab3de",
+          "size_bytes": 899516,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "f627126b1fd5bd488910f487b9178a2e709eed271c8e1cabfd46dc3fbe00bb5d",
+          "size_bytes": 888066,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "4f600c506cd2dbb35351a773ad89d3f38f16115c0e356b5e35439750c520d7e9",
+          "size_bytes": 873185,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "218b37d9e1e3608c0940dd648db000611ef740854fe2cb32102a21a71d7887bf",
+          "size_bytes": 861712,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "5ed4361dabab8a5d4ee5cd794d851c9e03c53c297909b7fdc31aa97e834626b4",
+          "size_bytes": 856065,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "5bf62f2394036fe5392c4bc1aeb1e6ffaa878c3122fb4edac0780f5bd6aa3352",
+          "size_bytes": 847309,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "bcaaf281b6bd8ce83c324354f0adab2af0eb7aefcc5114c7c082ebac25fbb26b",
+          "size_bytes": 835086,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "0d58282ab7c97cd6b157e1525a627b110fec0c4bbe4f7f0785eac8e0e0acd165",
+          "size_bytes": 819922,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "4ecb94810c1be840ebf40725805cda18597b15b671ccafe700cec2df1371f5f7",
+          "size_bytes": 801704,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "67462a00febf9d9efdd8b734c0950df7d80665c8e798c8167ed437ec4466e094",
+          "size_bytes": 771871,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "f735077b3e40650165c83327127902187fec8007678bc42a67594bdf616dfadc",
+          "size_bytes": 764156,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "a640d0aafd4e54c15a42e0a3a5c0508c48ab7ec87cfa4405409471b900a0467c",
+          "size_bytes": 766929,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "49e17c4447b1d56e52c505e89be6b58fe9a4c21424b46f34772a3d5611b224cd",
+          "size_bytes": 768826,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "99797d208c1f64d688cd2a72aea6f2a1c111de7b058ad08d75a0df428448a249",
+          "size_bytes": 767825,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "930ee65bc25cec5d656509668aa2332e0d99bb9fc2a67b9ebdb09b74737063f4",
+          "size_bytes": 762873,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "021b1dab5056b89f7845df8f95d688dfb76a9f6bbd669ad0d7caf4543b082b3c",
+          "size_bytes": 768104,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "5a919d22179472da685a6d4e1a0eccaabe41e73e2ac9cd8dfa3157e27a1ce5f4",
+          "size_bytes": 776826,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "c784703e5e30e6029d0b524278d05283c44fb9fd71c3c83ec33227e80942da40",
+          "size_bytes": 792769,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_rgb/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "e1a9b76e2f787345463ecaf19319551a6b14cf68ca4a634a1c0ef9bffdc3390b",
+          "size_bytes": 806077,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "d125b60801d027cd34dc325b274527a9fe103165a4f66bb6392111d1cb07d771",
+          "size_bytes": 24820,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "8b195b18a33db75ef5ade12f7eba200ceb27bb63b600e563caf98f2adf42655d",
+          "size_bytes": 24600,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "1b21881078a58dc542bc5f8a26ef8804065049b39f9deca90cfc3e207f17f738",
+          "size_bytes": 24513,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "b72775c347630cebb72c294794ee96d20ed91ab186efcfcffd6d4e42158ca5e9",
+          "size_bytes": 24208,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "227c3b225be42d6f6d04729036c73ed1732ca2df426de07d722ccf28a938c024",
+          "size_bytes": 23687,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "21c2454ded840dc2ef15c43d02d47c08929fb0690a0f2772514601a14132b854",
+          "size_bytes": 23336,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "5bc0797a0b96cd652824fbc0fb0e34fba15b285bcf02e5c6feeb606dea3b921e",
+          "size_bytes": 23250,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "126c58c6ca5a56872ca5d6d5c75f78cba829b7ce7f13236a81dce0d352c58fb2",
+          "size_bytes": 22763,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "0e3594993ea6381974234473efb1a037ccad454ccbb19f6a7a6ee903b3b197ba",
+          "size_bytes": 22462,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "a9b73dbf90b658c5271266d09fe9a39f1dfb6328ee3c19cb9727edc55216eb6e",
+          "size_bytes": 22302,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "1cff42d95389bec4108d000f60d1ce08ae91d343465e5c6f057eaf98b2371d23",
+          "size_bytes": 22273,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "1142d1da878d8af56799cfdf023cb6a8b7865b7ae336a1612b8f0adc8f42284f",
+          "size_bytes": 21220,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "0c175d9664ba5e5e4b11227aff899e53d932c691175f941ea4e61108aa5fdfe2",
+          "size_bytes": 21081,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "a6c2de8f96b390b93fa5a945d3d6ffaed95028f6d1fa0541fb2bef369e0dd4e0",
+          "size_bytes": 22420,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "b5a1c12e526f9e1896519d2f4c8b432a0aced8b39e735935676ff13e391c9d60",
+          "size_bytes": 23607,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "9baec62e9943c0041be6388f40559ad2b214a69e80412ad304a248291c9ebf1b",
+          "size_bytes": 23327,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "2d8a79bb80fcb0d6e70990b9f9e9998cafbffc2585d5228c110bd390053771d6",
+          "size_bytes": 21700,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "58ebe29b0fd08c2aaecd6b8e57bae98cc8c67794e475a17228be7300d4075776",
+          "size_bytes": 21744,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "bd784f8578e8b4b36acf6a783f42d1862d5d91a60eafa69f44852ea708b386c5",
+          "size_bytes": 20930,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "75c6db41ea3cd653dc125ce4e4be9d9ab7cb144f85cd85a08d671103b1d82764",
+          "size_bytes": 22616,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rendered_seg/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "0f3a15155f8a7ff3ded5250aa9ca85b18ad231b1ebcd73f2c2c8b673b849b2b1",
+          "size_bytes": 22886,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/rmse.txt",
+          "role": "model_and_evaluation",
+          "sha256": "0fdcfd3b7e3aaaf427c0fe854e2291683d23e0c92363e7c237e22c97981f0c94",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/eval/ssim.txt",
+          "role": "model_and_evaluation",
+          "sha256": "e1c47849f32777fa8ab83767a31e2adf9d4b009fd90becca43fd2e065b0be38e",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/keyframe_time_indices0.npy",
+          "role": "model_and_evaluation",
+          "sha256": "f6df0000bed676f0a4b777e2a1d915b6608dab452e11737f82c685cebf0e8ba7",
+          "size_bytes": 136,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/params.npz",
+          "role": "model_and_evaluation",
+          "sha256": "d39aa7e5f7bd7845275d8993abce982d2e6dc0450fef32dedf53b30acb300a8f",
+          "size_bytes": 89430525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/params.ply",
+          "role": "model_and_evaluation",
+          "sha256": "ba57c00cbba7499a5c4b1dca1f397abc116537c09f4f56c068834162abc2e812",
+          "size_bytes": 93544277,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/params0.npz",
+          "role": "model_and_evaluation",
+          "sha256": "b7dd7e9ca8d910ac6e7e1030b5b1bd3187159ea4e371e18f2e8e82ab596dd9eb",
+          "size_bytes": 52229000,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_on_0_99_r01/seg_params.ply",
+          "role": "model_and_evaluation",
+          "sha256": "1eb8d273b4c7f4086eb1811c2f39b50af4e9257358aa349d963d3edfedd677af",
+          "size_bytes": 93544277,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        }
+      ],
+      "initial_checkpoint_validation": {
+        "estimated_pose_slots": 100,
+        "gaussian_field_alignment": "PASS",
+        "gaussians": 815998,
+        "keyframe_indices": null,
+        "keys": [
+          "means3D",
+          "rgb_colors",
+          "unnorm_rotations",
+          "logit_opacities",
+          "log_scales",
+          "semantic_ids",
+          "semantic_colors",
+          "cam_unnorm_rots",
+          "cam_trans"
+        ],
+        "numeric_finiteness": "PASS",
+        "numpy_load_allow_pickle_false": "PASS",
+        "saved_gt_poses": null,
+        "zip_crc": "PASS"
+      },
+      "logical_bytes": 364084903,
+      "metric_samples_per_field": {
+        "l1": 21,
+        "lpips": 21,
+        "miou": 21,
+        "psnr": 21,
+        "rmse": 21,
+        "ssim": 21
+      },
+      "run_id": "p7_bcgm_g1b_room0_on_0_99_r01",
+      "source_commit": "68f9060f7ff4d8d141be1d5f71339401327edd06",
+      "source_sha256": "ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999"
+    },
+    "p4": {
+      "checkpoint_validation": {
+        "estimated_pose_slots": 100,
+        "gaussian_field_alignment": "PASS",
+        "gaussians": 1404952,
+        "keyframe_indices": 22,
+        "keys": [
+          "means3D",
+          "rgb_colors",
+          "unnorm_rotations",
+          "logit_opacities",
+          "log_scales",
+          "semantic_ids",
+          "semantic_colors",
+          "cam_unnorm_rots",
+          "cam_trans",
+          "timestep",
+          "intrinsics",
+          "w2c",
+          "org_width",
+          "org_height",
+          "gt_w2c_all_frames",
+          "keyframe_time_indices"
+        ],
+        "numeric_finiteness": "PASS",
+        "numpy_load_allow_pickle_false": "PASS",
+        "saved_gt_poses": 100,
+        "zip_crc": "PASS"
+      },
+      "completion_status": "EXIT_0_NORMAL_RETURN_100_SAVED_POSES_99_INSERTION_EVENTS",
+      "config_sha256": "f559e349a65fd3d92c0de0ea553abd93f75b0767e05b6d2729549de1b5c6bc27",
+      "effective_config_input_sha256": "e5c921af2c53d21a8779943ebc7da87c441089be2a62696beb7139d2977e14bc",
+      "effective_config_runtime_sha256": "d77b6e3da080c15917c3c317afb9214d7aed7845dbbe46955da82fb67d9c892a",
+      "file_count": 103,
+      "files": [
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_p4_0_99_r01/effective_config_input.json",
+          "role": "runtime_evidence",
+          "sha256": "782fb63c45b0059c0e1f8fbb275f31bee3e096a7c368dd81de1143ba01a20968",
+          "size_bytes": 3240,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_p4_0_99_r01/effective_config_runtime.json",
+          "role": "runtime_evidence",
+          "sha256": "be458d97a2f93eb73dec039238de5b9a9b72c92251f7f59be187be1956ee6935",
+          "size_bytes": 3545,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_p4_0_99_r01/insertion_counts.jsonl",
+          "role": "runtime_evidence",
+          "sha256": "470ebd00bc2d69a500a39e1b90cb145379dacfdaf2d17f30db3374964cea6959",
+          "size_bytes": 9251,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_p4_0_99_r01/nvml_samples.csv",
+          "role": "runtime_evidence",
+          "sha256": "959900ba8b6ce506bd9e0c04cf13e4098deb7bc5bbb059549e0f8720f259552b",
+          "size_bytes": 17544,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_p4_0_99_r01/run_summary.json",
+          "role": "runtime_evidence",
+          "sha256": "b1799580ca180ddc9ac6e59dc346efe2170559f2373a706d2936f92de30d5e0b",
+          "size_bytes": 2188,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/results/runtime_artifacts/phase7_gate1b/p7_bcgm_g1b_room0_p4_0_99_r01/stdout_stderr.log",
+          "role": "runtime_evidence",
+          "sha256": "b3dcc67802a0fc8793cad43d862332bb3bf4b8eefc566e9ae07dd891f657d9dc",
+          "size_bytes": 316581,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/config.py",
+          "role": "model_and_evaluation",
+          "sha256": "f559e349a65fd3d92c0de0ea553abd93f75b0767e05b6d2729549de1b5c6bc27",
+          "size_bytes": 703,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/l1.txt",
+          "role": "model_and_evaluation",
+          "sha256": "1a5471373eaa0eff1b2675b5f0f1abd82dd090577daa5a4d27fa3859e1cab21a",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/lpips.txt",
+          "role": "model_and_evaluation",
+          "sha256": "9eec8e9689445bdf18ee68aa70f5c134c11a918a7855b48a140f51f1cfd4d5c2",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/metrics.png",
+          "role": "model_and_evaluation",
+          "sha256": "e608dcf5fa4ba9b98ca8a2a38f2c6b598c3d8db701809953e3c150167c08c429",
+          "size_bytes": 80390,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/miou.txt",
+          "role": "model_and_evaluation",
+          "sha256": "fd3c90f30b30279de89f5f08b46c4fed362fb1309e2185cebbf93eb191355fa6",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "ff734efd31a840a9d04f639f8f3f87dc50aae7c41766af56f281698d3418c1ab",
+          "size_bytes": 702792,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "b4f87fe3cce41371959ae2ac54beed02275880eefd1ec1a261b52a96a32fa976",
+          "size_bytes": 703617,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "93d6a684a8b1c8433c867d937293edb122e5440173772ff85ad64a9fb2841223",
+          "size_bytes": 704966,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "ae7174449482e9080a4f251497679d1adb912d8b5bbc0d485e89fa83ee075e32",
+          "size_bytes": 701129,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "9716b063dedad58924284bd3e8d202e1801ff512737aba086a539fd96d4b5e28",
+          "size_bytes": 675597,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "c08ba411fd88ec3868a5770b4f37da365e231f07555329e74d628f1c44a7b8c5",
+          "size_bytes": 678556,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "4976d204761b2f8a77445e85bbc6b0e350025fc689ed8e60f16e392d6dc68a3c",
+          "size_bytes": 669388,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "8078ee11b82f63908d193f628f1df30e0ac091fbbdf8c50a56a3420f1541cf5d",
+          "size_bytes": 653571,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "09249f75abae6a96a2638008e39ba536fc892115d73a296b373e6a433f862c28",
+          "size_bytes": 642502,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "13d405054e1d0d147d7baa159fdea11c05e1ef9fd31e945da968ef4ba4f833e2",
+          "size_bytes": 629420,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "0dd9eb7ff3cf6559111389055886c5e3403f66f47f70561dbe49a650f1b0aa8d",
+          "size_bytes": 618821,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "ab6aa13489ac868a7cb33ad847236a744b8113b2d8ce93e8033def8e58a6e256",
+          "size_bytes": 603491,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "6ec7ca1d57a10ee1b221264203fd8fb61994a11f18801e532a1308d242269eb3",
+          "size_bytes": 596872,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "09b7d92cb28059a1baf0998bc40e78be1bbf7e5288d463c07efc8945f39700af",
+          "size_bytes": 590791,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "08f51f937f6048d18a51e0dd04ded84be6c5d6854f23b825b672323d2361df2f",
+          "size_bytes": 582449,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "4e18004167a2c8494cf2dfab3e29ae00fba9a90526b33a5809ba53c468893cda",
+          "size_bytes": 564505,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "fbdee7b84846de9394e56e4ec5663797e950f76eba1447cd51f943ce17c2c516",
+          "size_bytes": 544458,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "55359a851bb4117aee8b14feb0536adc7cdf63cb601364eb9323de790584ca8e",
+          "size_bytes": 549649,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "1c809214c3cc1c995751810a84b6e0a556c0e97030f11c8ea8864beb8f50ffb0",
+          "size_bytes": 548731,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "89f29757a97f4a9bf4ae13b6704b81c75f827c13dd88a6d9310a222fa627451b",
+          "size_bytes": 551451,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/plots/0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "f8f0fb00ee3cb51c4af364c628a77322d36d35815ce1ab69eeb9e4088ec1da2a",
+          "size_bytes": 554691,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/psnr.txt",
+          "role": "model_and_evaluation",
+          "sha256": "06deffd867ee20e9187cd56897b16cf4926e8691a9cda05b4c74b76746155c3d",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "22c21f50a55228371681d3717c5bdce3ba2a04a245c25b70127d91ec10cd1c51",
+          "size_bytes": 182992,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "7397f5e54f26cf0ad9da611f4f17c155c695e77ba61a9d341918172b829ef128",
+          "size_bytes": 180495,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "ad3decaf9ede6eb6a9b2dea84fd3285bd74f0055323e41a58b892ab205a1ff7d",
+          "size_bytes": 181500,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "2813aa1422593769ba6d88ca7c3725ed18b94c99a0b163d512d1c63b2046edb1",
+          "size_bytes": 185689,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "49b47c687f3836c11a7f7552de3519f841d72a5f7b343be9b21f85cea096aa9a",
+          "size_bytes": 190383,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "83598d59b4de0ebd6f3d510bbdb9d29c70acb1b5cd9a7e9425f42597ced706a7",
+          "size_bytes": 198230,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "24dfc2db667e33f53917a36d79676cec480f510fc520b8bafcf6e89c5d350feb",
+          "size_bytes": 200586,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "dfed8f70cb7c35ff0c70abed0a1b66dbedf1c37381eb43c03c80142551cfc763",
+          "size_bytes": 201610,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "579c93bbd4fbeaab4cee48b231d107f7bf395422ceb4ae620d21cf52c577236d",
+          "size_bytes": 200912,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "2f6ebb01246204dc5ebbdccb94d68bb1d95c3c0706309b61ed21eced3d92c0e6",
+          "size_bytes": 199324,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "645e5b10c446cea674d4d0edd90fe08a01f5fbe9f2bc06c9fd9a8a75a606bb75",
+          "size_bytes": 197885,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "49ca85a36b56981946cec20d4d3575258d8d73e9e9debc222c902f726076fa2b",
+          "size_bytes": 194223,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "5f9b704c6595e49afb27dc75f27cf3f911570390ee3006917dca4794d1998be7",
+          "size_bytes": 190823,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "3bffabee26c7bdccda52f081abd417e6263adf385120a0c2b2d6f0f97be72ac5",
+          "size_bytes": 192131,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "f2da1460b5eb459b563c9f1338194554c4cdea1618abc59ff3e903f1f127810d",
+          "size_bytes": 195371,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "badc76a1c9fa4791e3bbe80537b143e1b0c79d38e20257e680c28bd624759417",
+          "size_bytes": 198040,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "f5b6b51c3c5774f993c6b872164ab60f61e0164bf0406f4715868aee4753d296",
+          "size_bytes": 198230,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "ac44cc87baef4897f3d9676fb016f88725ef508f062b22f5902b28590c6c98d9",
+          "size_bytes": 203050,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "15eed7d6fb34d12bb2d0dac80418197103001f4727dcffc642fce4ca771f5ba7",
+          "size_bytes": 199070,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "ae058fe5ac765cb135a62aa7808902182c53f4da38965f7ebf6a76e9f1b17ba0",
+          "size_bytes": 198957,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_depth/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "999033f540c64169f9c513616eabebbb248035d555b7444635d08a20e996509e",
+          "size_bytes": 201137,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "7eac9edd2e9b12265d2abb62b978fdc0644fa7affb7ab97a288bfa9e9b6ab644",
+          "size_bytes": 909058,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "7961ae6c095b5a5b82be304a12543506dda9033eb0ec04cdf80bd6a267715221",
+          "size_bytes": 905191,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "59422a81b49796305266d6ce836a190bf8a723c3d31956f34e50829a09590bf2",
+          "size_bytes": 901889,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "36eda977b229cb7e58aafcd7531be05890542e5a67277d8526c13c1a79275516",
+          "size_bytes": 890633,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "8df12adbd690070e7fec4334030be4d16d37219167f9f356fce1bbc6bae8b76c",
+          "size_bytes": 874851,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "3962df95d7974aa936b85c77d3d6f56bab4f02b84e852ea6ad77ad3059443200",
+          "size_bytes": 863243,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "dbc3619a669ef5a71459934727b95a0877471f2b6a129e63be49793c68d57fc3",
+          "size_bytes": 858235,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "c1b3ff2ab11bc4e6a239d509c867b461e590714f855e89825e4b2011aca57a1e",
+          "size_bytes": 850088,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "edf045042c496863d647e914678d99065edb37d39eb0016429d2b47ce89a526a",
+          "size_bytes": 837801,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "99bd03e9fc639071cbc0a91a53b227938c9816d57b21a5b6e12aedbd6cb79369",
+          "size_bytes": 822171,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "fbc572ae10e096276e98b9840ebb7c7a0d809198663cfaaf2ac3e7e6cc4d428d",
+          "size_bytes": 803207,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "a230a250ff14769d092096e58c68a53a2de13a67b38b7668d977c6896cfe46c1",
+          "size_bytes": 774139,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "7be5182b1786fe5f0f507cc4b2ffd1744ab26cf6ecf3a10a3c72e3ff2ff0f6bf",
+          "size_bytes": 765895,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "a100fa7a0ade52f14d71e038ef001c479839f963cc71a7e2b21e7e7e78172057",
+          "size_bytes": 768299,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "c6e1edc4e4d36dbed3ca9b6cb2a05832ced7951a03d397c0ea3f7ec2d3a482c4",
+          "size_bytes": 769960,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "2e6ce09396f3f3582eb93c651c0d64edc65ab3699d41aa4556a8d2aea430ea73",
+          "size_bytes": 768900,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "087b0d37b6cea9aa447d57c4b8a41d66caa374295e2adb5c43097328f717047b",
+          "size_bytes": 763906,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "df5ad994ee457cf736f2ea38e73de731f58172833a7d4234ef9def9b733d5425",
+          "size_bytes": 769156,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "36a0b61962558164544b22758b90a1a46505a98bf85a815a35129f3642ea119c",
+          "size_bytes": 777193,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "dcffefd23806d1346e3267d7a762135fb4cc3f49a82986c77ee73bc261a7b35b",
+          "size_bytes": 793345,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_rgb/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "737fb938f690f73a92dbbf6ddb8063d911c064f81731de14dda1cb2a380cbdb5",
+          "size_bytes": 806679,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0000.png",
+          "role": "model_and_evaluation",
+          "sha256": "2658e0622fc58736fcb9aef686e8120bbf6fc9adfbfb5aeed7565a0215ecccba",
+          "size_bytes": 24730,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0004.png",
+          "role": "model_and_evaluation",
+          "sha256": "21a3cdaa55da7b67fa8689634ec200e6263b34dcb32a84c30e6331b606ccda5b",
+          "size_bytes": 24621,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0009.png",
+          "role": "model_and_evaluation",
+          "sha256": "8297dc109ec3e5d2f3d689bc4da5b6ab5833af62bd524e93f6d9ac6dab06afc2",
+          "size_bytes": 24403,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0014.png",
+          "role": "model_and_evaluation",
+          "sha256": "1f6653d3ab8bc9780fef0ebb4fb6b07f3698411a1b9e55bb11e279f47de473c9",
+          "size_bytes": 24198,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0019.png",
+          "role": "model_and_evaluation",
+          "sha256": "2f243512c5d3f5acef79085be6eb8a24afb4738e65eee870e1b95cff067239cf",
+          "size_bytes": 23654,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0024.png",
+          "role": "model_and_evaluation",
+          "sha256": "367e40077409e1bbd53c3eb80e3719ed37b8403d651508f776db82db4a1df33c",
+          "size_bytes": 23363,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0029.png",
+          "role": "model_and_evaluation",
+          "sha256": "afbb4d3b41f3f5dac7adea73c347ae60b04c34c69408e53ecfbdb543f1cebf6f",
+          "size_bytes": 23247,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0034.png",
+          "role": "model_and_evaluation",
+          "sha256": "74b3982f0694c9fb3b7f35d20edbbc299e66fae92a568c1f3c44e8ff5393226c",
+          "size_bytes": 22739,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0039.png",
+          "role": "model_and_evaluation",
+          "sha256": "60e5cb446ed80ffca6115aacb42ed49490fe47290ba45e031a8112c6e1d93a99",
+          "size_bytes": 22528,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0044.png",
+          "role": "model_and_evaluation",
+          "sha256": "d0c6060524accc193c8c8c8dd9744a5765db2b5668564ee86aea82e19c131523",
+          "size_bytes": 22240,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0049.png",
+          "role": "model_and_evaluation",
+          "sha256": "140ed211e9caf8724f98a3cc70555bffd71cdde17b20ed6d258afeec23cdfc7b",
+          "size_bytes": 22371,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0054.png",
+          "role": "model_and_evaluation",
+          "sha256": "466c7302e14704cbef2fdcf3a5574d0e1ce1ab17a1eb854bae2122f4e8a963e1",
+          "size_bytes": 21213,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0059.png",
+          "role": "model_and_evaluation",
+          "sha256": "8f6375d496aba514393b380e99f9e491da8e3768c5008c3e0305857ae7172228",
+          "size_bytes": 21077,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0064.png",
+          "role": "model_and_evaluation",
+          "sha256": "cc20aba8d89397e43faf9d03f19e90d465ce45fe25c0d2c7050530c779b51dd7",
+          "size_bytes": 22370,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0069.png",
+          "role": "model_and_evaluation",
+          "sha256": "514267a82bc358e40ec5a9a8182376a3c607f61a6bbb81bf318a1bf38e893bcd",
+          "size_bytes": 23631,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0074.png",
+          "role": "model_and_evaluation",
+          "sha256": "a28af917f74e64adfd6014f1d6790ddd717b8a2a18543dc12d504d7008501d0f",
+          "size_bytes": 23350,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0079.png",
+          "role": "model_and_evaluation",
+          "sha256": "329da4b4691284879ae7e0b83c7fe39b2cd0b1bc67f2eb93c9b4d2afd790a4d8",
+          "size_bytes": 21639,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0084.png",
+          "role": "model_and_evaluation",
+          "sha256": "7d038856c847a393c844ad8f9080cd3656199c18339f64ea6bb306ff7337769a",
+          "size_bytes": 21708,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0089.png",
+          "role": "model_and_evaluation",
+          "sha256": "cbc416d4f946280b330d12908e02290cd96a0e762420e0babd7d2e8e650225e5",
+          "size_bytes": 20933,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0094.png",
+          "role": "model_and_evaluation",
+          "sha256": "dbc44b9439eccf72425da6175357f9428cd9371910c5533b6e04a8a10287b4b8",
+          "size_bytes": 22670,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rendered_seg/gs_0099.png",
+          "role": "model_and_evaluation",
+          "sha256": "4eb81edeed8c8a19f27143dff6f8e1f8ae22c6d616858dd89e87040e0ebb6488",
+          "size_bytes": 22948,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/rmse.txt",
+          "role": "model_and_evaluation",
+          "sha256": "1a5471373eaa0eff1b2675b5f0f1abd82dd090577daa5a4d27fa3859e1cab21a",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/eval/ssim.txt",
+          "role": "model_and_evaluation",
+          "sha256": "697f04dbff69c8571192ffb822aa38a0c2c458491750f78cc99572ad0cd65f2f",
+          "size_bytes": 525,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/keyframe_time_indices0.npy",
+          "role": "model_and_evaluation",
+          "sha256": "f6df0000bed676f0a4b777e2a1d915b6608dab452e11737f82c685cebf0e8ba7",
+          "size_bytes": 136,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/params.npz",
+          "role": "model_and_evaluation",
+          "sha256": "b205a30c931842ee6874901751fd34f9e02caa85d218f03d64c06c49503f99a2",
+          "size_bytes": 91335480,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/params.ply",
+          "role": "model_and_evaluation",
+          "sha256": "f4a921bc07d608d2bbf5a6f40f82caec9d242cf21ec349f03f03736f9054a550",
+          "size_bytes": 95537153,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/params0.npz",
+          "role": "model_and_evaluation",
+          "sha256": "efc7c968f94427f6019b581dd950410c9961bffc0773e49f5bcb58b5a81294ba",
+          "size_bytes": 52229000,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        },
+        {
+          "path": "/home/robot/research/SGS_slam_phase7_bcgm/experiments/Replica/p7_bcgm_g1b_room0_p4_0_99_r01/seg_params.ply",
+          "role": "model_and_evaluation",
+          "sha256": "dabfb733b5dd1c64cd1e7d11c24c5a9c40755a5e3c8f004ba1deba67f2823519",
+          "size_bytes": 95537153,
+          "status": "HASHED_READ_ONLY_AND_STABLE_DURING_READ"
+        }
+      ],
+      "initial_checkpoint_validation": {
+        "estimated_pose_slots": 100,
+        "gaussian_field_alignment": "PASS",
+        "gaussians": 815998,
+        "keyframe_indices": null,
+        "keys": [
+          "means3D",
+          "rgb_colors",
+          "unnorm_rotations",
+          "logit_opacities",
+          "log_scales",
+          "semantic_ids",
+          "semantic_colors",
+          "cam_unnorm_rots",
+          "cam_trans"
+        ],
+        "numeric_finiteness": "PASS",
+        "numpy_load_allow_pickle_false": "PASS",
+        "saved_gt_poses": null,
+        "zip_crc": "PASS"
+      },
+      "logical_bytes": 369987071,
+      "metric_samples_per_field": {
+        "l1": 21,
+        "lpips": 21,
+        "miou": 21,
+        "psnr": 21,
+        "rmse": 21,
+        "ssim": 21
+      },
+      "run_id": "p7_bcgm_g1b_room0_p4_0_99_r01",
+      "source_commit": "68f9060f7ff4d8d141be1d5f71339401327edd06",
+      "source_sha256": "a26aafe4686acf65ca5523eb2758b7026ee35cc4e6a63690fc1f433c950732b3"
+    }
+  },
+  "schema": "SGS_SLAM_PHASE7_GATE1B_EVIDENCE_MANIFEST_V1",
+  "scope": "Replica room0, frames 0-99, three matched Gate 1B runs",
+  "storage_at_closure": {
+    "filesystem_free_bytes": 29851250688,
+    "filesystem_total_bytes": 982820896768,
+    "filesystem_used_bytes": 902969561088,
+    "independent_backup": "NOT_VERIFIED"
+  },
+  "total_run_file_count": 309,
+  "total_run_logical_bytes": 1104316640
+}

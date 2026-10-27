@@ -1,0 +1,794 @@
+{
+  "schema_version": 1,
+  "title": "P7-POST-01 explicit selective staging allowlist",
+  "repository": "/home/robot/research/SGS_slam_phase7_bcgm",
+  "branch": "phase7-bcgm",
+  "base_head": "68f9060f7ff4d8d141be1d5f71339401327edd06",
+  "remote_url": "https://github.com/Quan2004-uet/SGS_slam.git",
+  "remote_target_branch_observation": "phase7-bcgm absent at read-only ls-remote; push would create branch",
+  "commit_message": "research(phase7): archive BCGM implementation and evidence index",
+  "staging_method": "git add --pathspec-from-file using exact approved file list; no recursive wildcard staging",
+  "self_hash_policy": "manifest excludes its own hash to avoid self-reference; commit/tree hash proves committed bytes",
+  "approved_file_count": 74,
+  "approved_bytes": 716874,
+  "files": [
+    {
+      "path": "configs/replica/phase7_gate1b_room0_off_0_99_r01.py",
+      "git_status": "untracked",
+      "size_bytes": 746,
+      "sha256": "887ab9d9e7b92c11bd002d5bed4c4c3944d993624ef86b39198d8fdd5392e3db",
+      "purpose": "Scoped Phase 7 experiment configuration/provenance.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "configs/replica/phase7_gate1b_room0_on_0_99_r01.py",
+      "git_status": "untracked",
+      "size_bytes": 839,
+      "sha256": "498d494db39beb55f28e6c6cee3d1edcc7ed763540b5cfd947c44988ef79e853",
+      "purpose": "Scoped Phase 7 experiment configuration/provenance.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "configs/replica/phase7_gate1b_room0_p4_0_99_r01.py",
+      "git_status": "untracked",
+      "size_bytes": 703,
+      "sha256": "f559e349a65fd3d92c0de0ea553abd93f75b0767e05b6d2729549de1b5c6bc27",
+      "purpose": "Scoped Phase 7 experiment configuration/provenance.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "configs/replica/phase7_gate2_room0_on_0_499_r01.py",
+      "git_status": "untracked",
+      "size_bytes": 824,
+      "sha256": "ff025785249c1811c9ee3b3359cd4656b1992e78d9465b610bfe840ea2026b49",
+      "purpose": "Scoped Phase 7 experiment configuration/provenance.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "configs/replica/phase7_gate3_room0_on_0_1999_r01.py",
+      "git_status": "untracked",
+      "size_bytes": 332,
+      "sha256": "1bb57b3dd38e98c39a24310ceaee656a8415ce901e61808bb19cea8422c4ff22",
+      "purpose": "Scoped Phase 7 experiment configuration/provenance.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "configs/replica/phase7_r1_full_room1_on_0_1999_r01.py",
+      "git_status": "untracked",
+      "size_bytes": 477,
+      "sha256": "3c0d43c4e6ba4a3260815daa9f2d64f468802ab49f60686135df40b22f61bd10",
+      "purpose": "Scoped Phase 7 experiment configuration/provenance.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/project_state/ROADMAP.md",
+      "git_status": "tracked_modified",
+      "size_bytes": 4977,
+      "sha256": "9a7a675cfbed165209d911b42ca9d54246f9aad8d3d886929ac71969dce6aca3",
+      "purpose": "Phase 7 roadmap overlay; historical roadmap context retained.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_FINAL_PROJECT_STATE_AND_HANDOFF.md",
+      "git_status": "untracked",
+      "size_bytes": 8820,
+      "sha256": "41faa29439e5c3c0b4cfb285436e421fd3bd7c4d7c5b0a95fcbcc4fa5127213d",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1A_IMPLEMENTATION_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 6615,
+      "sha256": "6bab3f0af1c3e4e280db879bb2c21ec8b07facbf14b2f5c06149dfd103af0f45",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_EVIDENCE_MANIFEST.json",
+      "git_status": "untracked",
+      "size_bytes": 131491,
+      "sha256": "f517f3df540a709f183324f172e21d045331939e08f6ee8a82c9c472c3b101f0",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_FINAL_VALIDATION_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 6208,
+      "sha256": "4ab4401950f32c3dff51e4f8a999cc0949362f54ca095061e4b7f92dd080f7f6",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_METRIC_COMPARISON.md",
+      "git_status": "untracked",
+      "size_bytes": 5182,
+      "sha256": "7b2865ae6e66fc1a39e9f6ca67e26857346f39f269c8e1f7a00af080abfdc875",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_PREFLIGHT_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 7062,
+      "sha256": "9f18656c511d873f43b850f5ebd53621833f974f99cde375bed53794df6a09fc",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_RUN_CONTRACT.md",
+      "git_status": "untracked",
+      "size_bytes": 12125,
+      "sha256": "7dffd1e7b2952c7bf3f7626f8ff86b8a3ec23acad486be7ed79e03e0158863a6",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_SESSION_HANDOFF.md",
+      "git_status": "untracked",
+      "size_bytes": 5065,
+      "sha256": "47c0895ec5b9b9adaf22f829d6ebcfbee63f8301a04ce4b53f1369fe3045fc94",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_BASELINE_REUSE_AUDIT.md",
+      "git_status": "untracked",
+      "size_bytes": 9020,
+      "sha256": "1dc3334d912b20a4298b4a4bce22fa116a8fcc63778a70daa1f63a7d090e8fe3",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_EVIDENCE_MANIFEST.json",
+      "git_status": "untracked",
+      "size_bytes": 8082,
+      "sha256": "f621672af4b2c3700643307787d0e232cc51d57be36bf5c6142baea0b98b70d2",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_FINAL_VALIDATION_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 3678,
+      "sha256": "7c86516c7decb3c9e73ea218b3bd706f675452ff4c7a2c5117c4092c5e9bfabd",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_METRIC_COMPARISON.md",
+      "git_status": "untracked",
+      "size_bytes": 4319,
+      "sha256": "6442dceb22353f7cd4147f6d5d43b6296882c45778a83c15ee2a67aae61c6950",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_MINIMAL_PREFLIGHT_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 5738,
+      "sha256": "bbc904af82118b55f2d1bf1118d968cdc970deee29478ed33b66f0f579c7c8e9",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_MINIMAL_RUN_CONTRACT.md",
+      "git_status": "untracked",
+      "size_bytes": 7361,
+      "sha256": "2c896eacf2026d317b77b8faba7bf8de3431bf71c5147c6268504260dfbf9cdd",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_NVML_RECOVERY_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 2082,
+      "sha256": "42474b8e82227988d27b987114f7228433056c289be0cafd2b9e0cadbc61c332",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_READINESS_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 8066,
+      "sha256": "3c005ef6470296302df0f693c95bc9c3f0b6afb1cea66515f42d26b8b3feed2c",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_AUDIT.md",
+      "git_status": "untracked",
+      "size_bytes": 9583,
+      "sha256": "5f09214c2f2fb00d69d2fcdb47ebb233327e4d1989020563829b6ddc159f0e31",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_EXECUTION.md",
+      "git_status": "untracked",
+      "size_bytes": 5194,
+      "sha256": "c09d31c8e109780ae1abfa05af9dff03bdde614f167a568b1fb8566201b55b6e",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_FINAL_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 4872,
+      "sha256": "e62d4a7cd10221e42592c6a821c472997effb99272cb4548821d812a2177a6a0",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_PLAN.md",
+      "git_status": "untracked",
+      "size_bytes": 7812,
+      "sha256": "c2b8a103c77b3ecd7fcdaed68a882f8335d81c4436c8eeb8f8f9010e7b2ea4b9",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_VALIDATION.md",
+      "git_status": "untracked",
+      "size_bytes": 5549,
+      "sha256": "e700c97f7a263d0826fd2726c6850125c31fdb44689ba9fc2fc5941fe486a3e9",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_BASELINE_REUSE_AUDIT.md",
+      "git_status": "untracked",
+      "size_bytes": 5177,
+      "sha256": "562ca9ad9bb6a45bc931bb97231ddcb0ac2ca8c5ce6ea2250b369e0df89f6dfc",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_GLOBAL_CAP_TEST_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 3082,
+      "sha256": "b96c44fb2e509f14abc8377a0bcd4ed2b9383c4bd95f884ae79c705460de1616",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_NVML_FIX_VALIDATION.md",
+      "git_status": "untracked",
+      "size_bytes": 1818,
+      "sha256": "04a6f8be7070a88b5d087942b17cfbe296baab9a0a317a618a2575e3a730adf1",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_PREFLIGHT_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 3935,
+      "sha256": "3f8a87866a53447679d995ab2f2b5344dd62f89cc557e7841055b7795b530744",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_RUN_CONTRACT.md",
+      "git_status": "untracked",
+      "size_bytes": 5879,
+      "sha256": "155479e6a323735f28c964ca40a99336ae28c7ccc228644541d2e98edb3f608f",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUALIZATION_FINAL_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 3381,
+      "sha256": "fddf225f76ab9f88e2b9897437c8e63207c59570a7a4e6c7d2f00953fdffa126",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUALIZATION_PLAN.md",
+      "git_status": "untracked",
+      "size_bytes": 4646,
+      "sha256": "7fcd7fb08fa05d63583c72583400238c2d83920a6f0d491e3532dc2b5926dafa",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUALIZATION_REFERENCE_AUDIT.md",
+      "git_status": "untracked",
+      "size_bytes": 4476,
+      "sha256": "6fb81fad5cbaa0943b50c703574d59981a60c8fcd2227c9a14b6efac7a61fc9b",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUAL_COMPARISON_INDEX.md",
+      "git_status": "untracked",
+      "size_bytes": 4936,
+      "sha256": "25dca5fd8868934607c821f94df3ca1369d9811c584e4811b12ee460ae955efb",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_CONTRIBUTION_AND_LIMITATIONS.md",
+      "git_status": "untracked",
+      "size_bytes": 4211,
+      "sha256": "df58d62ba1a6261202e5072cef296b890de6319b8c424e8917388e055939fa90",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_EVIDENCE_MANIFEST.json",
+      "git_status": "untracked",
+      "size_bytes": 60021,
+      "sha256": "6f49343cc565b090596262cc6d68bc3dcce0047f7e12df1ee0a3b594aab2acdd",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_FINAL_EVIDENCE_CLOSURE.md",
+      "git_status": "untracked",
+      "size_bytes": 9939,
+      "sha256": "75f6e64f1249d6ad942d9413c435a0c2223711cb6a78cb494a80c058a6711664",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_FINAL_HANDOFF.md",
+      "git_status": "untracked",
+      "size_bytes": 2338,
+      "sha256": "84af260e69c34570665003dd017518616bf5895d31e913a8c665b07b30e71557",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_FINAL_METRIC_TABLE.md",
+      "git_status": "untracked",
+      "size_bytes": 5241,
+      "sha256": "130efe32d16fe03217931f7adb3ac515ef105027acb99f3b86c3bb440574e54b",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/post_implementation/P7_POST01_ARTIFACT_BACKUP_PLAN.md",
+      "git_status": "untracked",
+      "size_bytes": 3328,
+      "sha256": "ae2ab8a6eb2ce70c4eb694fee382675440415fb9b020e58b26a5d65f02e7b8a9",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/post_implementation/P7_POST01_ARTIFACT_PRESERVATION_INVENTORY.md",
+      "git_status": "untracked",
+      "size_bytes": 4912,
+      "sha256": "736333ba91a870851aa8dd751e56da848d4c067efaf7cb015a831d5c4a55f8a5",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/post_implementation/P7_POST01_GIT_ARCHIVAL_AUDIT.md",
+      "git_status": "untracked",
+      "size_bytes": 4910,
+      "sha256": "a330502b478f17951bd0f25651348d4e662fc3e0b0b7438f1e4d2fed31ffeb2e",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_BCGM_ADMISSION_VALIDATION.md",
+      "git_status": "untracked",
+      "size_bytes": 1561,
+      "sha256": "a7a181215fb093d9610d602375dc9b43060ba4d0e621d9d7323e8308b2b10020",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_FAST_TRACK_EXPERIMENT_CONTRACT.md",
+      "git_status": "untracked",
+      "size_bytes": 6789,
+      "sha256": "dc7fa0c8918d790d90deda6c45d4fd3fd49c04e5a438d1cbcd07392e88b5ad5d",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_FINAL_EVIDENCE_MANIFEST.json",
+      "git_status": "untracked",
+      "size_bytes": 13274,
+      "sha256": "c9a5af52d5b94427f8b5c85df7394ec551528010da3113b903fb2e16736d912a",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_FINAL_HANDOFF.md",
+      "git_status": "untracked",
+      "size_bytes": 2027,
+      "sha256": "ef62246a4c9e1d809118a645c974873b200a26a8c453437431cf55b0f68adfe5",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_FULL_SCENE_METRIC_TABLE.md",
+      "git_status": "untracked",
+      "size_bytes": 2326,
+      "sha256": "e595785ff67e0d9bfabd04f77dac96df09a7ff6ccf81c3984e15692c24f748fe",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_FULL_SCENE_RUN_REPORT.md",
+      "git_status": "untracked",
+      "size_bytes": 3319,
+      "sha256": "4c03fd80ab46fc2f769d012ceb1dad7245b48f40d03f16d5ac682a644b15640d",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_GATE0_PREFLIGHT_AUDIT.md",
+      "git_status": "untracked",
+      "size_bytes": 4863,
+      "sha256": "f188b5b87ab895c75d50ab8eb590bf3e9e3d6af9f88543bf243b41be5fa0a418",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_GATE2_FINAL_EVIDENCE_CLOSURE.md",
+      "git_status": "untracked",
+      "size_bytes": 2709,
+      "sha256": "ab0358cd463ef6f41f9e50ef1e6de56fa12c33baf244cfeeaed1d09892bb17e3",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_OFFLINE_ATE_INTEGRITY_MANIFEST.json",
+      "git_status": "untracked",
+      "size_bytes": 1010,
+      "sha256": "4b333a434a3fbf0f53593e06e1e8c84027dd7ec051f2181007e2a8a322e4c1c8",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_ROOM0_ROOM1_COMPARISON.md",
+      "git_status": "untracked",
+      "size_bytes": 4392,
+      "sha256": "841e3e3a1699382b2cd85187d553b987765e1255c67a00da0a212a59ef76c2e8",
+      "purpose": "Phase 7 research report or compact provenance manifest.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "project_management/CHANGELOG.md",
+      "git_status": "tracked_modified",
+      "size_bytes": 10886,
+      "sha256": "75059d1c5a23d6a6e59d21892a28a4d0945c718f81309c085012c8923d2046c9",
+      "purpose": "Current/historical Phase 7 project/session record.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "project_management/PROJECT_STATUS.md",
+      "git_status": "tracked_modified",
+      "size_bytes": 22570,
+      "sha256": "d03656b293c5bab3d7d4241828159a69ae8569e7752478ff29cc092581dc4565",
+      "purpose": "Current/historical Phase 7 project/session record.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "project_management/SESSION_HANDOFF.md",
+      "git_status": "tracked_modified",
+      "size_bytes": 16552,
+      "sha256": "c00271cd6e3e184f641c5a4afe70f9a4a46427f9a9f0b06840e93a837fef6a9c",
+      "purpose": "Current/historical Phase 7 project/session record.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "project_management/sessions/SESSION_005.md",
+      "git_status": "untracked",
+      "size_bytes": 12592,
+      "sha256": "3b1cdd7073b8a9f55f232451a679b12abb0683d18fd7ed1aefbcd354659e733d",
+      "purpose": "Current/historical Phase 7 project/session record.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "project_management/sessions/SESSION_006.md",
+      "git_status": "untracked",
+      "size_bytes": 4487,
+      "sha256": "1c494400c0fb675f6b3668b42b3c8b4a8a0a6774ad5df7e33062e1259b7ff29e",
+      "purpose": "Current/historical Phase 7 project/session record.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "project_management/sessions/SESSION_007.md",
+      "git_status": "untracked",
+      "size_bytes": 1624,
+      "sha256": "aa87d06619a864396b458eedf2eab575a24d5360a366fc1dba517b0ae613a6d0",
+      "purpose": "Current/historical Phase 7 project/session record.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "scripts/slam.py",
+      "git_status": "tracked_modified",
+      "size_bytes": 63670,
+      "sha256": "ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999",
+      "purpose": "Online SLAM with Phase 7 BCGM integration and inherited CPU keyframe offload.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tests/test_bcgm_cpu.py",
+      "git_status": "untracked",
+      "size_bytes": 11688,
+      "sha256": "d4143f3f73c0aadf959c3da9bfe9cac25f104032a2f375d379f527a0be98c01d",
+      "purpose": "CPU regression and invariant tests for Phase 7 implementation.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tests/test_phase7_gate3_cpu.py",
+      "git_status": "untracked",
+      "size_bytes": 7448,
+      "sha256": "cc454b69a64fc6d044db47ddfdaa6be6eb09ecb4c4d8c624989b32d16ca664b4",
+      "purpose": "CPU regression and invariant tests for Phase 7 implementation.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/gate1b_runner.py",
+      "git_status": "untracked",
+      "size_bytes": 14059,
+      "sha256": "044a2d3354fbbea196a35def864c494d7794c093d5dd7091d2e1a289c12942ce",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/gate1b_worker.py",
+      "git_status": "untracked",
+      "size_bytes": 3832,
+      "sha256": "9a449ef10506ebbe6ccd0616d29aa02e9183554b333d605c9440ec07e09ad40b",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/gate2_on_runner.py",
+      "git_status": "untracked",
+      "size_bytes": 16716,
+      "sha256": "68f0c6774e6f111a73c523dea574602831f4c6a7a23ede70b56850aa053cdb66",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/gate3_advanced_visualization.py",
+      "git_status": "untracked",
+      "size_bytes": 16138,
+      "sha256": "d7381a073fe50480781a88c981234805d33f3e5c32920621c9b7da03be2172bf",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/gate3_on_runner.py",
+      "git_status": "untracked",
+      "size_bytes": 24898,
+      "sha256": "1d97bb2d1dec0056a7d5a3e081d1ca3ee649a5f13ffd68b8563647300622a7a6",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/nvml_telemetry.py",
+      "git_status": "untracked",
+      "size_bytes": 2869,
+      "sha256": "60c70dd0ca0f722c9ad6451cce29c1e269c5ac5eea96998dc150e220d0751c9c",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/r1_full_runner.py",
+      "git_status": "untracked",
+      "size_bytes": 31196,
+      "sha256": "7d1fefabb6c45671c71786ea312d7591c7045fe13abeb4f9568c2023ba319434",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "tools/phase7/r1_offline_ate.py",
+      "git_status": "untracked",
+      "size_bytes": 3629,
+      "sha256": "f7325610e75e3be55611787983959c3e263a4f8e191951b937ca8050218ab199",
+      "purpose": "Guarded runner, telemetry, offline evaluation, or visualization tooling.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    },
+    {
+      "path": "utils/bcgm.py",
+      "git_status": "untracked",
+      "size_bytes": 4698,
+      "sha256": "8f30b9c997b10acd988c5a5ac053f2d15c28adde3783ba193ed9da832e908400",
+      "purpose": "Bounded Gaussian admission policy.",
+      "include": true,
+      "reason": "Approved Phase 7 source/config/test/tool/documentation allowlist; text and size/security screened.",
+      "risk": "Machine-specific provenance paths may appear in reports/runners; no credential pattern detected."
+    }
+  ],
+  "excluded_roots_and_files": [
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/",
+      "git_status": "gitignored",
+      "purpose": "room0 checkpoint, PLY, arrays, renders",
+      "include": false,
+      "reason": "Large experimental binaries; preserve on server, not Git."
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_r1_full_room1_on_0_1999_r01/",
+      "git_status": "gitignored",
+      "purpose": "room1 checkpoint, PLY and evaluation arrays",
+      "include": false,
+      "reason": "Large experimental binaries; preserve on server, not Git."
+    },
+    {
+      "path": "results/runtime_artifacts/",
+      "git_status": "gitignored",
+      "purpose": "summaries, logs, telemetry, insertion traces and visualizations",
+      "include": false,
+      "reason": "Run evidence retained in place and indexed by SHA256 manifests; not Git."
+    },
+    {
+      "path": "data/Replica/",
+      "git_status": "external_main_repo_path",
+      "purpose": "dataset images, depth, semantics, trajectory",
+      "include": false,
+      "reason": "Dataset is not present in this worktree; no dataset data may be staged."
+    },
+    {
+      "path": "docs/research/phase7/post_implementation/P7_POST01_GIT_PUBLICATION_REPORT.md",
+      "git_status": "untracked",
+      "purpose": "final commit/push result report",
+      "include": false,
+      "reason": "Must be finalized with actual commit/push outcome after the commit; follow-up local file."
+    }
+  ],
+  "security_scan": {
+    "scanned_before_audit_docs": 69,
+    "logical_bytes": 699135,
+    "binary_files": 0,
+    "files_over_1MiB": 0,
+    "secret_pattern_hits": 0,
+    "scope": "private key, GitHub/HF token, AWS access key, credential assignment, secret-like filenames; static scan only"
+  },
+  "manifest_path": "docs/research/phase7/post_implementation/P7_POST01_APPROVED_STAGING_MANIFEST.json",
+  "manifest_is_staged": true,
+  "approved_bytes_excludes_manifest_self": true
+}

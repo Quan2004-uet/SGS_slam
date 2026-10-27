@@ -1,4 +1,5 @@
 import argparse
+import json
 import os
 import shutil
 import sys
@@ -32,6 +33,7 @@ from datasets.gradslam_datasets import (
     NeRFCaptureDataset
 )
 from utils.common_utils import seed_everything, save_params_ckpt, save_params
+from utils.bcgm import validate_bcgm_config, select_bounded_candidates
 from utils.eval_helpers import report_loss, report_progress, eval
 from utils.keyframe_selection import keyframe_selection_overlap
 from utils.recon_helpers import setup_camera
@@ -73,27 +75,36 @@ def get_dataset(config_dict, basedir, sequence, **kwargs):
 
 def get_pointcloud(color, depth, intrinsics, w2c, transform_pts=True, mask=None,
                    compute_mean_sq_dist=False, mean_sq_dist_method="projective", device="cuda",
-                   load_semantics=False, semantic_id=None, semantic_color=None):
+                   load_semantics=False, semantic_id=None, semantic_color=None,
+                   select_before_allocation=False):
     width, height = color.shape[2], color.shape[1]
     CX = intrinsics[0][2]
     CY = intrinsics[1][2]
     FX = intrinsics[0][0]
     FY = intrinsics[1][1]
 
-    # Compute indices of pixels
-    x_grid, y_grid = torch.meshgrid(torch.arange(width).to(device).float(), 
-                                    torch.arange(height).to(device).float(),
-                                    indexing='xy')
-    xx = (x_grid - CX)/FX
-    yy = (y_grid - CY)/FY
-    xx = xx.reshape(-1)
-    yy = yy.reshape(-1)
-    depth_z = depth[0].reshape(-1)
+    if select_before_allocation:
+        if mask is None or mask.dtype != torch.bool or mask.numel() != height * width:
+            raise ValueError("early pointcloud selection needs a flattened pixel mask")
+        selected_indices = torch.nonzero(mask.reshape(-1), as_tuple=False).flatten()
+        xx = ((selected_indices % width).float() - CX) / FX
+        yy = (torch.div(selected_indices, width, rounding_mode='floor').float() - CY) / FY
+        depth_z = depth[0].reshape(-1)[selected_indices]
+    else:
+        # Original Phase 4 path: form the full image pointcloud before masking.
+        x_grid, y_grid = torch.meshgrid(torch.arange(width).to(device).float(),
+                                        torch.arange(height).to(device).float(),
+                                        indexing='xy')
+        xx = (x_grid - CX)/FX
+        yy = (y_grid - CY)/FY
+        xx = xx.reshape(-1)
+        yy = yy.reshape(-1)
+        depth_z = depth[0].reshape(-1)
 
     # Initialize point cloud
     pts_cam = torch.stack((xx * depth_z, yy * depth_z, depth_z), dim=-1)
     if transform_pts:
-        pix_ones = torch.ones(height * width, 1).to(device).float()
+        pix_ones = torch.ones(depth_z.numel(), 1).to(device).float()
         pts4 = torch.cat((pts_cam, pix_ones), dim=1)
         c2w = torch.inverse(w2c)
         pts = (c2w @ pts4.T).T[:, :3]
@@ -111,16 +122,21 @@ def get_pointcloud(color, depth, intrinsics, w2c, transform_pts=True, mask=None,
         
     # Colorize point cloud
     cols = torch.permute(color, (1, 2, 0)).reshape(-1, 3) # (C, H, W) -> (H, W, C) -> (H * W, C)
+    if select_before_allocation:
+        cols = cols[selected_indices]
     point_cld = torch.cat((pts, cols), -1)
     
     # Concat semantic label if load_semantics=True
     if load_semantics:
         semantic_id = torch.permute(semantic_id, (1, 2, 0)).reshape(-1, 1) # (1, H, W) -> (H, W, 1) -> (H * W, 1)
         semantic_color = torch.permute(semantic_color, (1, 2, 0)).reshape(-1, 3) # (3, H, W) -> (H, W, 3) -> (H * W, 3)
+        if select_before_allocation:
+            semantic_id = semantic_id[selected_indices]
+            semantic_color = semantic_color[selected_indices]
         point_cld = torch.cat((point_cld, semantic_id, semantic_color), -1)
 
     # Select points based on mask
-    if mask is not None:
+    if mask is not None and not select_before_allocation:
         point_cld = point_cld[mask]
         if compute_mean_sq_dist:
             mean3_sq_dist = mean3_sq_dist[mask]
@@ -419,7 +435,7 @@ def initialize_new_params(new_pt_cld, mean3_sq_dist, device, load_semantics=Fals
 
 
 def add_new_gaussians(params, params_opt_exclude, variables, curr_data, sil_thres, time_idx,
-                      mean_sq_dist_method, device="cuda", load_semantics=False):
+                      mean_sq_dist_method, device="cuda", load_semantics=False, bcgm_budget=None):
     # Silhouette Rendering
     transformed_pts = transform_to_frame(params, time_idx, gaussians_grad=False,
                                          camera_grad=False, device=device)
@@ -437,6 +453,14 @@ def add_new_gaussians(params, params_opt_exclude, variables, curr_data, sil_thre
     non_presence_mask = non_presence_sil_mask | non_presence_depth_mask
     # Flatten mask
     non_presence_mask = non_presence_mask.reshape(-1)
+
+    bcgm_record = None
+    if bcgm_budget is not None:
+        valid_depth_mask = curr_data['depth'][0, :, :] > 0
+        non_presence_mask, bcgm_record = select_bounded_candidates(
+            non_presence_mask & valid_depth_mask.reshape(-1),
+            non_presence_depth_mask.reshape(-1), depth_error.reshape(-1),
+            silhouette.reshape(-1), params['means3D'].shape[0], bcgm_budget)
 
     # Get the new frame Gaussians based on the Silhouette
     if torch.sum(non_presence_mask) > 0:
@@ -460,7 +484,8 @@ def add_new_gaussians(params, params_opt_exclude, variables, curr_data, sil_thre
                                                    curr_w2c, mask=non_presence_mask, compute_mean_sq_dist=True,
                                                    mean_sq_dist_method=mean_sq_dist_method, device=device,
                                                    load_semantics=load_semantics, semantic_id=semantic_id,
-                                                   semantic_color=semantic_color)
+                                                   semantic_color=semantic_color,
+                                                   select_before_allocation=bcgm_budget is not None)
         new_params = initialize_new_params(new_pt_cld, mean3_sq_dist, device, load_semantics=load_semantics,
                                            params_opt_exclude=params_opt_exclude)
         for k, v in new_params.items():
@@ -474,6 +499,13 @@ def add_new_gaussians(params, params_opt_exclude, variables, curr_data, sil_thre
         variables['max_2D_radius'] = torch.zeros(num_pts, device=device).float()
         new_timestep = time_idx*torch.ones(new_pt_cld.shape[0],device=device).float()
         variables['timestep'] = torch.cat((variables['timestep'],new_timestep),dim=0)
+
+    if bcgm_record is not None:
+        bcgm_record['after'] = params['means3D'].shape[0]
+        bcgm_record['budget_saturated'] = (bcgm_record['global_saturated'] or
+                                           bcgm_record['event_saturated'])
+        bcgm_record['frame'] = time_idx
+        print('BCGM_INSERTION ' + json.dumps(bcgm_record, sort_keys=True))
 
     return params, variables
 
@@ -542,6 +574,7 @@ def stage_keyframe_payload(keyframe, device):
 
 
 def rgbd_slam(config: dict):
+    bcgm_budget = validate_bcgm_config(config)
     # Print Config
     print("Loaded Config:")
     if "use_depth_loss_thres" not in config['tracking']:
@@ -754,6 +787,9 @@ def rgbd_slam(config: dict):
                 keyframe_list.append(curr_keyframe)
     else:
         checkpoint_time_idx = 0
+
+    if bcgm_budget is not None and params['means3D'].shape[0] > bcgm_budget.max_gaussians:
+        raise ValueError("Initial or resumed Gaussian count exceeds bcgm.max_gaussians")
     
     # Iterate over Scan
     for time_idx in tqdm(range(checkpoint_time_idx, num_frames)):
@@ -922,7 +958,7 @@ def rgbd_slam(config: dict):
                 # Add new Gaussians to the scene based on the Silhouette
                 params, variables = add_new_gaussians(params, params_opt_exclude, variables, densify_curr_data, 
                                                       config['mapping']['sil_thres'], time_idx, config['mean_sq_dist_method'],
-                                                      device, load_semantics=load_semantics)
+                                                      device, load_semantics=load_semantics, bcgm_budget=bcgm_budget)
                 post_num_pts = params['means3D'].shape[0]
                 if config['use_wandb']:
                     wandb_run.log({"Mapping/Number of Gaussians": post_num_pts,
@@ -1163,6 +1199,8 @@ if __name__ == "__main__":
     experiment = SourceFileLoader(
         os.path.basename(args.experiment), args.experiment
     ).load_module()
+
+    validate_bcgm_config(experiment.config)
 
     # Set Experiment Seed
     seed_everything(seed=experiment.config['seed'])

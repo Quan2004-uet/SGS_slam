@@ -1,4 +1,43 @@
+## Phase 7 Final Research State — 2026-10-28 (Asia/Tokyo)
+
+**Current outcome:** room0 `RESEARCH_COMPLETED_WITH_LIMITATIONS`; room1 `PASS_WITH_LIMITATIONS`; `PHASE7_QUANTITATIVE_RESEARCH: COMPLETE_WITH_LIMITATIONS`. Room1 advanced visualization A–H is `DEFERRED_BY_RESEARCH_DECISION`.
+
+- Room0 gates: Gate 0 PASS, Gate 1A PASS, Gate 1B PASS_WITH_LIMITATIONS, Gate 2 PASS_GATE2_WITH_COMPARISON_LIMITATIONS, Gate 3 COMPLETE_WITH_LIMITATIONS, Gate 4 FINAL_EVIDENCE_CLOSURE_COMPLETE.
+- Room1: R1-Gate 0 PASS, R1-Gate 1 COMPLETE, R1-Gate 2 PASS_WITH_LIMITATIONS. Run `p7_bcgm_r1_full_room1_on_0_1999_r01`; 2,000 frames; checkpoint ZIP CRC PASS; SHA256 `27a388536ced6a5cf5dc59395a980e1f74a99c2a438c4290773d4e54eafadf32`.
+- `SESSION_006` CLOSED 2026-10-28 (Asia/Tokyo), owning room1 quantitative validation. `SESSION_005` remains ACTIVE, separate room0 workstream; it is not closed or rewritten here.
+- Source identities: `scripts/slam.py` SHA256 `ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999`; `utils/bcgm.py` SHA256 `8f30b9c997b10acd988c5a5ac053f2d15c28adde3783ba193ed9da832e908400`. No source or scientific config changed in this synchronization.
+- Final evidence/handoff: `docs/research/phase7/PHASE7_FINAL_PROJECT_STATE_AND_HANDOFF.md`; detailed room0 evidence under `docs/research/phase7/`; room1 evidence under `docs/research/phase7/room1/`.
+- Git/HF: no commit/push/upload. Status is `LOCAL_SESSION_CLOSED_PUBLICATION_PENDING`; existing uncommitted Phase 7 work is preserved.
+
+
 # SGS-SLAM Project Status
+
+## Phase 7 Post-Implementation Work — SESSION_007 ACTIVE
+
+As of 2026-10-28 (Asia/Tokyo), `SESSION_007` is carrying out P7-POST-01 selective archival followed by P7-POST-02 technical/scientific audit. No experiment, source/config modification, rendering or artifact mutation is authorized. Existing Phase 7-A outcomes remain unchanged: room0 `RESEARCH_COMPLETED_WITH_LIMITATIONS`; room1 `PASS_WITH_LIMITATIONS`; quantitative research `COMPLETE_WITH_LIMITATIONS`; room1 advanced visualization A–H `DEFERRED_BY_RESEARCH_DECISION`. `SESSION_005` remains ACTIVE; `SESSION_006` remains CLOSED.
+
+The local Git allowlist and evidence-preservation audit are being prepared. Remote `phase7-bcgm` was absent at read-only query; any allowed push creates the branch without merging to `main`. Current workspace remains intentionally uncommitted until the explicit staged review passes. See `docs/research/phase7/post_implementation/`.
+
+
+## Phase 7 Replica room1 R1 State — 2026-10-28 (Asia/Tokyo)
+
+Replica room1 run p7_bcgm_r1_full_room1_on_0_1999_r01 completed frames 0–1999. R1-Gate 0 PASS from saved direct-host preflight; R1-Gate 1 COMPLETE; R1-Gate 2 PASS_WITH_LIMITATIONS after independent offline validation.
+
+- Exit 0; 2,000 frames and poses; 1,999 insertion events.
+- Checkpoint SHA256 27a388536ced6a5cf5dc59395a980e1f74a99c2a438c4290773d4e54eafadf32; ZIP CRC PASS; 4,498,964 Gaussian records. PLY vertex counts agree.
+- Six metric arrays each have 401 finite entries; offline ATE independently recomputed for 2,000 poses.
+- BCGM: 33,408,344 valid, 3,892,851 admitted, 29,515,493 rejected; Event Cap activations 294, Global Cap 1251; all invariants pass.
+- Original run manifest: 1,629/1,629 paths, sizes and hashes verified. Supplemental ATE integrity manifest covers later CPU-only ATE outputs.
+- Phase 4 room1 is primary reference with runtime-scope limitation; Phase 6 includes BAM; Phase 7 room0 is cross-scene. Single run/seed; no causal/statistical claim. Advanced visualization A–H not included.
+- SESSION_006 CLOSED on 2026-10-28 (Asia/Tokyo) after R1 evidence closure; SESSION_005 remains ACTIVE for its separate room0 workstream.
+- Reports: docs/research/phase7/room1/PHASE7_R1_GATE2_FINAL_EVIDENCE_CLOSURE.md and PHASE7_R1_FINAL_HANDOFF.md.
+
+Room0 Gates 0–4 are unchanged and not reopened. Earlier R1 preparation reports are historical snapshots superseded by saved run evidence.
+
+---
+
+> CURRENT PROJECT-STATE AUTHORITY. The Phase 7 overlay is active; the older Phase 4 migration snapshot below is preserved as history.
+
 
 > **CURRENT PROJECT-STATE AUTHORITY.** This file is the canonical
 > human-readable source for the current Phase, phase status, latest Session,

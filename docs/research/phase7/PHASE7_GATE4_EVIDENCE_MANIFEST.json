@@ -1,0 +1,1148 @@
+{
+  "artifact_count": 212,
+  "artifacts": [
+    {
+      "path": "/home/robot/research/SGS_slam/docs/experiments/PHASE4_VB001_FULL_SCENE_OUTPUT_SAVE_RESULT.md",
+      "sha256": "2fc1d677563316e302f9f079108fa08e1fb643a57c44c2e88616ae0f5640919e",
+      "size_bytes": 8723
+    },
+    {
+      "path": "/home/robot/research/SGS_slam_phase4_multiscene/scripts/slam.py",
+      "sha256": "a26aafe4686acf65ca5523eb2758b7026ee35cc4e6a63690fc1f433c950732b3",
+      "size_bytes": 61514
+    },
+    {
+      "path": "configs/replica/phase7_gate3_room0_on_0_1999_r01.py",
+      "sha256": "1bb57b3dd38e98c39a24310ceaee656a8415ce901e61808bb19cea8422c4ff22",
+      "size_bytes": 332
+    },
+    {
+      "path": "docs/project_state/ROADMAP.md",
+      "size_bytes": 4622,
+      "sha256": "83a1d0faae4b631d22e98166f37c51cbef637d3742be09a82d54a4d0042ffcb8"
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_FINAL_PROJECT_STATE_AND_HANDOFF.md",
+      "size_bytes": 8820,
+      "sha256": "41faa29439e5c3c0b4cfb285436e421fd3bd7c4d7c5b0a95fcbcc4fa5127213d"
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1A_IMPLEMENTATION_REPORT.md",
+      "sha256": "6bab3f0af1c3e4e280db879bb2c21ec8b07facbf14b2f5c06149dfd103af0f45",
+      "size_bytes": 6615
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_EVIDENCE_MANIFEST.json",
+      "sha256": "f517f3df540a709f183324f172e21d045331939e08f6ee8a82c9c472c3b101f0",
+      "size_bytes": 131491
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_FINAL_VALIDATION_REPORT.md",
+      "sha256": "4ab4401950f32c3dff51e4f8a999cc0949362f54ca095061e4b7f92dd080f7f6",
+      "size_bytes": 6208
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_METRIC_COMPARISON.md",
+      "sha256": "7b2865ae6e66fc1a39e9f6ca67e26857346f39f269c8e1f7a00af080abfdc875",
+      "size_bytes": 5182
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_PREFLIGHT_REPORT.md",
+      "sha256": "9f18656c511d873f43b850f5ebd53621833f974f99cde375bed53794df6a09fc",
+      "size_bytes": 7062
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_RUN_CONTRACT.md",
+      "sha256": "7dffd1e7b2952c7bf3f7626f8ff86b8a3ec23acad486be7ed79e03e0158863a6",
+      "size_bytes": 12125
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE1B_SESSION_HANDOFF.md",
+      "sha256": "47c0895ec5b9b9adaf22f829d6ebcfbee63f8301a04ce4b53f1369fe3045fc94",
+      "size_bytes": 5065
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_BASELINE_REUSE_AUDIT.md",
+      "sha256": "1dc3334d912b20a4298b4a4bce22fa116a8fcc63778a70daa1f63a7d090e8fe3",
+      "size_bytes": 9020
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_EVIDENCE_MANIFEST.json",
+      "sha256": "f621672af4b2c3700643307787d0e232cc51d57be36bf5c6142baea0b98b70d2",
+      "size_bytes": 8082
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_FINAL_VALIDATION_REPORT.md",
+      "sha256": "7c86516c7decb3c9e73ea218b3bd706f675452ff4c7a2c5117c4092c5e9bfabd",
+      "size_bytes": 3678
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_METRIC_COMPARISON.md",
+      "sha256": "6442dceb22353f7cd4147f6d5d43b6296882c45778a83c15ee2a67aae61c6950",
+      "size_bytes": 4319
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_MINIMAL_PREFLIGHT_REPORT.md",
+      "sha256": "bbc904af82118b55f2d1bf1118d968cdc970deee29478ed33b66f0f579c7c8e9",
+      "size_bytes": 5738
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_MINIMAL_RUN_CONTRACT.md",
+      "sha256": "2c896eacf2026d317b77b8faba7bf8de3431bf71c5147c6268504260dfbf9cdd",
+      "size_bytes": 7361
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_NVML_RECOVERY_REPORT.md",
+      "sha256": "42474b8e82227988d27b987114f7228433056c289be0cafd2b9e0cadbc61c332",
+      "size_bytes": 2082
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE2_READINESS_REPORT.md",
+      "sha256": "3c005ef6470296302df0f693c95bc9c3f0b6afb1cea66515f42d26b8b3feed2c",
+      "size_bytes": 8066
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_AUDIT.md",
+      "sha256": "5f09214c2f2fb00d69d2fcdb47ebb233327e4d1989020563829b6ddc159f0e31",
+      "size_bytes": 9583
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_EXECUTION.md",
+      "sha256": "c09d31c8e109780ae1abfa05af9dff03bdde614f167a568b1fb8566201b55b6e",
+      "size_bytes": 5194
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_FINAL_REPORT.md",
+      "sha256": "e62d4a7cd10221e42592c6a821c472997effb99272cb4548821d812a2177a6a0",
+      "size_bytes": 4872
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_PLAN.md",
+      "sha256": "c2b8a103c77b3ecd7fcdaed68a882f8335d81c4436c8eeb8f8f9010e7b2ea4b9",
+      "size_bytes": 7812
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_ADVANCED_VISUALIZATION_VALIDATION.md",
+      "sha256": "e700c97f7a263d0826fd2726c6850125c31fdb44689ba9fc2fc5941fe486a3e9",
+      "size_bytes": 5549
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_BASELINE_REUSE_AUDIT.md",
+      "sha256": "562ca9ad9bb6a45bc931bb97231ddcb0ac2ca8c5ce6ea2250b369e0df89f6dfc",
+      "size_bytes": 5177
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_GLOBAL_CAP_TEST_REPORT.md",
+      "sha256": "b96c44fb2e509f14abc8377a0bcd4ed2b9383c4bd95f884ae79c705460de1616",
+      "size_bytes": 3082
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_NVML_FIX_VALIDATION.md",
+      "sha256": "04a6f8be7070a88b5d087942b17cfbe296baab9a0a317a618a2575e3a730adf1",
+      "size_bytes": 1818
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_PREFLIGHT_REPORT.md",
+      "sha256": "3f8a87866a53447679d995ab2f2b5344dd62f89cc557e7841055b7795b530744",
+      "size_bytes": 3935
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_RUN_CONTRACT.md",
+      "sha256": "155479e6a323735f28c964ca40a99336ae28c7ccc228644541d2e98edb3f608f",
+      "size_bytes": 5879
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUALIZATION_FINAL_REPORT.md",
+      "sha256": "fddf225f76ab9f88e2b9897437c8e63207c59570a7a4e6c7d2f00953fdffa126",
+      "size_bytes": 3381
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUALIZATION_PLAN.md",
+      "sha256": "7fcd7fb08fa05d63583c72583400238c2d83920a6f0d491e3532dc2b5926dafa",
+      "size_bytes": 4646
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUALIZATION_REFERENCE_AUDIT.md",
+      "sha256": "6fb81fad5cbaa0943b50c703574d59981a60c8fcd2227c9a14b6efac7a61fc9b",
+      "size_bytes": 4476
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE3_VISUAL_COMPARISON_INDEX.md",
+      "sha256": "25dca5fd8868934607c821f94df3ca1369d9811c584e4811b12ee460ae955efb",
+      "size_bytes": 4936
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_CONTRIBUTION_AND_LIMITATIONS.md",
+      "sha256": "df58d62ba1a6261202e5072cef296b890de6319b8c424e8917388e055939fa90",
+      "size_bytes": 4211
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_FINAL_EVIDENCE_CLOSURE.md",
+      "sha256": "75f6e64f1249d6ad942d9413c435a0c2223711cb6a78cb494a80c058a6711664",
+      "size_bytes": 9939
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_FINAL_HANDOFF.md",
+      "sha256": "84af260e69c34570665003dd017518616bf5895d31e913a8c665b07b30e71557",
+      "size_bytes": 2338
+    },
+    {
+      "path": "docs/research/phase7/PHASE7_GATE4_FINAL_METRIC_TABLE.md",
+      "sha256": "130efe32d16fe03217931f7adb3ac515ef105027acb99f3b86c3bb440574e54b",
+      "size_bytes": 5241
+    },
+    {
+      "path": "docs/research/phase7/room1/PHASE7_R1_FINAL_HANDOFF.md",
+      "size_bytes": 2027,
+      "sha256": "ef62246a4c9e1d809118a645c974873b200a26a8c453437431cf55b0f68adfe5"
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/config.py",
+      "sha256": "1bb57b3dd38e98c39a24310ceaee656a8415ce901e61808bb19cea8422c4ff22",
+      "size_bytes": 332
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/eval/l1.txt",
+      "sha256": "b0cd076cfeed75c23dc97cf9363c5efb3b0ac2d8229dfc030f775d4536d08a63",
+      "size_bytes": 10025
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/eval/lpips.txt",
+      "sha256": "14b989262ddffac4bf70a13ce4c391fea5e1b61eb05a347e0235317f697eca64",
+      "size_bytes": 10025
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/eval/miou.txt",
+      "sha256": "0ae2fc84b196d2b3af536e1f97fe5a19d8efa40e0a85653e26cf6c97b3cbe106",
+      "size_bytes": 10025
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/eval/psnr.txt",
+      "sha256": "dd5b6c694e84d220913d5ce1e926f64af58329b77afbbeaf805cbcf725ed5338",
+      "size_bytes": 10025
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/eval/rmse.txt",
+      "sha256": "b0cd076cfeed75c23dc97cf9363c5efb3b0ac2d8229dfc030f775d4536d08a63",
+      "size_bytes": 10025
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/eval/ssim.txt",
+      "sha256": "f1d99fb9483e5afd90423b2bb25aa58ac093cb64b38e195df4a5be05496da980",
+      "size_bytes": 10025
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/params.npz",
+      "sha256": "a02dd4b4ecfd9c982866cf4a4c38c187ef22c75049b8328e18eea20608944917",
+      "size_bytes": 292664335
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/params.ply",
+      "sha256": "409d1c3637e3f951f950d14bf066a88df66de8dc41a01762c312a0871ab300fc",
+      "size_bytes": 305972061
+    },
+    {
+      "path": "experiments/Replica/p7_bcgm_g3_room0_on_0_1999_r01/seg_params.ply",
+      "sha256": "98a41a36e69e113c7e7da8dcfcd8c279c08c25da8af7525e26dcbdb7df262b89",
+      "size_bytes": 305972061
+    },
+    {
+      "path": "project_management/CHANGELOG.md",
+      "size_bytes": 10356,
+      "sha256": "0d29790f2dd0aac95861765a53ac7ab1859c6a61ad641365bb63a3880e060a6d"
+    },
+    {
+      "path": "project_management/PROJECT_STATUS.md",
+      "size_bytes": 21642,
+      "sha256": "41b2e5318429cf493a218d43a63178b191fa1b587af51c8f191916ebc5243639"
+    },
+    {
+      "path": "project_management/SESSION_HANDOFF.md",
+      "size_bytes": 15452,
+      "sha256": "f4848423dd9f761c982f0d335f27b6ea5fad989bb47f5502a5cc090a8345ff38"
+    },
+    {
+      "path": "project_management/sessions/SESSION_005.md",
+      "sha256": "3b1cdd7073b8a9f55f232451a679b12abb0683d18fd7ed1aefbcd354659e733d",
+      "size_bytes": 12592
+    },
+    {
+      "path": "project_management/sessions/SESSION_006.md",
+      "size_bytes": 4487,
+      "sha256": "1c494400c0fb675f6b3668b42b3c8b4a8a0a6774ad5df7e33062e1259b7ff29e"
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/frame_0000.json",
+      "sha256": "99d64e939a4d9034c9faee2086579a8f1f4ad5cd77cd3c6bb1462e53c3fbc2ed",
+      "size_bytes": 10750
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/frame_0499.json",
+      "sha256": "b946370943dddd5d191b10c6243ac6c61badf7206e9aa527d72b6ea0d4979754",
+      "size_bytes": 11027
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/frame_0999.json",
+      "sha256": "36175f04a5fdd796c153ada50047bc89a09189f1e2855366d55c9ad34d0e8f40",
+      "size_bytes": 10972
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/frame_1499.json",
+      "sha256": "070b65b24305728dfeb7fa68ac51a08c837329db9f96715f0ecf1feba9a73f27",
+      "size_bytes": 11027
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/frame_1999.json",
+      "sha256": "4a6e8ac9260204e2f2cc41ca0c6d19c97819e8b7dabf81e1c2a267fa4f83bec9",
+      "size_bytes": 10962
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/observed_v2/frame_0000.json",
+      "sha256": "99d64e939a4d9034c9faee2086579a8f1f4ad5cd77cd3c6bb1462e53c3fbc2ed",
+      "size_bytes": 10750
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/observed_v2/frame_0499.json",
+      "sha256": "b946370943dddd5d191b10c6243ac6c61badf7206e9aa527d72b6ea0d4979754",
+      "size_bytes": 11027
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/observed_v2/frame_0999.json",
+      "sha256": "36175f04a5fdd796c153ada50047bc89a09189f1e2855366d55c9ad34d0e8f40",
+      "size_bytes": 10972
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/observed_v2/frame_1499.json",
+      "sha256": "070b65b24305728dfeb7fa68ac51a08c837329db9f96715f0ecf1feba9a73f27",
+      "size_bytes": 11027
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/observed_v2/frame_1999.json",
+      "sha256": "4a6e8ac9260204e2f2cc41ca0c6d19c97819e8b7dabf81e1c2a267fa4f83bec9",
+      "size_bytes": 10962
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/v3a/room_overview.json",
+      "sha256": "f5598e540e78c8c838f3db0e83194520477e528735b65336c5f66a590b7a8cfc",
+      "size_bytes": 3326
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/v3a/top_oblique.json",
+      "sha256": "a85a5e8f06370743894a58003034e0ee415eecafbc626ec308cf9d6f0e4a745d",
+      "size_bytes": 3450
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/cameras/v3a/trajectory_observed.json",
+      "sha256": "df75161d510552a31bd5096ac3cc5a07eea5b58cf9c0ac777d15aa507af17f1a",
+      "size_bytes": 3313
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/A_observed_rgb/frame_0000_triptych.png",
+      "sha256": "7a58c073f33736dd0476baa08e4de05562c39a7fa9e4bee7755a0a4741abae6d",
+      "size_bytes": 2378636
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/A_observed_rgb/frame_0499_triptych.png",
+      "sha256": "57413feab4c4898f77dc66349b0d5c3606614056cd9081d2518f4bcda71834d3",
+      "size_bytes": 2192694
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/A_observed_rgb/frame_0999_triptych.png",
+      "sha256": "0b44c137f24e13cb1a8db0ef1fbf54483df3ff15ef5bc9c7ef6665193081e916",
+      "size_bytes": 3429818
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/A_observed_rgb/frame_1499_triptych.png",
+      "sha256": "346c9c31ca6fc5a566c5a853401fcef10c053e46e0a8ea0509f89e2ff822ca2e",
+      "size_bytes": 2949533
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/A_observed_rgb/frame_1999_triptych.png",
+      "sha256": "508dc6864fabec178f0e05d560580e988f86e90d439c58bebdc5f2f56760a825",
+      "size_bytes": 3006623
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/frame_0000_triptych.png",
+      "sha256": "088615a06e1cd0b618f1be8f5646ffe1071939542573e80ddfa65680f06142f1",
+      "size_bytes": 487324
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/frame_0499_triptych.png",
+      "sha256": "cd5547fc3ca59fd37f0ba442e54ff5940208a0a7a944657858e2a6f926a7ba44",
+      "size_bytes": 433815
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/frame_0999_triptych.png",
+      "sha256": "a1215bdd87bb9d1fd359b8b4f83486b89f31de40ff41f5515e4b81dd3d2a043f",
+      "size_bytes": 548987
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/frame_1499_triptych.png",
+      "sha256": "f2b70ddf825a3e5499d4a22595b8627e96d784117979fbf733f4f2633fd59054",
+      "size_bytes": 600926
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/frame_1999_triptych.png",
+      "sha256": "7270328bee3c4b709fd1a41d301445c08c498ecdba08ce61cb6f789f0384b839",
+      "size_bytes": 463663
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase4/frame_0000.png",
+      "sha256": "504958c395831d43531424837b05c4a731815f5ff2949d71762a1fa9868ef7e3",
+      "size_bytes": 164220
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase4/frame_0499.png",
+      "sha256": "e8f7f92756ed97129c646cf34a26bcde6aa96983b7cbea6508dc89239b4d1683",
+      "size_bytes": 148306
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase4/frame_0999.png",
+      "sha256": "de04b21a154d0ca5d000d5d1508810fcf168b189b7e55ff8691063bcfd9224fc",
+      "size_bytes": 189155
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase4/frame_1499.png",
+      "sha256": "59e8b38c983e7649d30101c3b02480ece9590f3c10fe791a0b57b01ea6ecf994",
+      "size_bytes": 214214
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase4/frame_1999.png",
+      "sha256": "0499240a856338babaeee99132d424bc469ee42ac4dcc49ad55789b73c5250db",
+      "size_bytes": 142580
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase6/frame_0000.png",
+      "sha256": "7a5023b07fd3845e49c4acd0f055352ed929fd2cd355bc820edb4b143ec48c02",
+      "size_bytes": 168044
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase6/frame_0499.png",
+      "sha256": "7a85f1129ed275e0d4c31742c436a0fb1b56cf6b3aed6dd3003e058506864d4b",
+      "size_bytes": 142709
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase6/frame_0999.png",
+      "sha256": "3220a59823de9931754b2194933859ccca06b1b60634fe7d241f02591aeafc79",
+      "size_bytes": 187781
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase6/frame_1499.png",
+      "sha256": "1676b4bf53a3ea630894930d8108f7b992b968bf4e788f7150ad136968f15a8e",
+      "size_bytes": 193461
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase6/frame_1999.png",
+      "sha256": "8730af5d24d3adf600fc8e00deac291e061c8b0dae4dd8e0987abd678f1de438",
+      "size_bytes": 153052
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase7/frame_0000.png",
+      "sha256": "e0eda828321f424a6e7a0f95c98ad9271d294b839afffd6dc654a3c5e846ba88",
+      "size_bytes": 166745
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase7/frame_0499.png",
+      "sha256": "98af5fbde9f81ad01b278fe1cf176d8c60b443f266f259faf312ec71434d4430",
+      "size_bytes": 148175
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase7/frame_0999.png",
+      "sha256": "e775f289c083c2d002a83d726b518d32e93caf731c7ee9665402abee69b9964f",
+      "size_bytes": 188684
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase7/frame_1499.png",
+      "sha256": "ebae217b596a593b90e8510138a744b444c5d45174051ccc7558b7ff576832f4",
+      "size_bytes": 203731
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/B_observed_depth/normalized_references/phase7/frame_1999.png",
+      "sha256": "23b41834086d40c3be28750f9a2e2cb160bfb2432751d8b4b8028411f13efd12",
+      "size_bytes": 173694
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/C_observed_semantic/frame_0000_triptych.png",
+      "sha256": "d04d319e8652cb6749a74305a79327bbf46228bf875085b3006151477df56685",
+      "size_bytes": 1154109
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/C_observed_semantic/frame_0499_triptych.png",
+      "sha256": "c15a92debd3d78f17b90da20b8f7bca4d268f854dbef0f70adad15ff9fe6d65a",
+      "size_bytes": 1117496
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/C_observed_semantic/frame_0999_triptych.png",
+      "sha256": "924a18d32f8942eb8d26208e8e274096ebf9ce418380339c5f1658101a0b2594",
+      "size_bytes": 1477114
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/C_observed_semantic/frame_1499_triptych.png",
+      "sha256": "abf0935a411d6ef76962ddfbacd90ab516fc6794ba06f21d49f0fa6e6410240e",
+      "size_bytes": 1777641
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/C_observed_semantic/frame_1999_triptych.png",
+      "sha256": "37f2201438891ebd4a3d4b1eb650606b9aa4a488e68d3f91ba1eeb7415bdcd6a",
+      "size_bytes": 1175282
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/D_full_scene_rgb/oblique_triptych.png",
+      "sha256": "13e65e739507e5f7b5af8c2feb3446b2a077dfd10466101e5006a1875ae4be38",
+      "size_bytes": 2653079
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/D_full_scene_rgb/overview_triptych.png",
+      "sha256": "d034510e50ed0b6d95ef5ac8047aee0303c7b55fd0b6d04a1f1bb337ac0d7a5a",
+      "size_bytes": 2274803
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/D_full_scene_rgb/room_overview_triptych.png",
+      "sha256": "584f5726f6dd8caeb4af2563fff4a1a8075509adf4de8a6fc824a6f93c58fd4d",
+      "size_bytes": 2064701
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/D_full_scene_rgb/top_oblique_triptych.png",
+      "sha256": "29b5088831d02b95528b92549e359faddef90a7e928980b83d67de12edd76965",
+      "size_bytes": 2073988
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/D_full_scene_rgb/trajectory_observed_triptych.png",
+      "sha256": "fca2a69c0085b7954e67113a1884bf7f16cb42473317211eb3e6376cb7a0b14c",
+      "size_bytes": 1758196
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/E_cross_modal/room_overview_geometry_triptych.png",
+      "sha256": "7aebd8e8d768eaa8816e07cc7266fe20ec374f0a87f8b7a6058e4711547e76a5",
+      "size_bytes": 1316781
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/E_cross_modal/room_overview_triptych.png",
+      "sha256": "6450dda542d913864abbc923fa4499793329fd45f9572387b50786335ca8e7d3",
+      "size_bytes": 4299635
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/E_cross_modal/top_oblique_geometry_triptych.png",
+      "sha256": "5db170eb6b2074a1f3eea2d0b9c687aad5a12b6d7479343c6142c082faabf1b9",
+      "size_bytes": 1292084
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/E_cross_modal/top_oblique_triptych.png",
+      "sha256": "247eb3473f559503c04e99d08a0f552e8f9ba12f83f2af673caedea703086277",
+      "size_bytes": 3984424
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/E_cross_modal/trajectory_observed_geometry_triptych.png",
+      "sha256": "0b738506622a77b4181bf5382f0a2e31f4e922bd6bea538206d26bc89191f530",
+      "size_bytes": 1199504
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/E_cross_modal/trajectory_observed_triptych.png",
+      "sha256": "24432f6c6aae60c95c6cc558d89606b5c014f28ef01178585f45444d1f019a9a",
+      "size_bytes": 3931037
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/blinds_id_triptych.png",
+      "sha256": "e64c1d40764ea0059b966c9114ba7d58b324cd7e8565d6078b02191ccf3fe949",
+      "size_bytes": 262940
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/ceiling_id_triptych.png",
+      "sha256": "b865ad563bd0911ff35029aad2ed937c55d97da40eb630f7ac9c0e134de61088",
+      "size_bytes": 316978
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/chair_id_triptych.png",
+      "sha256": "357cc0548f4e7f6261933122e987a714771491f2e6b56eaf138a6b76500de198",
+      "size_bytes": 212732
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/floor_id_triptych.png",
+      "sha256": "b5b2ea5d70e0f9fe73b7d9d65d5907e1f841acb3f47a1469ba231e163e5b634a",
+      "size_bytes": 219873
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/legend_29_classes.png",
+      "sha256": "ec2be40a77174812494ec679b466d7a84c19308e22a2ab4670ba0ae191b63ebc",
+      "size_bytes": 21824
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/rug_id_triptych.png",
+      "sha256": "378fe7dffeac8c413894320b28dd18e7e969e43ef37f78a19e4b3603ec46daf8",
+      "size_bytes": 235456
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/sofa_id_triptych.png",
+      "sha256": "86334f0a3168314783e9e36b70db562fc905fcbbe831e10df16738a9e9dcd659",
+      "size_bytes": 222391
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/table_id_triptych.png",
+      "sha256": "828eb288ab0a42c518926d4c459e21ba909e13bdf22005f7cab13b1847432bb8",
+      "size_bytes": 210192
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/F_fixed_semantic_classes/wall_id_triptych.png",
+      "sha256": "2ce706d76f2eaf171501890393393f253b41c963ae9ab3c3a5b64c0df5276473",
+      "size_bytes": 283908
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/G_estimated_trajectory/trajectory_3d_triptych.png",
+      "sha256": "9abe679593e5eaf3029caae1c1fb76be95d352245d92066488f5258fd2cb6ccd",
+      "size_bytes": 199923
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/G_estimated_trajectory/trajectory_on_geometry_triptych.png",
+      "sha256": "9ebd2f1d862989e41872b9144760354aea1d2814cccc9fae8673e84f5346f9f1",
+      "size_bytes": 1199827
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/fixed_ids/room_overview_triptych.png",
+      "sha256": "fe13051ab6ce7f076b54f184c168b4c4482db73cb338d537fa5a5a11a61eb22e",
+      "size_bytes": 485168
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/fixed_ids/top_oblique_triptych.png",
+      "sha256": "14e69c4fb7cbf652d94cf2f53a1d48ab2eac36a6e38df0de86ff2f3d756fe5b3",
+      "size_bytes": 475595
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/fixed_ids/trajectory_observed_triptych.png",
+      "sha256": "afcb9ac285e6d40b12f720f19daee14de4ffd6bb3f1c3b2208174a2cb9b6020f",
+      "size_bytes": 493725
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/learned_free_view/oblique_triptych.png",
+      "sha256": "7fdcc304030c38f56899e3b7003b6edbaa7238f1661f805edd939846a64f9777",
+      "size_bytes": 2392301
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/learned_free_view/overview_triptych.png",
+      "sha256": "cf99fcc87cc705c59083789659b5ee87938117b6c0774429a0ac7653e47eb7c1",
+      "size_bytes": 1940672
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/learned_free_view/top_oblique_triptych.png",
+      "sha256": "ab53541ddaed7e4474a2ddb6f00bdf89538b1eb93f010dcb7aaa640af074c6df",
+      "size_bytes": 1794323
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/learned_v3a_raw/room_overview_triptych.png",
+      "sha256": "4c9650694bd5b61cf7d25fd3d2e08c10c8c4451b660b2af8555fdfc04f9454fa",
+      "size_bytes": 1038320
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/learned_v3a_raw/top_oblique_triptych.png",
+      "sha256": "8afecc61c88dd038f3fb2ca2c80042da1a2f4c680bdd117eeef29bdad02684ec",
+      "size_bytes": 1594821
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/compare_phase4_phase6_phase7/H_full_scene_semantic/learned_v3a_raw/trajectory_observed_triptych.png",
+      "sha256": "9a5c4d8cebdccea928471eed23243aeafa1f32980452e2370d5821eb6ebb3ccb",
+      "size_bytes": 764848
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/metadata/advanced_visualization_manifest.json",
+      "sha256": "9fc4bb7fe98f7be41f2e9e756492f0e3c9ba2bdd996b09f974cef6a5c797d039",
+      "size_bytes": 78478
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/fixed_semantic_classes/legend_29_classes.png",
+      "sha256": "ec2be40a77174812494ec679b466d7a84c19308e22a2ab4670ba0ae191b63ebc",
+      "size_bytes": 21824
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/fixed_semantic_classes/selected_classes_overview_top_oblique.png",
+      "sha256": "e4e9f2da25fe4cbe558c8e82b38b80c981a050ec14849bcc69e22e60da96b912",
+      "size_bytes": 158062
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/cameras/oblique.json",
+      "sha256": "9846a224e93b3615afd45097b9106037c3550b5199b74d4e0550f328ad220120",
+      "size_bytes": 2555
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/cameras/overview.json",
+      "sha256": "c5e0029b1758788322538ce27e587c8cdfa5a3277aba331431e50d5ac80865bb",
+      "size_bytes": 2557
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/cameras/top_oblique.json",
+      "sha256": "0d865494919fb2066cf769ef654163ee3f1e262d5ebb4cf8b95681d6934ec196",
+      "size_bytes": 2559
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/paired/oblique_reconstruction_vs_semantic.png",
+      "sha256": "73d234c5e4578cba661f6ef13240644425be92cf9ae16b3254c7487e1e1f2ea8",
+      "size_bytes": 1721727
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/paired/overview_reconstruction_vs_semantic.png",
+      "sha256": "c0aae48dc5d6d781172828f7c166b66bca4736ff3141e94a76f414301d30e928",
+      "size_bytes": 1469515
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/paired/top_oblique_reconstruction_vs_semantic.png",
+      "sha256": "ae8c71f344c25f6a2a9823936a08415adc40329b3ea4f81fcf0ce0d8390d75fb",
+      "size_bytes": 1290132
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/reconstruction/oblique.png",
+      "sha256": "f22791a8c563852354626d8f81ab47316a0ed56a180947b80687e5e6a917b86c",
+      "size_bytes": 891983
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/reconstruction/overview.png",
+      "sha256": "aa36a0d873470103df0389684019511598e1705e91639986cce538178a42ac44",
+      "size_bytes": 783523
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/reconstruction/top_oblique.png",
+      "sha256": "1a93b1b33d3a48b0673cde07dde742c6e2170110c075e431c61c65c9162b3ae5",
+      "size_bytes": 681997
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/semantic/oblique.png",
+      "sha256": "fba7a43e4a9b6c0293b9533382ccc835646a6cb6dae28eaa3a9e6bfe5adecce3",
+      "size_bytes": 809766
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/semantic/overview.png",
+      "sha256": "4b419348d78f844ed7a5d9a9ed8e256f7b22c1725fc08086a342d897e1dbbe79",
+      "size_bytes": 666988
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/free_view/semantic/top_oblique.png",
+      "sha256": "cee594535f929dfd7f51030809d2c86cb77344cfd78145a03ba45f6822ef011a",
+      "size_bytes": 595682
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_0000.npy",
+      "sha256": "6286134c0695fa9e1e9501b74967375c199bb8ee91c0f82265efb84ffde90317",
+      "size_bytes": 3264128
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_0000.png",
+      "sha256": "d9bcb5f5db9ad09d787aec2039d70b588d2c72f09c923a8b2ecf5f8d58de4e42",
+      "size_bytes": 285051
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_0499.npy",
+      "sha256": "926f1005da7d2c8ea508c23276cb451e3f58739b2ffc435b94685bd975eebbaa",
+      "size_bytes": 3264128
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_0499.png",
+      "sha256": "d9d01a8b8caf06e9f6510150a5b20ed167041c35077aa828dc7708821d84ea45",
+      "size_bytes": 272885
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_0999.npy",
+      "sha256": "9322bd42e4f8dd2a508b7d2a9f8458fa8019ffab4e8805a365254e4985cfdbc5",
+      "size_bytes": 3264128
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_0999.png",
+      "sha256": "dcbef80273abf507336e89180eaf16564ae4476ea49c618282d30a7923e2e45f",
+      "size_bytes": 338160
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_1499.npy",
+      "sha256": "e7b29f61f19e0f129a785eeaf8b86369987373407ca83e7fbf52f829b4d5c38c",
+      "size_bytes": 3264128
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_1499.png",
+      "sha256": "6a4892a3ada2db049811112b651f3fcbcc53d07477bf2781098f92837d1dfe24",
+      "size_bytes": 334429
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_1999.npy",
+      "sha256": "208df26ba98fdff98541db330eaec5599ad87a111de7b64c2fa665fe41290f6e",
+      "size_bytes": 3264128
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/depth/frame_1999.png",
+      "sha256": "7f6105944d410aecb1d3f9129454ddc2a31637ed5bcf5435d94355ec194283aa",
+      "size_bytes": 301282
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/render_metadata.json",
+      "sha256": "6439dc0495166ba98388566b6edaa8696e4f7c34ed156dea766b7e89ae301878",
+      "size_bytes": 2859
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/rgb/frame_0000.png",
+      "sha256": "7e910a623c9fd94063f5bd627552ce94fa831072dce1508e6b50682b4c802052",
+      "size_bytes": 780877
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/rgb/frame_0499.png",
+      "sha256": "f9f3ff91985a929133b659dd1fe0053ee7bdaa1c130b9c5b640259b2cad57775",
+      "size_bytes": 719461
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/rgb/frame_0999.png",
+      "sha256": "a9064ecc74023c31f0c1e28a30b2c7cc4d80a9be1783edbfb7bbb5de882236b2",
+      "size_bytes": 1153568
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/rgb/frame_1499.png",
+      "sha256": "378af1aa248cf9d8062708cf0611147cc7fd306414d5b00ae1da87aa6a8e46f7",
+      "size_bytes": 995139
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/rgb/frame_1999.png",
+      "sha256": "49d27d722bf7bce0554f61768fe1e0335d4b7fe45734ff1643664fcc877fec19",
+      "size_bytes": 982248
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/semantic/frame_0000.png",
+      "sha256": "f5242185350cb985f6bc0eb087529bba965d439e328ef6208162259262b8b23f",
+      "size_bytes": 341491
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/semantic/frame_0499.png",
+      "sha256": "edfcd5c22fc5ba16e3d603c3098eba10774094e6e41ab3818c6a37e55e3a9d53",
+      "size_bytes": 334048
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/semantic/frame_0999.png",
+      "sha256": "22fe2a8664ed7f1095d18834f842bcff90b9a88b80870bea76bb25c2b28f42c3",
+      "size_bytes": 547952
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/semantic/frame_1499.png",
+      "sha256": "f135e3170f52c026ebec5664b96ecafa12810f50da06ac642603768bda4531ce",
+      "size_bytes": 637584
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/observed_camera/semantic/frame_1999.png",
+      "sha256": "90d7d8114b7ddda61a37a4131102f42cdd4777d342ee5d1230efe96c69c4227f",
+      "size_bytes": 354920
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/cameras/room_overview.json",
+      "sha256": "f5598e540e78c8c838f3db0e83194520477e528735b65336c5f66a590b7a8cfc",
+      "size_bytes": 3326
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/cameras/top_oblique.json",
+      "sha256": "a85a5e8f06370743894a58003034e0ee415eecafbc626ec308cf9d6f0e4a745d",
+      "size_bytes": 3450
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/cameras/trajectory_observed.json",
+      "sha256": "df75161d510552a31bd5096ac3cc5a07eea5b58cf9c0ac777d15aa507af17f1a",
+      "size_bytes": 3313
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/checksums/SHA256SUMS.txt",
+      "sha256": "cc706595ecd97509ab04a9f9eb5499cdd26d90965045e1bce41db4eb91d4b912",
+      "size_bytes": 3433
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/comparisons/room_overview_rgb_geometry_semantic.png",
+      "sha256": "2a28bb9dca275d1d0145c23e930127943b0f1365a1ce53c6fc8e5561dda5d758",
+      "size_bytes": 1435508
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/comparisons/top_oblique_rgb_geometry_semantic.png",
+      "sha256": "f33cfd6f21a2565b6a3b6038bdc596e3e694ca5e2e4f6a63c094ccecef642d29",
+      "size_bytes": 1348911
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/comparisons/trajectory_observed_rgb_geometry_semantic.png",
+      "sha256": "0691a397edbba24c5e617c9266f4dc2bd44edd909a83ef4d7095cf601b99bf37",
+      "size_bytes": 1313950
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/geometry/room_overview.png",
+      "sha256": "5fbf20eef3b3ed7ee748932f17ee147fd7ababfa50b7d8ae16db2576acfc7636",
+      "size_bytes": 445262
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/geometry/top_oblique.png",
+      "sha256": "a6d22754d49d9e739852010e682e1b98f79756e3c49a647d773dc377e1a6a7e8",
+      "size_bytes": 446363
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/geometry/trajectory_observed.png",
+      "sha256": "4e9d83e342f02ede19eb5293044c3e30ad85af491a504bc55cd9d9fc90968ab1",
+      "size_bytes": 410354
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/metadata/artifact_manifest.json",
+      "sha256": "59ab78ec7d8ab18135048021349a0f74cf4127f9bd3dae435cb22cdaa9c98c9e",
+      "size_bytes": 6094
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/metadata/classwise_counts.json",
+      "sha256": "556cf971aaf9002b0e6f45bc3afc1d7a0c5db5b8f74ed5de55c280e868398c5c",
+      "size_bytes": 1784
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/metadata/gaussian_center_sample_indices.npy",
+      "sha256": "fc8d2cbd1070d453f220e628bf02cb9b478a7868ff42ecaf63df153d1aabc9b5",
+      "size_bytes": 5200128
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/metadata/run_metadata.json",
+      "sha256": "681f9aeeb43dbccbed9689c577560dce13154e7e4f7cc8a519c565a52a375fef",
+      "size_bytes": 17304
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/rgb/unfiltered/room_overview.png",
+      "sha256": "28e167eb6f9373b4a2306d8e1a29eae60dc28b6bb101892429bda278b05bf4ba",
+      "size_bytes": 681979
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/rgb/unfiltered/top_oblique.png",
+      "sha256": "6f5334f0eb14099780d619c9532c1de84da9eaf57ddecc236025e42d3b252512",
+      "size_bytes": 560758
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/rgb/unfiltered/trajectory_observed.png",
+      "sha256": "47e895b237d8d96f2419b12e52b7b995daaecfd051c295f09c271cdaa737d090",
+      "size_bytes": 581414
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/categorical/legend_29_classes.png",
+      "sha256": "ec2be40a77174812494ec679b466d7a84c19308e22a2ab4670ba0ae191b63ebc",
+      "size_bytes": 21824
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/categorical/room_overview.png",
+      "sha256": "37cd079379a618d4514d3a5678d12e28a677edc1845771ed2a4e5b2e6e67de8f",
+      "size_bytes": 164791
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/categorical/top_oblique.png",
+      "sha256": "e1268885a2b447416f616497f754bdce514cdb8370f01c7d4cc0546f903c8f9e",
+      "size_bytes": 165551
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/categorical/trajectory_observed.png",
+      "sha256": "3a1286958a92fd8209ac75bd845634d6ae1a9a6373ed47607399f308808993dc",
+      "size_bytes": 168757
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/blinds_top_oblique.png",
+      "sha256": "52a061ec1f64c61d16e5a10a4704338b809b842c48721a0415a0a2b0f919f9de",
+      "size_bytes": 92898
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/ceiling_top_oblique.png",
+      "sha256": "b12373ed36f520c1fe82c82d5bbdd24e01d9a3a1dca48020ca71c8ffdeedfe7b",
+      "size_bytes": 111460
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/chair_top_oblique.png",
+      "sha256": "29b4cc802688456ee632fdeb073377b84422440e9446a7ada7d1e3003b58ad18",
+      "size_bytes": 76752
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/floor_top_oblique.png",
+      "sha256": "fafd1041782db6c957a2fef4979b9535eeaa72a2eea3195c39e259697ee27d17",
+      "size_bytes": 78650
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/rug_top_oblique.png",
+      "sha256": "058ef3c1f1fcbc00e3387aa7552cd1a003e943794fb7646249f439a5c6981b8d",
+      "size_bytes": 83452
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/selected_classes_overview_top_oblique.png",
+      "sha256": "e4e9f2da25fe4cbe558c8e82b38b80c981a050ec14849bcc69e22e60da96b912",
+      "size_bytes": 158062
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/sofa_top_oblique.png",
+      "sha256": "c1df779289d33c791bcfab08aeca17bc6c3778adc20ede99da3f9cf3f4b38e88",
+      "size_bytes": 79663
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/table_top_oblique.png",
+      "sha256": "a6f3f67ad986b5ba9f0582028d36d9b8c9276a1fe71c631bf65435c639f3d28e",
+      "size_bytes": 75189
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/classwise/wall_top_oblique.png",
+      "sha256": "784fe289f75782051e834c6aeca10c5ba15fcb84e472e71e98ca14eac9822eb8",
+      "size_bytes": 98969
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/raw/room_overview.png",
+      "sha256": "8b75edfe19daafe86278a2ba7faeb0c1a44de0370a0bae2db4b52f7733ad13f3",
+      "size_bytes": 332629
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/raw/top_oblique.png",
+      "sha256": "81f9645f0c8078d5527a047c96605a16ff2deb07bc1772e94edcc6b4a25de342",
+      "size_bytes": 535033
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/semantic/raw/trajectory_observed.png",
+      "sha256": "e5518bb91d32c283e80f0fe5794045c96fbf3d531a4b73f1b8ddf34ae1188ab3",
+      "size_bytes": 227029
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/advanced_visualization/phase7_only/v3a_diagnostics_r02/trajectory/estimated_trajectory_3d.png",
+      "sha256": "e3f5d23fd52b728f1cd6341d22452698ca192c48ac26938963a381f6bce8a830",
+      "size_bytes": 72744
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/effective_config_input.json",
+      "sha256": "91ef8e2328352897842f1c92f82f27d0073e64af0189542d26410683366224fc",
+      "size_bytes": 3351
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/effective_config_runtime.json",
+      "sha256": "c1360aff38a5bc0a5c48f441af7daf71cccec7b79026b2b86eccddd48b2ca66d",
+      "size_bytes": 3656
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/insertion_counts.jsonl",
+      "sha256": "b1e6daa103407713585f84d4900b6b5f6c1864ec2d6e771fb2c7976dfff23f96",
+      "size_bytes": 190366
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/nvml_samples.csv",
+      "sha256": "3303dfed8f1a2e38213d74890cd950b41dfa8989f9a250174226d2059a9c1c86",
+      "size_bytes": 515588
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/offline_ate_validation.json",
+      "sha256": "da4e4fea87bc9060e41bc659778284c1bee2b1793b730fce441eeaa3c95b7a02",
+      "size_bytes": 3056
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/offline_ate_validation.md",
+      "sha256": "15f3d46946a923347a7cbc757dc20fbe4c46846b94233b02dc8c994197c36346",
+      "size_bytes": 3445
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/run_summary.json",
+      "sha256": "cad87cf405cd9aab6cb6d226e0a49aeeab455f8b6d92858c7e9263ba95923e41",
+      "size_bytes": 6474
+    },
+    {
+      "path": "results/runtime_artifacts/phase7_gate3/p7_bcgm_g3_room0_on_0_1999_r01/stdout_stderr.log",
+      "sha256": "afe71eb91befcfabdcd98e4c00782d5a6d463ef373cb945b881b2e6655f6dbf5",
+      "size_bytes": 9700676
+    },
+    {
+      "path": "scripts/slam.py",
+      "sha256": "ce57372060d631e667b262e9cbb168d4ef73b094d7805ed9046635a762a0b999",
+      "size_bytes": 63670
+    },
+    {
+      "path": "tools/phase7/gate1b_worker.py",
+      "sha256": "9a449ef10506ebbe6ccd0616d29aa02e9183554b333d605c9440ec07e09ad40b",
+      "size_bytes": 3832
+    },
+    {
+      "path": "tools/phase7/gate3_on_runner.py",
+      "sha256": "1d97bb2d1dec0056a7d5a3e081d1ca3ee649a5f13ffd68b8563647300622a7a6",
+      "size_bytes": 24898
+    },
+    {
+      "path": "utils/bcgm.py",
+      "sha256": "8f30b9c997b10acd988c5a5ac053f2d15c28adde3783ba193ed9da832e908400",
+      "size_bytes": 4698
+    },
+    {
+      "path": "utils/eval_helpers.py",
+      "sha256": "e94366ca256ec2b51b5d0264a5daba2a895cc0375d7b91e976e4ea0e9e28194e",
+      "size_bytes": 51905
+    },
+    {
+      "path": "utils/slam_external.py",
+      "sha256": "65804d58534d708037009c5a064b192cc198fe5a27cafacc55b3fcdf1610e573",
+      "size_bytes": 13934
+    }
+  ],
+  "bcgm_totals": {
+    "admitted": 4363012,
+    "event_cap": 9000,
+    "event_cap_activations": 104,
+    "global_cap": 4500000,
+    "global_cap_activations": 789,
+    "rejected": 4335223,
+    "valid_candidates": 8698235
+  },
+  "created_date": "2026-10-27",
+  "gate_status": {
+    "gate0": "PASS_PHASE7_GATE0_DESIGN_READY (documented carry-forward; standalone report not found)",
+    "gate1a": "PASS_PHASE7_GATE1A_CPU_READY",
+    "gate1b": "PASS_WITH_LIMITATIONS",
+    "gate2": "PASS_GATE2_WITH_COMPARISON_LIMITATIONS",
+    "gate3": "COMPLETE_WITH_LIMITATIONS",
+    "gate4": "FINAL_EVIDENCE_CLOSURE_COMPLETE",
+    "phase7": "RESEARCH_COMPLETED_WITH_LIMITATIONS"
+  },
+  "git": {
+    "branch": "phase7-bcgm",
+    "head": "68f9060f7ff4d8d141be1d5f71339401327edd06",
+    "worktree_changes_preserved": true
+  },
+  "hash_algorithm": "SHA256",
+  "historical_evidence_gaps": [
+    "No standalone Gate 0 design report located in the Phase 7 worktree; status is carried forward from Gate 1A/1B and management records.",
+    "Phase 4 full-scene quality, trajectory and NVML metrics were not measured; its resource comparison has harness/timing limitations.",
+    "No matched quantitative Phase 6 Replica room0 full-scene protocol found.",
+    "Laptop transfer is researcher-reported; no local laptop-side SHA256 values were available for independent verification."
+  ],
+  "manifest_version": 1,
+  "metrics": {
+    "ate_max_m": 0.009684450577739244,
+    "ate_mean_m": 0.0024897592444028008,
+    "ate_median_m": 0.0015416674157756505,
+    "ate_pose_count": 2000,
+    "ate_rmse_m": 0.0032492782294292577,
+    "depth_l1_m": 0.005907558010394065,
+    "lpips": 0.07653344372877308,
+    "ms_ssim": 0.9757805364090308,
+    "psnr_db": 32.44404525233623,
+    "semantic_miou": 0.9134420263723309
+  },
+  "performance_memory": {
+    "cuda_peak_allocated_bytes": 5442630656,
+    "cuda_peak_reserved_bytes": 6784286720,
+    "end_to_end_fps": 0.1411927803348428,
+    "mapping_fps": 0.2567925871385077,
+    "nvml_max_sampled_utilization_percent": 99,
+    "nvml_peak_device_used_mib": 7684,
+    "nvml_valid_samples": 13941,
+    "process_wall_seconds": 14165.030217954074,
+    "tracking_fps": 0.347069322852072
+  },
+  "post_closure_administrative_update": "Room1 SESSION_006 closed after ownership/evidence audit on 2026-10-28 (Asia/Tokyo); room0 run evidence and Gate 0–4 results unchanged. SESSION_005 remains ACTIVE.",
+  "repository": "/home/robot/research/SGS_slam_phase7_bcgm",
+  "run_id": "p7_bcgm_g3_room0_on_0_1999_r01",
+  "run_validation": {
+    "bcgm_admission": "PASS",
+    "checkpoint_gaussians": 4499583,
+    "checkpoint_zip_crc": "PASS",
+    "evaluation_arrays_each_count": 401,
+    "evaluation_arrays_finite": true,
+    "frames": 2000,
+    "global_cap_runtime_verified": true,
+    "insertion_events": 1999,
+    "process_exit_code": 0,
+    "saved_poses": 2000,
+    "status": "COMPLETE"
+  },
+  "self_hash_policy": "This manifest excludes its own path to avoid a self-referential checksum. Verify its SHA256 externally.",
+  "session": {
+    "id": "SESSION_005",
+    "status": "ACTIVE"
+  },
+  "title": "Phase 7 Gate 4 final evidence closure manifest",
+  "total_artifact_bytes": 1031721770,
+  "visualization_inventory": {
+    "json": 24,
+    "npy": 6,
+    "png": 113
+  }
+}
